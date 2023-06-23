@@ -42,7 +42,7 @@ struct PrimeTime: View {
                 VStack {
                     Text("Prime Time").font(.footnote)
                     Text("10:20").font(.subheadline)
-                }
+                }.foregroundColor(.black)
             }
         }
     }

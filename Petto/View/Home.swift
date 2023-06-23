@@ -50,6 +50,8 @@ struct Home: View {
         }.onAppear {
             let idleFrameAtlas = SKTextureAtlas(named: "IdleFrames")
             idleFrameNames = idleFrameAtlas.textureNames.sorted()
+            GSAudio.sharedInstance.playSound(soundFileName: "background", numberOfLoops: -1)
+            print("yo")
         }
     }
 }

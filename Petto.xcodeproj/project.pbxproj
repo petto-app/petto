@@ -20,6 +20,8 @@
 		93BFA6712A42FDDB007783E4 /* StrokeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA6702A42FDDB007783E4 /* StrokeText.swift */; };
 		93BFA6732A42FFF0007783E4 /* PrimeTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA6722A42FFF0007783E4 /* PrimeTime.swift */; };
 		93D608882A45DB6D0058EA80 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D608872A45DB6D0058EA80 /* Avatar.swift */; };
+		93D6088B2A46142A0058EA80 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6088A2A46142A0058EA80 /* AudioPlayer.swift */; };
+		93D608922A461AAE0058EA80 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93D6088E2A4616D20058EA80 /* background.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		93BFA6702A42FDDB007783E4 /* StrokeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeText.swift; sourceTree = "<group>"; };
 		93BFA6722A42FFF0007783E4 /* PrimeTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeTime.swift; sourceTree = "<group>"; };
 		93D608872A45DB6D0058EA80 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
+		93D6088A2A46142A0058EA80 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		93D6088E2A4616D20058EA80 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 		9376A97E2A3F5A080037F2FE /* Petto */ = {
 			isa = PBXGroup;
 			children = (
+				93D608902A4619DD0058EA80 /* Audio */,
+				93D608892A4613DB0058EA80 /* Helper */,
 				93BFA66B2A42F54F007783E4 /* Component */,
 				93BFA66A2A42F250007783E4 /* Model */,
 				93BFA6672A42EA1E007783E4 /* View */,
@@ -115,6 +121,22 @@
 				93D608872A45DB6D0058EA80 /* Avatar.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		93D608892A4613DB0058EA80 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				93D6088A2A46142A0058EA80 /* AudioPlayer.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		93D608902A4619DD0058EA80 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				93D6088E2A4616D20058EA80 /* background.mp3 */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9376A9872A3F5A0A0037F2FE /* Preview Assets.xcassets in Resources */,
+				93D608922A461AAE0058EA80 /* background.mp3 in Resources */,
 				9376A9842A3F5A0A0037F2FE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,6 +218,7 @@
 			files = (
 				933239B52A4453A300D9B89B /* StatBar.swift in Sources */,
 				93BFA66D2A42F56C007783E4 /* IconButton.swift in Sources */,
+				93D6088B2A46142A0058EA80 /* AudioPlayer.swift in Sources */,
 				9376A9822A3F5A080037F2FE /* ContentView.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93BFA6692A42EA53007783E4 /* Home.swift in Sources */,
