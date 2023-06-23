@@ -7,18 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		933239B12A4434B700D9B89B /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 933239B02A4434B700D9B89B /* SwiftUITooltip */; };
+		933239B32A443F0000D9B89B /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933239B22A443EFF00D9B89B /* Stats.swift */; };
+		933239B52A4453A300D9B89B /* StatBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933239B42A4453A300D9B89B /* StatBar.swift */; };
 		9376A9802A3F5A080037F2FE /* PettoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376A97F2A3F5A080037F2FE /* PettoApp.swift */; };
 		9376A9822A3F5A080037F2FE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376A9812A3F5A080037F2FE /* ContentView.swift */; };
 		9376A9842A3F5A0A0037F2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9376A9832A3F5A0A0037F2FE /* Assets.xcassets */; };
 		9376A9872A3F5A0A0037F2FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9376A9862A3F5A0A0037F2FE /* Preview Assets.xcassets */; };
 		93BFA6692A42EA53007783E4 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA6682A42EA53007783E4 /* Home.swift */; };
 		93BFA66D2A42F56C007783E4 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA66C2A42F56C007783E4 /* IconButton.swift */; };
-		93BFA66F2A42F933007783E4 /* TotalCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA66E2A42F933007783E4 /* TotalCoin.swift */; };
+		93BFA66F2A42F933007783E4 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA66E2A42F933007783E4 /* Coin.swift */; };
 		93BFA6712A42FDDB007783E4 /* StrokeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA6702A42FDDB007783E4 /* StrokeText.swift */; };
 		93BFA6732A42FFF0007783E4 /* PrimeTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA6722A42FFF0007783E4 /* PrimeTime.swift */; };
+		93D608882A45DB6D0058EA80 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D608872A45DB6D0058EA80 /* Avatar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		933239B22A443EFF00D9B89B /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		933239B42A4453A300D9B89B /* StatBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatBar.swift; sourceTree = "<group>"; };
 		9376A97C2A3F5A080037F2FE /* Petto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Petto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9376A97F2A3F5A080037F2FE /* PettoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PettoApp.swift; sourceTree = "<group>"; };
 		9376A9812A3F5A080037F2FE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,9 +32,10 @@
 		9376A9862A3F5A0A0037F2FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		93BFA6682A42EA53007783E4 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		93BFA66C2A42F56C007783E4 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
-		93BFA66E2A42F933007783E4 /* TotalCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCoin.swift; sourceTree = "<group>"; };
+		93BFA66E2A42F933007783E4 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		93BFA6702A42FDDB007783E4 /* StrokeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeText.swift; sourceTree = "<group>"; };
 		93BFA6722A42FFF0007783E4 /* PrimeTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeTime.swift; sourceTree = "<group>"; };
+		93D608872A45DB6D0058EA80 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				933239B12A4434B700D9B89B /* SwiftUITooltip in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,9 +107,12 @@
 			isa = PBXGroup;
 			children = (
 				93BFA66C2A42F56C007783E4 /* IconButton.swift */,
-				93BFA66E2A42F933007783E4 /* TotalCoin.swift */,
+				93BFA66E2A42F933007783E4 /* Coin.swift */,
 				93BFA6702A42FDDB007783E4 /* StrokeText.swift */,
 				93BFA6722A42FFF0007783E4 /* PrimeTime.swift */,
+				933239B22A443EFF00D9B89B /* Stats.swift */,
+				933239B42A4453A300D9B89B /* StatBar.swift */,
+				93D608872A45DB6D0058EA80 /* Avatar.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -122,6 +133,9 @@
 			dependencies = (
 			);
 			name = Petto;
+			packageProductDependencies = (
+				933239B02A4434B700D9B89B /* SwiftUITooltip */,
+			);
 			productName = Petto;
 			productReference = 9376A97C2A3F5A080037F2FE /* Petto.app */;
 			productType = "com.apple.product-type.application";
@@ -150,6 +164,9 @@
 				Base,
 			);
 			mainGroup = 9376A9732A3F5A080037F2FE;
+			packageReferences = (
+				933239AF2A4434B700D9B89B /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */,
+			);
 			productRefGroup = 9376A97D2A3F5A080037F2FE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -176,12 +193,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				933239B52A4453A300D9B89B /* StatBar.swift in Sources */,
 				93BFA66D2A42F56C007783E4 /* IconButton.swift in Sources */,
 				9376A9822A3F5A080037F2FE /* ContentView.swift in Sources */,
-				93BFA66F2A42F933007783E4 /* TotalCoin.swift in Sources */,
+				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93BFA6692A42EA53007783E4 /* Home.swift in Sources */,
 				93BFA6712A42FDDB007783E4 /* StrokeText.swift in Sources */,
+				933239B32A443F0000D9B89B /* Stats.swift in Sources */,
 				9376A9802A3F5A080037F2FE /* PettoApp.swift in Sources */,
+				93D608882A45DB6D0058EA80 /* Avatar.swift in Sources */,
 				93BFA6732A42FFF0007783E4 /* PrimeTime.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,6 +403,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		933239AF2A4434B700D9B89B /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/quassum/SwiftUI-Tooltip.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		933239B02A4434B700D9B89B /* SwiftUITooltip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 933239AF2A4434B700D9B89B /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */;
+			productName = SwiftUITooltip;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9376A9742A3F5A080037F2FE /* Project object */;
 }
