@@ -19,9 +19,13 @@
 		93BFA66F2A42F933007783E4 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA66E2A42F933007783E4 /* Coin.swift */; };
 		93BFA6712A42FDDB007783E4 /* StrokeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA6702A42FDDB007783E4 /* StrokeText.swift */; };
 		93BFA6732A42FFF0007783E4 /* PrimeTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA6722A42FFF0007783E4 /* PrimeTime.swift */; };
+		93C768A52A46B1F200B70E4B /* PrimeTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C768A42A46B1F200B70E4B /* PrimeTimeHelper.swift */; };
 		93D608882A45DB6D0058EA80 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D608872A45DB6D0058EA80 /* Avatar.swift */; };
 		93D6088B2A46142A0058EA80 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6088A2A46142A0058EA80 /* AudioPlayer.swift */; };
 		93D608922A461AAE0058EA80 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93D6088E2A4616D20058EA80 /* background.mp3 */; };
+		93F344E72A46E42B0089D2A8 /* SettingsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F344E62A46E42B0089D2A8 /* SettingsContainer.swift */; };
+		93F344E92A4708CB0089D2A8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F344E82A4708CB0089D2A8 /* Button.swift */; };
+		93F344EB2A47225B0089D2A8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F344EA2A47225B0089D2A8 /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,9 +41,13 @@
 		93BFA66E2A42F933007783E4 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		93BFA6702A42FDDB007783E4 /* StrokeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeText.swift; sourceTree = "<group>"; };
 		93BFA6722A42FFF0007783E4 /* PrimeTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeTime.swift; sourceTree = "<group>"; };
+		93C768A42A46B1F200B70E4B /* PrimeTimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeTimeHelper.swift; sourceTree = "<group>"; };
 		93D608872A45DB6D0058EA80 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		93D6088A2A46142A0058EA80 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		93D6088E2A4616D20058EA80 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		93F344E62A46E42B0089D2A8 /* SettingsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainer.swift; sourceTree = "<group>"; };
+		93F344E82A4708CB0089D2A8 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		93F344EA2A47225B0089D2A8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				93BFA6682A42EA53007783E4 /* Home.swift */,
+				93F344EA2A47225B0089D2A8 /* Settings.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -119,6 +128,8 @@
 				933239B22A443EFF00D9B89B /* Stats.swift */,
 				933239B42A4453A300D9B89B /* StatBar.swift */,
 				93D608872A45DB6D0058EA80 /* Avatar.swift */,
+				93F344E62A46E42B0089D2A8 /* SettingsContainer.swift */,
+				93F344E82A4708CB0089D2A8 /* Button.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -127,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				93D6088A2A46142A0058EA80 /* AudioPlayer.swift */,
+				93C768A42A46B1F200B70E4B /* PrimeTimeHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -223,9 +235,13 @@
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93BFA6692A42EA53007783E4 /* Home.swift in Sources */,
 				93BFA6712A42FDDB007783E4 /* StrokeText.swift in Sources */,
+				93F344E92A4708CB0089D2A8 /* Button.swift in Sources */,
 				933239B32A443F0000D9B89B /* Stats.swift in Sources */,
+				93F344EB2A47225B0089D2A8 /* Settings.swift in Sources */,
+				93F344E72A46E42B0089D2A8 /* SettingsContainer.swift in Sources */,
 				9376A9802A3F5A080037F2FE /* PettoApp.swift in Sources */,
 				93D608882A45DB6D0058EA80 /* Avatar.swift in Sources */,
+				93C768A52A46B1F200B70E4B /* PrimeTimeHelper.swift in Sources */,
 				93BFA6732A42FFF0007783E4 /* PrimeTime.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
