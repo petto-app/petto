@@ -19,6 +19,7 @@ struct Coin: View {
         tooltipConfig.animationOffset = 10
         tooltipConfig.animationTime = 1
         tooltipConfig.side = .top
+        tooltipConfig.backgroundColor = .white
         self.totalCoin = totalCoin
         self.coin = coin
     }
@@ -36,17 +37,18 @@ struct Coin: View {
             .onTapGesture {
                 showTooltip = !showTooltip
             }
-            .tooltip(showTooltip, config: tooltipConfig) {
-                Text("Total Coin: \(totalCoin)")
-            }
         }
         .padding(5)
+        .frame(height: 30)
         .background(.white)
         .cornerRadius(25)
         .overlay(
             RoundedRectangle(cornerRadius: 25)
                 .stroke(Color.black, lineWidth: 2)
         )
+        .tooltip(showTooltip, config: tooltipConfig) {
+            Text("Total Coin: \(totalCoin)").font(.caption)
+        }
     }
 }
 

@@ -13,7 +13,6 @@ struct IconButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: width, height: height)
-            .padding(5)
             .background(.white)
             .foregroundColor(.black)
             .clipShape(Capsule())
@@ -32,7 +31,7 @@ struct SettingsButtonView: View {
             print("Button pressed!")
         } label: {
             Image(systemName: "gearshape")
-        }.buttonStyle(IconButton())
+        }.buttonStyle(IconButton(width: 30, height: 30))
     }
 }
 

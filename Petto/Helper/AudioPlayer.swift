@@ -25,21 +25,6 @@ class GSAudio: NSObject, AVAudioPlayerDelegate {
                 player.numberOfLoops = numberOfLoops
                 player.prepareToPlay()
                 player.play()
-            } else { // player is in use, create a new, duplicate, player and use that instead
-                do {
-                    let duplicatePlayer = try AVAudioPlayer(contentsOf: soundFileNameURL)
-
-                    duplicatePlayer.delegate = self
-                    // assign delegate for duplicatePlayer so delegate can remove the duplicate once it's stopped playing
-
-                    duplicatePlayers.append(duplicatePlayer)
-                    // add duplicate to array so it doesn't get removed from memory before finishing
-                    duplicatePlayer.numberOfLoops = numberOfLoops
-                    duplicatePlayer.prepareToPlay()
-                    duplicatePlayer.play()
-                } catch {
-                    print(error.localizedDescription)
-                }
             }
         } else { // player has not been found, create a new player with the URL if possible
             do {

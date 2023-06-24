@@ -24,7 +24,7 @@ struct Settings: View {
                             dismiss()
                         } label: {
                             Image(systemName: "chevron.left")
-                        }.buttonStyle(IconButton()).offset(y: 20)
+                        }.buttonStyle(IconButton(width: 30, height: 30)).offset(y: 20)
                         Coin(coin: 100, totalCoin: 1000).offset(y: 20)
                         Spacer()
                         PrimeTime().offset(x: -5, y: 20)

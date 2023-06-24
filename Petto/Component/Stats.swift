@@ -54,6 +54,7 @@ struct Stats: View {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.black, lineWidth: 1)
         )
+        .foregroundColor(.black)
     }
 }
 

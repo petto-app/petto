@@ -23,7 +23,7 @@ struct SettingsContainer: View {
                         HStack {
                             Picker("Select starting hour", selection: $startSelection) {
                                 ForEach(hours, id: \.self) {
-                                    Text("\($0)").font(.callout)
+                                    Text("\($0)").font(.callout).foregroundColor(.black)
                                 }
                             }
                             .pickerStyle(.wheel)
@@ -37,7 +37,7 @@ struct SettingsContainer: View {
                         HStack {
                             Picker("Select finish hour", selection: $startSelection) {
                                 ForEach(hours, id: \.self) {
-                                    Text("\($0)").font(.callout)
+                                    Text("\($0)").font(.callout).foregroundColor(.black)
                                 }
                             }
                             .pickerStyle(.wheel)
@@ -72,6 +72,7 @@ struct SettingsContainer: View {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.black, lineWidth: 1)
         )
+        .foregroundColor(.black)
     }
 }
 

@@ -6,10 +6,23 @@
 //
 
 import SwiftUI
+import SwiftUITooltip
 
 struct StatBar: View {
+    var tooltipConfig = DefaultTooltipConfig()
     @Binding var value: Int
     @State private var barValue = 0.0
+    @State private var showTooltip = false
+
+    init(value: Binding<Int>) {
+        tooltipConfig.enableAnimation = true
+        tooltipConfig.animationOffset = 10
+        tooltipConfig.animationTime = 1
+        tooltipConfig.side = .top
+        tooltipConfig.backgroundColor = .white
+
+        _value = value
+    }
 
     var body: some View {
         GeometryReader { geometry in
@@ -26,19 +39,25 @@ struct StatBar: View {
                     RoundedRectangle(cornerRadius: 45)
                         .stroke(Color.black, lineWidth: 1)
                 )
+                .onTapGesture {
+                    showTooltip = !showTooltip
+                }
+        }
+        .tooltip(showTooltip, config: tooltipConfig) {
+            Text("\(value)/100").font(.caption)
         }.frame(height: 25)
-            .onChange(of: value) { newValue in
-                barValue = 0
-                for _ in 0 ..< newValue {
-                    barValue += 0.01
-                }
+        .onChange(of: value) { newValue in
+            barValue = 0
+            for _ in 0 ..< newValue {
+                barValue += 0.01
             }
-            .onAppear {
-                barValue = 0
-                for _ in 0 ..< value {
-                    barValue += 0.01
-                }
+        }
+        .onAppear {
+            barValue = 0
+            for _ in 0 ..< value {
+                barValue += 0.01
             }
+        }
     }
 }
 
