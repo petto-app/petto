@@ -7,45 +7,63 @@
 
 import SpriteKit
 import SwiftUI
+import UserNotifications
 
 struct Home: View {
     @State private var idleFrameNames: [String] = []
 
     var body: some View {
-        VStack {
-            ZStack {
-                Image("wp").resizable().ignoresSafeArea(.all)
-                TimelineView(.animation) { timeline in
-                    if idleFrameNames.count > 0 {
-                        Canvas { context, size in
-                            let w = size.width
-                            let h = size.height
-
-                            let now = Int(secondsValue(for: timeline.date))
-
-                            let frameIndex = now % idleFrameNames.count
-
-                            // Draw Images
-                            context.draw(Image(idleFrameNames[frameIndex]), at: CGPoint(x: w / 2, y: h / 2.2))
+        NavigationStack {
+            VStack {
+                ZStack {
+                    Image("wp").resizable().ignoresSafeArea(.all)
+                        .aspectRatio(contentMode: .fill)
+                    Avatar(idleFrameNames: $idleFrameNames)
+                    VStack {
+                        HStack {
+                            NavigationLink {
+                                Settings()
+                            } label: {
+                                Image(systemName: "gearshape")
+                            }.buttonStyle(IconButton(width: 30, height: 30)).offset(y: 20)
+                            Coin(coin: 100, totalCoin: 1000).offset(y: 20)
+                            Spacer()
+                            PrimeTime().offset(x: -5, y: 20)
                         }
+                        Stats().offset(y: -20)
+                        HStack {
+                            Spacer()
+                            VStack {
+                                Button {
+                                    print("Button pressed!")
+                                } label: {
+                                    Image("exclamation")
+                                }.buttonStyle(IconButton(width: 50, height: 50))
+                                Button {
+                                    print("Button pressed!")
+                                } label: {
+                                    Image("ShopIcon")
+                                }.buttonStyle(IconButton(width: 50, height: 50))
+                            }
+                        }
+                        Spacer()
+                    }.padding()
+                }
+            }.onAppear {
+                let idleFrameAtlas = SKTextureAtlas(named: "IdleFrames")
+                idleFrameNames = idleFrameAtlas.textureNames.sorted()
+                GSAudio.sharedInstance.playSound(soundFileName: "background", numberOfLoops: -1)
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                    if success {
+                        print("All set!")
+                    } else if let error = error {
+                        print(error.localizedDescription)
                     }
                 }
+
+                print(scheduleLocal(startHour: 9, endHour: 17, intervalHour: 2))
             }
-        }.onAppear {
-            let idleFrameAtlas = SKTextureAtlas(named: "IdleFrames")
-            idleFrameNames = idleFrameAtlas.textureNames.sorted()
-        }
-        .padding()
-    }
-
-    private func secondsValue(for date: Date) -> Double {
-        let seconds = Calendar.current.component(.second, from: date)
-        return Double(seconds)
-    }
-
-    private func nanosValue(for date: Date) -> Double {
-        let nanos = Calendar.current.component(.nanosecond, from: date)
-        return Double(nanos)
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
