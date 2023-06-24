@@ -7,18 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		933239B12A4434B700D9B89B /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 933239B02A4434B700D9B89B /* SwiftUITooltip */; };
+		933239B32A443F0000D9B89B /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933239B22A443EFF00D9B89B /* Stats.swift */; };
+		933239B52A4453A300D9B89B /* StatBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933239B42A4453A300D9B89B /* StatBar.swift */; };
 		9376A9802A3F5A080037F2FE /* PettoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376A97F2A3F5A080037F2FE /* PettoApp.swift */; };
 		9376A9822A3F5A080037F2FE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376A9812A3F5A080037F2FE /* ContentView.swift */; };
 		9376A9842A3F5A0A0037F2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9376A9832A3F5A0A0037F2FE /* Assets.xcassets */; };
 		9376A9872A3F5A0A0037F2FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9376A9862A3F5A0A0037F2FE /* Preview Assets.xcassets */; };
 		93BFA6692A42EA53007783E4 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA6682A42EA53007783E4 /* Home.swift */; };
 		93BFA66D2A42F56C007783E4 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA66C2A42F56C007783E4 /* IconButton.swift */; };
-		93BFA66F2A42F933007783E4 /* TotalCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA66E2A42F933007783E4 /* TotalCoin.swift */; };
+		93BFA66F2A42F933007783E4 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA66E2A42F933007783E4 /* Coin.swift */; };
 		93BFA6712A42FDDB007783E4 /* StrokeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA6702A42FDDB007783E4 /* StrokeText.swift */; };
 		93BFA6732A42FFF0007783E4 /* PrimeTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA6722A42FFF0007783E4 /* PrimeTime.swift */; };
+		93C768A52A46B1F200B70E4B /* PrimeTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C768A42A46B1F200B70E4B /* PrimeTimeHelper.swift */; };
+		93D608882A45DB6D0058EA80 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D608872A45DB6D0058EA80 /* Avatar.swift */; };
+		93D6088B2A46142A0058EA80 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6088A2A46142A0058EA80 /* AudioPlayer.swift */; };
+		93D608922A461AAE0058EA80 /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 93D6088E2A4616D20058EA80 /* background.mp3 */; };
+		93F344E72A46E42B0089D2A8 /* SettingsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F344E62A46E42B0089D2A8 /* SettingsContainer.swift */; };
+		93F344E92A4708CB0089D2A8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F344E82A4708CB0089D2A8 /* Button.swift */; };
+		93F344EB2A47225B0089D2A8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F344EA2A47225B0089D2A8 /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		933239B22A443EFF00D9B89B /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		933239B42A4453A300D9B89B /* StatBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatBar.swift; sourceTree = "<group>"; };
 		9376A97C2A3F5A080037F2FE /* Petto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Petto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9376A97F2A3F5A080037F2FE /* PettoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PettoApp.swift; sourceTree = "<group>"; };
 		9376A9812A3F5A080037F2FE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,9 +38,16 @@
 		9376A9862A3F5A0A0037F2FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		93BFA6682A42EA53007783E4 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		93BFA66C2A42F56C007783E4 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
-		93BFA66E2A42F933007783E4 /* TotalCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCoin.swift; sourceTree = "<group>"; };
+		93BFA66E2A42F933007783E4 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		93BFA6702A42FDDB007783E4 /* StrokeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeText.swift; sourceTree = "<group>"; };
 		93BFA6722A42FFF0007783E4 /* PrimeTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeTime.swift; sourceTree = "<group>"; };
+		93C768A42A46B1F200B70E4B /* PrimeTimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeTimeHelper.swift; sourceTree = "<group>"; };
+		93D608872A45DB6D0058EA80 /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
+		93D6088A2A46142A0058EA80 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		93D6088E2A4616D20058EA80 /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
+		93F344E62A46E42B0089D2A8 /* SettingsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainer.swift; sourceTree = "<group>"; };
+		93F344E82A4708CB0089D2A8 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		93F344EA2A47225B0089D2A8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				933239B12A4434B700D9B89B /* SwiftUITooltip in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +81,8 @@
 		9376A97E2A3F5A080037F2FE /* Petto */ = {
 			isa = PBXGroup;
 			children = (
+				93D608902A4619DD0058EA80 /* Audio */,
+				93D608892A4613DB0058EA80 /* Helper */,
 				93BFA66B2A42F54F007783E4 /* Component */,
 				93BFA66A2A42F250007783E4 /* Model */,
 				93BFA6672A42EA1E007783E4 /* View */,
@@ -84,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				93BFA6682A42EA53007783E4 /* Home.swift */,
+				93F344EA2A47225B0089D2A8 /* Settings.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -99,11 +122,33 @@
 			isa = PBXGroup;
 			children = (
 				93BFA66C2A42F56C007783E4 /* IconButton.swift */,
-				93BFA66E2A42F933007783E4 /* TotalCoin.swift */,
+				93BFA66E2A42F933007783E4 /* Coin.swift */,
 				93BFA6702A42FDDB007783E4 /* StrokeText.swift */,
 				93BFA6722A42FFF0007783E4 /* PrimeTime.swift */,
+				933239B22A443EFF00D9B89B /* Stats.swift */,
+				933239B42A4453A300D9B89B /* StatBar.swift */,
+				93D608872A45DB6D0058EA80 /* Avatar.swift */,
+				93F344E62A46E42B0089D2A8 /* SettingsContainer.swift */,
+				93F344E82A4708CB0089D2A8 /* Button.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		93D608892A4613DB0058EA80 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				93D6088A2A46142A0058EA80 /* AudioPlayer.swift */,
+				93C768A42A46B1F200B70E4B /* PrimeTimeHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		93D608902A4619DD0058EA80 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				93D6088E2A4616D20058EA80 /* background.mp3 */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,6 +167,9 @@
 			dependencies = (
 			);
 			name = Petto;
+			packageProductDependencies = (
+				933239B02A4434B700D9B89B /* SwiftUITooltip */,
+			);
 			productName = Petto;
 			productReference = 9376A97C2A3F5A080037F2FE /* Petto.app */;
 			productType = "com.apple.product-type.application";
@@ -150,6 +198,9 @@
 				Base,
 			);
 			mainGroup = 9376A9732A3F5A080037F2FE;
+			packageReferences = (
+				933239AF2A4434B700D9B89B /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */,
+			);
 			productRefGroup = 9376A97D2A3F5A080037F2FE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -165,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9376A9872A3F5A0A0037F2FE /* Preview Assets.xcassets in Resources */,
+				93D608922A461AAE0058EA80 /* background.mp3 in Resources */,
 				9376A9842A3F5A0A0037F2FE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,12 +228,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				933239B52A4453A300D9B89B /* StatBar.swift in Sources */,
 				93BFA66D2A42F56C007783E4 /* IconButton.swift in Sources */,
+				93D6088B2A46142A0058EA80 /* AudioPlayer.swift in Sources */,
 				9376A9822A3F5A080037F2FE /* ContentView.swift in Sources */,
-				93BFA66F2A42F933007783E4 /* TotalCoin.swift in Sources */,
+				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93BFA6692A42EA53007783E4 /* Home.swift in Sources */,
 				93BFA6712A42FDDB007783E4 /* StrokeText.swift in Sources */,
+				93F344E92A4708CB0089D2A8 /* Button.swift in Sources */,
+				933239B32A443F0000D9B89B /* Stats.swift in Sources */,
+				93F344EB2A47225B0089D2A8 /* Settings.swift in Sources */,
+				93F344E72A46E42B0089D2A8 /* SettingsContainer.swift in Sources */,
 				9376A9802A3F5A080037F2FE /* PettoApp.swift in Sources */,
+				93D608882A45DB6D0058EA80 /* Avatar.swift in Sources */,
+				93C768A52A46B1F200B70E4B /* PrimeTimeHelper.swift in Sources */,
 				93BFA6732A42FFF0007783E4 /* PrimeTime.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,7 +369,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Petto/Preview Content\"";
 				DEVELOPMENT_TEAM = J8A42WJ9LX;
 				ENABLE_PREVIEWS = YES;
@@ -324,7 +384,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pettoteam.petto;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pettoteam.pettolife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -338,7 +398,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Petto/Preview Content\"";
 				DEVELOPMENT_TEAM = J8A42WJ9LX;
 				ENABLE_PREVIEWS = YES;
@@ -353,7 +413,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pettoteam.petto;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pettoteam.pettolife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -383,6 +443,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		933239AF2A4434B700D9B89B /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/quassum/SwiftUI-Tooltip.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		933239B02A4434B700D9B89B /* SwiftUITooltip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 933239AF2A4434B700D9B89B /* XCRemoteSwiftPackageReference "SwiftUI-Tooltip" */;
+			productName = SwiftUITooltip;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9376A9742A3F5A080037F2FE /* Project object */;
 }
