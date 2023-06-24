@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05BFB3872A4435B400A026D7 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFB3862A4435B400A026D7 /* ShopViewController.swift */; };
+		05BFB3902A443B3600A026D7 /* ShopItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFB38F2A443B3600A026D7 /* ShopItemModel.swift */; };
+		05BFB3972A445B3900A026D7 /* TimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFB3962A445B3900A026D7 /* TimeModel.swift */; };
+		05F4A2C82A45811C00DE56A7 /* StatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4A2C72A45811C00DE56A7 /* StatModel.swift */; };
+		05F4A2CA2A45816B00DE56A7 /* DailyTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4A2C92A45816B00DE56A7 /* DailyTaskModel.swift */; };
+		05F4A2CC2A45817600DE56A7 /* BodyMovementTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4A2CB2A45817600DE56A7 /* BodyMovementTaskModel.swift */; };
+		05F4A2CE2A45818B00DE56A7 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4A2CD2A45818B00DE56A7 /* CharacterModel.swift */; };
+		05F4A2D22A4742BD00DE56A7 /* DataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4A2D12A4742BD00DE56A7 /* DataTestView.swift */; };
 		933239B12A4434B700D9B89B /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 933239B02A4434B700D9B89B /* SwiftUITooltip */; };
 		933239B32A443F0000D9B89B /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933239B22A443EFF00D9B89B /* Stats.swift */; };
 		933239B52A4453A300D9B89B /* StatBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933239B42A4453A300D9B89B /* StatBar.swift */; };
@@ -29,6 +37,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05BFB3862A4435B400A026D7 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		05BFB38F2A443B3600A026D7 /* ShopItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItemModel.swift; sourceTree = "<group>"; };
+		05BFB3962A445B3900A026D7 /* TimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeModel.swift; sourceTree = "<group>"; };
+		05F4A2C72A45811C00DE56A7 /* StatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatModel.swift; sourceTree = "<group>"; };
+		05F4A2C92A45816B00DE56A7 /* DailyTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskModel.swift; sourceTree = "<group>"; };
+		05F4A2CB2A45817600DE56A7 /* BodyMovementTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMovementTaskModel.swift; sourceTree = "<group>"; };
+		05F4A2CD2A45818B00DE56A7 /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
+		05F4A2D12A4742BD00DE56A7 /* DataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTestView.swift; sourceTree = "<group>"; };
 		933239B22A443EFF00D9B89B /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		933239B42A4453A300D9B89B /* StatBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatBar.swift; sourceTree = "<group>"; };
 		9376A97C2A3F5A080037F2FE /* Petto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Petto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05BFB3812A44323700A026D7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				05BFB3862A4435B400A026D7 /* ShopViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		9376A9732A3F5A080037F2FE = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +105,7 @@
 		9376A97E2A3F5A080037F2FE /* Petto */ = {
 			isa = PBXGroup;
 			children = (
+				05BFB3812A44323700A026D7 /* Controller */,
 				93D608902A4619DD0058EA80 /* Audio */,
 				93D608892A4613DB0058EA80 /* Helper */,
 				93BFA66B2A42F54F007783E4 /* Component */,
@@ -106,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				93BFA6682A42EA53007783E4 /* Home.swift */,
+				05F4A2D12A4742BD00DE56A7 /* DataTestView.swift */,
 				93F344EA2A47225B0089D2A8 /* Settings.swift */,
 			);
 			path = View;
@@ -114,6 +140,12 @@
 		93BFA66A2A42F250007783E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				05BFB38F2A443B3600A026D7 /* ShopItemModel.swift */,
+				05BFB3962A445B3900A026D7 /* TimeModel.swift */,
+				05F4A2C72A45811C00DE56A7 /* StatModel.swift */,
+				05F4A2C92A45816B00DE56A7 /* DailyTaskModel.swift */,
+				05F4A2CB2A45817600DE56A7 /* BodyMovementTaskModel.swift */,
+				05F4A2CD2A45818B00DE56A7 /* CharacterModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -228,10 +260,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05F4A2D22A4742BD00DE56A7 /* DataTestView.swift in Sources */,
+				05F4A2C82A45811C00DE56A7 /* StatModel.swift in Sources */,
 				933239B52A4453A300D9B89B /* StatBar.swift in Sources */,
 				93BFA66D2A42F56C007783E4 /* IconButton.swift in Sources */,
 				93D6088B2A46142A0058EA80 /* AudioPlayer.swift in Sources */,
 				9376A9822A3F5A080037F2FE /* ContentView.swift in Sources */,
+				05BFB3902A443B3600A026D7 /* ShopItemModel.swift in Sources */,
+				05BFB3872A4435B400A026D7 /* ShopViewController.swift in Sources */,
+				05F4A2CA2A45816B00DE56A7 /* DailyTaskModel.swift in Sources */,
+				05BFB3972A445B3900A026D7 /* TimeModel.swift in Sources */,
+				93BFA66F2A42F933007783E4 /* TotalCoin.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93BFA6692A42EA53007783E4 /* Home.swift in Sources */,
 				93BFA6712A42FDDB007783E4 /* StrokeText.swift in Sources */,
@@ -240,6 +279,8 @@
 				93F344EB2A47225B0089D2A8 /* Settings.swift in Sources */,
 				93F344E72A46E42B0089D2A8 /* SettingsContainer.swift in Sources */,
 				9376A9802A3F5A080037F2FE /* PettoApp.swift in Sources */,
+				05F4A2CE2A45818B00DE56A7 /* CharacterModel.swift in Sources */,
+				05F4A2CC2A45817600DE56A7 /* BodyMovementTaskModel.swift in Sources */,
 				93D608882A45DB6D0058EA80 /* Avatar.swift in Sources */,
 				93C768A52A46B1F200B70E4B /* PrimeTimeHelper.swift in Sources */,
 				93BFA6732A42FFF0007783E4 /* PrimeTime.swift in Sources */,

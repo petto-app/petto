@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct PettoApp: App {
+    // Initiate controller
+    @StateObject var shopViewController = ShopViewController()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(shopViewController)
         }
     }
 }
