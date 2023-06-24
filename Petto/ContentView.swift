@@ -15,6 +15,9 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
+        @StateObject var shopViewController = ShopViewController()
+        
         ContentView()
+            .environmentObject(shopViewController)
     }
 }

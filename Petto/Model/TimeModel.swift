@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct TimeConfig {
+struct TimeConfig: Codable {
     public var startTime: Date
     public var interval: Int  // In hour
 }
