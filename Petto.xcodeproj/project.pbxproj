@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		057354942A482AD700C4D3F2 /* GameCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057354932A482AD700C4D3F2 /* GameCenterView.swift */; };
+		057354962A482C3700C4D3F2 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057354952A482C3700C4D3F2 /* PlayerModel.swift */; };
+		057354982A482F7000C4D3F2 /* GameKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057354972A482F7000C4D3F2 /* GameKitController.swift */; };
 		05BFB3872A4435B400A026D7 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFB3862A4435B400A026D7 /* ShopViewController.swift */; };
 		05BFB3902A443B3600A026D7 /* ShopItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFB38F2A443B3600A026D7 /* ShopItemModel.swift */; };
 		05BFB3972A445B3900A026D7 /* TimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFB3962A445B3900A026D7 /* TimeModel.swift */; };
@@ -39,6 +42,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		057354932A482AD700C4D3F2 /* GameCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterView.swift; sourceTree = "<group>"; };
+		057354952A482C3700C4D3F2 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
+		057354972A482F7000C4D3F2 /* GameKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameKitController.swift; sourceTree = "<group>"; };
 		05BFB3862A4435B400A026D7 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		05BFB38F2A443B3600A026D7 /* ShopItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItemModel.swift; sourceTree = "<group>"; };
 		05BFB3962A445B3900A026D7 /* TimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeModel.swift; sourceTree = "<group>"; };
@@ -87,6 +93,7 @@
 			children = (
 				05BFB3862A4435B400A026D7 /* ShopViewController.swift */,
 				93EC1EA02A483364007B7B07 /* TimeController.swift */,
+				057354972A482F7000C4D3F2 /* GameKitController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -139,6 +146,7 @@
 				93BFA6682A42EA53007783E4 /* Home.swift */,
 				05F4A2D12A4742BD00DE56A7 /* DataTestView.swift */,
 				93F344EA2A47225B0089D2A8 /* Settings.swift */,
+				057354932A482AD700C4D3F2 /* GameCenterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -152,6 +160,7 @@
 				05F4A2C92A45816B00DE56A7 /* DailyTaskModel.swift */,
 				05F4A2CB2A45817600DE56A7 /* BodyMovementTaskModel.swift */,
 				05F4A2CD2A45818B00DE56A7 /* CharacterModel.swift */,
+				057354952A482C3700C4D3F2 /* PlayerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -267,15 +276,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				05F4A2D22A4742BD00DE56A7 /* DataTestView.swift in Sources */,
+				057354942A482AD700C4D3F2 /* GameCenterView.swift in Sources */,
 				05F4A2C82A45811C00DE56A7 /* StatModel.swift in Sources */,
 				933239B52A4453A300D9B89B /* StatBar.swift in Sources */,
+				057354982A482F7000C4D3F2 /* GameKitController.swift in Sources */,
 				93BFA66D2A42F56C007783E4 /* IconButton.swift in Sources */,
 				93D6088B2A46142A0058EA80 /* AudioPlayer.swift in Sources */,
+				057354962A482C3700C4D3F2 /* PlayerModel.swift in Sources */,
 				9376A9822A3F5A080037F2FE /* ContentView.swift in Sources */,
 				05BFB3902A443B3600A026D7 /* ShopItemModel.swift in Sources */,
 				05BFB3872A4435B400A026D7 /* ShopViewController.swift in Sources */,
 				05F4A2CA2A45816B00DE56A7 /* DailyTaskModel.swift in Sources */,
 				05BFB3972A445B3900A026D7 /* TimeModel.swift in Sources */,
+				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93EC1EA12A483364007B7B07 /* TimeController.swift in Sources */,
@@ -420,7 +433,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Petto/Preview Content\"";
-				DEVELOPMENT_TEAM = J8A42WJ9LX;
+				DEVELOPMENT_TEAM = BJAYFXKN5Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -449,7 +462,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Petto/Preview Content\"";
-				DEVELOPMENT_TEAM = J8A42WJ9LX;
+				DEVELOPMENT_TEAM = BJAYFXKN5Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
