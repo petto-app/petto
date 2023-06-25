@@ -11,6 +11,7 @@ import UserNotifications
 
 struct Home: View {
     @State private var idleFrameNames: [String] = []
+    @State var isGameCenterOpen: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -44,6 +45,13 @@ struct Home: View {
                                 } label: {
                                     Image("ShopIcon")
                                 }.buttonStyle(IconButton(width: 50, height: 50))
+                                Button {
+                                    isGameCenterOpen = true
+                                } label: {
+                                    Text("Game Center")
+                                        .font(.caption)
+                                }
+                                .buttonStyle(IconButton(width: 50, height: 50))
                             }
                         }
                         Spacer()
@@ -62,6 +70,9 @@ struct Home: View {
                 }
 
                 print(scheduleLocal(startHour: 9, endHour: 17, intervalHour: 2))
+            }
+            .sheet(isPresented: $isGameCenterOpen) {
+                GameCenterView()
             }
         }.navigationViewStyle(StackNavigationViewStyle())
     }
