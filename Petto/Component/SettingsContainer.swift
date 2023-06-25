@@ -10,7 +10,8 @@ import SwiftUI
 struct SettingsContainer: View {
     @Binding var intervalSelection: Int
     @Binding var startSelection: String
-    @State var startHour = 9
+    @Binding var finishSelection: String
+
     let interval = [1, 2, 3]
     let hours = Array(0 ... 23).map { String(format: "%02d", $0) }
     @State private var currentDate = Date()
@@ -35,7 +36,7 @@ struct SettingsContainer: View {
                         }
                         Text("-")
                         HStack {
-                            Picker("Select finish hour", selection: $startSelection) {
+                            Picker("Select finish hour", selection: $finishSelection) {
                                 ForEach(hours, id: \.self) {
                                     Text("\($0)").font(.callout).foregroundColor(.black)
                                 }
@@ -78,6 +79,6 @@ struct SettingsContainer: View {
 
 struct SettingsContainer_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsContainer(intervalSelection: .constant(2), startSelection: .constant("09"))
+        SettingsContainer(intervalSelection: .constant(2), startSelection: .constant("09"), finishSelection: .constant("17"))
     }
 }

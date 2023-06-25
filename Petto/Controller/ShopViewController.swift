@@ -11,10 +11,10 @@ import SwiftUI
 class ShopViewController: ObservableObject {
     @ObservedObject var shopItemModel = ShopItemModel()
     @ObservedObject var statModel = StatModel()
-    
+
     @AppStorage("shopItems")
-    var shopItemsData: Data = Data()
-    
+    var shopItemsData: Data = .init()
+
     func buy(shopItem: ShopItem) {
         switch shopItem.type {
         case .energy:
@@ -24,27 +24,27 @@ class ShopViewController: ObservableObject {
         case .hygiene:
             statModel.addHygiene(amount: shopItem.lifeAmount)
         }
-        
+
         statModel.reduceCoin(amount: shopItem.price)
     }
-    
+
     // TODO: Testing
     func getX() -> String {
         return shopItemModel.shopItems[0].name
     }
-    
+
     func getAll() -> [ShopItem] {
         return shopItemModel.shopItems
     }
-    
+
     func change() {
         shopItemModel.shopItems[0].name = "Anggur"
     }
-    
+
     func changeStorageValue() {
         shopItemModel.setShopItemA(value: "haloo")
     }
-    
+
     func add() {
         print("add")
         shopItemModel.addItem(

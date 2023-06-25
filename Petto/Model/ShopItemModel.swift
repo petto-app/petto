@@ -20,15 +20,15 @@ struct ShopItem: Identifiable, Codable {
     public var name: String
     public var price: Int
     public var type: ShopItemType
-    public var lifeAmount: Int  // Will be added on Energy, Fun, Hygiene
+    public var lifeAmount: Int // Will be added on Energy, Fun, Hygiene
     public var image: String?
 }
 
 class ShopItemModel: ObservableObject {
     @AppStorage("shopItems")
-    var shopItemsData: Data = Data()
-    
-    var shopItems: [ShopItem] {  // Wrapper
+    var shopItemsData: Data = .init()
+
+    var shopItems: [ShopItem] { // Wrapper
         get {
             if let decodedItems = try? JSONDecoder().decode([ShopItem].self, from: shopItemsData) {
                 return decodedItems
@@ -42,23 +42,23 @@ class ShopItemModel: ObservableObject {
             }
         }
     }
-    
+
     init() {
         shopItems = [
             ShopItem(id: 1, name: "Pisang", price: 2000, type: .energy, lifeAmount: 100)
         ]
     }
-    
+
     func addItem(_ item: ShopItem) {
         var updatedItems = shopItems
         updatedItems.append(item)
         shopItems = updatedItems
     }
-    
+
     // TODO: Testing
     @AppStorage("shopItemA")
     var shopItemA: String = "ini shop Item A" // not visible
-    
+
     func setShopItemA(value: String) {
         shopItemA = value
     }

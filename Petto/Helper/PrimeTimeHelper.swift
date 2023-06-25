@@ -8,6 +8,48 @@
 import Foundation
 import UserNotifications
 
+func getPrimeTimeHours(startHour: Int, endHour: Int, intervalHour: Int) -> [Int] {
+    if abs(startHour - endHour) < 4 || startHour > 23 || startHour < 0 || endHour > 23 || endHour < 0 {
+        return []
+    }
+
+    if intervalHour < 1 || intervalHour > 3 {
+        return []
+    }
+
+    let timeDiff = (endHour < startHour ? endHour + 24 : endHour) - startHour
+
+    var result: [Int] = []
+
+    var startTemp = startHour + intervalHour
+    for _ in 0 ..< Int(timeDiff / intervalHour) {
+        result.append(startTemp)
+        startTemp += intervalHour
+        startTemp %= 24
+    }
+
+    return result
+}
+
+func isPrimeTime(hours: [Int]) -> Bool {
+    // *** Create date ***
+    let date = Date()
+
+    // *** create calendar object ***
+    let calendar = Calendar.current
+
+    let currentHour = calendar.component(.hour, from: date)
+    let currentMinutes = calendar.component(.minute, from: date)
+
+    for h in hours {
+        if currentHour == h && currentMinutes <= 10 {
+            return true
+        }
+    }
+
+    return false
+}
+
 func scheduleLocal(startHour: Int, endHour: Int, intervalHour: Int) -> (Bool, Int) {
     if abs(startHour - endHour) < 4 || startHour > 23 || startHour < 0 || endHour > 23 || endHour < 0 {
         return (false, -1)
@@ -16,6 +58,8 @@ func scheduleLocal(startHour: Int, endHour: Int, intervalHour: Int) -> (Bool, In
     if intervalHour < 1 || intervalHour > 3 {
         return (false, -1)
     }
+
+    print(isPrimeTime(hours: getPrimeTimeHours(startHour: 9, endHour: 17, intervalHour: 2)))
 
     let center = UNUserNotificationCenter.current()
     center.removeAllPendingNotificationRequests()
@@ -33,7 +77,6 @@ func scheduleLocal(startHour: Int, endHour: Int, intervalHour: Int) -> (Bool, In
         var dateComponents = DateComponents()
         dateComponents.hour = startTemp % 24
         dateComponents.minute = 0
-        print("Hour \(dateComponents)")
 
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
 
@@ -48,16 +91,27 @@ func scheduleLocal(startHour: Int, endHour: Int, intervalHour: Int) -> (Bool, In
         notificationsCount += 1
     }
 
-//    var dateComponents = DateComponents()
-//    dateComponents.hour = 10
-//    dateComponents.minute = 30
-//    let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-//
-//    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-//    center.add(request) { error in
-//        if error != nil {
-//            print(error!)
-//        }
-//    }
+    #if DEBUG
+        var dateComponents = DateComponents()
+        let date = Date()
+
+        // *** create calendar object ***
+        let calendar = Calendar.current
+
+        let currentHour = calendar.component(.hour, from: date)
+        let currentMinutes = calendar.component(.minute, from: date)
+        dateComponents.hour = currentHour
+        dateComponents.minute = currentMinutes + 1
+
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        center.add(request) { error in
+            if error != nil {
+                print(error!)
+            }
+        }
+    #endif
+
     return (true, notificationsCount)
 }
