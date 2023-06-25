@@ -10,6 +10,7 @@ import SwiftUI
 import UserNotifications
 
 struct Home: View {
+    @EnvironmentObject var timeController: TimeController
     @State private var idleFrameNames: [String] = []
 
     var body: some View {
@@ -34,11 +35,13 @@ struct Home: View {
                         HStack {
                             Spacer()
                             VStack {
-                                Button {
-                                    print("Button pressed!")
-                                } label: {
-                                    Image("exclamation")
-                                }.buttonStyle(IconButton(width: 50, height: 50))
+                                if isPrimeTime(hours: getPrimeTimeHours(startHour: 9, endHour: 17, intervalHour: 2)) {
+                                    Button {
+                                        print("Button pressed!")
+                                    } label: {
+                                        Image("exclamation")
+                                    }.buttonStyle(IconButton(width: 50, height: 50))
+                                }
                                 Button {
                                     print("Button pressed!")
                                 } label: {
@@ -60,8 +63,9 @@ struct Home: View {
                         print(error.localizedDescription)
                     }
                 }
-
-                print(scheduleLocal(startHour: 9, endHour: 17, intervalHour: 2))
+//                timeController.setPrimeTime(start: 10)
+                print(timeController.getPrimeTime())
+//                print(scheduleLocal(startHour: 9, endHour: 17, intervalHour: 2))
             }
         }.navigationViewStyle(StackNavigationViewStyle())
     }

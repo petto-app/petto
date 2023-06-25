@@ -11,11 +11,13 @@ import SwiftUI
 struct PettoApp: App {
     // Initiate controller
     @StateObject var shopViewController = ShopViewController()
-    
+    @StateObject var timeController = TimeController()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(shopViewController)
+                .environmentObject(timeController)
         }
     }
 }

@@ -9,8 +9,10 @@ import SwiftUI
 
 struct Settings: View {
     @Environment(\.dismiss) var dismiss
+    @StateObject var timeController: TimeController = .init()
     @State private var interval = 2
     @State private var startHour = "09"
+    @State private var finishHour = "17"
 
     var body: some View {
         VStack {
@@ -30,17 +32,24 @@ struct Settings: View {
                         PrimeTime().offset(x: -5, y: 20)
                     }
                     Stats().offset(y: -20)
-                    SettingsContainer(intervalSelection: $interval, startSelection: $startHour)
+                    SettingsContainer(intervalSelection: $interval, startSelection: $startHour, finishSelection: $finishHour)
                         .padding(.bottom)
                     Button("Save") {
-                        print("Button pressed!")
+                        print(startHour)
+                        print(interval)
+                        timeController.setPrimeTime(start: Int(startHour) ?? 9, finish: Int(finishHour) ?? 17, interval: interval)
                     }
                     .buttonStyle(MainButton(width: 80))
                     Spacer()
                 }.padding()
             }
         }
-
+        .onAppear {
+            let primeTime = timeController.getPrimeTime()
+            startHour = String(format: "%02d", primeTime?.startHour ?? 9)
+            finishHour = String(format: "%02d", primeTime?.finishHour ?? 17)
+            interval = primeTime?.interval ?? 2
+        }
         .navigationBarBackButtonHidden(true)
     }
 }
