@@ -11,6 +11,7 @@ import UserNotifications
 
 struct Home: View {
     @EnvironmentObject var timeController: TimeController
+    @EnvironmentObject var healthKitController: HealthKitController
     @State private var idleFrameNames: [String] = []
     @State var isGameCenterOpen: Bool = false
 
@@ -74,6 +75,9 @@ struct Home: View {
 //                timeController.setPrimeTime(start: 10)
                 print(timeController.getPrimeTime())
 //                print(scheduleLocal(startHour: 9, endHour: 17, intervalHour: 2))
+                
+                // Health Kit
+                healthKitController.authorizeHealthKit()
             }
             .sheet(isPresented: $isGameCenterOpen) {
                 GameCenterView()
