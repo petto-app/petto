@@ -18,8 +18,28 @@ struct IconButton: ButtonStyle {
             .clipShape(Capsule())
             .scaleEffect(configuration.isPressed ? 1.2 : 1)
             .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+            .shadow(radius: 2, y: 3)
             .overlay(
                 Circle()
+                    .stroke(Color.black, lineWidth: 2)
+            )
+    }
+}
+
+struct IconButtonRect: ButtonStyle {
+    var width: CGFloat?
+    var height: CGFloat?
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(width: width, height: height)
+            .background(.white)
+            .foregroundColor(.black)
+            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 8, height: 8)))
+            .scaleEffect(configuration.isPressed ? 1.2 : 1)
+            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+            .shadow(radius: 2, y: 3)
+            .overlay(
+                RoundedRectangle(cornerSize: CGSize(width: 8, height: 8))
                     .stroke(Color.black, lineWidth: 2)
             )
     }

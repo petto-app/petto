@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "mc2-2.png",
+      "filename" : "Shop.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "mc2-2@2x.png",
+      "filename" : "Shop@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "mc2-2@3x.png",
+      "filename" : "Shop@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

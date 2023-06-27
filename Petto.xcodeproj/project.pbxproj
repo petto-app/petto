@@ -20,6 +20,10 @@
 		05F4A2D22A4742BD00DE56A7 /* DataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4A2D12A4742BD00DE56A7 /* DataTestView.swift */; };
 		931A94162A4AC66700058E90 /* HealthKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A94152A4AC66700058E90 /* HealthKitController.swift */; };
 		931A94182A4AC68800058E90 /* HealthKitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A94172A4AC68800058E90 /* HealthKitModel.swift */; };
+		931A941A2A4B39B300058E90 /* FancyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A94192A4B39B300058E90 /* FancyToast.swift */; };
+		931A941C2A4B39C700058E90 /* FancyToastStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A941B2A4B39C700058E90 /* FancyToastStyle.swift */; };
+		931A941E2A4B39CC00058E90 /* FancyToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A941D2A4B39CC00058E90 /* FancyToastView.swift */; };
+		931A94202A4B3FF800058E90 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A941F2A4B3FF800058E90 /* BottomSheet.swift */; };
 		933239B12A4434B700D9B89B /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 933239B02A4434B700D9B89B /* SwiftUITooltip */; };
 		933239B32A443F0000D9B89B /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933239B22A443EFF00D9B89B /* Stats.swift */; };
 		933239B52A4453A300D9B89B /* StatBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933239B42A4453A300D9B89B /* StatBar.swift */; };
@@ -57,6 +61,10 @@
 		05F4A2D12A4742BD00DE56A7 /* DataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTestView.swift; sourceTree = "<group>"; };
 		931A94152A4AC66700058E90 /* HealthKitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitController.swift; sourceTree = "<group>"; };
 		931A94172A4AC68800058E90 /* HealthKitModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitModel.swift; sourceTree = "<group>"; };
+		931A94192A4B39B300058E90 /* FancyToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FancyToast.swift; path = "../../../Number Ninja.swiftpm/Model/FancyToast.swift"; sourceTree = "<group>"; };
+		931A941B2A4B39C700058E90 /* FancyToastStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FancyToastStyle.swift; path = "../../../Number Ninja.swiftpm/Components/FancyToastStyle.swift"; sourceTree = "<group>"; };
+		931A941D2A4B39CC00058E90 /* FancyToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FancyToastView.swift; path = "../../../Number Ninja.swiftpm/Components/FancyToastView.swift"; sourceTree = "<group>"; };
+		931A941F2A4B3FF800058E90 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		933239B22A443EFF00D9B89B /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		933239B42A4453A300D9B89B /* StatBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatBar.swift; sourceTree = "<group>"; };
 		9376A97C2A3F5A080037F2FE /* Petto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Petto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +167,7 @@
 		93BFA66A2A42F250007783E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				931A94192A4B39B300058E90 /* FancyToast.swift */,
 				931A94172A4AC68800058E90 /* HealthKitModel.swift */,
 				05BFB38F2A443B3600A026D7 /* ShopItemModel.swift */,
 				05BFB3962A445B3900A026D7 /* TimeModel.swift */,
@@ -167,6 +176,7 @@
 				05F4A2CB2A45817600DE56A7 /* BodyMovementTaskModel.swift */,
 				05F4A2CD2A45818B00DE56A7 /* CharacterModel.swift */,
 				057354952A482C3700C4D3F2 /* PlayerModel.swift */,
+				931A941F2A4B3FF800058E90 /* BottomSheet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,6 +184,8 @@
 		93BFA66B2A42F54F007783E4 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				931A941D2A4B39CC00058E90 /* FancyToastView.swift */,
+				931A941B2A4B39C700058E90 /* FancyToastStyle.swift */,
 				93BFA66C2A42F56C007783E4 /* IconButton.swift */,
 				93BFA66E2A42F933007783E4 /* Coin.swift */,
 				93BFA6702A42FDDB007783E4 /* StrokeText.swift */,
@@ -282,19 +294,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				05F4A2D22A4742BD00DE56A7 /* DataTestView.swift in Sources */,
+				931A941A2A4B39B300058E90 /* FancyToast.swift in Sources */,
 				057354942A482AD700C4D3F2 /* GameCenterView.swift in Sources */,
 				931A94162A4AC66700058E90 /* HealthKitController.swift in Sources */,
 				05F4A2C82A45811C00DE56A7 /* StatModel.swift in Sources */,
 				933239B52A4453A300D9B89B /* StatBar.swift in Sources */,
 				057354982A482F7000C4D3F2 /* GameKitController.swift in Sources */,
+				931A941C2A4B39C700058E90 /* FancyToastStyle.swift in Sources */,
 				93BFA66D2A42F56C007783E4 /* IconButton.swift in Sources */,
 				93D6088B2A46142A0058EA80 /* AudioPlayer.swift in Sources */,
+				931A94202A4B3FF800058E90 /* BottomSheet.swift in Sources */,
 				057354962A482C3700C4D3F2 /* PlayerModel.swift in Sources */,
 				9376A9822A3F5A080037F2FE /* ContentView.swift in Sources */,
 				05BFB3902A443B3600A026D7 /* ShopItemModel.swift in Sources */,
 				05BFB3872A4435B400A026D7 /* ShopViewController.swift in Sources */,
 				05F4A2CA2A45816B00DE56A7 /* DailyTaskModel.swift in Sources */,
 				05BFB3972A445B3900A026D7 /* TimeModel.swift in Sources */,
+				931A941E2A4B39CC00058E90 /* FancyToastView.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
@@ -449,6 +465,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -484,6 +501,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
