@@ -71,7 +71,7 @@ struct Home: View {
                     } else if let error = error {
                         print(error.localizedDescription)
                     }
-                }  
+                }
                 // Health Kit
                 healthKitController.authorizeHealthKit()
             }

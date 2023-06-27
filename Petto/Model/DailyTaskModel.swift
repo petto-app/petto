@@ -16,7 +16,7 @@ struct DailyTaskItem: Identifiable, Codable {
 }
 
 class DailyTaskModel {
-    public static var shared: DailyTaskModel = DailyTaskModel()
+    public static var shared: DailyTaskModel = .init()
     @Published var dailyTasks: [DailyTaskItem]?
 
     init(dailyTasks: [DailyTaskItem]? = nil) {

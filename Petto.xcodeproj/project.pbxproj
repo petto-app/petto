@@ -18,6 +18,8 @@
 		05F4A2CC2A45817600DE56A7 /* BodyMovementTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4A2CB2A45817600DE56A7 /* BodyMovementTaskModel.swift */; };
 		05F4A2CE2A45818B00DE56A7 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4A2CD2A45818B00DE56A7 /* CharacterModel.swift */; };
 		05F4A2D22A4742BD00DE56A7 /* DataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4A2D12A4742BD00DE56A7 /* DataTestView.swift */; };
+		931A94162A4AC66700058E90 /* HealthKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A94152A4AC66700058E90 /* HealthKitController.swift */; };
+		931A94182A4AC68800058E90 /* HealthKitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A94172A4AC68800058E90 /* HealthKitModel.swift */; };
 		933239B12A4434B700D9B89B /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 933239B02A4434B700D9B89B /* SwiftUITooltip */; };
 		933239B32A443F0000D9B89B /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933239B22A443EFF00D9B89B /* Stats.swift */; };
 		933239B52A4453A300D9B89B /* StatBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933239B42A4453A300D9B89B /* StatBar.swift */; };
@@ -53,6 +55,8 @@
 		05F4A2CB2A45817600DE56A7 /* BodyMovementTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMovementTaskModel.swift; sourceTree = "<group>"; };
 		05F4A2CD2A45818B00DE56A7 /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		05F4A2D12A4742BD00DE56A7 /* DataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTestView.swift; sourceTree = "<group>"; };
+		931A94152A4AC66700058E90 /* HealthKitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitController.swift; sourceTree = "<group>"; };
+		931A94172A4AC68800058E90 /* HealthKitModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitModel.swift; sourceTree = "<group>"; };
 		933239B22A443EFF00D9B89B /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		933239B42A4453A300D9B89B /* StatBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatBar.swift; sourceTree = "<group>"; };
 		9376A97C2A3F5A080037F2FE /* Petto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Petto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +95,7 @@
 		05BFB3812A44323700A026D7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				931A94152A4AC66700058E90 /* HealthKitController.swift */,
 				05BFB3862A4435B400A026D7 /* ShopViewController.swift */,
 				93EC1EA02A483364007B7B07 /* TimeController.swift */,
 				057354972A482F7000C4D3F2 /* GameKitController.swift */,
@@ -154,6 +159,7 @@
 		93BFA66A2A42F250007783E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				931A94172A4AC68800058E90 /* HealthKitModel.swift */,
 				05BFB38F2A443B3600A026D7 /* ShopItemModel.swift */,
 				05BFB3962A445B3900A026D7 /* TimeModel.swift */,
 				05F4A2C72A45811C00DE56A7 /* StatModel.swift */,
@@ -277,6 +283,7 @@
 			files = (
 				05F4A2D22A4742BD00DE56A7 /* DataTestView.swift in Sources */,
 				057354942A482AD700C4D3F2 /* GameCenterView.swift in Sources */,
+				931A94162A4AC66700058E90 /* HealthKitController.swift in Sources */,
 				05F4A2C82A45811C00DE56A7 /* StatModel.swift in Sources */,
 				933239B52A4453A300D9B89B /* StatBar.swift in Sources */,
 				057354982A482F7000C4D3F2 /* GameKitController.swift in Sources */,
@@ -304,6 +311,7 @@
 				05F4A2CC2A45817600DE56A7 /* BodyMovementTaskModel.swift in Sources */,
 				93D608882A45DB6D0058EA80 /* Avatar.swift in Sources */,
 				93C768A52A46B1F200B70E4B /* PrimeTimeHelper.swift in Sources */,
+				931A94182A4AC68800058E90 /* HealthKitModel.swift in Sources */,
 				93BFA6732A42FFF0007783E4 /* PrimeTime.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
