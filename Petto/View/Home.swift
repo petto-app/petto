@@ -11,6 +11,7 @@ import UserNotifications
 
 struct Home: View {
     @EnvironmentObject var timeController: TimeController
+    @EnvironmentObject var healthKitController: HealthKitController
     @State private var idleFrameNames: [String] = []
     @State var isGameCenterOpen: Bool = false
 
@@ -70,7 +71,9 @@ struct Home: View {
                     } else if let error = error {
                         print(error.localizedDescription)
                     }
-                }
+                }  
+                // Health Kit
+                healthKitController.authorizeHealthKit()
             }
             .sheet(isPresented: $isGameCenterOpen) {
                 GameCenterView()
