@@ -20,6 +20,7 @@ struct Coin: View {
         tooltipConfig.animationTime = 1
         tooltipConfig.side = .top
         tooltipConfig.backgroundColor = .white
+        tooltipConfig.borderColor = .black
         self.totalCoin = totalCoin
         self.coin = coin
     }
@@ -47,7 +48,7 @@ struct Coin: View {
                 .stroke(Color.black, lineWidth: 2)
         )
         .tooltip(showTooltip, config: tooltipConfig) {
-            Text("Total Coin: \(totalCoin)").font(.caption)
+            Text("Total Coin: \(totalCoin)").font(.caption).foregroundColor(.black)
         }
     }
 }

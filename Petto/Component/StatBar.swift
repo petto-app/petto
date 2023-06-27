@@ -20,6 +20,7 @@ struct StatBar: View {
         tooltipConfig.animationTime = 1
         tooltipConfig.side = .top
         tooltipConfig.backgroundColor = .white
+        tooltipConfig.borderColor = .black
 
         _value = value
     }
