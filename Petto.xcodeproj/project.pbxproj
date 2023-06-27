@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05398D062A4B0F3D00BC1DF2 /* DailyTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05398D052A4B0F3D00BC1DF2 /* DailyTaskController.swift */; };
+		05398D082A4B0F6800BC1DF2 /* DailyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05398D072A4B0F6800BC1DF2 /* DailyTask.swift */; };
 		057354942A482AD700C4D3F2 /* GameCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057354932A482AD700C4D3F2 /* GameCenterView.swift */; };
 		057354962A482C3700C4D3F2 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057354952A482C3700C4D3F2 /* PlayerModel.swift */; };
 		057354982A482F7000C4D3F2 /* GameKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057354972A482F7000C4D3F2 /* GameKitController.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05398D052A4B0F3D00BC1DF2 /* DailyTaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskController.swift; sourceTree = "<group>"; };
+		05398D072A4B0F6800BC1DF2 /* DailyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTask.swift; sourceTree = "<group>"; };
 		057354932A482AD700C4D3F2 /* GameCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterView.swift; sourceTree = "<group>"; };
 		057354952A482C3700C4D3F2 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		057354972A482F7000C4D3F2 /* GameKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameKitController.swift; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 				05BFB3862A4435B400A026D7 /* ShopViewController.swift */,
 				93EC1EA02A483364007B7B07 /* TimeController.swift */,
 				057354972A482F7000C4D3F2 /* GameKitController.swift */,
+				05398D052A4B0F3D00BC1DF2 /* DailyTaskController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 				93D608872A45DB6D0058EA80 /* Avatar.swift */,
 				93F344E62A46E42B0089D2A8 /* SettingsContainer.swift */,
 				93F344E82A4708CB0089D2A8 /* Button.swift */,
+				05398D072A4B0F6800BC1DF2 /* DailyTask.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -295,6 +301,7 @@
 				05BFB3872A4435B400A026D7 /* ShopViewController.swift in Sources */,
 				05F4A2CA2A45816B00DE56A7 /* DailyTaskModel.swift in Sources */,
 				05BFB3972A445B3900A026D7 /* TimeModel.swift in Sources */,
+				05398D082A4B0F6800BC1DF2 /* DailyTask.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
@@ -305,6 +312,7 @@
 				93F344E92A4708CB0089D2A8 /* Button.swift in Sources */,
 				933239B32A443F0000D9B89B /* Stats.swift in Sources */,
 				93F344EB2A47225B0089D2A8 /* Settings.swift in Sources */,
+				05398D062A4B0F3D00BC1DF2 /* DailyTaskController.swift in Sources */,
 				93F344E72A46E42B0089D2A8 /* SettingsContainer.swift in Sources */,
 				9376A9802A3F5A080037F2FE /* PettoApp.swift in Sources */,
 				05F4A2CE2A45818B00DE56A7 /* CharacterModel.swift in Sources */,

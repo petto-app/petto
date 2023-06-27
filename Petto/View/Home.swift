@@ -12,6 +12,7 @@ import UserNotifications
 struct Home: View {
     @EnvironmentObject var timeController: TimeController
     @EnvironmentObject var healthKitController: HealthKitController
+    @EnvironmentObject var dailyTaskController: DailyTaskController
     @State private var idleFrameNames: [String] = []
     @State var isGameCenterOpen: Bool = false
 
@@ -81,11 +82,14 @@ struct Home: View {
         }.navigationViewStyle(StackNavigationViewStyle())
             .sheet(isPresented: .constant(true)) {
                 Text("Daily Tasks").fontWeight(.bold)
-                    .presentationDetents([.fraction(0.15), .fraction(0.4)]).interactiveDismissDisabled(true)
+                    .presentationDetents([.fraction(0.15), .fraction(0.5)]).interactiveDismissDisabled(true)
                     .presentationBackground(Color("TaskSheet"))
                     .presentationBackgroundInteraction(
                         .enabled
                     )
+                    .padding(.bottom, 20)
+                
+                DailyTask(dailyTasks: $dailyTaskController.dailyTaskModel.dailyTasks)
             }
     }
 }
