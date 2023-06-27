@@ -26,6 +26,10 @@ struct CircleShape: Shape {
 }
 
 struct PrimeTime: View {
+    @State private var timeRemaining: Int = 0
+    @StateObject var timeController: TimeController = .init()
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     var body: some View {
         VStack {
             ZStack {
@@ -40,10 +44,16 @@ struct PrimeTime: View {
                     .shadow(radius: 1)
                     .shadow(radius: 1)
                 VStack {
-                    Text("Prime Time").font(.footnote)
-                    Text("10:20").font(.subheadline)
+                    Text("Prime Time").font(.system(size: 11)).fontWeight(.bold)
+                    Text("\(timeRemaining / 60):\(String(format: "%02d", timeRemaining % 60))").font(.headline).fontWeight(.bold)
                 }.foregroundColor(.black)
+                    .onReceive(timer) { _ in
+                        timeRemaining -= 1
+                    }
             }
+        }.onAppear {
+            timeRemaining = timeController.getSecondsRemaining()
+            print(timeRemaining)
         }
     }
 }

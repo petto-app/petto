@@ -23,4 +23,36 @@ class TimeController: ObservableObject {
     func getPrimeTime() -> TimeConfig? {
         return timeModel.timeConfig
     }
+
+    func getSecondsRemaining() -> Int {
+        var primeTimeHours = getPrimeTimeHours(startHour: timeModel.timeConfig?.startHour ?? 9, endHour: timeModel.timeConfig?.finishHour ?? 17, intervalHour: timeModel.timeConfig?.interval ?? 2)
+        let startDate = Date()
+        let calendar = Calendar.current
+
+        let currentHour = calendar.component(.hour, from: startDate)
+        let currentMinutes = calendar.component(.minute, from: startDate)
+        let currentSeconds = calendar.component(.second, from: startDate)
+
+        var isNextDay = primeTimeHours.allSatisfy { $0 < currentHour }
+
+        for i in 0 ..< primeTimeHours.count {
+            if i > 0 && primeTimeHours[i - 1] > primeTimeHours[i] {
+                isNextDay = true
+            }
+            if isNextDay {
+                primeTimeHours[i] += 24
+            }
+        }
+
+        var primeTimeHour = currentHour
+        for h in primeTimeHours {
+            if h > primeTimeHour {
+                primeTimeHour = h
+                break
+            }
+        }
+
+        let differenceInSeconds = primeTimeHour * 3600 - (currentHour * 3600 + currentMinutes * 60 + currentSeconds)
+        return differenceInSeconds
+    }
 }

@@ -5,8 +5,8 @@
 //  Created by Carissa Farry Hilmi Az Zahra on 25/06/23.
 //
 
-import SwiftUI
 import GameKit
+import SwiftUI
 
 struct Player {
     public let id: String
@@ -22,11 +22,9 @@ struct Player {
 
 class PlayerModel: ObservableObject {
     @Published var localPlayer = GKLocalPlayer.local
-    
+
     // Create as a Singleton to avoid more than one instance.
-    public static var shared: PlayerModel = PlayerModel()
-    
-    lazy private (set) var isAuthenticated: Bool = {
-        return localPlayer.isAuthenticated
-    }()
+    public static var shared: PlayerModel = .init()
+
+    private(set) lazy var isAuthenticated: Bool = localPlayer.isAuthenticated
 }

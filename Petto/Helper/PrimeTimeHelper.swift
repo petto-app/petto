@@ -91,7 +91,7 @@ func scheduleLocal(startHour: Int, endHour: Int, intervalHour: Int) -> (Bool, In
         notificationsCount += 1
     }
 
-    #if DEBUG
+    #if targetEnvironment(simulator)
         var dateComponents = DateComponents()
         let date = Date()
 

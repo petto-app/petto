@@ -71,11 +71,7 @@ struct Home: View {
                     } else if let error = error {
                         print(error.localizedDescription)
                     }
-                }
-//                timeController.setPrimeTime(start: 10)
-                print(timeController.getPrimeTime())
-//                print(scheduleLocal(startHour: 9, endHour: 17, intervalHour: 2))
-                
+                }  
                 // Health Kit
                 healthKitController.authorizeHealthKit()
             }
@@ -83,6 +79,14 @@ struct Home: View {
                 GameCenterView()
             }
         }.navigationViewStyle(StackNavigationViewStyle())
+            .sheet(isPresented: .constant(true)) {
+                Text("Daily Tasks").fontWeight(.bold)
+                    .presentationDetents([.fraction(0.15), .fraction(0.4)]).interactiveDismissDisabled(true)
+                    .presentationBackground(Color("TaskSheet"))
+                    .presentationBackgroundInteraction(
+                        .enabled
+                    )
+            }
     }
 }
 

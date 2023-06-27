@@ -6,22 +6,22 @@
 //
 
 import Foundation
-import SwiftUI
 import GameKit
+import SwiftUI
 
 class GameKitController: NSObject, GKLocalPlayerListener {
 //    @ObservedObject var playerModel = PlayerModel()
     var playerModel = PlayerModel.shared
-    
+
     func authenticateUser() {
-        playerModel.localPlayer.authenticateHandler = { [self] vc, error in
+        playerModel.localPlayer.authenticateHandler = { [self] _, error in
             guard error == nil else {
                 print(error?.localizedDescription ?? "")
                 return
             }
-            
+
             GKAccessPoint.shared.isActive = false
-                        
+
             if playerModel.localPlayer.isAuthenticated {
                 playerModel.localPlayer.register(self)
             }

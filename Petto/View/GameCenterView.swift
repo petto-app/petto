@@ -13,7 +13,7 @@ public struct GameCenterView: UIViewControllerRepresentable {
     let viewController: GKGameCenterViewController
 
     public init(viewState: GKGameCenterViewControllerState = .default) {
-        self.viewController = GKGameCenterViewController(state: viewState)
+        viewController = GKGameCenterViewController(state: viewState)
     }
 
     public func makeCoordinator() -> GameCenterCoordinator {
@@ -26,9 +26,7 @@ public struct GameCenterView: UIViewControllerRepresentable {
         return gameCenterViewController
     }
 
-    public func updateUIViewController(_ uiViewController: GKGameCenterViewController, context: Context) {
-        return
-    }
+    public func updateUIViewController(_: GKGameCenterViewController, context _: Context) {}
 }
 
 public class GameCenterCoordinator: NSObject, GKGameCenterControllerDelegate {
