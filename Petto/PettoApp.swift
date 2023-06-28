@@ -14,6 +14,7 @@ struct PettoApp: App {
     @StateObject var timeController = TimeController()
     @StateObject var healthKitController = HealthKitController()
     @StateObject var bottomSheet = BottomSheet()
+    @StateObject var dailyTaskController = DailyTaskController()
 
     var body: some Scene {
         WindowGroup {
@@ -23,6 +24,7 @@ struct PettoApp: App {
                 .environmentObject(healthKitController)
                 .environmentObject(FancyToastClass())
                 .environmentObject(bottomSheet)
+                .environmentObject(dailyTaskController)
         }
     }
 }
