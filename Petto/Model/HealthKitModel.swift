@@ -10,7 +10,7 @@ import HealthKit
 import SwiftUI
 
 class HealthKitModel: ObservableObject {
-    public static var shared: HealthKitModel = HealthKitModel()
+    public static var shared: HealthKitModel = .init()
     @Published var healthStore = HKHealthStore()
     @Published var totalStepCount: Double
     @Published var totalStandTime: Double
@@ -73,12 +73,12 @@ class HealthKitModel: ObservableObject {
 
         healthStore.execute(query)
     }
-    
+
     func setTotalStepCount(stepCount: Double) {
         totalStepCount = stepCount
         print(totalStepCount)
     }
-    
+
     func setTotalStandTime(standTime: Double) {
         totalStandTime = standTime
         print(totalStandTime)

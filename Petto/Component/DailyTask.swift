@@ -23,7 +23,7 @@ struct DailyTask: View {
                             StrokeText(text: "\(task.coin)", width: 1, color: Color("CoinBorder"))
                                 .font(.subheadline)
                                 .foregroundColor(Color("Coin")).fontWeight(.bold)
-                            
+
                             Image(systemName: "bitcoinsign.circle.fill").foregroundColor(.yellow)
                         }
                     }
@@ -31,7 +31,7 @@ struct DailyTask: View {
 
                     Rectangle()
                         .frame(width: 350, height: 1)
-                    .foregroundColor(Color.black)
+                        .foregroundColor(Color.black)
                 }
             }
         }

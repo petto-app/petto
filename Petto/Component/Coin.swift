@@ -29,9 +29,11 @@ struct Coin: View {
         VStack {
             HStack {
                 Text("Star Coin:").foregroundColor(Color("StarCoin")).fontWeight(.bold)
+                    .font(.system(size: 14, weight: .bold))
                 HStack {
                     StrokeText(text: "\(coin)", width: 1, color: Color("CoinBorder"))
                         .foregroundColor(Color("Coin")).fontWeight(.bold)
+                        .font(.system(size: 14, weight: .bold))
                     Image("StarCoin").resizable().frame(width: 22, height: 22)
                 }
             }
@@ -40,6 +42,7 @@ struct Coin: View {
             }
         }
         .padding(5)
+        .padding(.horizontal, 5)
         .frame(height: 30)
         .background(.white)
         .cornerRadius(25)

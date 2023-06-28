@@ -10,11 +10,12 @@ import SwiftUITooltip
 
 struct StatBar: View {
     var tooltipConfig = DefaultTooltipConfig()
-    @Binding var value: Int
+    @Binding var value: Int?
     @State private var barValue = 0.0
     @State private var showTooltip = false
+    @State private var animationFinished = false
 
-    init(value: Binding<Int>) {
+    init(value: Binding<Int?>) {
         tooltipConfig.enableAnimation = true
         tooltipConfig.animationOffset = 10
         tooltipConfig.animationTime = 1
@@ -25,6 +26,11 @@ struct StatBar: View {
         _value = value
     }
 
+    func getBarValue() -> Double {
+        let result = animationFinished ? (Double(value ?? 0) / 100.0) : barValue
+        return result
+    }
+
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .leading) {
@@ -33,8 +39,8 @@ struct StatBar: View {
                     .foregroundColor(.white)
                     .background(.white)
 
-                Rectangle().frame(width: min(CGFloat(self.barValue) * geometry.size.width, geometry.size.width), height: geometry.size.height)
-                    .foregroundColor(barValue > 0.5 ? Color("BarHigh") : barValue > 0.2 ? .yellow : Color("BarLow"))
+                Rectangle().frame(width: min(CGFloat(getBarValue()) * geometry.size.width, geometry.size.width), height: geometry.size.height)
+                    .foregroundColor(getBarValue() > 0.5 ? Color("BarHigh") : barValue > 0.2 ? .yellow : Color("BarLow"))
                     .animation(.linear, value: UUID())
             }.cornerRadius(45.0)
                 .overlay(
@@ -48,25 +54,28 @@ struct StatBar: View {
                 .shadow(radius: 2, y: 2)
         }
         .tooltip(showTooltip, config: tooltipConfig) {
-            Text("\(value)/100").font(.caption)
+            Text("\(value ?? 0)/100").font(.caption)
         }.frame(height: 25)
         .onChange(of: value) { newValue in
             barValue = 0
-            for _ in 0 ..< newValue {
+            for _ in 0 ..< (newValue ?? 0) {
                 barValue += 0.01
             }
         }
         .onAppear {
             barValue = 0
-            for _ in 0 ..< value {
+            for _ in 0 ..< (value ?? 0) {
                 barValue += 0.01
             }
+            animationFinished = true
+            print("animationFinished")
+            print(animationFinished)
         }
     }
 }
 
 struct StatBarView: View {
-    @State var progressValue: Int = 0
+    @State var progressValue: Int? = 0
 
     var body: some View {
         VStack {
@@ -88,7 +97,7 @@ struct StatBarView: View {
 
     func startProgressBar() {
         for _ in 0 ... 60 {
-            progressValue += 1
+            progressValue! += 1
         }
     }
 

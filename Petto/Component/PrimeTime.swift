@@ -15,11 +15,11 @@ struct CircleShape: Shape {
     }
 
     func path(in rect: CGRect) -> Path {
-        let r = rect.height / 2
+        let r = rect.height / 1.4
         let center = CGPoint(x: rect.midX, y: rect.midY * 1.5)
         var path = Path()
         path.addArc(center: center, radius: r,
-                    startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 180), clockwise: true)
+                    startAngle: Angle(degrees: -20), endAngle: Angle(degrees: 200), clockwise: true)
         path.closeSubpath()
         return path
     }
@@ -28,14 +28,14 @@ struct CircleShape: Shape {
 struct PrimeTime: View {
     @State private var timeRemaining: Int = 0
     @StateObject var timeController: TimeController = .init()
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @EnvironmentObject var timerController: TimerController
 
     var body: some View {
         VStack {
             ZStack {
                 CircleShape().foregroundColor(Color("PrimetimeContainer"))
                     .frame(width: 100, height: 100)
-                    .offset(y: -5)
+                    .offset(y: 20)
                     .shadow(radius: 1)
                     .shadow(radius: 1)
                     .shadow(radius: 1)
@@ -45,21 +45,22 @@ struct PrimeTime: View {
                     .shadow(radius: 1)
                 VStack {
                     Text("Prime Time").font(.system(size: 11)).fontWeight(.bold)
-                    Text("\(timeRemaining / 60):\(String(format: "%02d", timeRemaining % 60))").font(.headline).fontWeight(.bold)
+                    Text("\(String(format: "%02d", timeRemaining / 3600)):\(String(format: "%02d", timeRemaining / 60 % 60)):\(String(format: "%02d", timeRemaining % 60))").font(.headline).fontWeight(.bold)
                 }.foregroundColor(.black)
-                    .onReceive(timer) { _ in
-                        timeRemaining -= 1
-                    }
             }
         }.onAppear {
             timeRemaining = timeController.getSecondsRemaining()
-//            print(timeRemaining)
+
+            timerController.setTimer(key: "primeTimeTimer", withInterval: 1) {
+                timeRemaining -= 1
+            }
         }
     }
 }
 
 struct PrimeTime_Previews: PreviewProvider {
     static var previews: some View {
-        PrimeTime()
+        @StateObject var timerController = TimerController()
+        PrimeTime().environmentObject(timerController)
     }
 }
