@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05398D062A4B0F3D00BC1DF2 /* DailyTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05398D052A4B0F3D00BC1DF2 /* DailyTaskController.swift */; };
-		05398D082A4B0F6800BC1DF2 /* DailyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05398D072A4B0F6800BC1DF2 /* DailyTask.swift */; };
 		057354942A482AD700C4D3F2 /* GameCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057354932A482AD700C4D3F2 /* GameCenterView.swift */; };
 		057354962A482C3700C4D3F2 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057354952A482C3700C4D3F2 /* PlayerModel.swift */; };
 		057354982A482F7000C4D3F2 /* GameKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057354972A482F7000C4D3F2 /* GameKitController.swift */; };
@@ -22,6 +20,10 @@
 		05F4A2D22A4742BD00DE56A7 /* DataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4A2D12A4742BD00DE56A7 /* DataTestView.swift */; };
 		931A94162A4AC66700058E90 /* HealthKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A94152A4AC66700058E90 /* HealthKitController.swift */; };
 		931A94182A4AC68800058E90 /* HealthKitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A94172A4AC68800058E90 /* HealthKitModel.swift */; };
+		931A94202A4B3FF800058E90 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A941F2A4B3FF800058E90 /* BottomSheet.swift */; };
+		931A94352A4BEDF600058E90 /* FancyToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A94342A4BEDF600058E90 /* FancyToast.swift */; };
+		931A94372A4BEE3300058E90 /* FancyToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A94362A4BEE3300058E90 /* FancyToastView.swift */; };
+		931A94392A4BEE5E00058E90 /* FancyToastStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A94382A4BEE5E00058E90 /* FancyToastStyle.swift */; };
 		933239B12A4434B700D9B89B /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 933239B02A4434B700D9B89B /* SwiftUITooltip */; };
 		933239B32A443F0000D9B89B /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933239B22A443EFF00D9B89B /* Stats.swift */; };
 		933239B52A4453A300D9B89B /* StatBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933239B42A4453A300D9B89B /* StatBar.swift */; };
@@ -46,8 +48,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		05398D052A4B0F3D00BC1DF2 /* DailyTaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskController.swift; sourceTree = "<group>"; };
-		05398D072A4B0F6800BC1DF2 /* DailyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTask.swift; sourceTree = "<group>"; };
 		057354932A482AD700C4D3F2 /* GameCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterView.swift; sourceTree = "<group>"; };
 		057354952A482C3700C4D3F2 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		057354972A482F7000C4D3F2 /* GameKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameKitController.swift; sourceTree = "<group>"; };
@@ -61,6 +61,10 @@
 		05F4A2D12A4742BD00DE56A7 /* DataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTestView.swift; sourceTree = "<group>"; };
 		931A94152A4AC66700058E90 /* HealthKitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitController.swift; sourceTree = "<group>"; };
 		931A94172A4AC68800058E90 /* HealthKitModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitModel.swift; sourceTree = "<group>"; };
+		931A941F2A4B3FF800058E90 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
+		931A94342A4BEDF600058E90 /* FancyToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyToast.swift; sourceTree = "<group>"; };
+		931A94362A4BEE3300058E90 /* FancyToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyToastView.swift; sourceTree = "<group>"; };
+		931A94382A4BEE5E00058E90 /* FancyToastStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyToastStyle.swift; sourceTree = "<group>"; };
 		933239B22A443EFF00D9B89B /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		933239B42A4453A300D9B89B /* StatBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatBar.swift; sourceTree = "<group>"; };
 		9376A97C2A3F5A080037F2FE /* Petto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Petto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,7 +107,6 @@
 				05BFB3862A4435B400A026D7 /* ShopViewController.swift */,
 				93EC1EA02A483364007B7B07 /* TimeController.swift */,
 				057354972A482F7000C4D3F2 /* GameKitController.swift */,
-				05398D052A4B0F3D00BC1DF2 /* DailyTaskController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -172,6 +175,8 @@
 				05F4A2CB2A45817600DE56A7 /* BodyMovementTaskModel.swift */,
 				05F4A2CD2A45818B00DE56A7 /* CharacterModel.swift */,
 				057354952A482C3700C4D3F2 /* PlayerModel.swift */,
+				931A941F2A4B3FF800058E90 /* BottomSheet.swift */,
+				931A94342A4BEDF600058E90 /* FancyToast.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,7 +193,8 @@
 				93D608872A45DB6D0058EA80 /* Avatar.swift */,
 				93F344E62A46E42B0089D2A8 /* SettingsContainer.swift */,
 				93F344E82A4708CB0089D2A8 /* Button.swift */,
-				05398D072A4B0F6800BC1DF2 /* DailyTask.swift */,
+				931A94362A4BEE3300058E90 /* FancyToastView.swift */,
+				931A94382A4BEE5E00058E90 /* FancyToastStyle.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -292,18 +298,21 @@
 				931A94162A4AC66700058E90 /* HealthKitController.swift in Sources */,
 				05F4A2C82A45811C00DE56A7 /* StatModel.swift in Sources */,
 				933239B52A4453A300D9B89B /* StatBar.swift in Sources */,
+				931A94392A4BEE5E00058E90 /* FancyToastStyle.swift in Sources */,
 				057354982A482F7000C4D3F2 /* GameKitController.swift in Sources */,
 				93BFA66D2A42F56C007783E4 /* IconButton.swift in Sources */,
 				93D6088B2A46142A0058EA80 /* AudioPlayer.swift in Sources */,
+				931A94202A4B3FF800058E90 /* BottomSheet.swift in Sources */,
 				057354962A482C3700C4D3F2 /* PlayerModel.swift in Sources */,
 				9376A9822A3F5A080037F2FE /* ContentView.swift in Sources */,
 				05BFB3902A443B3600A026D7 /* ShopItemModel.swift in Sources */,
 				05BFB3872A4435B400A026D7 /* ShopViewController.swift in Sources */,
 				05F4A2CA2A45816B00DE56A7 /* DailyTaskModel.swift in Sources */,
 				05BFB3972A445B3900A026D7 /* TimeModel.swift in Sources */,
-				05398D082A4B0F6800BC1DF2 /* DailyTask.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
+				931A94372A4BEE3300058E90 /* FancyToastView.swift in Sources */,
+				931A94352A4BEDF600058E90 /* FancyToast.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93EC1EA12A483364007B7B07 /* TimeController.swift in Sources */,
 				93EC1E9F2A47F259007B7B07 /* Config.swift in Sources */,
@@ -312,7 +321,6 @@
 				93F344E92A4708CB0089D2A8 /* Button.swift in Sources */,
 				933239B32A443F0000D9B89B /* Stats.swift in Sources */,
 				93F344EB2A47225B0089D2A8 /* Settings.swift in Sources */,
-				05398D062A4B0F3D00BC1DF2 /* DailyTaskController.swift in Sources */,
 				93F344E72A46E42B0089D2A8 /* SettingsContainer.swift in Sources */,
 				9376A9802A3F5A080037F2FE /* PettoApp.swift in Sources */,
 				05F4A2CE2A45818B00DE56A7 /* CharacterModel.swift in Sources */,
@@ -457,6 +465,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -492,6 +501,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
