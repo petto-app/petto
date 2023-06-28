@@ -19,8 +19,34 @@ class HealthKitModel: ObservableObject {
         totalStepCount = 0.1
         totalStandTime = 0.1
     }
+    
+    func queryStandTime(completion: @escaping (Double?, Error?) -> Void) {
+        let standType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.appleStandTime)!
+        
+        let startDate = Calendar.current.startOfDay(for: Date())
+        let endDate = Date()
+        var interval = DateComponents()
+        interval.day = 1
+        
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
+        let query = HKStatisticsCollectionQuery(quantityType: standType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: startDate, intervalComponents: interval)
+        query.initialResultsHandler = { query, result, error in
+            var minutes = 0.0
+            result?.enumerateStatistics(from: startDate, to: endDate, with: { (statistics, stop) in
+                if let sumQuantity = statistics.sumQuantity() {
+                    minutes = sumQuantity.doubleValue(for: .minute())
+                }
+                DispatchQueue.main.async {
+                    completion(minutes, nil) // Return the minutes
+                }
+            })
+        }
 
-    func queryData(for typeIdentifier: HKQuantityTypeIdentifier, completion: @escaping (Double?, Error?) -> Void) {
+        healthStore.execute(query)
+    }
+    
+    
+    func queryStepCount(for typeIdentifier: HKQuantityTypeIdentifier, completion: @escaping (Double?, Error?) -> Void) {
         guard let sampleType = HKObjectType.quantityType(forIdentifier: typeIdentifier) else {
             completion(nil, NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid data type"]))
             return
@@ -31,19 +57,6 @@ class HealthKitModel: ObservableObject {
         var interval = DateComponents()
         interval.day = 1
 
-        // TODO: Returned Array ([Double]?)
-//        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
-//        let query = HKSampleQuery(sampleType: sampleType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { (query, results, error) in
-//            guard let samples = results as? [HKQuantitySample], error == nil else {
-//                completion(nil, error)
-//                return
-//            }
-//
-//            let data = samples.map { $0.quantity.doubleValue(for: HKUnit.count()) }
-//            completion(data, nil)
-//        }
-
-        // TODO: Returned Accumulative
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
         let query = HKStatisticsCollectionQuery(quantityType: sampleType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: startDate, intervalComponents: interval)
         query.initialResultsHandler = { _, result, _ in

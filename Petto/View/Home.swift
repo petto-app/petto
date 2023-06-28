@@ -100,6 +100,8 @@ struct Home: View {
                         .enabled
                     )
                     .presentationCornerRadius(24)
+                    .padding(.bottom, 20)
+                    .padding(.top, 20)
                     .sheet(isPresented: $isGameCenterOpen) {
                         GameCenterView()
                     }

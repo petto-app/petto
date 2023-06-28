@@ -46,36 +46,38 @@ class HealthKitController: ObservableObject {
     }
 
     func fetchHealthData() {
-//        var totalStepCount: Double?
-//        var totalStandTime: Double?
+        var totalStepCount: Double?
+        var totalStandTime: Double?
         let group = DispatchGroup() // synchronize the completion of the multiple asynchronous operations
 
         group.enter()
         getStepCount { stepCountData in
             if let stepCountData = stepCountData {
-//                totalStepCount = stepCountData
-                self.HKModel.setTotalStepCount(stepCount: stepCountData)
+                totalStepCount = stepCountData
+//                self.HKModel.setTotalStepCount(stepCount: stepCountData)
                 group.leave()
             }
         }
 
         group.enter()
-        getStepCount { standTimeData in
+        getStandTime { standTimeData in
             if let standTimeData = standTimeData {
-//                totalStandTime = standTimeData
-                self.HKModel.setTotalStandTime(standTime: standTimeData)
+                totalStandTime = standTimeData
+//                self.HKModel.setTotalStandTime(standTime: standTimeData)
                 group.leave()
             }
         }
-
+        
         group.notify(queue: .main) { // if all operations completed
+            self.HKModel.setTotalStepCount(stepCount: totalStepCount!)
+            self.HKModel.setTotalStandTime(standTime: totalStandTime!)
         }
     }
 
     func getStepCount(completion: @escaping (Double?) -> Void) {
-        HKModel.queryData(for: .stepCount, completion: { stepCountData, error in
+        HKModel.queryStepCount(for: .stepCount, completion: { stepCountData, error in
             if let error = error {
-                print("HealthKit query data Error: \(error.localizedDescription)")
+                print("HealthKit query step count data Error: \(error.localizedDescription)")
                 completion(nil)
                 return
             }
@@ -85,14 +87,14 @@ class HealthKitController: ObservableObject {
     }
 
     func getStandTime(completion: @escaping (Double?) -> Void) {
-        HKModel.queryData(for: .appleStandTime, completion: { standTimeData, error in
+        HKModel.queryStandTime(completion: { totalStandTime, error in
             if let error = error {
-                print("HealthKit query data Error: \(error.localizedDescription)")
+                print("HealthKit query stand time data Error: \(error.localizedDescription)")
                 completion(nil)
                 return
             }
-
-            completion(standTimeData)
+            
+            completion(totalStandTime)
         })
     }
 }
