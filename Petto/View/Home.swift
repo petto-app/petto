@@ -90,6 +90,8 @@ struct Home: View {
                     .presentationBackgroundInteraction(
                         .enabled
                     )
+                    .padding(.bottom, 20)
+                    .padding(.top, 20)
                     .sheet(isPresented: $isGameCenterOpen) {
                         GameCenterView()
                     }
