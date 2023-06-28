@@ -19,20 +19,20 @@ class HealthKitModel: ObservableObject {
         totalStepCount = 0.1
         totalStandTime = 0.1
     }
-    
+
     func queryStandTime(completion: @escaping (Double?, Error?) -> Void) {
         let standType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.appleStandTime)!
-        
+
         let startDate = Calendar.current.startOfDay(for: Date())
         let endDate = Date()
         var interval = DateComponents()
         interval.day = 1
-        
+
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
         let query = HKStatisticsCollectionQuery(quantityType: standType, quantitySamplePredicate: predicate, options: [.cumulativeSum], anchorDate: startDate, intervalComponents: interval)
-        query.initialResultsHandler = { query, result, error in
+        query.initialResultsHandler = { _, result, _ in
             var minutes = 0.0
-            result?.enumerateStatistics(from: startDate, to: endDate, with: { (statistics, stop) in
+            result?.enumerateStatistics(from: startDate, to: endDate, with: { statistics, _ in
                 if let sumQuantity = statistics.sumQuantity() {
                     minutes = sumQuantity.doubleValue(for: .minute())
                 }
@@ -44,8 +44,7 @@ class HealthKitModel: ObservableObject {
 
         healthStore.execute(query)
     }
-    
-    
+
     func queryStepCount(for typeIdentifier: HKQuantityTypeIdentifier, completion: @escaping (Double?, Error?) -> Void) {
         guard let sampleType = HKObjectType.quantityType(forIdentifier: typeIdentifier) else {
             completion(nil, NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid data type"]))

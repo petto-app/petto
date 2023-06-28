@@ -45,7 +45,7 @@ class ShopItemModel: ObservableObject {
 
     init() {
         shopItems = [
-            ShopItem(id: 1, name: "Pisang", price: 2000, type: .energy, lifeAmount: 100),
+            ShopItem(id: 1, name: "Pisang", price: 2000, type: .energy, lifeAmount: 100)
         ]
     }
 

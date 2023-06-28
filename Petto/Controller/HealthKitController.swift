@@ -23,7 +23,7 @@ class HealthKitController: ObservableObject {
         if HKHealthStore.isHealthDataAvailable() {
             let infoToRead = Set([
                 HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!,
-                HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.appleStandTime)!,
+                HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.appleStandTime)!
             ])
 
             HKModel.healthStore.requestAuthorization(toShare: nil, read: infoToRead, completion: { success, error in
@@ -67,7 +67,7 @@ class HealthKitController: ObservableObject {
                 group.leave()
             }
         }
-        
+
         group.notify(queue: .main) { // if all operations completed
             self.HKModel.setTotalStepCount(stepCount: totalStepCount!)
             self.HKModel.setTotalStandTime(standTime: totalStandTime!)
@@ -93,7 +93,7 @@ class HealthKitController: ObservableObject {
                 completion(nil)
                 return
             }
-            
+
             completion(totalStandTime)
         })
     }

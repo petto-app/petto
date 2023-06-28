@@ -47,13 +47,13 @@ class DailyTaskModel: ObservableObject {
     init() {
         let totalStepCount = HKModel.totalStepCount
         let totalStandTime = HKModel.totalStandTime
-        
-        self.dailyTasks = [
+
+        dailyTasks = [
             DailyTaskItem(name: "Take 1000 steps", amount: Int(HKModel.totalStepCount), maxAmount: 1000, coin: 10, isDone: false, type: .stepCount),
             DailyTaskItem(name: "Take 5000 steps", amount: Int(totalStepCount), maxAmount: 5000, coin: 50, isDone: false, type: .stepCount),
             DailyTaskItem(name: "Stand up for 10 minutes", amount: Int(totalStandTime), maxAmount: 10, coin: 10, isDone: false, type: .appleStandTime),
             DailyTaskItem(name: "Stand up for 30 minutes", amount: Int(totalStandTime), maxAmount: 10, coin: 50, isDone: false, type: .appleStandTime),
-            DailyTaskItem(name: "Finish All Tasks", amount: 0, maxAmount: 5, coin: 100, isDone: false),
+            DailyTaskItem(name: "Finish All Tasks", amount: 0, maxAmount: 5, coin: 100, isDone: false)
         ]
     }
 }
