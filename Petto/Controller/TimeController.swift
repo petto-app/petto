@@ -11,9 +11,12 @@ import SwiftUI
 class TimeController: ObservableObject {
     @ObservedObject var timeModel = TimeModel()
 
-    func setPrimeTime(start: Int = 9, finish: Int = 17, interval: Int = 2) {
-        timeModel.timeConfig = TimeConfig(startHour: start, finishHour: finish, interval: interval)
-        _ = scheduleLocal(startHour: timeModel.timeConfig!.startHour, endHour: timeModel.timeConfig!.finishHour, intervalHour: timeModel.timeConfig!.interval)
+    func setPrimeTime(start: Int = 9, finish: Int = 17, interval: Int = 2) -> Bool {
+        let (result, _) = scheduleLocal(startHour: start, endHour: finish, intervalHour: interval)
+        if result {
+            timeModel.timeConfig = TimeConfig(startHour: start, finishHour: finish, interval: interval)
+        }
+        return result
     }
 
     func isPrimeTime() -> Bool {

@@ -32,7 +32,7 @@ struct Coin: View {
                 HStack {
                     StrokeText(text: "\(coin)", width: 1, color: Color("CoinBorder"))
                         .foregroundColor(Color("Coin")).fontWeight(.bold)
-                    Image(systemName: "bitcoinsign.circle.fill").foregroundColor(.yellow)
+                    Image("StarCoin").resizable().frame(width: 22, height: 22)
                 }
             }
             .onTapGesture {
@@ -47,6 +47,7 @@ struct Coin: View {
             RoundedRectangle(cornerRadius: 25)
                 .stroke(Color.black, lineWidth: 2)
         )
+        .shadow(radius: 2, y: 3)
         .tooltip(showTooltip, config: tooltipConfig) {
             Text("Total Coin: \(totalCoin)").font(.caption).foregroundColor(.black)
         }
