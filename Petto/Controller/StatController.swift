@@ -15,6 +15,14 @@ class StatController: ObservableObject {
         return statModel.fun.amount ?? 0
     }
 
+    var hygiene: Int {
+        return statModel.hygiene.amount ?? 0
+    }
+
+    var energy: Int {
+        return statModel.energy.amount ?? 0
+    }
+
     func increaseFun(amount: Int) {
         statModel.addFun(amount: amount)
     }

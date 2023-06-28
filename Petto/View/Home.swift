@@ -35,7 +35,7 @@ struct Home: View {
                             }.buttonStyle(IconButton(width: 30, height: 30)).offset(y: 20)
                             Coin(coin: 100, totalCoin: 1000).offset(y: 20)
                             Spacer()
-                            PrimeTime().offset(x: -5, y: 20)
+                            PrimeTime().offset(x: -25, y: 20)
                         }
                         Stats(fun: $statController.statModel.fun.amount, hygiene: $statController.statModel.hygiene.amount, energy: $statController.statModel.energy.amount).offset(y: -20)
                         HStack {
@@ -64,7 +64,6 @@ struct Home: View {
                                         .font(.caption)
                                 }
                                 .buttonStyle(IconButtonRect(width: 50, height: 50))
-                                Text("\(statController.fun)")
                             }
                         }
                         Spacer()
@@ -86,10 +85,11 @@ struct Home: View {
                 healthKitController.authorizeHealthKit()
                 healthKitController.fetchHealthData()
 
-                timerController.setTimer(withInterval: 1) {
+                timerController.setTimer(key: "statTimer", withInterval: 1) {
                     statController.increaseEnergy(amount: 5)
                     statController.increaseFun(amount: 5)
                     statController.increaseHygiene(amount: 5)
+                    statController.objectWillChange.send()
                 }
             }
             .sheet(isPresented: $bottomSheet.showSheet) {

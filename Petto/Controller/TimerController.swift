@@ -9,13 +9,13 @@ import Foundation
 import SwiftUI
 
 class TimerController: ObservableObject {
-    var timerSet = false
+    @Published var timerSet: [String: Bool] = [:]
 
-    func setTimer(withInterval interval: Double, andJob job: @escaping () -> Void) {
-        if timerSet {
+    func setTimer(key: String, withInterval interval: Double, andJob job: @escaping () -> Void) {
+        if timerSet[key] != nil && timerSet[key]! {
             return
         }
         TimerModel.sharedTimer.startTimer(withInterval: interval, andJob: job)
-        timerSet = true
+        timerSet[key] = true
     }
 }
