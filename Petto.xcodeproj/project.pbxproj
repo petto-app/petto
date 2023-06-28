@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05398D0D2A4BF48B00BC1DF2 /* DailyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05398D0C2A4BF48B00BC1DF2 /* DailyTask.swift */; };
+		05398D0F2A4BF4CF00BC1DF2 /* DailyTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05398D0E2A4BF4CF00BC1DF2 /* DailyTaskController.swift */; };
 		057354942A482AD700C4D3F2 /* GameCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057354932A482AD700C4D3F2 /* GameCenterView.swift */; };
 		057354962A482C3700C4D3F2 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057354952A482C3700C4D3F2 /* PlayerModel.swift */; };
 		057354982A482F7000C4D3F2 /* GameKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057354972A482F7000C4D3F2 /* GameKitController.swift */; };
@@ -48,6 +50,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05398D0B2A4BF3A800BC1DF2 /* Petto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Petto.entitlements; sourceTree = "<group>"; };
+		05398D0C2A4BF48B00BC1DF2 /* DailyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTask.swift; sourceTree = "<group>"; };
+		05398D0E2A4BF4CF00BC1DF2 /* DailyTaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskController.swift; sourceTree = "<group>"; };
 		057354932A482AD700C4D3F2 /* GameCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterView.swift; sourceTree = "<group>"; };
 		057354952A482C3700C4D3F2 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		057354972A482F7000C4D3F2 /* GameKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameKitController.swift; sourceTree = "<group>"; };
@@ -107,6 +112,7 @@
 				05BFB3862A4435B400A026D7 /* ShopViewController.swift */,
 				93EC1EA02A483364007B7B07 /* TimeController.swift */,
 				057354972A482F7000C4D3F2 /* GameKitController.swift */,
+				05398D0E2A4BF4CF00BC1DF2 /* DailyTaskController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -130,6 +136,7 @@
 		9376A97E2A3F5A080037F2FE /* Petto */ = {
 			isa = PBXGroup;
 			children = (
+				05398D0B2A4BF3A800BC1DF2 /* Petto.entitlements */,
 				05BFB3812A44323700A026D7 /* Controller */,
 				93D608902A4619DD0058EA80 /* Audio */,
 				93D608892A4613DB0058EA80 /* Helper */,
@@ -195,6 +202,7 @@
 				93F344E82A4708CB0089D2A8 /* Button.swift */,
 				931A94362A4BEE3300058E90 /* FancyToastView.swift */,
 				931A94382A4BEE5E00058E90 /* FancyToastStyle.swift */,
+				05398D0C2A4BF48B00BC1DF2 /* DailyTask.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -307,11 +315,13 @@
 				9376A9822A3F5A080037F2FE /* ContentView.swift in Sources */,
 				05BFB3902A443B3600A026D7 /* ShopItemModel.swift in Sources */,
 				05BFB3872A4435B400A026D7 /* ShopViewController.swift in Sources */,
+				05398D0F2A4BF4CF00BC1DF2 /* DailyTaskController.swift in Sources */,
 				05F4A2CA2A45816B00DE56A7 /* DailyTaskModel.swift in Sources */,
 				05BFB3972A445B3900A026D7 /* TimeModel.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				931A94372A4BEE3300058E90 /* FancyToastView.swift in Sources */,
+				05398D0D2A4BF48B00BC1DF2 /* DailyTask.swift in Sources */,
 				931A94352A4BEDF600058E90 /* FancyToast.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93EC1EA12A483364007B7B07 /* TimeController.swift in Sources */,
@@ -454,6 +464,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Petto/Petto.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Petto/Preview Content\"";
@@ -476,6 +488,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pettoteam.pettolife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -490,6 +503,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Petto/Petto.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Petto/Preview Content\"";
@@ -512,6 +527,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pettoteam.pettolife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

@@ -53,7 +53,7 @@ struct PrimeTime: View {
             }
         }.onAppear {
             timeRemaining = timeController.getSecondsRemaining()
-            print(timeRemaining)
+//            print(timeRemaining)
         }
     }
 }

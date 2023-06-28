@@ -16,7 +16,7 @@ struct DailyTask: View {
                 ZStack {
                     HStack(spacing: 40) {
                         Text(task.name)
-                        Text("\(task.amount)/\(task.maxAmount)")
+                        Text("\(task.amount!)/\(task.maxAmount)")
                         HStack {
                             StrokeText(text: "\(task.coin)", width: 1, color: Color("CoinBorder"))
                                 .foregroundColor(Color("Coin")).fontWeight(.bold)

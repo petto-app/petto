@@ -15,6 +15,7 @@ struct Home: View {
     @EnvironmentObject var bottomSheet: BottomSheet
     @State private var idleFrameNames: [String] = []
     @State var isGameCenterOpen: Bool = false
+    @EnvironmentObject var dailyTaskController: DailyTaskController
 
     var body: some View {
         NavigationStack {
@@ -80,6 +81,7 @@ struct Home: View {
                 }
                 // Health Kit
                 healthKitController.authorizeHealthKit()
+                healthKitController.fetchHealthData()
             }
             .sheet(isPresented: $bottomSheet.showSheet) {
                 Text("Daily Tasks").fontWeight(.bold)
@@ -91,6 +93,8 @@ struct Home: View {
                     .sheet(isPresented: $isGameCenterOpen) {
                         GameCenterView()
                     }
+                
+                DailyTask(dailyTasks: $dailyTaskController.dailyTaskModel.dailyTasks)
             }
         }.navigationViewStyle(StackNavigationViewStyle())
     }
