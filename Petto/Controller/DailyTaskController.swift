@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class DailyTaskController: ObservableObject {
-    var dailyTaskModel = DailyTaskModel.shared
+    @ObservedObject var dailyTaskModel = DailyTaskModel.shared
 
     func getData() -> [DailyTaskItem] {
         return dailyTaskModel.dailyTasks
