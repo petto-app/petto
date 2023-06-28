@@ -20,4 +20,4 @@ jobs:
     - name: Select Xcode
       run: sudo xcode-select -switch /Applications/Xcode.app && /usr/bin/xcodebuild -version
     - name: Run build
-      run: xcodebuild clean build -scheme Petto -project Petto.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 14,OS=$' | xcpretty && exit ${PIPESTATUS[0]}
+      run: xcodebuild clean build -scheme Petto -project Petto.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 14' | xcpretty && exit ${PIPESTATUS[0]}
