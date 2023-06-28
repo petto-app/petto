@@ -46,8 +46,8 @@ class HealthKitController: ObservableObject {
     }
     
     func fetchHealthData() {
-//        var totalStepCount: Double?
-//        var totalStandTime: Double?
+        var totalStepCount: Double?
+        var totalStandTime: Double?
         let group = DispatchGroup() // synchronize the completion of the multiple asynchronous operations
         
         group.enter()
@@ -60,7 +60,7 @@ class HealthKitController: ObservableObject {
         }
         
         group.enter()
-        getStepCount { standTimeData in
+        getStandTime { standTimeData in
             if let standTimeData = standTimeData {
 //                totalStandTime = standTimeData
                 self.HKModel.setTotalStandTime(standTime: standTimeData)
@@ -69,7 +69,8 @@ class HealthKitController: ObservableObject {
         }
         
         group.notify(queue: .main) { // if all operations completed
-
+//            self.HKModel.setTotalStepCount(stepCount: stepCountData)
+//            self.HKModel.setTotalStandTime(standTime: standTimeData)
         }
         
     }
