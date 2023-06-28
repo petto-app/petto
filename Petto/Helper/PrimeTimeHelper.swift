@@ -59,8 +59,6 @@ func scheduleLocal(startHour: Int, endHour: Int, intervalHour: Int) -> (Bool, In
         return (false, -1)
     }
 
-    print(isPrimeTime(hours: getPrimeTimeHours(startHour: 9, endHour: 17, intervalHour: 2)))
-
     let center = UNUserNotificationCenter.current()
     center.removeAllPendingNotificationRequests()
 

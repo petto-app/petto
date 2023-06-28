@@ -31,6 +31,7 @@ struct StatBar: View {
                 Rectangle().frame(width: geometry.size.width, height: geometry.size.height)
                     .opacity(0.3)
                     .foregroundColor(.white)
+                    .background(.white)
 
                 Rectangle().frame(width: min(CGFloat(self.barValue) * geometry.size.width, geometry.size.width), height: geometry.size.height)
                     .foregroundColor(barValue > 0.5 ? Color("BarHigh") : barValue > 0.2 ? .yellow : Color("BarLow"))
@@ -43,6 +44,8 @@ struct StatBar: View {
                 .onTapGesture {
                     showTooltip = !showTooltip
                 }
+                .clipped()
+                .shadow(radius: 2, y: 2)
         }
         .tooltip(showTooltip, config: tooltipConfig) {
             Text("\(value)/100").font(.caption)
