@@ -10,7 +10,7 @@ import HealthKit
 import SwiftUI
 
 class HealthKitModel: ObservableObject {
-    public static var shared: HealthKitModel = HealthKitModel()
+    public static var shared: HealthKitModel = .init()
     @Published var healthStore = HKHealthStore()
     @Published var totalStepCount: Double
     @Published var totalStandTime: Double
@@ -19,7 +19,7 @@ class HealthKitModel: ObservableObject {
         totalStepCount = 0.1
         totalStandTime = 0.1
     }
-    
+
     func queryData(for typeIdentifier: HKQuantityTypeIdentifier, completion: @escaping (Double?, Error?) -> Void) {
         guard let sampleType = HKObjectType.quantityType(forIdentifier: typeIdentifier) else {
             completion(nil, NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid data type"]))
@@ -60,12 +60,12 @@ class HealthKitModel: ObservableObject {
 
         healthStore.execute(query)
     }
-    
+
     func setTotalStepCount(stepCount: Double) {
         totalStepCount = stepCount
         print(totalStepCount)
     }
-    
+
     func setTotalStandTime(standTime: Double) {
         totalStandTime = standTime
         print(totalStandTime)

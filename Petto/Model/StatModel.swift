@@ -9,42 +9,39 @@ import Foundation
 import SwiftUI
 
 protocol Stat {
-    var amount: Float { get set }
+    var amount: Int? { get set }
     var maxValue: Int { get set }
     var depletionSpeed: Float? { get set }
 
-    init(amount: Float, maxValue: Int)
+    init(maxValue: Int)
 }
 
 struct Energy: Stat, Codable {
-    var amount: Float
+    var amount: Int?
     var maxValue: Int
     var depletionSpeed: Float?
 
-    init(amount: Float = 100.00, maxValue: Int = 100) {
-        self.amount = amount
+    init(maxValue: Int = 100) {
         self.maxValue = maxValue
     }
 }
 
 struct Fun: Stat, Codable {
-    var amount: Float
+    var amount: Int?
     var maxValue: Int
     var depletionSpeed: Float?
 
-    init(amount: Float = 100.00, maxValue: Int = 100) {
-        self.amount = amount
+    init(maxValue: Int = 100) {
         self.maxValue = maxValue
     }
 }
 
 struct Hygiene: Stat, Codable {
-    var amount: Float
+    var amount: Int?
     var maxValue: Int
     var depletionSpeed: Float?
 
-    init(amount: Float = 100.00, maxValue: Int = 100) {
-        self.amount = amount
+    init(maxValue: Int = 100) {
         self.maxValue = maxValue
     }
 }
@@ -90,7 +87,7 @@ class StatModel: ObservableObject {
         set {
             // Update the AppStorage value
             if let encodedItems = try? JSONEncoder().encode(newValue) {
-                energyData = encodedItems
+                funData = encodedItems
             }
         }
     }
@@ -105,7 +102,7 @@ class StatModel: ObservableObject {
         set {
             // Update the AppStorage value
             if let encodedItems = try? JSONEncoder().encode(newValue) {
-                energyData = encodedItems
+                hygieneData = encodedItems
             }
         }
     }
@@ -121,35 +118,71 @@ class StatModel: ObservableObject {
     }
 
     func addCoin(amount: Int) {
+        if coin == nil {
+            coin = 0
+        }
         coin! += amount
     }
 
     func reduceCoin(amount: Int) {
+        if coin == nil {
+            coin = 0
+        }
         coin! -= amount
+        coin = max(coin ?? 0, 0)
     }
 
-    func addEnergy(amount _: Int) {
-//        energy?.test += amount
-//        print(energy!)
+    func addEnergy(amount: Int) {
+        var temp = energy.amount
+        if temp == nil {
+            temp = 0
+        }
+        temp! += amount
+        energy.amount = min(temp!, energy.maxValue)
     }
 
-    func reduceEnergy(amount _: Int) {
-//        energy! -= amount
+    func reduceEnergy(amount: Int) {
+        var temp = energy.amount
+        if temp == nil {
+            temp = 0
+        }
+        temp! -= amount
+        energy.amount = max(temp!, 0)
     }
 
-    func addFun(amount _: Int) {
-//        fun! += amount
+    func addFun(amount: Int) {
+        var temp = fun.amount
+        if temp == nil {
+            temp = 0
+        }
+        temp! += amount
+        fun.amount = min(temp!, fun.maxValue)
     }
 
-    func reduceFun(amount _: Int) {
-//        fun! -= amount
+    func reduceFun(amount: Int) {
+        var temp = fun.amount
+        if temp == nil {
+            temp = 0
+        }
+        temp! -= amount
+        fun.amount = max(temp!, 0)
     }
 
-    func addHygiene(amount _: Int) {
-//        hygiene! += amount
+    func addHygiene(amount: Int) {
+        var temp = hygiene.amount
+        if temp == nil {
+            temp = 0
+        }
+        temp! += amount
+        hygiene.amount = min(temp!, hygiene.maxValue)
     }
 
-    func reduceHygiene(amount _: Int) {
-//        hygiene! -= amount
+    func reduceHygiene(amount: Int) {
+        var temp = hygiene.amount
+        if temp == nil {
+            temp = 0
+        }
+        temp! -= amount
+        hygiene.amount = max(temp!, 0)
     }
 }

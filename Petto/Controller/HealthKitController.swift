@@ -18,7 +18,7 @@ class HealthKitController: ObservableObject {
         authorizeHealthKit()
         fetchHealthData()
     }
-    
+
     func authorizeHealthKit() {
         if HKHealthStore.isHealthDataAvailable() {
             let infoToRead = Set([
@@ -44,12 +44,12 @@ class HealthKitController: ObservableObject {
             })
         }
     }
-    
+
     func fetchHealthData() {
 //        var totalStepCount: Double?
 //        var totalStandTime: Double?
         let group = DispatchGroup() // synchronize the completion of the multiple asynchronous operations
-        
+
         group.enter()
         getStepCount { stepCountData in
             if let stepCountData = stepCountData {
@@ -58,7 +58,7 @@ class HealthKitController: ObservableObject {
                 group.leave()
             }
         }
-        
+
         group.enter()
         getStepCount { standTimeData in
             if let standTimeData = standTimeData {
@@ -67,11 +67,9 @@ class HealthKitController: ObservableObject {
                 group.leave()
             }
         }
-        
-        group.notify(queue: .main) { // if all operations completed
 
+        group.notify(queue: .main) { // if all operations completed
         }
-        
     }
 
     func getStepCount(completion: @escaping (Double?) -> Void) {
@@ -81,11 +79,11 @@ class HealthKitController: ObservableObject {
                 completion(nil)
                 return
             }
-            
+
             completion(stepCountData)
         })
     }
-    
+
     func getStandTime(completion: @escaping (Double?) -> Void) {
         HKModel.queryData(for: .appleStandTime, completion: { standTimeData, error in
             if let error = error {
@@ -93,7 +91,7 @@ class HealthKitController: ObservableObject {
                 completion(nil)
                 return
             }
-            
+
             completion(standTimeData)
         })
     }

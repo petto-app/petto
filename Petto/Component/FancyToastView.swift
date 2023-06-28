@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct FancyToastView: View {
     var type: FancyToastStyle
     var title: String

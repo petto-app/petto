@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct Stats: View {
+    @Binding var fun: Int?
+    @Binding var hygiene: Int?
+    @Binding var energy: Int?
+
     var body: some View {
         VStack {
             HStack(spacing: 10) {
@@ -20,7 +24,7 @@ struct Stats: View {
                             relativeTo: .body))
                         Spacer()
                     }
-                    StatBar(value: .constant(50))
+                    StatBar(value: $energy)
                 }
                 VStack {
                     HStack {
@@ -31,7 +35,7 @@ struct Stats: View {
                             relativeTo: .body))
                         Spacer()
                     }
-                    StatBar(value: .constant(50))
+                    StatBar(value: $fun)
                 }
                 VStack {
                     HStack {
@@ -42,7 +46,7 @@ struct Stats: View {
                             relativeTo: .body))
                         Spacer()
                     }
-                    StatBar(value: .constant(50))
+                    StatBar(value: $hygiene)
                 }
             }
         }
@@ -60,6 +64,6 @@ struct Stats: View {
 
 struct Stats_Previews: PreviewProvider {
     static var previews: some View {
-        Stats()
+        Stats(fun: .constant(50), hygiene: .constant(50), energy: .constant(50))
     }
 }

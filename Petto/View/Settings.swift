@@ -17,6 +17,7 @@ struct Settings: View {
     @State private var finishHour = "17"
 
     @EnvironmentObject var fToast: FancyToastClass
+    @EnvironmentObject var statController: StatController
 
     var body: some View {
         VStack {
@@ -31,13 +32,11 @@ struct Settings: View {
                         } label: {
                             Image(systemName: "chevron.left")
                         }.buttonStyle(IconButton(width: 30, height: 30)).offset(y: 20)
-                        Coin(coin: 100, totalCoin: 1000).offset(y: 20)
                         Spacer()
-                        PrimeTime().offset(x: -5, y: 20)
+                        PrimeTime().opacity(0)
                     }
-                    Stats().offset(y: -20)
                     SettingsContainer(intervalSelection: $interval, startSelection: $startHour, finishSelection: $finishHour)
-                        .padding(.bottom)
+                        .padding(.bottom).offset(y: -20)
                     Button("Save") {
                         print(startHour)
                         print(interval)
@@ -49,6 +48,24 @@ struct Settings: View {
                         }
                     }
                     .buttonStyle(MainButton(width: 80))
+                    Button("<Test> Increase Fun") {
+                        statController.increaseFun(amount: 5)
+                    }
+                    Button("<Test> Decrease Fun") {
+                        statController.decreaseFun(amount: 5)
+                    }
+                    Button("<Test> Increase Hygiene") {
+                        statController.increaseHygiene(amount: 5)
+                    }
+                    Button("<Test> Decrease Hygiene") {
+                        statController.decreaseHygiene(amount: 5)
+                    }
+                    Button("<Test> Increase Energy") {
+                        statController.increaseEnergy(amount: 5)
+                    }
+                    Button("<Test> Decrease Energy") {
+                        statController.decreaseEnergy(amount: 5)
+                    }
                     Spacer()
                 }.padding()
             }

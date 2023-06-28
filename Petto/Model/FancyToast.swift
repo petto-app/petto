@@ -15,5 +15,5 @@ struct FancyToast: Equatable {
 }
 
 class FancyToastClass: ObservableObject {
-    @Published var toast: FancyToast? = nil
+    @Published var toast: FancyToast?
 }

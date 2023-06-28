@@ -16,6 +16,8 @@ struct Home: View {
     @State private var idleFrameNames: [String] = []
     @State var isGameCenterOpen: Bool = false
     @EnvironmentObject var dailyTaskController: DailyTaskController
+    @EnvironmentObject var statController: StatController
+    @EnvironmentObject var timerController: TimerController
 
     var body: some View {
         NavigationStack {
@@ -35,7 +37,7 @@ struct Home: View {
                             Spacer()
                             PrimeTime().offset(x: -5, y: 20)
                         }
-                        Stats().offset(y: -20)
+                        Stats(fun: $statController.statModel.fun.amount, hygiene: $statController.statModel.hygiene.amount, energy: $statController.statModel.energy.amount).offset(y: -20)
                         HStack {
                             Spacer()
                             VStack {
@@ -62,6 +64,7 @@ struct Home: View {
                                         .font(.caption)
                                 }
                                 .buttonStyle(IconButtonRect(width: 50, height: 50))
+                                Text("\(statController.fun)")
                             }
                         }
                         Spacer()
@@ -82,6 +85,12 @@ struct Home: View {
                 // Health Kit
                 healthKitController.authorizeHealthKit()
                 healthKitController.fetchHealthData()
+
+                timerController.setTimer(withInterval: 1) {
+                    statController.increaseEnergy(amount: 5)
+                    statController.increaseFun(amount: 5)
+                    statController.increaseHygiene(amount: 5)
+                }
             }
             .sheet(isPresented: $bottomSheet.showSheet) {
                 Text("Daily Tasks").fontWeight(.bold)
@@ -90,10 +99,11 @@ struct Home: View {
                     .presentationBackgroundInteraction(
                         .enabled
                     )
+                    .presentationCornerRadius(24)
                     .sheet(isPresented: $isGameCenterOpen) {
                         GameCenterView()
                     }
-                
+
                 DailyTask(dailyTasks: $dailyTaskController.dailyTaskModel.dailyTasks)
             }
         }.navigationViewStyle(StackNavigationViewStyle())
