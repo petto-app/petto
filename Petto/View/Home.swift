@@ -82,8 +82,8 @@ struct Home: View {
                     }
                 }
                 // Health Kit
-                healthKitController.authorizeHealthKit()
-                healthKitController.fetchHealthData()
+//                healthKitController.authorizeHealthKit()
+//                healthKitController.fetchHealthData()
 
                 timerController.setTimer(key: "statTimer", withInterval: 1) {
                     statController.increaseEnergy(amount: 5)
@@ -94,14 +94,14 @@ struct Home: View {
             }
             .sheet(isPresented: $bottomSheet.showSheet) {
                 Text("Daily Tasks").fontWeight(.bold)
-                    .presentationDetents([.fraction(0.15), .fraction(0.4)]).interactiveDismissDisabled(true)
+                    .presentationDetents([.fraction(0.10), .fraction(0.33)]).interactiveDismissDisabled(true)
                     .presentationBackground(Color("TaskSheet"))
                     .presentationBackgroundInteraction(
                         .enabled
                     )
                     .presentationCornerRadius(24)
-                    .padding(.bottom, 20)
-                    .padding(.top, 20)
+                    .padding(.bottom, 15)
+                    .padding(.top, 45)
                     .sheet(isPresented: $isGameCenterOpen) {
                         GameCenterView()
                     }

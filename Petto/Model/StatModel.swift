@@ -47,6 +47,8 @@ struct Hygiene: Stat, Codable {
 }
 
 class StatModel: ObservableObject {
+    public static var shared: StatModel = .init()
+    
     @AppStorage("coin")
     var coin: Int?
 
