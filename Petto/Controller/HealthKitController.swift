@@ -56,7 +56,6 @@ class HealthKitController: ObservableObject {
         getStepCount { stepCountData in
             if let stepCountData = stepCountData {
                 totalStepCount = stepCountData
-//                self.HKModel.setTotalStepCount(stepCount: stepCountData)
                 group.leave()
             }
         }
@@ -65,7 +64,6 @@ class HealthKitController: ObservableObject {
         getStandTime { standTimeData in
             if let standTimeData = standTimeData {
                 totalStandTime = standTimeData
-//                self.HKModel.setTotalStandTime(standTime: standTimeData)
                 group.leave()
             }
         }

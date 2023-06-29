@@ -81,9 +81,6 @@ struct Home: View {
                         print(error.localizedDescription)
                     }
                 }
-                // Health Kit
-//                healthKitController.authorizeHealthKit()
-//                healthKitController.fetchHealthData()
 
                 timerController.setTimer(key: "statTimer", withInterval: 1) {
                     statController.updateStats()
