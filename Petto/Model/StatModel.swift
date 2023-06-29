@@ -11,7 +11,8 @@ import SwiftUI
 protocol Stat {
     var amount: Int? { get set }
     var maxValue: Int { get set }
-    var depletionSpeed: Float? { get set }
+    var depletionSpeed: Int? { get set }
+    var lastDepleted: Int? { get set }
 
     init(maxValue: Int)
 }
@@ -19,30 +20,36 @@ protocol Stat {
 struct Energy: Stat, Codable {
     var amount: Int?
     var maxValue: Int
-    var depletionSpeed: Float?
+    var depletionSpeed: Int?
+    var lastDepleted: Int?
 
     init(maxValue: Int = 100) {
         self.maxValue = maxValue
+        depletionSpeed = 1440
     }
 }
 
 struct Fun: Stat, Codable {
     var amount: Int?
     var maxValue: Int
-    var depletionSpeed: Float?
+    var depletionSpeed: Int?
+    var lastDepleted: Int?
 
     init(maxValue: Int = 100) {
         self.maxValue = maxValue
+        depletionSpeed = 1620
     }
 }
 
 struct Hygiene: Stat, Codable {
     var amount: Int?
     var maxValue: Int
-    var depletionSpeed: Float?
+    var depletionSpeed: Int?
+    var lastDepleted: Int?
 
     init(maxValue: Int = 100) {
         self.maxValue = maxValue
+        depletionSpeed = 1800
     }
 }
 

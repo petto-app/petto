@@ -86,9 +86,7 @@ struct Home: View {
                 healthKitController.fetchHealthData()
 
                 timerController.setTimer(key: "statTimer", withInterval: 1) {
-                    statController.increaseEnergy(amount: 5)
-                    statController.increaseFun(amount: 5)
-                    statController.increaseHygiene(amount: 5)
+                    statController.updateStats()
                     statController.objectWillChange.send()
                 }
             }
