@@ -41,6 +41,16 @@ class StatController: ObservableObject {
         statModel.energy.depletionSpeed = 1440
         statModel.hygiene.depletionSpeed = 1800
         statModel.fun.depletionSpeed = 1620
+        
+        if statModel.energy.amount == nil {
+            statModel.energy.amount = 75
+        }
+        if statModel.fun.amount == nil {
+            statModel.fun.amount = 75
+        }
+        if statModel.hygiene.amount == nil {
+            statModel.hygiene.amount = 75
+        }
 
         let energyOld = statModel.energy.amount ?? 0
         let hygieneOld = statModel.hygiene.amount ?? 0
