@@ -17,7 +17,7 @@ struct Stats: View {
             HStack(spacing: 10) {
                 VStack {
                     HStack {
-                        Image("BurgerIcon")
+                        Image("BurgerIcon").resizable().scaledToFill().frame(width: 30, height: 30)
                         Text("Energy").font(.custom(
                             "AmericanTypewriter",
                             size: 13,
@@ -28,7 +28,7 @@ struct Stats: View {
                 }
                 VStack {
                     HStack {
-                        Image("ControllerIcon")
+                        Image("ControllerIcon").resizable().scaledToFill().frame(width: 27, height: 27)
                         Text("Fun").font(.custom(
                             "AmericanTypewriter",
                             size: 13,
@@ -39,7 +39,7 @@ struct Stats: View {
                 }
                 VStack {
                     HStack {
-                        Image("VacuumIcon")
+                        Image("VacuumIcon").resizable().scaledToFill().frame(width: 29, height: 29)
                         Text("Hygiene").font(.custom(
                             "AmericanTypewriter",
                             size: 13,

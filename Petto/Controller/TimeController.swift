@@ -48,11 +48,17 @@ class TimeController: ObservableObject {
         }
 
         var primeTimeHour = currentHour
+        var flag = false
         for h in primeTimeHours {
             if h > primeTimeHour {
                 primeTimeHour = h
+                flag = true
                 break
             }
+        }
+
+        if !flag {
+            primeTimeHour = primeTimeHours[0] + 24
         }
 
         let differenceInSeconds = primeTimeHour * 3600 - (currentHour * 3600 + currentMinutes * 60 + currentSeconds)
