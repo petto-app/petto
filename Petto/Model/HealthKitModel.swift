@@ -16,8 +16,8 @@ class HealthKitModel: ObservableObject {
     @Published var totalStandTime: Double
 
     init() {
-        totalStepCount = 0.1
-        totalStandTime = 0.1
+        totalStepCount = 1.0
+        totalStandTime = 1.0
     }
 
     func queryStandTime(completion: @escaping (Double?, Error?) -> Void) {

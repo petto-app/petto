@@ -17,11 +17,14 @@ class HealthKitController: ObservableObject {
     var hasRequestedHealthData = false
 
     init() {
-        authorizeHealthKit()
-        fetchHealthData()
+        authorizeHealthKit { [self] success in
+            if success {
+                fetchHealthData()
+            }
+        }
     }
 
-    func authorizeHealthKit() {
+    func authorizeHealthKit(completion: @escaping (Bool) -> Void) {
         if HKHealthStore.isHealthDataAvailable() {
             let infoToRead = Set([
                 HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!,
@@ -31,6 +34,7 @@ class HealthKitController: ObservableObject {
             HKModel.healthStore.requestAuthorization(toShare: nil, read: infoToRead, completion: { success, error in
                 if let error = error {
                     print("HealthKit Authorization Error: \(error.localizedDescription)")
+                    completion(false)
                 } else {
                     if success {
                         if self.hasRequestedHealthData {
@@ -39,11 +43,15 @@ class HealthKitController: ObservableObject {
                             print("HealthKit authorization request was successful! ")
                         }
                         self.hasRequestedHealthData = true
+                        completion(true)
                     } else {
                         print("HealthKit authorization did not complete successfully.")
+                        completion(false)
                     }
                 }
             })
+        } else {
+            completion(false)
         }
     }
 
@@ -56,7 +64,6 @@ class HealthKitController: ObservableObject {
         getStepCount { stepCountData in
             if let stepCountData = stepCountData {
                 totalStepCount = stepCountData
-//                self.HKModel.setTotalStepCount(stepCount: stepCountData)
                 group.leave()
             }
         }
@@ -65,7 +72,6 @@ class HealthKitController: ObservableObject {
         getStandTime { standTimeData in
             if let standTimeData = standTimeData {
                 totalStandTime = standTimeData
-//                self.HKModel.setTotalStandTime(standTime: standTimeData)
                 group.leave()
             }
         }
