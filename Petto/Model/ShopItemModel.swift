@@ -15,8 +15,7 @@ enum ShopItemType: Codable {
 }
 
 struct ShopItem: Identifiable, Codable {
-//    public var id = UUID()
-    public var id: Int
+    public var id = UUID()
     public var name: String
     public var price: Int
     public var type: ShopItemType
@@ -25,6 +24,8 @@ struct ShopItem: Identifiable, Codable {
 }
 
 class ShopItemModel: ObservableObject {
+    public static var shared: ShopItemModel = .init()
+    
     @AppStorage("shopItems")
     var shopItemsData: Data = .init()
 
@@ -45,7 +46,9 @@ class ShopItemModel: ObservableObject {
 
     init() {
         shopItems = [
-            ShopItem(id: 1, name: "Pisang", price: 2000, type: .energy, lifeAmount: 100)
+            ShopItem(name: "Pisang", price: 50, type: .energy, lifeAmount: 10),
+            ShopItem(name: "Watch Netflix", price: 60, type: .fun, lifeAmount: 20),
+            ShopItem(name: "Sweep the floor", price: 70, type: .hygiene, lifeAmount: 30)
         ]
     }
 

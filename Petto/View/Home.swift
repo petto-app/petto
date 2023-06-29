@@ -64,6 +64,12 @@ struct Home: View {
                                         .font(.caption)
                                 }
                                 .buttonStyle(IconButtonRect(width: 50, height: 50))
+                                NavigationLink {
+                                    Shop()
+                                } label: {
+                                    Text("Shop")
+                                        .font(.caption)
+                                }.buttonStyle(IconButtonRect(width: 50, height: 50))
                             }
                         }
                         Spacer()
