@@ -65,10 +65,11 @@ class DailyTaskModel: ObservableObject {
         resetTaskStatusIfNeeded()
         updateLastAccessedDate()
     }
-
-    func updateDailyTasksData(totalStepCount: Int, totalStandTime: Int) {
+    
+    func updateDailyTasksData(totalStepCount: Int, totalStandTime: Int) -> Int {
         var updatedTasks: [DailyTaskItem] = []
-
+        var coinAddition: Int = 0
+            
         for task in dailyTasks {
             var updatedTask = task
 
@@ -77,7 +78,7 @@ class DailyTaskModel: ObservableObject {
                 if updatedTask.isDone != true { // if the task is not finished before
                     if totalStepCount >= task.maxAmount {
                         updatedTask.isDone = true
-                        statModel.addCoin(amount: task.coin) // Add coin
+                        coinAddition += task.coin
                     }
                 }
             } else if task.type == .appleStandTime {
@@ -85,7 +86,7 @@ class DailyTaskModel: ObservableObject {
                 if updatedTask.isDone != true { // if the task is not finished before
                     if totalStandTime >= task.maxAmount {
                         updatedTask.isDone = true
-                        statModel.addCoin(amount: task.coin) // Add coin
+                        coinAddition += task.coin
                     }
                 }
             }
@@ -99,9 +100,9 @@ class DailyTaskModel: ObservableObject {
         if completedTasks.count >= updatedTasks[dailyTasks.count - 1].maxAmount {
             updatedTasks[dailyTasks.count - 1].isDone = true
         }
-
-        dailyTasks = updatedTasks
-//        print(self.dailyTasks)
+        
+        self.dailyTasks = updatedTasks
+        return coinAddition
     }
 
     var shouldRewardCoins: Bool {

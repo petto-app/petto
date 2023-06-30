@@ -66,6 +66,12 @@ struct Home: View {
                                         .font(.caption)
                                 }
                                 .buttonStyle(IconButtonRect(width: 50, height: 50))
+                                NavigationLink {
+                                    CameraView()
+                                } label: {
+                                    Text("BMS")
+                                        .font(.caption)
+                                }.buttonStyle(IconButtonRect(width: 50, height: 50))
                             }
                         }
                         Spacer()
