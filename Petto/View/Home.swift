@@ -65,9 +65,9 @@ struct Home: View {
                                 }
                                 .buttonStyle(IconButtonRect(width: 50, height: 50))
                                 NavigationLink {
-                                    Shop()
+                                    CameraView()
                                 } label: {
-                                    Text("Shop")
+                                    Text("BMS")
                                         .font(.caption)
                                 }.buttonStyle(IconButtonRect(width: 50, height: 50))
                             }
