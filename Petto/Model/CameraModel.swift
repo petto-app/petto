@@ -6,23 +6,22 @@
 //
 
 import AVFoundation
-import SwiftUI
 import os.log
-
+import SwiftUI
 
 final class CameraModel: ObservableObject {
     let camera = CameraHelper()
-    
+
     @Published var viewFinderImage: Image?
-    
+
     var isPhotosLoaded = false
-    
+
     init() {
         Task {
             await handleCameraPreviews()
         }
     }
-    
+
     func handleCameraPreviews() async {
         let imageStream = camera.previewStream
             .map { $0.image }
@@ -35,24 +34,23 @@ final class CameraModel: ObservableObject {
     }
 }
 
-
 // TODO: Not used yet (?)
-fileprivate struct PhotoData {
+private struct PhotoData {
     var thumbnailImage: Image
     var thumbnailSize: (width: Int, height: Int)
     var imageData: Data
     var imageSize: (width: Int, height: Int)
 }
 
-fileprivate extension CIImage {
+private extension CIImage {
     var image: Image? {
         let ciContext = CIContext()
-        guard let cgImage = ciContext.createCGImage(self, from: self.extent) else { return nil }
+        guard let cgImage = ciContext.createCGImage(self, from: extent) else { return nil }
         return Image(decorative: cgImage, scale: 1, orientation: .up)
     }
 }
 
-fileprivate extension Image.Orientation {
+private extension Image.Orientation {
     init(_ cgImageOrientation: CGImagePropertyOrientation) {
         switch cgImageOrientation {
         case .up: self = .up
@@ -67,4 +65,4 @@ fileprivate extension Image.Orientation {
     }
 }
 
-fileprivate let logger = Logger(subsystem: "com.apple.swiftplaygroundscontent.capturingphotos", category: "DataModel")
+private let logger = Logger(subsystem: "com.apple.swiftplaygroundscontent.capturingphotos", category: "DataModel")

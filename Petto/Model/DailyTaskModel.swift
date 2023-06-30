@@ -65,11 +65,11 @@ class DailyTaskModel: ObservableObject {
         resetTaskStatusIfNeeded()
         updateLastAccessedDate()
     }
-    
+
     func updateDailyTasksData(totalStepCount: Int, totalStandTime: Int) -> Int {
         var updatedTasks: [DailyTaskItem] = []
-        var coinAddition: Int = 0
-            
+        var coinAddition = 0
+
         for task in dailyTasks {
             var updatedTask = task
 
@@ -100,8 +100,8 @@ class DailyTaskModel: ObservableObject {
         if completedTasks.count >= updatedTasks[dailyTasks.count - 1].maxAmount {
             updatedTasks[dailyTasks.count - 1].isDone = true
         }
-        
-        self.dailyTasks = updatedTasks
+
+        dailyTasks = updatedTasks
         return coinAddition
     }
 

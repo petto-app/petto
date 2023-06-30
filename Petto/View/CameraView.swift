@@ -10,18 +10,18 @@ import SwiftUI
 struct CameraView: View {
     @StateObject private var model = CameraModel()
     @EnvironmentObject var bottomSheet: BottomSheet
-    
+
     private static let barHeightFactor = 0.10
-    
+
     var body: some View {
         GeometryReader { geometry in
-            ViewFinder(image:  $model.viewFinderImage )
+            ViewFinder(image: $model.viewFinderImage)
                 .overlay(alignment: .bottom) {
                     buttonsView()
                         .frame(height: geometry.size.height * Self.barHeightFactor)
                         .background(.black.opacity(0.75))
                 }
-                .overlay(alignment: .center)  {
+                .overlay(alignment: .center) {
                     Color.clear
                         .frame(height: geometry.size.height * (1 - (Self.barHeightFactor * 2)))
                         .accessibilityElement()
@@ -37,11 +37,11 @@ struct CameraView: View {
             bottomSheet.showSheet = false
         }
     }
-    
+
     func buttonsView() -> some View {
         HStack(spacing: 60) {
             Spacer()
-            
+
             Button {
                 model.camera.switchCaptureDevice()
             } label: {
@@ -59,7 +59,7 @@ struct CameraView: View {
 struct CameraView_Previews: PreviewProvider {
     static var previews: some View {
         @StateObject var bottomSheet = BottomSheet()
-        
+
         CameraView()
             .environmentObject(bottomSheet)
     }
