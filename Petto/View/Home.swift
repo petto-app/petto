@@ -50,8 +50,8 @@ struct Home: View {
                                         .scaledToFit().frame(width: 40, height: 40)
                                     }.buttonStyle(IconButtonRect(width: 50, height: 50))
                                 }
-                                Button {
-                                    print("Button pressed!")
+                                NavigationLink {
+                                    Shop()
                                 } label: {
                                     Image("ShopIcon").resizable(
                                     )

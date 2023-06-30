@@ -33,6 +33,7 @@
 		933239B12A4434B700D9B89B /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 933239B02A4434B700D9B89B /* SwiftUITooltip */; };
 		933239B32A443F0000D9B89B /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933239B22A443EFF00D9B89B /* Stats.swift */; };
 		933239B52A4453A300D9B89B /* StatBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933239B42A4453A300D9B89B /* StatBar.swift */; };
+		93455CCA2A4DEB04009A514E /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93455CC92A4DEB04009A514E /* Shop.swift */; };
 		9376A9802A3F5A080037F2FE /* PettoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376A97F2A3F5A080037F2FE /* PettoApp.swift */; };
 		9376A9822A3F5A080037F2FE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376A9812A3F5A080037F2FE /* ContentView.swift */; };
 		9376A9842A3F5A0A0037F2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9376A9832A3F5A0A0037F2FE /* Assets.xcassets */; };
@@ -80,6 +81,7 @@
 		931A943E2A4C32E100058E90 /* TimerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerController.swift; sourceTree = "<group>"; };
 		933239B22A443EFF00D9B89B /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		933239B42A4453A300D9B89B /* StatBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatBar.swift; sourceTree = "<group>"; };
+		93455CC92A4DEB04009A514E /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		9376A97C2A3F5A080037F2FE /* Petto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Petto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9376A97F2A3F5A080037F2FE /* PettoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PettoApp.swift; sourceTree = "<group>"; };
 		9376A9812A3F5A080037F2FE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -177,7 +179,7 @@
 				05F4A2D12A4742BD00DE56A7 /* DataTestView.swift */,
 				93F344EA2A47225B0089D2A8 /* Settings.swift */,
 				057354932A482AD700C4D3F2 /* GameCenterView.swift */,
-				05259C3D2A4E05AD00377C48 /* Shop.swift */,
+				93455CC92A4DEB04009A514E /* Shop.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -352,7 +354,7 @@
 				93D608882A45DB6D0058EA80 /* Avatar.swift in Sources */,
 				93C768A52A46B1F200B70E4B /* PrimeTimeHelper.swift in Sources */,
 				931A943D2A4C2FEC00058E90 /* TimerModel.swift in Sources */,
-				05259C3E2A4E05AD00377C48 /* Shop.swift in Sources */,
+				93455CCA2A4DEB04009A514E /* Shop.swift in Sources */,
 				931A94182A4AC68800058E90 /* HealthKitModel.swift in Sources */,
 				93BFA6732A42FFF0007783E4 /* PrimeTime.swift in Sources */,
 			);
