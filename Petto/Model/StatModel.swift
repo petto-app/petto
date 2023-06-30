@@ -132,7 +132,6 @@ class StatModel: ObservableObject {
             coin = 0
         }
         coin! += amount
-        gameKitController.reportScore(totalCoin: amount)
     }
 
     func reduceCoin(amount: Int) {

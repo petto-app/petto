@@ -26,7 +26,6 @@ struct DailyTaskItem: Identifiable, Codable {
 class DailyTaskModel: ObservableObject {
     public static var shared: DailyTaskModel = .init()
     var HKModel = HealthKitModel.shared
-    var statModel = StatModel.shared
     
     @Published var lastAccessedDate: Date?
     
@@ -66,8 +65,9 @@ class DailyTaskModel: ObservableObject {
         updateLastAccessedDate()
     }
     
-    func updateDailyTasksData(totalStepCount: Int, totalStandTime: Int) {
+    func updateDailyTasksData(totalStepCount: Int, totalStandTime: Int) -> Int {
         var updatedTasks: [DailyTaskItem] = []
+        var coinAddition: Int = 0
             
         for task in dailyTasks {
             var updatedTask = task
@@ -77,7 +77,7 @@ class DailyTaskModel: ObservableObject {
                 if updatedTask.isDone != true { // if the task is not finished before
                     if totalStepCount >= task.maxAmount {
                         updatedTask.isDone = true
-                        statModel.addCoin(amount: task.coin) // Add coin
+                        coinAddition += task.coin
                     }
                 }
             } else if task.type == .appleStandTime {
@@ -85,7 +85,7 @@ class DailyTaskModel: ObservableObject {
                 if updatedTask.isDone != true { // if the task is not finished before
                     if totalStandTime >= task.maxAmount {
                         updatedTask.isDone = true
-                        statModel.addCoin(amount: task.coin) // Add coin
+                        coinAddition += task.coin
                     }
                 }
             }
@@ -101,7 +101,7 @@ class DailyTaskModel: ObservableObject {
         }
         
         self.dailyTasks = updatedTasks
-//        print(self.dailyTasks)
+        return coinAddition
     }
     
     var shouldRewardCoins: Bool {
