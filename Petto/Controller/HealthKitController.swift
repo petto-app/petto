@@ -13,6 +13,7 @@ import SwiftUI
 class HealthKitController: ObservableObject {
     @ObservedObject var HKModel = HealthKitModel.shared
     @ObservedObject var dailyTaskModel = DailyTaskModel.shared
+    @ObservedObject var statModel = StatModel.shared
     
     var hasRequestedHealthData = false
 
@@ -81,7 +82,8 @@ class HealthKitController: ObservableObject {
             self.HKModel.setTotalStandTime(standTime: totalStandTime!)
 
             // Change daily task values directly
-            dailyTaskModel.updateDailyTasksData(totalStepCount: Int(totalStepCount!), totalStandTime: Int(totalStandTime!))
+            let coinAddition = dailyTaskModel.updateDailyTasksData(totalStepCount: Int(totalStepCount!), totalStandTime: Int(totalStandTime!))
+            statModel.addCoin(amount: coinAddition)
         }
     }
 
