@@ -18,4 +18,10 @@ class TimerController: ObservableObject {
         TimerModel.sharedTimer.startTimer(withInterval: interval, andJob: job)
         timerSet[key] = true
     }
+
+    func stopTimer() {
+        TimerModel.sharedTimer.clearJobs()
+        TimerModel.sharedTimer.stopTimer()
+        timerSet = [:]
+    }
 }

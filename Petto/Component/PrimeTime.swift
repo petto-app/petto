@@ -27,8 +27,10 @@ struct CircleShape: Shape {
 
 struct PrimeTime: View {
     @State private var timeRemaining: Int = 0
-    @StateObject var timeController: TimeController = .init()
+    @EnvironmentObject var timeController: TimeController
     @EnvironmentObject var timerController: TimerController
+
+    var timerKey = "primeTimeTimer"
 
     var body: some View {
         VStack {
@@ -51,8 +53,8 @@ struct PrimeTime: View {
         }.onAppear {
             timeRemaining = timeController.getSecondsRemaining()
 
-            timerController.setTimer(key: "primeTimeTimer", withInterval: 1) {
-                timeRemaining -= 1
+            timerController.setTimer(key: timerKey, withInterval: 1) {
+                timeRemaining = timeController.getSecondsRemaining()
             }
         }
     }
@@ -61,6 +63,8 @@ struct PrimeTime: View {
 struct PrimeTime_Previews: PreviewProvider {
     static var previews: some View {
         @StateObject var timerController = TimerController()
-        PrimeTime().environmentObject(timerController)
+        @StateObject var timeController = TimeController()
+        PrimeTime(timerKey: "primeTimeTimer").environmentObject(timerController)
+            .environmentObject(timeController)
     }
 }

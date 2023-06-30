@@ -7,13 +7,13 @@
 
 import Foundation
 import HealthKit
-import UIKit
 import SwiftUI
+import UIKit
 
 class HealthKitController: ObservableObject {
     @ObservedObject var HKModel = HealthKitModel.shared
     @ObservedObject var dailyTaskModel = DailyTaskModel.shared
-    
+
     var hasRequestedHealthData = false
 
     init() {
@@ -28,7 +28,7 @@ class HealthKitController: ObservableObject {
         if HKHealthStore.isHealthDataAvailable() {
             let infoToRead = Set([
                 HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!,
-                HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.appleStandTime)!,
+                HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.appleStandTime)!
             ])
 
             HKModel.healthStore.requestAuthorization(toShare: nil, read: infoToRead, completion: { success, error in
@@ -75,7 +75,7 @@ class HealthKitController: ObservableObject {
                 group.leave()
             }
         }
-        
+
         group.notify(queue: .main) { [self] in // if all operations completed
             self.HKModel.setTotalStepCount(stepCount: totalStepCount!)
             self.HKModel.setTotalStandTime(standTime: totalStandTime!)
@@ -104,7 +104,7 @@ class HealthKitController: ObservableObject {
                 completion(nil)
                 return
             }
-            
+
             completion(totalStandTime)
         })
     }

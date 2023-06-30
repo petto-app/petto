@@ -14,7 +14,7 @@ struct DailyTask: View {
         VStack {
             ForEach(dailyTasks.indices, id: \.self) { index in
                 let task = dailyTasks[index]
-                
+
                 ZStack {
                     HStack(spacing: 40) {
                         Text(task.name)

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class StatController: ObservableObject {
-    @ObservedObject var statModel = StatModel()
+    @ObservedObject var statModel = StatModel.shared
     private let baseDepletionAmount = 5
 
     var fun: Int {
@@ -22,6 +22,14 @@ class StatController: ObservableObject {
 
     var energy: Int {
         return statModel.energy.amount ?? 0
+    }
+
+    var coin: Int {
+        return statModel.coin ?? 0
+    }
+
+    var totalCoin: Int {
+        return statModel.totalCoin ?? 0
     }
 
     func updateStats() {
@@ -41,7 +49,7 @@ class StatController: ObservableObject {
         statModel.energy.depletionSpeed = 1440
         statModel.hygiene.depletionSpeed = 1800
         statModel.fun.depletionSpeed = 1620
-        
+
         if statModel.energy.amount == nil {
             statModel.energy.amount = 75
         }
@@ -104,5 +112,13 @@ class StatController: ObservableObject {
 
     func decreaseEnergy(amount: Int) {
         statModel.reduceEnergy(amount: amount)
+    }
+
+    func increaseCoin(amount: Int) {
+        statModel.addCoin(amount: amount)
+    }
+
+    func decreaseCoin(amount: Int) {
+        statModel.reduceCoin(amount: amount)
     }
 }

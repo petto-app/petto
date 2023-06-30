@@ -18,6 +18,7 @@ struct Settings: View {
 
     @EnvironmentObject var fToast: FancyToastClass
     @EnvironmentObject var statController: StatController
+    @EnvironmentObject var gameKitController: GameKitController
 
     var body: some View {
         VStack {
@@ -38,8 +39,6 @@ struct Settings: View {
                     SettingsContainer(intervalSelection: $interval, startSelection: $startHour, finishSelection: $finishHour)
                         .padding(.bottom).offset(y: -20)
                     Button("Save") {
-                        print(startHour)
-                        print(interval)
                         let res = timeController.setPrimeTime(start: Int(startHour) ?? 9, finish: Int(finishHour) ?? 17, interval: interval)
                         if !res {
                             fToast.toast = FancyToast(type: .error, title: "Error", message: "Invalid input", duration: 3)
@@ -48,23 +47,32 @@ struct Settings: View {
                         }
                     }
                     .buttonStyle(MainButton(width: 80))
-                    Button("<Test> Increase Fun") {
-                        statController.increaseFun(amount: 5)
-                    }
-                    Button("<Test> Decrease Fun") {
-                        statController.decreaseFun(amount: 5)
-                    }
-                    Button("<Test> Increase Hygiene") {
-                        statController.increaseHygiene(amount: 5)
-                    }
-                    Button("<Test> Decrease Hygiene") {
-                        statController.decreaseHygiene(amount: 5)
-                    }
-                    Button("<Test> Increase Energy") {
-                        statController.increaseEnergy(amount: 5)
-                    }
-                    Button("<Test> Decrease Energy") {
-                        statController.decreaseEnergy(amount: 5)
+                    Group {
+                        Button("<Test> Increase Fun") {
+                            statController.increaseFun(amount: 5)
+                        }
+                        Button("<Test> Decrease Fun") {
+                            statController.decreaseFun(amount: 5)
+                        }
+                        Button("<Test> Increase Hygiene") {
+                            statController.increaseHygiene(amount: 5)
+                        }
+                        Button("<Test> Decrease Hygiene") {
+                            statController.decreaseHygiene(amount: 5)
+                        }
+                        Button("<Test> Increase Energy") {
+                            statController.increaseEnergy(amount: 5)
+                        }
+                        Button("<Test> Decrease Energy") {
+                            statController.decreaseEnergy(amount: 5)
+                        }
+                        Button("<Test> Increase Coin") {
+                            statController.increaseCoin(amount: 100)
+                            gameKitController.reportScore(totalCoin: statController.totalCoin)
+                        }
+                        Button("<Test> Decrease Coin") {
+                            statController.decreaseCoin(amount: 100)
+                        }
                     }
                     Spacer()
                 }.padding()
@@ -84,6 +92,7 @@ struct Settings: View {
 
 struct Settings_Previews: PreviewProvider {
     static var previews: some View {
-        Settings().environmentObject(FancyToastClass())
+        @StateObject var fancyToast = FancyToastClass()
+        Settings().environmentObject(fancyToast)
     }
 }
