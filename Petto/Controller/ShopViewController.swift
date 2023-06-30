@@ -9,23 +9,27 @@ import Foundation
 import SwiftUI
 
 class ShopViewController: ObservableObject {
-    @ObservedObject var shopItemModel = ShopItemModel()
-    @ObservedObject var statModel = StatModel()
+    @ObservedObject var shopItemModel = ShopItemModel.shared
+    @ObservedObject var statModel = StatModel.shared
 
     @AppStorage("shopItems")
     var shopItemsData: Data = .init()
 
     func buy(shopItem: ShopItem) {
-        switch shopItem.type {
-        case .energy:
-            statModel.addEnergy(amount: shopItem.lifeAmount)
-        case .fun:
-            statModel.addFun(amount: shopItem.lifeAmount)
-        case .hygiene:
-            statModel.addHygiene(amount: shopItem.lifeAmount)
-        }
+        if statModel.coin! >= shopItem.price {
+            switch shopItem.type {
+            case .energy:
+                statModel.addEnergy(amount: shopItem.lifeAmount)
+            case .fun:
+                statModel.addFun(amount: shopItem.lifeAmount)
+            case .hygiene:
+                statModel.addHygiene(amount: shopItem.lifeAmount)
+            }
 
-        statModel.reduceCoin(amount: shopItem.price)
+            statModel.reduceCoin(amount: shopItem.price)
+        } else {
+            print("Insufficient coin!")
+        }
     }
 
     // TODO: Testing
@@ -48,7 +52,7 @@ class ShopViewController: ObservableObject {
     func add() {
         print("add")
         shopItemModel.addItem(
-            ShopItem(id: 2, name: "Avocado", price: 3000, type: .energy, lifeAmount: 300)
+            ShopItem(name: "Avocado", price: 3000, type: .energy, lifeAmount: 300)
         )
         print(shopItemsData)
     }
