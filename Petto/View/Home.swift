@@ -64,6 +64,12 @@ struct Home: View {
                                         .font(.caption)
                                 }
                                 .buttonStyle(IconButtonRect(width: 50, height: 50))
+                                NavigationLink {
+                                    Shop()
+                                } label: {
+                                    Text("Shop")
+                                        .font(.caption)
+                                }.buttonStyle(IconButtonRect(width: 50, height: 50))
                             }
                         }
                         Spacer()
@@ -81,9 +87,6 @@ struct Home: View {
                         print(error.localizedDescription)
                     }
                 }
-                // Health Kit
-//                healthKitController.authorizeHealthKit()
-//                healthKitController.fetchHealthData()
 
                 timerController.setTimer(key: "statTimer", withInterval: 1) {
                     statController.updateStats()
