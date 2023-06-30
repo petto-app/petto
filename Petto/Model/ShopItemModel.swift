@@ -25,7 +25,7 @@ struct ShopItem: Identifiable, Codable {
 
 class ShopItemModel: ObservableObject {
     public static var shared: ShopItemModel = .init()
-    
+
     @AppStorage("shopItems")
     var shopItemsData: Data = .init()
 

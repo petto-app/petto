@@ -18,19 +18,20 @@ struct PettoApp: App {
     @StateObject var statController = StatController()
     @StateObject var timerController = TimerController()
     @StateObject var gameKitController = GameKitController()
+    @StateObject var fancyToast = FancyToastClass()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(gameKitController)
                 .environmentObject(shopViewController)
                 .environmentObject(timeController)
                 .environmentObject(healthKitController)
-                .environmentObject(FancyToastClass())
+                .environmentObject(fancyToast)
                 .environmentObject(bottomSheet)
                 .environmentObject(dailyTaskController)
                 .environmentObject(statController)
                 .environmentObject(timerController)
-                .environmentObject(gameKitController)
         }
     }
 }

@@ -26,9 +26,10 @@ struct DailyTaskItem: Identifiable, Codable {
 class DailyTaskModel: ObservableObject {
     public static var shared: DailyTaskModel = .init()
     var HKModel = HealthKitModel.shared
-    
+    var statModel = StatModel.shared
+
     @Published var lastAccessedDate: Date?
-    
+
     private let userDefaults = UserDefaults.standard
     private let calendar = Calendar.current
 
@@ -52,15 +53,15 @@ class DailyTaskModel: ObservableObject {
     init() {
         let totalStepCount = HKModel.totalStepCount
         let totalStandTime = HKModel.totalStandTime
-        
-        self.dailyTasks = [
+
+        dailyTasks = [
             DailyTaskItem(name: "Take 1000 steps", amount: Int(totalStepCount), maxAmount: 1000, coin: 10, isDone: false, type: .stepCount),
             DailyTaskItem(name: "Take 5000 steps", amount: Int(totalStepCount), maxAmount: 5000, coin: 50, isDone: false, type: .stepCount),
             DailyTaskItem(name: "Stand up for 10 minutes", amount: Int(totalStandTime), maxAmount: 10, coin: 10, isDone: false, type: .appleStandTime),
             DailyTaskItem(name: "Stand up for 30 minutes", amount: Int(totalStandTime), maxAmount: 30, coin: 50, isDone: false, type: .appleStandTime),
             DailyTaskItem(name: "Finish All Tasks", amount: 0, maxAmount: 5, coin: 100, isDone: false)
         ]
-        
+
         resetTaskStatusIfNeeded()
         updateLastAccessedDate()
     }
@@ -71,7 +72,7 @@ class DailyTaskModel: ObservableObject {
             
         for task in dailyTasks {
             var updatedTask = task
-            
+
             if task.type == .stepCount {
                 updatedTask.amount = totalStepCount
                 if updatedTask.isDone != true { // if the task is not finished before
@@ -89,10 +90,10 @@ class DailyTaskModel: ObservableObject {
                     }
                 }
             }
-            
+
             updatedTasks.append(updatedTask)
         }
-        
+
         // Check total finished task as last daily task
         let completedTasks = updatedTasks.filter { $0.isDone }
         updatedTasks[dailyTasks.count - 1].amount = completedTasks.count
@@ -103,30 +104,30 @@ class DailyTaskModel: ObservableObject {
         self.dailyTasks = updatedTasks
         return coinAddition
     }
-    
+
     var shouldRewardCoins: Bool {
         guard let lastAccessedDate = lastAccessedDate else {
             return false // First-time access, no reward yet
         }
-        
+
         let currentDate = Date()
         let components = calendar.dateComponents([.year, .month, .day], from: lastAccessedDate)
         let lastAccessedDay = calendar.date(from: components)!
         let currentDay = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: currentDate))!
-        
+
         return currentDay > lastAccessedDay
     }
-    
+
     private func updateLastAccessedDate() {
         lastAccessedDate = Date()
         userDefaults.set(lastAccessedDate, forKey: "LastAccessedDate")
     }
-    
+
     private func resetTaskStatusIfNeeded() {
         guard shouldRewardCoins else {
             return
         }
-        
+
         var updatedTasks: [DailyTaskItem] = []
         for task in dailyTasks {
             var updatedTask = task

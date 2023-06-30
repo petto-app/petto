@@ -24,6 +24,10 @@ class TimerModel: ObservableObject {
         internalTimer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(doJob), userInfo: nil, repeats: true)
     }
 
+    func clearJobs() {
+        jobs = []
+    }
+
     func pauseTimer() {
         guard internalTimer != nil else {
             print("No timer active, start the timer before you stop it.")
