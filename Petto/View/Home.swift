@@ -69,6 +69,14 @@ struct Home: View {
                                 NavigationLink {
                                     CameraView()
                                 } label: {
+                                    Text("Camera")
+                                        .font(.caption)
+                                }.buttonStyle(IconButtonRect(width: 50, height: 50))
+                                
+                                NavigationLink {
+//                                    BMViewController().showView()
+                                    BMView()
+                                } label: {
                                     Text("BMS")
                                         .font(.caption)
                                 }.buttonStyle(IconButtonRect(width: 50, height: 50))

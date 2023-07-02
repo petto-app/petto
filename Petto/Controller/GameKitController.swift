@@ -51,7 +51,7 @@ class GameKitController: NSObject, GKLocalPlayerListener, ObservableObject {
                 player: playerModel.localPlayer,
                 leaderboardIDs: ["LEADERBOARD_ID"]
             ) { error in
-                print("Leaderboard Error:", error?.localizedDescription)
+                print("Leaderboard Error:", error?.localizedDescription as Any)
             }
         }
     }
