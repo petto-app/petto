@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05088DB42A52D8360016D6D8 /* BodyMovement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05088DB32A52D8360016D6D8 /* BodyMovement.storyboard */; };
 		051A47772A4EECBE00727977 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A47762A4EECBE00727977 /* CameraModel.swift */; };
 		051A47792A4EEEA800727977 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A47782A4EEEA800727977 /* CameraView.swift */; };
 		051A477B2A4EF84B00727977 /* ViewFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A477A2A4EF84B00727977 /* ViewFinder.swift */; };
@@ -82,6 +83,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05088DB32A52D8360016D6D8 /* BodyMovement.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BodyMovement.storyboard; sourceTree = "<group>"; };
 		051A47762A4EECBE00727977 /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
 		051A47782A4EEEA800727977 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		051A477A2A4EF84B00727977 /* ViewFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFinder.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				058A64422A51CE5C00C09712 /* BMView.swift */,
 				058A64142A50784100C09712 /* SummaryViewController.swift */,
 				058A64442A51CF9400C09712 /* SummaryView.swift */,
+				05088DB32A52D8360016D6D8 /* BodyMovement.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				9376A9872A3F5A0A0037F2FE /* Preview Assets.xcassets in Resources */,
 				93D608922A461AAE0058EA80 /* background.mp3 in Resources */,
 				9376A9842A3F5A0A0037F2FE /* Assets.xcassets in Resources */,
+				05088DB42A52D8360016D6D8 /* BodyMovement.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

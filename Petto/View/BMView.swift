@@ -7,17 +7,18 @@
 
 import SwiftUI
 
-protocol OnAppearDelegate: AnyObject {
-    func updateBottomSheet(_ viewController: BMViewController)
+protocol BottomSheetDelegate {
+    func dismissBottomSheet()
 }
 
 struct BMView: UIViewControllerRepresentable {
     typealias UIViewControllerType = BMViewController
-//    @Binding var bottomSheet: BottomSheet?
     @EnvironmentObject var bottomSheet: BottomSheet
     
     func makeUIViewController(context: Context) -> BMViewController {
-        let vc = BMViewController()
+        let sb = UIStoryboard(name: "BodyMovement", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: "BMViewStoryboard") as! BMViewController
+        vc.coordinator = context.coordinator
         return vc
     }
     
@@ -37,14 +38,14 @@ struct BMView_Previews: PreviewProvider {
 }
 
 extension BMView {
-    class Coordinator: NSObject {
+    class Coordinator: NSObject, ObservableObject, BottomSheetDelegate {
         var parent: BMView
 
         init(_ parent: BMView) {
             self.parent = parent
         }
         
-        func viewWillAppear() {
+        func dismissBottomSheet() {
             parent.bottomSheet.showSheet = false
         }
     }

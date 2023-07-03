@@ -12,30 +12,30 @@ import SwiftUI
 @available(iOS 14.0, *)
 class BMViewController: UIViewController {
     /// The full-screen view that presents the pose on top of the video frames.
-    private var imageView: UIImageView!
+    @IBOutlet var imageView: UIImageView!
 
     /// The stack that contains the labels at the middle of the leading edge.
-    private var labelStack: UIStackView!
+    @IBOutlet weak var labelStack: UIStackView!
 
     /// The label that displays the model's exercise action prediction.
-    private var actionLabel: UILabel!
+    @IBOutlet weak var actionLabel: UILabel!
 
     /// The label that displays the model's confidence in its prediction.
-    private var confidenceLabel: UILabel!
+    @IBOutlet weak var confidenceLabel: UILabel!
 
     /// The stack that contains the buttons at the bottom of the leading edge.
-    private var buttonStack: UIStackView!
+    @IBOutlet weak var buttonStack: UIStackView!
 
     /// The button users tap to show a summary view.
-    private var summaryButton: UIButton!
+    @IBOutlet weak var summaryButton: UIButton!
 
     /// The button users tap to toggle between the front- and back-facing
     /// cameras.
-    private var cameraButton: UIButton!
+    @IBOutlet weak var cameraButton: UIButton!
 
     /// Captures the frames from the camera and creates a frame publisher.
     var videoCapture: VideoCapture!
-
+    
     /// Builds a chain of Combine publishers from a frame publisher.
     ///
     /// The video-processing chain provides the view controller with:
@@ -47,6 +47,7 @@ class BMViewController: UIViewController {
     /// Maintains the aggregate time for each action the model predicts.
     /// - Tag: actionFrameCounts
     var actionFrameCounts = [String: Int]()
+    public var coordinator: BottomSheetDelegate?
 }
 
 struct BMViewController_Previews: PreviewProvider {
@@ -80,6 +81,7 @@ extension BMViewController {
         videoCapture.delegate = self
 
         updateUILabelsWithPrediction(.startingPrediction)
+        coordinator?.dismissBottomSheet()
     }
 
     /// Configures the video captures session with the device's orientation.

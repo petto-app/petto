@@ -102,7 +102,6 @@ struct Home: View {
                                 }.buttonStyle(IconButtonRect(width: 50, height: 50))
                                 
                                 NavigationLink {
-//                                    BMViewController().showView()
                                     BMView()
                                 } label: {
                                     Text("BMS")
