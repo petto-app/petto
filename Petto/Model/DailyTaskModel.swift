@@ -59,7 +59,7 @@ class DailyTaskModel: ObservableObject {
             DailyTaskItem(name: "Take 5000 steps", amount: Int(totalStepCount), maxAmount: 5000, coin: 50, isDone: false, type: .stepCount),
             DailyTaskItem(name: "Stand up for 10 minutes", amount: Int(totalStandTime), maxAmount: 10, coin: 10, isDone: false, type: .appleStandTime),
             DailyTaskItem(name: "Stand up for 30 minutes", amount: Int(totalStandTime), maxAmount: 30, coin: 50, isDone: false, type: .appleStandTime),
-            DailyTaskItem(name: "Finish All Tasks", amount: 0, maxAmount: 5, coin: 100, isDone: false)
+            DailyTaskItem(name: "Finish All Tasks", amount: 0, maxAmount: 5, coin: 100, isDone: false),
         ]
 
         resetTaskStatusIfNeeded()

@@ -48,7 +48,7 @@ class ShopItemModel: ObservableObject {
         shopItems = [
             ShopItem(name: "Pisang", price: 50, type: .energy, lifeAmount: 10),
             ShopItem(name: "Watch Netflix", price: 60, type: .fun, lifeAmount: 20),
-            ShopItem(name: "Sweep the floor", price: 70, type: .hygiene, lifeAmount: 30)
+            ShopItem(name: "Sweep the floor", price: 70, type: .hygiene, lifeAmount: 30),
         ]
     }
 

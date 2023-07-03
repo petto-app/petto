@@ -13,21 +13,56 @@ struct Home: View {
     @EnvironmentObject var timeController: TimeController
     @EnvironmentObject var healthKitController: HealthKitController
     @EnvironmentObject var bottomSheet: BottomSheet
-    @State private var idleFrameNames: [String] = []
-    @State var isGameCenterOpen: Bool = false
+    @State private var idleFrameNames: [String] = ["shiba-1"]
     @EnvironmentObject var dailyTaskController: DailyTaskController
     @EnvironmentObject var statController: StatController
     @EnvironmentObject var timerController: TimerController
     @AppStorage("coin") var coin: Int?
     @AppStorage("totalCoin") var totalCoin: Int?
 
+    func getWp() -> String {
+        switch statController.hygiene {
+        case 0 ... 20:
+            return "wp3"
+        case 21 ... 50:
+            return "wp2"
+        default:
+            return "wp"
+        }
+    }
+
+    func updateFrames() {
+        switch (statController.energy, statController.fun) {
+        case (0 ... 20, 0 ... 20):
+            idleFrameNames = ["shiba-7"]
+        case (21 ... 50, 0 ... 20):
+            idleFrameNames = ["shiba-3"]
+        case (51 ... 100, 0 ... 20):
+            idleFrameNames = ["shiba-3"]
+        case (0 ... 20, 21 ... 50):
+            idleFrameNames = ["shiba-6"]
+        case (21 ... 50, 21 ... 50):
+            idleFrameNames = ["shiba-6"]
+        case (51 ... 100, 21 ... 50):
+            idleFrameNames = ["shiba-2"]
+        case (0 ... 20, 51 ... 100):
+            idleFrameNames = ["shiba-5"]
+        case (21 ... 50, 51 ... 100):
+            idleFrameNames = ["shiba-4"]
+        case (51 ... 100, 51 ... 100):
+            idleFrameNames = ["shiba-1"]
+        default:
+            idleFrameNames = ["shiba-1"]
+        }
+    }
+
     var body: some View {
         NavigationStack {
             VStack {
                 ZStack {
-                    Image("wp").resizable().ignoresSafeArea(.all)
+                    Image(getWp()).resizable().ignoresSafeArea(.all)
                         .aspectRatio(contentMode: .fill)
-                    Avatar(idleFrameNames: $idleFrameNames)
+                    Avatar(idleFrameNames: $idleFrameNames, scale: 1.2)
                     VStack {
                         HStack {
                             NavigationLink {
@@ -59,13 +94,6 @@ struct Home: View {
                                     )
                                     .scaledToFit().frame(width: 35, height: 35)
                                 }.buttonStyle(IconButtonRect(width: 50, height: 50))
-                                Button {
-                                    isGameCenterOpen = true
-                                } label: {
-                                    Text("Game Center")
-                                        .font(.caption)
-                                }
-                                .buttonStyle(IconButtonRect(width: 50, height: 50))
                                 NavigationLink {
                                     CameraView()
                                 } label: {
@@ -80,7 +108,7 @@ struct Home: View {
             }.onAppear {
                 bottomSheet.showSheet = true
                 let idleFrameAtlas = SKTextureAtlas(named: "IdleFrames")
-                idleFrameNames = idleFrameAtlas.textureNames.sorted()
+                // idleFrameNames = idleFrameAtlas.textureNames.sorted()
                 GSAudio.sharedInstance.playSound(soundFileName: "background", numberOfLoops: -1)
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
                     if success {
@@ -93,6 +121,7 @@ struct Home: View {
                 timerController.setTimer(key: "statTimer", withInterval: 1) {
                     statController.updateStats()
                     statController.objectWillChange.send()
+                    updateFrames()
                 }
             }
             .sheet(isPresented: $bottomSheet.showSheet) {
@@ -109,9 +138,6 @@ struct Home: View {
                     )
                     .presentationCornerRadius(24)
                     .padding(.top, 16)
-                    .sheet(isPresented: $isGameCenterOpen) {
-                        GameCenterView()
-                    }
             }
         }.navigationViewStyle(StackNavigationViewStyle())
     }

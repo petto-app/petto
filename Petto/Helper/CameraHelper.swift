@@ -318,7 +318,8 @@ class CameraHelper: NSObject {
 
             if let photoOutputVideoConnection = photoOutput.connection(with: .video) {
                 if photoOutputVideoConnection.isVideoOrientationSupported,
-                   let videoOrientation = self.videoOrientationFor(self.deviceOrientation) {
+                   let videoOrientation = self.videoOrientationFor(self.deviceOrientation)
+                {
                     photoOutputVideoConnection.videoOrientation = videoOrientation
                 }
             }
@@ -344,7 +345,8 @@ extension CameraHelper: AVCaptureVideoDataOutputSampleBufferDelegate {
         guard let pixelBuffer = sampleBuffer.imageBuffer else { return }
 
         if connection.isVideoOrientationSupported,
-           let videoOrientation = videoOrientationFor(deviceOrientation) {
+           let videoOrientation = videoOrientationFor(deviceOrientation)
+        {
             connection.videoOrientation = videoOrientation
         }
 
