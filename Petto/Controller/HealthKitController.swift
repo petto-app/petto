@@ -29,7 +29,7 @@ class HealthKitController: ObservableObject {
         if HKHealthStore.isHealthDataAvailable() {
             let infoToRead = Set([
                 HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!,
-                HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.appleStandTime)!
+                HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.appleStandTime)!,
             ])
 
             HKModel.healthStore.requestAuthorization(toShare: nil, read: infoToRead, completion: { success, error in

@@ -12,6 +12,10 @@ struct SettingsContainer: View {
     @Binding var startSelection: String
     @Binding var finishSelection: String
 
+    @StateObject var timeController: TimeController = .init()
+
+    @EnvironmentObject var fToast: FancyToastClass
+
     let interval = [1, 2, 3]
     let hours = Array(0 ... 23).map { String(format: "%02d", $0) }
     @State private var currentDate = Date()
@@ -63,6 +67,15 @@ struct SettingsContainer: View {
                     }
                 }
             }
+            Button("Save") {
+                let res = timeController.setPrimeTime(start: Int(startSelection) ?? 9, finish: Int(finishSelection) ?? 17, interval: intervalSelection)
+                if !res {
+                    fToast.toast = FancyToast(type: .error, title: "Error", message: "Invalid input", duration: 3)
+                } else {
+                    fToast.toast = FancyToast(type: .success, title: "Success", message: "Settings saved", duration: 3)
+                }
+            }
+            .buttonStyle(MainButton(width: 80))
         }
         .padding(.horizontal, 7)
         .padding(.bottom, 20)
