@@ -26,8 +26,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ArZ-44-lD1">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" axis="vertical" alignment="center" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qXp-yJ-YAz">
-                                <rect key="frame" x="106.33333333333333" y="666.66666666666663" width="162.66666666666669" height="91.333333333333371"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" semanticContentAttribute="playback" misplaced="YES" axis="vertical" alignment="center" spacingType="standard" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qXp-yJ-YAz">
+                                <rect key="frame" x="106" y="461" width="162.66666666666669" height="91.333333333333371"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prediction" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTN-IC-lyf">
                                         <rect key="frame" x="8" y="8" width="146.66666666666666" height="40.666666666666664"/>
@@ -90,6 +90,10 @@
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shiba-1" translatesAutoresizingMaskIntoConstraints="NO" id="dVr-06-JZX">
+                                <rect key="frame" x="166" y="511" width="214" height="231"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -116,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-30" y="-136"/>
+            <point key="canvasLocation" x="-31.199999999999999" y="-136.69950738916256"/>
         </scene>
         <!--Summary View Controller-->
         <scene sceneID="R0o-Ga-Jsh">
@@ -202,6 +206,7 @@
     </scenes>
     <resources>
         <image name="arrow.triangle.2.circlepath.camera.fill" catalog="system" width="128" height="93"/>
+        <image name="shiba-1" width="304.33334350585938" height="323"/>
         <namedColor name="Button Stack Background">
             <color red="0.5" green="0.5" blue="0.5" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
