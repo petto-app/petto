@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		05088DB42A52D8360016D6D8 /* BodyMovement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05088DB32A52D8360016D6D8 /* BodyMovement.storyboard */; };
-		051A47772A4EECBE00727977 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A47762A4EECBE00727977 /* CameraModel.swift */; };
-		051A47792A4EEEA800727977 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A47782A4EEEA800727977 /* CameraView.swift */; };
-		051A477B2A4EF84B00727977 /* ViewFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A477A2A4EF84B00727977 /* ViewFinder.swift */; };
 		05398D0D2A4BF48B00BC1DF2 /* DailyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05398D0C2A4BF48B00BC1DF2 /* DailyTask.swift */; };
 		05398D0F2A4BF4CF00BC1DF2 /* DailyTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05398D0E2A4BF4CF00BC1DF2 /* DailyTaskController.swift */; };
 		057354942A482AD700C4D3F2 /* GameCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057354932A482AD700C4D3F2 /* GameCenterView.swift */; };
@@ -23,7 +20,6 @@
 		058A63FF2A4FF7ED00C09712 /* ActionPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A63F92A4FF7ED00C09712 /* ActionPrediction.swift */; };
 		058A64002A4FF7ED00C09712 /* ExerciseClassifier+PredictAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A63FA2A4FF7ED00C09712 /* ExerciseClassifier+PredictAction.swift */; };
 		058A64012A4FF7ED00C09712 /* ExerciseClassifier+FrameRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A63FB2A4FF7ED00C09712 /* ExerciseClassifier+FrameRate.swift */; };
-		058A64112A50778F00C09712 /* CameraHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A64102A50778F00C09712 /* CameraHelper.swift */; };
 		058A64132A5077BC00C09712 /* BMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A64122A5077BC00C09712 /* BMViewController.swift */; };
 		058A64152A50784100C09712 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A64142A50784100C09712 /* SummaryViewController.swift */; };
 		058A642D2A51A4EF00C09712 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058A64292A51A4EF00C09712 /* VideoCapture.swift */; };
@@ -84,9 +80,6 @@
 
 /* Begin PBXFileReference section */
 		05088DB32A52D8360016D6D8 /* BodyMovement.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BodyMovement.storyboard; sourceTree = "<group>"; };
-		051A47762A4EECBE00727977 /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
-		051A47782A4EEEA800727977 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
-		051A477A2A4EF84B00727977 /* ViewFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFinder.swift; sourceTree = "<group>"; };
 		05398D0B2A4BF3A800BC1DF2 /* Petto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Petto.entitlements; sourceTree = "<group>"; };
 		05398D0C2A4BF48B00BC1DF2 /* DailyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTask.swift; sourceTree = "<group>"; };
 		05398D0E2A4BF4CF00BC1DF2 /* DailyTaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskController.swift; sourceTree = "<group>"; };
@@ -104,7 +97,6 @@
 		058A640D2A50777300C09712 /* Pose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pose.swift; sourceTree = "<group>"; };
 		058A640E2A50777300C09712 /* Pose+Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pose+Connection.swift"; sourceTree = "<group>"; };
 		058A640F2A50777300C09712 /* Pose+Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pose+Empty.swift"; sourceTree = "<group>"; };
-		058A64102A50778F00C09712 /* CameraHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHelper.swift; sourceTree = "<group>"; };
 		058A64122A5077BC00C09712 /* BMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMViewController.swift; sourceTree = "<group>"; };
 		058A64142A50784100C09712 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		058A64292A51A4EF00C09712 /* VideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
@@ -288,7 +280,6 @@
 				93F344EA2A47225B0089D2A8 /* Settings.swift */,
 				057354932A482AD700C4D3F2 /* GameCenterView.swift */,
 				93455CC92A4DEB04009A514E /* Shop.swift */,
-				051A47782A4EEEA800727977 /* CameraView.swift */,
 				058A64122A5077BC00C09712 /* BMViewController.swift */,
 				058A64422A51CE5C00C09712 /* BMView.swift */,
 				058A64142A50784100C09712 /* SummaryViewController.swift */,
@@ -312,7 +303,6 @@
 				931A941F2A4B3FF800058E90 /* BottomSheet.swift */,
 				931A94342A4BEDF600058E90 /* FancyToast.swift */,
 				931A943C2A4C2FEC00058E90 /* TimerModel.swift */,
-				051A47762A4EECBE00727977 /* CameraModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -332,7 +322,6 @@
 				931A94362A4BEE3300058E90 /* FancyToastView.swift */,
 				931A94382A4BEE5E00058E90 /* FancyToastStyle.swift */,
 				05398D0C2A4BF48B00BC1DF2 /* DailyTask.swift */,
-				051A477A2A4EF84B00727977 /* ViewFinder.swift */,
 				93455CCB2A5283EB009A514E /* ShopItemComponent.swift */,
 			);
 			path = Component;
@@ -347,7 +336,6 @@
 				058A64282A51A4DF00C09712 /* VideoCapture */,
 				058A63F32A4FF6A700C09712 /* ActionClassifier */,
 				93D6088A2A46142A0058EA80 /* AudioPlayer.swift */,
-				058A64102A50778F00C09712 /* CameraHelper.swift */,
 				93C768A42A46B1F200B70E4B /* PrimeTimeHelper.swift */,
 				058A64372A51AC9E00C09712 /* UIViewControllerExtension.swift */,
 				058A64392A51ACD100C09712 /* UIViewExtension.swift */,
@@ -454,7 +442,6 @@
 				058A64402A51B33F00C09712 /* Pose.swift in Sources */,
 				931A94162A4AC66700058E90 /* HealthKitController.swift in Sources */,
 				05F4A2C82A45811C00DE56A7 /* StatModel.swift in Sources */,
-				051A47772A4EECBE00727977 /* CameraModel.swift in Sources */,
 				058A63F52A4FF6D800C09712 /* ExerciseClassifier.mlmodel in Sources */,
 				933239B52A4453A300D9B89B /* StatBar.swift in Sources */,
 				931A94392A4BEE5E00058E90 /* FancyToastStyle.swift in Sources */,
@@ -470,14 +457,11 @@
 				057354962A482C3700C4D3F2 /* PlayerModel.swift in Sources */,
 				9376A9822A3F5A080037F2FE /* ContentView.swift in Sources */,
 				058A64132A5077BC00C09712 /* BMViewController.swift in Sources */,
-				051A47792A4EEEA800727977 /* CameraView.swift in Sources */,
 				05BFB3902A443B3600A026D7 /* ShopItemModel.swift in Sources */,
 				05BFB3872A4435B400A026D7 /* ShopViewController.swift in Sources */,
 				05398D0F2A4BF4CF00BC1DF2 /* DailyTaskController.swift in Sources */,
 				05F4A2CA2A45816B00DE56A7 /* DailyTaskModel.swift in Sources */,
-				051A477B2A4EF84B00727977 /* ViewFinder.swift in Sources */,
 				05BFB3972A445B3900A026D7 /* TimeModel.swift in Sources */,
-				058A64112A50778F00C09712 /* CameraHelper.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				931A94372A4BEE3300058E90 /* FancyToastView.swift in Sources */,
