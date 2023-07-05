@@ -1,9 +1,9 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+ See LICENSE folder for this sample’s licensing information.
 
-Abstract:
-Configures a capture device's frame rate range around a target frame rate.
-*/
+ Abstract:
+ Configures a capture device's frame rate range around a target frame rate.
+ */
 
 import AVFoundation
 

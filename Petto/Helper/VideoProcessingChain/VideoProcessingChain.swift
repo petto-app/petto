@@ -1,14 +1,14 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+ See LICENSE folder for this sample’s licensing information.
 
-Abstract:
-Builds a chain of Combine publisher-subscribers upon the video capture
- session's video frame publisher.
-*/
+ Abstract:
+ Builds a chain of Combine publisher-subscribers upon the video capture
+  session's video frame publisher.
+ */
 
-import Vision
 import Combine
 import CoreImage
+import Vision
 
 protocol VideoProcessingChainDelegate: AnyObject {
     /// Informs the delegate when Vision analyzes an image in the frame chain.
@@ -89,6 +89,7 @@ struct VideoProcessingChain {
 }
 
 // MARK: - Combine Chain Builder
+
 extension VideoProcessingChain {
     /// Clears and (re)builds a series of Combine publishers that subscribes to
     /// a video frame publisher and generates action predictions.
@@ -152,7 +153,9 @@ extension VideoProcessingChain {
             .sink(receiveValue: sendPrediction)
     }
 }
+
 // MARK: - Transforms for Combine
+
 extension VideoProcessingChain {
     /// Converts a sample buffer into a core graphics image.
     /// - Parameter buffer: A sample buffer, typically from a video capture.
@@ -176,7 +179,8 @@ extension VideoProcessingChain {
 
         // Generate a Core Graphics image from the Core Image image.
         guard let cgImage = ciContext.createCGImage(ciImage,
-                                                    from: ciImage.extent) else {
+                                                    from: ciImage.extent)
+        else {
             print("Unable to create an image from a frame.")
             return nil
         }

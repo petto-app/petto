@@ -69,7 +69,7 @@ struct PulseButton<Content: View>: View {
 
             self.children()
         } //: ZSTACK
-        .onAppear {
+        .task {
             self.isAnimating.toggle()
         }
     }

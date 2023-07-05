@@ -1,11 +1,11 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+ See LICENSE folder for this sample’s licensing information.
 
-Abstract:
-Defines an "empty" pose multiarray with same dimensions as an array from
- Vision's human body pose observation.
- The project uses this as a default when a real pose array isn't available.
-*/
+ Abstract:
+ Defines an "empty" pose multiarray with same dimensions as an array from
+  Vision's human body pose observation.
+  The project uses this as a default when a real pose array isn't available.
+ */
 
 import CoreML
 
@@ -23,7 +23,8 @@ extension Pose {
     private static func zeroedMultiArrayWithShape(_ shape: [Int]) -> MLMultiArray {
         // Create the multiarray.
         guard let array = try? MLMultiArray(shape: shape as [NSNumber],
-                                            dataType: .double) else {
+                                            dataType: .double)
+        else {
             fatalError("Creating a multiarray with \(shape) shouldn't fail.")
         }
 

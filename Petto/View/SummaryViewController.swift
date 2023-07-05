@@ -5,13 +5,13 @@
 //  Created by Carissa Farry Hilmi Az Zahra on 01/07/23.
 //
 
-import UIKit
 import SwiftUI
+import UIKit
 
 /// Displays a table view of the actions with the time duration for each.
 class SummaryViewController: UIViewController {
     /// The summary view controller's primary view.
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
 
     /// The list of actions, sorted by descending time.
     private var sortedActions = [String]()
@@ -58,15 +58,15 @@ struct SummaryViewController_Previews: PreviewProvider {
 }
 
 // MARK: - Table View Data Source
+
 extension SummaryViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView,
+                   numberOfRowsInSection _: Int) -> Int {
         return sortedActions.count
     }
 
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let customCellName = "SummaryCellPrototype"
         let cell = tableView.dequeueReusableCell(withIdentifier: customCellName,
                                                  for: indexPath)
@@ -91,13 +91,14 @@ extension SummaryViewController: UITableViewDataSource {
 }
 
 // MARK: - Table Cell
-///Displays the name of an action and the total time duration of that action.
+
+/// Displays the name of an action and the total time duration of that action.
 class SummaryTableViewCell: UITableViewCell {
     /// Displays name of the action.
-    @IBOutlet weak var actionLabel: UILabel!
+    @IBOutlet var actionLabel: UILabel!
 
     /// Displays the amount of time of the action.
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
 
     /// Converts the floating point value into a string for the action label.
     /// For example, the time label shows "1.7s" for a value of `1.66666666666`.

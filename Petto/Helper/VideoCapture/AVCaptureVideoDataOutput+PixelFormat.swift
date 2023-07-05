@@ -1,9 +1,9 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+ See LICENSE folder for this sample’s licensing information.
 
-Abstract:
-Creates a video data output set to produce frames with a specific pixel format.
-*/
+ Abstract:
+ Creates a video data output set to produce frames with a specific pixel format.
+ */
 
 import AVFoundation
 

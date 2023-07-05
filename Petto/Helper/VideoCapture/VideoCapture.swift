@@ -1,14 +1,14 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+ See LICENSE folder for this sample’s licensing information.
 
-Abstract:
-Convenience class that configures the video capture session and
- creates a (video) frame publisher.
-*/
+ Abstract:
+ Convenience class that configures the video capture session and
+  creates a (video) frame publisher.
+ */
 
-import UIKit
-import Combine
 import AVFoundation
+import Combine
+import UIKit
 
 /// - Tag: Frame
 typealias Frame = CMSampleBuffer
@@ -100,7 +100,6 @@ class VideoCapture: NSObject {
 
         // Use the device's physical orientation to orient the camera.
         switch currentPhysicalOrientation {
-
         // Default to portrait if face up, face down, or unknown.
         case .portrait, .faceUp, .faceDown, .unknown:
             // Use portrait for "flat" orientations.
@@ -126,7 +125,6 @@ class VideoCapture: NSObject {
             DispatchQueue.global(qos: .background).async {
                 self.captureSession.startRunning()
             }
-            
         }
     }
 
@@ -136,17 +134,18 @@ class VideoCapture: NSObject {
 }
 
 // MARK: - AV Capture Video Data Output Sample Buffer Delegate
-extension VideoCapture: AVCaptureVideoDataOutputSampleBufferDelegate {
-    func captureOutput(_ output: AVCaptureOutput,
-                       didOutput frame: Frame,
-                       from connection: AVCaptureConnection) {
 
+extension VideoCapture: AVCaptureVideoDataOutputSampleBufferDelegate {
+    func captureOutput(_: AVCaptureOutput,
+                       didOutput frame: Frame,
+                       from _: AVCaptureConnection) {
         // Forward the frame through the publisher.
         framePublisher?.send(frame)
     }
 }
 
 // MARK: - Capture Session Configuration
+
 extension VideoCapture {
     /// Creates a video frame publisher by starting or reconfiguring the
     /// video capture session.
@@ -206,7 +205,6 @@ extension VideoCapture {
     /// - Tag: configureCaptureConnection
     private func configureCaptureConnection(_ input: AVCaptureDeviceInput?,
                                             _ output: AVCaptureVideoDataOutput?) -> Bool {
-
         guard let input = input else { return false }
         guard let output = output else { return false }
 

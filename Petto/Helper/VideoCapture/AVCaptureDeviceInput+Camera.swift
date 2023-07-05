@@ -1,9 +1,9 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+ See LICENSE folder for this sample’s licensing information.
 
-Abstract:
-Creates and configures a camera device input for VideoCapture.swift.
-*/
+ Abstract:
+ Creates and configures a camera device input for VideoCapture.swift.
+ */
 
 import AVFoundation
 
@@ -15,7 +15,8 @@ extension AVCaptureDeviceInput {
         // Select the camera.
         guard let camera = AVCaptureDevice.default(.builtInWideAngleCamera,
                                                    for: AVMediaType.video,
-                                                   position: position) else {
+                                                   position: position)
+        else {
             return nil
         }
 

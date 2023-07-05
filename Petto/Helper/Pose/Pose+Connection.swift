@@ -1,10 +1,10 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+ See LICENSE folder for this sample’s licensing information.
 
-Abstract:
-A `Connection` defines the line between two landmarks.
- The only real purpose for a connection is to draw that line with a gradient.
-*/
+ Abstract:
+ A `Connection` defines the line between two landmarks.
+  The only real purpose for a connection is to draw that line with a gradient.
+ */
 
 import UIKit
 
@@ -19,8 +19,7 @@ extension Pose {
                              UIColor.systemOrange.cgColor,
                              UIColor.systemRed.cgColor,
                              UIColor.systemPurple.cgColor,
-                             UIColor.systemBlue.cgColor
-        ] as CFArray
+                             UIColor.systemBlue.cgColor] as CFArray
 
         static let gradientColorSpace = CGColorSpace(name: CGColorSpace.sRGB)
 
@@ -52,7 +51,6 @@ extension Pose {
         func drawToContext(_ context: CGContext,
                            applying transform: CGAffineTransform? = nil,
                            at scale: CGFloat = 1.0) {
-
             let start = point1.applying(transform ?? .identity)
             let end = point2.applying(transform ?? .identity)
 

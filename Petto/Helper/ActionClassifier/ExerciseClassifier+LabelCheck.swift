@@ -1,9 +1,9 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+ See LICENSE folder for this sample’s licensing information.
 
-Abstract:
-Adds a runtime check to see if the app's knowledge matches the model's labels.
-*/
+ Abstract:
+ Adds a runtime check to see if the app's knowledge matches the model's labels.
+ */
 
 extension ExerciseClassifier {
     /// Ensures the apps knows all of the model's labels at runtime.

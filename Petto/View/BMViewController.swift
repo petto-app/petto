@@ -5,9 +5,9 @@
 //  Created by Carissa Farry Hilmi Az Zahra on 01/07/23.
 //
 
+import SwiftUI
 import UIKit
 import Vision
-import SwiftUI
 
 @available(iOS 14.0, *)
 class BMViewController: UIViewController {
@@ -15,27 +15,27 @@ class BMViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
 
     /// The stack that contains the labels at the middle of the leading edge.
-    @IBOutlet weak var labelStack: UIStackView!
+    @IBOutlet var labelStack: UIStackView!
 
     /// The label that displays the model's exercise action prediction.
-    @IBOutlet weak var actionLabel: UILabel!
+    @IBOutlet var actionLabel: UILabel!
 
     /// The label that displays the model's confidence in its prediction.
-    @IBOutlet weak var confidenceLabel: UILabel!
+    @IBOutlet var confidenceLabel: UILabel!
 
     /// The stack that contains the buttons at the bottom of the leading edge.
-    @IBOutlet weak var buttonStack: UIStackView!
+    @IBOutlet var buttonStack: UIStackView!
 
     /// The button users tap to show a summary view.
-    @IBOutlet weak var summaryButton: UIButton!
+    @IBOutlet var summaryButton: UIButton!
 
     /// The button users tap to toggle between the front- and back-facing
     /// cameras.
-    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet var cameraButton: UIButton!
 
     /// Captures the frames from the camera and creates a frame publisher.
     var videoCapture: VideoCapture!
-    
+
     /// Builds a chain of Combine publishers from a frame publisher.
     ///
     /// The video-processing chain provides the view controller with:
@@ -57,6 +57,7 @@ struct BMViewController_Previews: PreviewProvider {
 }
 
 // MARK: - View Controller Events
+
 extension BMViewController {
     /// Configures the main view after it loads.
     override func viewDidLoad() {
@@ -96,14 +97,15 @@ extension BMViewController {
     }
 
     /// Notifies the video capture when the device rotates to a new orientation.
-    override func viewWillTransition(to size: CGSize,
-                                     with coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to _: CGSize,
+                                     with _: UIViewControllerTransitionCoordinator) {
         // Update the the camera's orientation to match the device's.
         videoCapture.updateDeviceOrientation()
     }
 }
 
 // MARK: - Button Events
+
 extension BMViewController {
     /// Toggles the video capture between the front- and back-facing cameras.
     @IBAction func onCameraButtonTapped(_: Any) {
@@ -148,21 +150,23 @@ extension BMViewController {
 }
 
 // MARK: - Video Capture Delegate
+
 extension BMViewController: VideoCaptureDelegate {
     /// Receives a video frame publisher from a video capture.
     /// - Parameters:
     ///   - videoCapture: A `VideoCapture` instance.
     ///   - framePublisher: A new frame publisher from the video capture.
-    func videoCapture(_ videoCapture: VideoCapture,
+    func videoCapture(_: VideoCapture,
                       didCreate framePublisher: FramePublisher) {
         updateUILabelsWithPrediction(.startingPrediction)
-        
+
         // Build a new video-processing chain by assigning the new frame publisher.
         videoProcessingChain.upstreamFramePublisher = framePublisher
     }
 }
 
 // MARK: - video-processing chain Delegate
+
 extension BMViewController: VideoProcessingChainDelegate {
     /// Receives an action prediction from a video-processing chain.
     /// - Parameters:
@@ -170,10 +174,9 @@ extension BMViewController: VideoProcessingChainDelegate {
     ///   - actionPrediction: An `ActionPrediction`.
     ///   - duration: The span of time the prediction represents.
     /// - Tag: detectedAction
-    func videoProcessingChain(_ chain: VideoProcessingChain,
+    func videoProcessingChain(_: VideoProcessingChain,
                               didPredict actionPrediction: ActionPrediction,
                               for frameCount: Int) {
-
         if actionPrediction.isModelLabel {
             // Update the total number of frames for this action.
             addFrameCount(frameCount, to: actionPrediction.label)
@@ -188,7 +191,7 @@ extension BMViewController: VideoProcessingChainDelegate {
     ///   - chain: A video-processing chain.
     ///   - poses: A `Pose` array.
     ///   - frame: A video frame as a `CGImage`.
-    func videoProcessingChain(_ chain: VideoProcessingChain,
+    func videoProcessingChain(_: VideoProcessingChain,
                               didDetect poses: [Pose]?,
                               in frame: CGImage) {
         // Render the poses on a different queue than pose publisher.
@@ -200,6 +203,7 @@ extension BMViewController: VideoProcessingChainDelegate {
 }
 
 // MARK: - Helper methods
+
 extension BMViewController {
     /// Add the incremental duration to an action's total time.
     /// - Parameters:

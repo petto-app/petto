@@ -1,11 +1,11 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+ See LICENSE folder for this sample’s licensing information.
 
-Abstract:
-Defines the Exercise Classifier's frame rate.
- This property reflect the value the model's author set in the
- Create ML developer tool's training parameters.
-*/
+ Abstract:
+ Defines the Exercise Classifier's frame rate.
+  This property reflect the value the model's author set in the
+  Create ML developer tool's training parameters.
+ */
 
 import CoreML
 
@@ -39,7 +39,7 @@ extension ExerciseClassifier {
         let modelInputs = modelDescription.inputDescriptionsByName
         assert(modelInputs.count == 1, "The model should have exactly 1 input")
 
-        guard let  input = modelInputs.first?.value else {
+        guard let input = modelInputs.first?.value else {
             fatalError("The model must have at least 1 input.")
         }
 

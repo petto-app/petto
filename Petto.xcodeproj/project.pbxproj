@@ -66,6 +66,7 @@
 		9376A9842A3F5A0A0037F2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9376A9832A3F5A0A0037F2FE /* Assets.xcassets */; };
 		9376A9872A3F5A0A0037F2FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9376A9862A3F5A0A0037F2FE /* Preview Assets.xcassets */; };
 		938763242A53F3F300052C9C /* MotleyForcesRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 938763232A53F3F300052C9C /* MotleyForcesRegular.ttf */; };
+		938763272A55616500052C9C /* ShopTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938763262A55616500052C9C /* ShopTab.swift */; };
 		93BFA6692A42EA53007783E4 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA6682A42EA53007783E4 /* Home.swift */; };
 		93BFA66D2A42F56C007783E4 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA66C2A42F56C007783E4 /* IconButton.swift */; };
 		93BFA66F2A42F933007783E4 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA66E2A42F933007783E4 /* Coin.swift */; };
@@ -144,6 +145,7 @@
 		9376A9862A3F5A0A0037F2FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		938763232A53F3F300052C9C /* MotleyForcesRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MotleyForcesRegular.ttf; sourceTree = "<group>"; };
 		938763252A53F45600052C9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		938763262A55616500052C9C /* ShopTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTab.swift; sourceTree = "<group>"; };
 		93BFA6682A42EA53007783E4 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		93BFA66C2A42F56C007783E4 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		93BFA66E2A42F933007783E4 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				93455CCB2A5283EB009A514E /* ShopItemComponent.swift */,
 				93455CCD2A52A7E1009A514E /* AmountButton.swift */,
 				93455CCF2A52D6E0009A514E /* PulseButton.swift */,
+				938763262A55616500052C9C /* ShopTab.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -486,7 +489,6 @@
 				05BFB3872A4435B400A026D7 /* ShopViewController.swift in Sources */,
 				05398D0F2A4BF4CF00BC1DF2 /* DailyTaskController.swift in Sources */,
 				05F4A2CA2A45816B00DE56A7 /* DailyTaskModel.swift in Sources */,
-				051A477B2A4EF84B00727977 /* ViewFinder.swift in Sources */,
 				93455CD02A52D6E0009A514E /* PulseButton.swift in Sources */,
 				05BFB3972A445B3900A026D7 /* TimeModel.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
@@ -512,6 +514,7 @@
 				058A64362A51A5FF00C09712 /* PerformanceReporter.swift in Sources */,
 				9376A9802A3F5A080037F2FE /* PettoApp.swift in Sources */,
 				05F4A2CE2A45818B00DE56A7 /* CharacterModel.swift in Sources */,
+				938763272A55616500052C9C /* ShopTab.swift in Sources */,
 				05F4A2CC2A45817600DE56A7 /* BodyMovementTaskModel.swift in Sources */,
 				058A63FC2A4FF7ED00C09712 /* ExerciseClassifier+Singleton.swift in Sources */,
 				93D608882A45DB6D0058EA80 /* Avatar.swift in Sources */,
