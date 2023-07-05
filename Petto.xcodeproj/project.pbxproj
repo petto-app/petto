@@ -10,6 +10,7 @@
 		05088DB42A52D8360016D6D8 /* BodyMovement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05088DB32A52D8360016D6D8 /* BodyMovement.storyboard */; };
 		05398D0D2A4BF48B00BC1DF2 /* DailyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05398D0C2A4BF48B00BC1DF2 /* DailyTask.swift */; };
 		05398D0F2A4BF4CF00BC1DF2 /* DailyTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05398D0E2A4BF4CF00BC1DF2 /* DailyTaskController.swift */; };
+		0558E3FE2A55783500F119F1 /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0558E3FD2A55783500F119F1 /* PopUp.swift */; };
 		057354942A482AD700C4D3F2 /* GameCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057354932A482AD700C4D3F2 /* GameCenterView.swift */; };
 		057354962A482C3700C4D3F2 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057354952A482C3700C4D3F2 /* PlayerModel.swift */; };
 		057354982A482F7000C4D3F2 /* GameKitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057354972A482F7000C4D3F2 /* GameKitController.swift */; };
@@ -88,6 +89,7 @@
 		05398D0B2A4BF3A800BC1DF2 /* Petto.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Petto.entitlements; sourceTree = "<group>"; };
 		05398D0C2A4BF48B00BC1DF2 /* DailyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTask.swift; sourceTree = "<group>"; };
 		05398D0E2A4BF4CF00BC1DF2 /* DailyTaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskController.swift; sourceTree = "<group>"; };
+		0558E3FD2A55783500F119F1 /* PopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
 		057354932A482AD700C4D3F2 /* GameCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterView.swift; sourceTree = "<group>"; };
 		057354952A482C3700C4D3F2 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		057354972A482F7000C4D3F2 /* GameKitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameKitController.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 				93455CCB2A5283EB009A514E /* ShopItemComponent.swift */,
 				93455CCD2A52A7E1009A514E /* AmountButton.swift */,
 				93455CCF2A52D6E0009A514E /* PulseButton.swift */,
+				0558E3FD2A55783500F119F1 /* PopUp.swift */,
 				938763262A55616500052C9C /* ShopTab.swift */,
 			);
 			path = Component;
@@ -472,6 +475,7 @@
 				933239B52A4453A300D9B89B /* StatBar.swift in Sources */,
 				931A94392A4BEE5E00058E90 /* FancyToastStyle.swift in Sources */,
 				058A64432A51CE5C00C09712 /* BMView.swift in Sources */,
+				0558E3FE2A55783500F119F1 /* PopUp.swift in Sources */,
 				057354982A482F7000C4D3F2 /* GameKitController.swift in Sources */,
 				058A64012A4FF7ED00C09712 /* ExerciseClassifier+FrameRate.swift in Sources */,
 				058A642F2A51A4EF00C09712 /* AVCaptureDevice+FrameRate.swift in Sources */,
