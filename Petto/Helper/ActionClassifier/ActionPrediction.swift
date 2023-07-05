@@ -1,12 +1,12 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+ See LICENSE folder for this sample’s licensing information.
 
-Abstract:
-Bundles an action label with a confidence value.
- The extension defines and generates placeholder predictions with labels that
- represent when the camera frame is devoid of people or when the model's
- confidence isn't high enough.
-*/
+ Abstract:
+ Bundles an action label with a confidence value.
+  The extension defines and generates placeholder predictions with labels that
+  represent when the camera frame is devoid of people or when the model's
+  confidence isn't high enough.
+ */
 
 /// Bundles an action label with a confidence value.
 /// - Tag: ActionPrediction

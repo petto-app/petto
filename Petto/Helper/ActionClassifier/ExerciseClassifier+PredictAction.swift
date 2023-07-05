@@ -1,9 +1,9 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+ See LICENSE folder for this sample’s licensing information.
 
-Abstract:
-Provides a convenience method that makes a prediction from a multiarray window.
-*/
+ Abstract:
+ Provides a convenience method that makes a prediction from a multiarray window.
+ */
 
 import CoreML
 

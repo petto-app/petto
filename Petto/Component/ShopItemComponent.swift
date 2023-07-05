@@ -9,20 +9,21 @@ import SwiftUI
 
 struct ShopItemComponent: View {
     var price: Int
+    @State var image: String?
     @Binding var amount: Int
 
     var body: some View {
         VStack {
             ZStack {
                 VStack {
-                    Image("Vacuum").resizable().frame(width: 60, height: 60)
+                    Image(image ?? "Banana").resizable().frame(width: 60, height: 60)
                 }.padding()
                 VStack {
                     Spacer()
                     HStack {
                         Spacer()
                         HStack(spacing: 3) {
-                            StrokeText(text: "\(50)", width: 1, color: Color("CoinBorder"))
+                            StrokeText(text: "\(price)", width: 1, color: Color("CoinBorder"))
                                 .foregroundColor(Color("Coin")).fontWeight(.bold)
                                 .font(.system(size: 16, weight: .bold))
                             Image("StarCoin").resizable().frame(width: 15, height: 15)

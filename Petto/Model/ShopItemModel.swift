@@ -14,7 +14,7 @@ enum ShopItemType: Codable {
     case hygiene
 }
 
-struct ShopItem: Identifiable, Codable {
+struct ShopItem: Identifiable, Codable, Hashable {
     public var id = UUID()
     public var name: String
     public var price: Int
@@ -46,9 +46,18 @@ class ShopItemModel: ObservableObject {
 
     init() {
         shopItems = [
-            ShopItem(name: "Pisang", price: 50, type: .energy, lifeAmount: 10),
-            ShopItem(name: "Watch Netflix", price: 60, type: .fun, lifeAmount: 20),
-            ShopItem(name: "Sweep the floor", price: 70, type: .hygiene, lifeAmount: 30),
+            ShopItem(name: "Banana", price: 5, type: .energy, lifeAmount: 5, image: "Banana"),
+            ShopItem(name: "Milk", price: 10, type: .energy, lifeAmount: 10, image: "Milk"),
+            ShopItem(name: "Sausage", price: 50, type: .energy, lifeAmount: 50, image: "Sausage"),
+            ShopItem(name: "Steak", price: 100, type: .energy, lifeAmount: 100, image: "Steak"),
+            ShopItem(name: "Bubbles", price: 5, type: .fun, lifeAmount: 5, image: "Bubbles"),
+            ShopItem(name: "Sports", price: 10, type: .fun, lifeAmount: 10, image: "Sports"),
+            ShopItem(name: "Shopping", price: 50, type: .fun, lifeAmount: 50, image: "Shopping"),
+            ShopItem(name: "Travel", price: 100, type: .fun, lifeAmount: 100, image: "Travel"),
+            ShopItem(name: "Tissue", price: 5, type: .hygiene, lifeAmount: 5, image: "Tissue"),
+            ShopItem(name: "AromaTherapy", price: 10, type: .hygiene, lifeAmount: 10, image: "AromaTherapy"),
+            ShopItem(name: "Spray", price: 50, type: .hygiene, lifeAmount: 50, image: "Spray"),
+            ShopItem(name: "Vacuum", price: 100, type: .hygiene, lifeAmount: 100, image: "Vacuum")
         ]
     }
 

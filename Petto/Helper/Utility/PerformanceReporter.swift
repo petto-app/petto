@@ -1,10 +1,10 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+ See LICENSE folder for this sample’s licensing information.
 
-Abstract:
-The performance reporter prints the number of frames and predictions every
- second. This is a "nice to have" feature the app doesn't need to function.
-*/
+ Abstract:
+ The performance reporter prints the number of frames and predictions every
+  second. This is a "nice to have" feature the app doesn't need to function.
+ */
 
 import Foundation
 
@@ -53,7 +53,7 @@ class PerformanceReporter {
 
     /// Prints the frame and prediction counts to the console.
     private func reportToConsole() {
-        guard  PerformanceReporter.isEnabled else { return }
+        guard PerformanceReporter.isEnabled else { return }
         reportIndex += 1
 
         let report = "#\(reportIndex):"
@@ -65,6 +65,5 @@ class PerformanceReporter {
         predictionCount = 0
 
         print(report)
-
     }
 }

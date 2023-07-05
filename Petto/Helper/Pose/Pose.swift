@@ -1,10 +1,10 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+ See LICENSE folder for this sample’s licensing information.
 
-Abstract:
-A `Pose` is a collection of "landmarks" and connections between select landmarks.
- Each `Pose` can draw itself as a wireframe to a Core Graphics context.
-*/
+ Abstract:
+ A `Pose` is a collection of "landmarks" and connections between select landmarks.
+  Each `Pose` can draw itself as a wireframe to a Core Graphics context.
+ */
 
 import UIKit
 import Vision
@@ -77,7 +77,6 @@ struct Pose {
             line in line.drawToContext(context,
                                        applying: transform,
                                        at: scale)
-
         }
 
         // Draw the landmarks on top of the lines' endpoints.
@@ -111,6 +110,7 @@ struct Pose {
 }
 
 // MARK: - Helper methods
+
 extension Pose {
     /// Creates an array of connections from the available landmarks.
     mutating func buildConnections() {

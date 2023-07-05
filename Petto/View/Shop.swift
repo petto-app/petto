@@ -20,7 +20,13 @@ struct Shop: View {
     @AppStorage("coin") var coin: Int?
     @AppStorage("totalCoin") var totalCoin: Int?
 
-    @State var amount = 9
+    @State var amounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    @State var itemType = ShopItemType.energy
+
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
 
     var body: some View {
         VStack {
@@ -46,37 +52,27 @@ struct Shop: View {
                     Stats(fun: $statController.statModel.fun.amount, hygiene: $statController.statModel.hygiene.amount, energy: $statController.statModel.energy.amount).offset(y: -20)
                     Spacer()
                     VStack {
+                        ShopTab(activeType: $itemType)
                         Group {
-                            ForEach(shopViewController.getAll(), id: \.id) { shopItem in
-                                HStack(spacing: 40) {
-                                    Text("\(shopItem.name)")
-                                        .font(.subheadline)
-
-                                    HStack {
-                                        StrokeText(text: "\(shopItem.price)", width: 1, color: Color("CoinBorder"))
-                                            .font(.subheadline)
-                                            .foregroundColor(Color("Coin")).fontWeight(.bold)
-
-                                        Image(systemName: "bitcoinsign.circle.fill").foregroundColor(.yellow)
+                            LazyVGrid(columns: columns) {
+                                ForEach(Array(shopViewController.getAll().filter { $0.type == itemType }.enumerated()), id: \.element) { index, shopItem in
+                                    if shopItem.type == itemType {
+                                        ShopItemComponent(price: shopItem.price, image: shopItem.image, amount: $amounts[index])
                                     }
-
-                                    Button {
-                                        shopViewController.buy(shopItem: shopItem)
-                                        print("Buy \(shopItem.name)")
-                                    } label: {
-                                        Text("Buy")
-                                            .font(.caption)
-                                    }
-                                    .buttonStyle(IconButtonRect(width: 70, height: 20))
                                 }
                             }
                         }
-                        Group {
-                            ForEach(shopViewController.getAll(), id: \.id) { shopItem in
-                                ShopItemComponent(price: shopItem.price, amount: $amount)
+                        Button("Buy") {
+                            for (index, shopItem) in Array(shopViewController.getAll().filter { $0.type == itemType }.enumerated()) {
+                                if shopItem.type == itemType {
+                                    for _ in 0 ..< amounts[index] { shopViewController.buy(shopItem: shopItem)
+                                    }
+                                }
                             }
                         }
-                    }
+                        .buttonStyle(MainButton(width: 80))
+                        .padding(.top, 40)
+                    }.frame(width: UIScreen.main.bounds.size.width * 0.7).padding(.top, 80)
                     Spacer()
                 }.padding()
             }
@@ -97,9 +93,11 @@ struct Shop_Previews: PreviewProvider {
     static var previews: some View {
         @StateObject var shopViewController = ShopViewController()
         @StateObject var statController = StatController()
+        @StateObject var fancyToastClass = FancyToastClass()
 
         Shop()
             .environmentObject(shopViewController)
             .environmentObject(statController)
+            .environmentObject(fancyToastClass)
     }
 }
