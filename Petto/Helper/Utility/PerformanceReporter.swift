@@ -30,6 +30,7 @@ class PerformanceReporter {
     init?() {
         guard PerformanceReporter.isEnabled else { return nil }
 
+        // Report Time Interval
         let timer = Timer(timeInterval: 1.0,
                           repeats: true) { [unowned self] _ in
             self.reportToConsole()

@@ -95,13 +95,6 @@ struct Home: View {
                                     .scaledToFit().frame(width: 35, height: 35)
                                 }.buttonStyle(IconButtonRect(width: 50, height: 50))
                                 NavigationLink {
-                                    CameraView()
-                                } label: {
-                                    Text("Camera")
-                                        .font(.caption)
-                                }.buttonStyle(IconButtonRect(width: 50, height: 50))
-                                
-                                NavigationLink {
                                     BMView()
                                 } label: {
                                     Text("BMS")

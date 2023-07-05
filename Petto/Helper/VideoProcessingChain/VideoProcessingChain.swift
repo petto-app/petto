@@ -320,6 +320,8 @@ extension VideoProcessingChain {
     /// - Tag: sendPrediction
     private func sendPrediction(_ actionPrediction: ActionPrediction) {
         // Send the prediction to the delegate on the main queue.
+        print("Pose detected: " + actionPrediction.label)
+
         DispatchQueue.main.async {
             self.delegate?.videoProcessingChain(self,
                                                 didPredict: actionPrediction,
