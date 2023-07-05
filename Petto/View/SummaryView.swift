@@ -9,13 +9,13 @@ import SwiftUI
 
 struct SummaryView: UIViewControllerRepresentable {
     typealias UIViewControllerType = SummaryViewController
-    
-    func makeUIViewController(context: Context) -> SummaryViewController {
+
+    func makeUIViewController(context _: Context) -> SummaryViewController {
         let vc = SummaryViewController()
         return vc
     }
-    
-    func updateUIViewController(_ uiViewController: SummaryViewController, context: Context) {
+
+    func updateUIViewController(_: SummaryViewController, context _: Context) {
         // Updates the state of the specified view controller with new information from SwiftUI.
     }
 }
@@ -25,4 +25,3 @@ struct SummaryView_Previews: PreviewProvider {
         SummaryView()
     }
 }
-

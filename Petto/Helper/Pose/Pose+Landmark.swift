@@ -1,12 +1,12 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+ See LICENSE folder for this sample’s licensing information.
 
-Abstract:
-A `Landmark` is the name and location of a point on a human body, including:
- - Left shoulder
- - Right eye
- - Nose
-*/
+ Abstract:
+ A `Landmark` is the name and location of a point on a human body, including:
+  - Left shoulder
+  - Right eye
+  - Nose
+ */
 
 import UIKit
 import Vision
@@ -56,7 +56,6 @@ extension Pose {
         func drawToContext(_ context: CGContext,
                            applying transform: CGAffineTransform? = nil,
                            at scale: CGFloat = 1.0) {
-
             context.setFillColor(UIColor.white.cgColor)
             context.setStrokeColor(UIColor.darkGray.cgColor)
 

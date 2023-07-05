@@ -53,7 +53,7 @@ struct DailyTask_Previews: PreviewProvider {
             DailyTaskItem(name: "Take 5000 steps", amount: 0, maxAmount: 5000, coin: 50, isDone: false, type: .stepCount),
             DailyTaskItem(name: "Stand up for 10 minutes", amount: 0, maxAmount: 10, coin: 10, isDone: false, type: .appleStandTime),
             DailyTaskItem(name: "Stand up for 30 minutes", amount: 0, maxAmount: 30, coin: 50, isDone: false, type: .appleStandTime),
-            DailyTaskItem(name: "Finish All Tasks", amount: 0, maxAmount: 5, coin: 100, isDone: false),
+            DailyTaskItem(name: "Finish All Tasks", amount: 0, maxAmount: 5, coin: 100, isDone: false)
         ]))
     }
 }

@@ -1,9 +1,9 @@
 /*
-See LICENSE folder for this sample’s licensing information.
+ See LICENSE folder for this sample’s licensing information.
 
-Abstract:
-Defines the app's knowledge of the model's class labels.
-*/
+ Abstract:
+ Defines the app's knowledge of the model's class labels.
+ */
 
 extension ExerciseClassifier {
     /// Represents the app's knowledge of the Exercise Classifier model's labels.
