@@ -14,38 +14,36 @@ struct Stats: View {
 
     var body: some View {
         VStack {
-            HStack(spacing: 10) {
-                VStack {
+            Grid(horizontalSpacing: 8) {
+                GridRow {
                     HStack {
                         Image("BurgerIcon").resizable().scaledToFill().frame(width: 30, height: 30)
                         Text("Energy").font(.custom(
-                            "AmericanTypewriter",
+                            "MotleyForces",
                             size: 13,
                             relativeTo: .body))
                         Spacer()
                     }
-                    StatBar(value: $energy)
-                }
-                VStack {
-                    HStack {
+                    HStack(spacing: 10) {
                         Image("ControllerIcon").resizable().scaledToFill().frame(width: 27, height: 27)
                         Text("Fun").font(.custom(
-                            "AmericanTypewriter",
+                            "MotleyForcesRegular",
                             size: 13,
                             relativeTo: .body))
                         Spacer()
-                    }
-                    StatBar(value: $fun)
-                }
-                VStack {
-                    HStack {
+                    }.padding(.leading, 10)
+                    HStack(spacing: 10) {
                         Image("VacuumIcon").resizable().scaledToFill().frame(width: 29, height: 29)
                         Text("Hygiene").font(.custom(
-                            "AmericanTypewriter",
+                            "MotleyForcesRegular",
                             size: 13,
                             relativeTo: .body))
                         Spacer()
-                    }
+                    }.padding(.leading, 5)
+                }
+                GridRow {
+                    StatBar(value: $energy)
+                    StatBar(value: $fun)
                     StatBar(value: $hygiene)
                 }
             }
@@ -54,11 +52,16 @@ struct Stats: View {
         .padding(.vertical, 12)
         .background(.white)
         .cornerRadius(10)
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.black, lineWidth: 1)
-        )
+        .shadow(radius: 2, y: 3)
         .foregroundColor(.black)
+        .onAppear {
+            for family in UIFont.familyNames {
+                print(family)
+                for names in UIFont.fontNames(forFamilyName: family) {
+                    print("== \(names)")
+                }
+            }
+        }
     }
 }
 

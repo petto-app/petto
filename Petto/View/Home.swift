@@ -60,8 +60,10 @@ struct Home: View {
         NavigationStack {
             VStack {
                 ZStack {
-                    Image(getWp()).resizable().ignoresSafeArea(.all)
-                        .aspectRatio(contentMode: .fill)
+                    VStack {
+                        Image(getWp()).resizable().ignoresSafeArea(.all)
+                            .aspectRatio(contentMode: .fill)
+                    }
                     Avatar(idleFrameNames: $idleFrameNames, scale: 1.2)
                     VStack {
                         HStack {
@@ -78,15 +80,6 @@ struct Home: View {
                         HStack {
                             Spacer()
                             VStack {
-                                if timeController.isPrimeTime() {
-                                    Button {
-                                        print("Button pressed!")
-                                    } label: {
-                                        Image("exclamation").resizable(
-                                        )
-                                        .scaledToFit().frame(width: 40, height: 40)
-                                    }.buttonStyle(IconButtonRect(width: 50, height: 50))
-                                }
                                 NavigationLink {
                                     Shop()
                                 } label: {
@@ -100,6 +93,18 @@ struct Home: View {
                                     Text("BMS")
                                         .font(.caption)
                                 }.buttonStyle(IconButtonRect(width: 50, height: 50))
+                                if timeController.isPrimeTime() {
+                                    PulseButton(color: .red) {
+                                        Button {
+                                            print("Button pressed!")
+                                        } label: { PulseButton(color: .red) {
+                                            Image("exclamation").resizable(
+                                            )
+                                            .scaledToFit().frame(width: 40, height: 40)
+                                        }
+                                        }.buttonStyle(IconButtonRect(width: 50, height: 50))
+                                    }
+                                }
                             }
                         }
                         Spacer()
@@ -107,7 +112,7 @@ struct Home: View {
                 }
             }.onAppear {
                 bottomSheet.showSheet = true
-                let idleFrameAtlas = SKTextureAtlas(named: "IdleFrames")
+                // let idleFrameAtlas = SKTextureAtlas(named: "IdleFrames")
                 // idleFrameNames = idleFrameAtlas.textureNames.sorted()
                 GSAudio.sharedInstance.playSound(soundFileName: "background", numberOfLoops: -1)
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in

@@ -11,6 +11,7 @@ struct StrokeText: View {
     let text: String
     let width: CGFloat
     let color: Color
+    var textColor: Color = .black
 
     var body: some View {
         ZStack {

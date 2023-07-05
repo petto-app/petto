@@ -59,10 +59,13 @@
 		933239B52A4453A300D9B89B /* StatBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933239B42A4453A300D9B89B /* StatBar.swift */; };
 		93455CCA2A4DEB04009A514E /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93455CC92A4DEB04009A514E /* Shop.swift */; };
 		93455CCC2A5283EB009A514E /* ShopItemComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93455CCB2A5283EB009A514E /* ShopItemComponent.swift */; };
+		93455CCE2A52A7E1009A514E /* AmountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93455CCD2A52A7E1009A514E /* AmountButton.swift */; };
+		93455CD02A52D6E0009A514E /* PulseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93455CCF2A52D6E0009A514E /* PulseButton.swift */; };
 		9376A9802A3F5A080037F2FE /* PettoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376A97F2A3F5A080037F2FE /* PettoApp.swift */; };
 		9376A9822A3F5A080037F2FE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376A9812A3F5A080037F2FE /* ContentView.swift */; };
 		9376A9842A3F5A0A0037F2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9376A9832A3F5A0A0037F2FE /* Assets.xcassets */; };
 		9376A9872A3F5A0A0037F2FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9376A9862A3F5A0A0037F2FE /* Preview Assets.xcassets */; };
+		938763242A53F3F300052C9C /* MotleyForcesRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 938763232A53F3F300052C9C /* MotleyForcesRegular.ttf */; };
 		93BFA6692A42EA53007783E4 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA6682A42EA53007783E4 /* Home.swift */; };
 		93BFA66D2A42F56C007783E4 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA66C2A42F56C007783E4 /* IconButton.swift */; };
 		93BFA66F2A42F933007783E4 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFA66E2A42F933007783E4 /* Coin.swift */; };
@@ -132,11 +135,15 @@
 		933239B42A4453A300D9B89B /* StatBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatBar.swift; sourceTree = "<group>"; };
 		93455CC92A4DEB04009A514E /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		93455CCB2A5283EB009A514E /* ShopItemComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItemComponent.swift; sourceTree = "<group>"; };
+		93455CCD2A52A7E1009A514E /* AmountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountButton.swift; sourceTree = "<group>"; };
+		93455CCF2A52D6E0009A514E /* PulseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseButton.swift; sourceTree = "<group>"; };
 		9376A97C2A3F5A080037F2FE /* Petto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Petto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9376A97F2A3F5A080037F2FE /* PettoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PettoApp.swift; sourceTree = "<group>"; };
 		9376A9812A3F5A080037F2FE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9376A9832A3F5A0A0037F2FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9376A9862A3F5A0A0037F2FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		938763232A53F3F300052C9C /* MotleyForcesRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MotleyForcesRegular.ttf; sourceTree = "<group>"; };
+		938763252A53F45600052C9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		93BFA6682A42EA53007783E4 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		93BFA66C2A42F56C007783E4 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		93BFA66E2A42F933007783E4 /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
@@ -251,6 +258,8 @@
 		9376A97E2A3F5A080037F2FE /* Petto */ = {
 			isa = PBXGroup;
 			children = (
+				938763252A53F45600052C9C /* Info.plist */,
+				938763222A53F38E00052C9C /* Fonts */,
 				05398D0B2A4BF3A800BC1DF2 /* Petto.entitlements */,
 				05BFB3812A44323700A026D7 /* Controller */,
 				93D608902A4619DD0058EA80 /* Audio */,
@@ -273,6 +282,14 @@
 				9376A9862A3F5A0A0037F2FE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		938763222A53F38E00052C9C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				938763232A53F3F300052C9C /* MotleyForcesRegular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		93BFA6672A42EA1E007783E4 /* View */ = {
@@ -326,6 +343,8 @@
 				931A94382A4BEE5E00058E90 /* FancyToastStyle.swift */,
 				05398D0C2A4BF48B00BC1DF2 /* DailyTask.swift */,
 				93455CCB2A5283EB009A514E /* ShopItemComponent.swift */,
+				93455CCD2A52A7E1009A514E /* AmountButton.swift */,
+				93455CCF2A52D6E0009A514E /* PulseButton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -421,6 +440,7 @@
 				9376A9872A3F5A0A0037F2FE /* Preview Assets.xcassets in Resources */,
 				93D608922A461AAE0058EA80 /* background.mp3 in Resources */,
 				9376A9842A3F5A0A0037F2FE /* Assets.xcassets in Resources */,
+				938763242A53F3F300052C9C /* MotleyForcesRegular.ttf in Resources */,
 				05088DB42A52D8360016D6D8 /* BodyMovement.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,6 +478,7 @@
 				058A643E2A51B33F00C09712 /* Pose+Empty.swift in Sources */,
 				931A94202A4B3FF800058E90 /* BottomSheet.swift in Sources */,
 				057354962A482C3700C4D3F2 /* PlayerModel.swift in Sources */,
+				93455CCE2A52A7E1009A514E /* AmountButton.swift in Sources */,
 				05C6E9AF2A540FBD0017FDA4 /* ExerciseClassifier.mlmodel in Sources */,
 				9376A9822A3F5A080037F2FE /* ContentView.swift in Sources */,
 				058A64132A5077BC00C09712 /* BMViewController.swift in Sources */,
@@ -465,6 +486,8 @@
 				05BFB3872A4435B400A026D7 /* ShopViewController.swift in Sources */,
 				05398D0F2A4BF4CF00BC1DF2 /* DailyTaskController.swift in Sources */,
 				05F4A2CA2A45816B00DE56A7 /* DailyTaskModel.swift in Sources */,
+				051A477B2A4EF84B00727977 /* ViewFinder.swift in Sources */,
+				93455CD02A52D6E0009A514E /* PulseButton.swift in Sources */,
 				05BFB3972A445B3900A026D7 /* TimeModel.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
@@ -632,6 +655,7 @@
 				DEVELOPMENT_TEAM = J8A42WJ9LX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Petto/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow this app to access the camera to detect body movement.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Allow this app to share your Health data.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Allow this app to write data provided from your activity.";
@@ -672,6 +696,7 @@
 				DEVELOPMENT_TEAM = J8A42WJ9LX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Petto/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow this app to access the camera to detect body movement.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Allow this app to share your Health data.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Allow this app to write data provided from your activity.";

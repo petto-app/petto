@@ -46,10 +46,6 @@ struct Coin: View {
         .frame(height: 30)
         .background(.white)
         .cornerRadius(25)
-        .overlay(
-            RoundedRectangle(cornerRadius: 25)
-                .stroke(Color.black, lineWidth: 2)
-        )
         .shadow(radius: 2, y: 3)
         .tooltip(showTooltip, config: tooltipConfig) {
             Text("Total Coin: \(totalCoin)").font(.caption).foregroundColor(.black)
