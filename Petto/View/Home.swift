@@ -150,6 +150,25 @@ struct Home: View {
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
+        @StateObject var shopViewController = ShopViewController()
+        @StateObject var timeController = TimeController()
+        @StateObject var healthKitController = HealthKitController()
+        @StateObject var bottomSheet = BottomSheet()
+        @StateObject var dailyTaskController = DailyTaskController()
+        @StateObject var statController = StatController()
+        @StateObject var timerController = TimerController()
+        @StateObject var gameKitController = GameKitController()
+        @StateObject var fancyToast = FancyToastClass()
+
         Home()
+            .environmentObject(gameKitController)
+            .environmentObject(shopViewController)
+            .environmentObject(timeController)
+            .environmentObject(healthKitController)
+            .environmentObject(fancyToast)
+            .environmentObject(bottomSheet)
+            .environmentObject(dailyTaskController)
+            .environmentObject(statController)
+            .environmentObject(timerController)
     }
 }
