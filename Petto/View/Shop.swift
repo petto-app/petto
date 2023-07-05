@@ -20,6 +20,8 @@ struct Shop: View {
     @AppStorage("coin") var coin: Int?
     @AppStorage("totalCoin") var totalCoin: Int?
 
+    @State var amount = 9
+
     var body: some View {
         VStack {
             ZStack {
@@ -44,27 +46,34 @@ struct Shop: View {
                     Stats(fun: $statController.statModel.fun.amount, hygiene: $statController.statModel.hygiene.amount, energy: $statController.statModel.energy.amount).offset(y: -20)
                     Spacer()
                     VStack {
-                        ForEach(shopViewController.getAll(), id: \.id) { shopItem in
-                            HStack(spacing: 40) {
-                                Text("\(shopItem.name)")
-                                    .font(.subheadline)
-
-                                HStack {
-                                    StrokeText(text: "\(shopItem.price)", width: 1, color: Color("CoinBorder"))
+                        Group {
+                            ForEach(shopViewController.getAll(), id: \.id) { shopItem in
+                                HStack(spacing: 40) {
+                                    Text("\(shopItem.name)")
                                         .font(.subheadline)
-                                        .foregroundColor(Color("Coin")).fontWeight(.bold)
 
-                                    Image(systemName: "bitcoinsign.circle.fill").foregroundColor(.yellow)
-                                }
+                                    HStack {
+                                        StrokeText(text: "\(shopItem.price)", width: 1, color: Color("CoinBorder"))
+                                            .font(.subheadline)
+                                            .foregroundColor(Color("Coin")).fontWeight(.bold)
 
-                                Button {
-                                    shopViewController.buy(shopItem: shopItem)
-                                    print("Buy \(shopItem.name)")
-                                } label: {
-                                    Text("Buy")
-                                        .font(.caption)
+                                        Image(systemName: "bitcoinsign.circle.fill").foregroundColor(.yellow)
+                                    }
+
+                                    Button {
+                                        shopViewController.buy(shopItem: shopItem)
+                                        print("Buy \(shopItem.name)")
+                                    } label: {
+                                        Text("Buy")
+                                            .font(.caption)
+                                    }
+                                    .buttonStyle(IconButtonRect(width: 70, height: 20))
                                 }
-                                .buttonStyle(IconButtonRect(width: 70, height: 20))
+                            }
+                        }
+                        Group {
+                            ForEach(shopViewController.getAll(), id: \.id) { shopItem in
+                                ShopItemComponent(price: shopItem.price, amount: $amount)
                             }
                         }
                     }
