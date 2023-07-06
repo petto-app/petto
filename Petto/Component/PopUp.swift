@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PopUp: View {
     @Binding var coin: Int?
-    
+
     var body: some View {
         VStack(alignment: .center) {
             HStack(alignment: .center) {
@@ -36,9 +36,7 @@ struct PopUp: View {
                         }
                         .buttonStyle(MainButton(width: 80))
                     }
-                    
                 }
-                
             }
         }
     }

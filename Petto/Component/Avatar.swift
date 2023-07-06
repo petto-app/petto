@@ -36,7 +36,7 @@ struct Avatar: View {
                     // Draw Images
                     context.draw(
                         Image(idleFrameNames[frameIndex]).resizable(),
-                        at: CGPoint(x: w / 2, y: h / 2)
+                        at: CGPoint(x: w / 2, y: h / 1.7)
                     )
                 }
             }
