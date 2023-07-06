@@ -50,10 +50,8 @@ class ShopViewController: ObservableObject {
     }
 
     func add() {
-        print("add")
         shopItemModel.addItem(
             ShopItem(name: "Avocado", price: 3000, type: .energy, lifeAmount: 300)
         )
-        print(shopItemsData)
     }
 }

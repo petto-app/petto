@@ -14,6 +14,7 @@ class HealthKitController: ObservableObject {
     @ObservedObject var HKModel = HealthKitModel.shared
     @ObservedObject var dailyTaskModel = DailyTaskModel.shared
     @ObservedObject var statModel = StatModel.shared
+    @ObservedObject var popUpModel = PopUpModel.shared
 
     var hasRequestedHealthData = false
 
@@ -82,8 +83,8 @@ class HealthKitController: ObservableObject {
             self.HKModel.setTotalStandTime(standTime: totalStandTime!)
 
             // Change daily task values directly
-            let coinAddition = dailyTaskModel.updateDailyTasksData(totalStepCount: Int(totalStepCount!), totalStandTime: Int(totalStandTime!))
-            statModel.addCoin(amount: coinAddition)
+            let changedDailyTasks: [DailyTaskItem] = dailyTaskModel.updateDailyTasksData(totalStepCount: Int(totalStepCount!), totalStandTime: Int(totalStandTime!))
+            popUpModel.showDailyTaskPopUps(changedDailyTasks)
         }
     }
 

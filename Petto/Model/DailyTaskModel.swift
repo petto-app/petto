@@ -13,7 +13,7 @@ enum DailyTaskType: Codable {
     case appleStandTime
 }
 
-struct DailyTaskItem: Identifiable, Codable {
+struct DailyTaskItem: Identifiable, Codable, Hashable {
     public var id = UUID()
     public var name: String
     public var amount: Int? // How much the user has to move
@@ -56,9 +56,9 @@ class DailyTaskModel: ObservableObject {
 
         dailyTasks = [
             DailyTaskItem(name: "Take 1000 steps", amount: Int(totalStepCount), maxAmount: 1000, coin: 10, isDone: false, type: .stepCount),
-            DailyTaskItem(name: "Take 5000 steps", amount: Int(totalStepCount), maxAmount: 5000, coin: 50, isDone: false, type: .stepCount),
+            DailyTaskItem(name: "Take 5000 steps", amount: Int(totalStepCount), maxAmount: 1200, coin: 50, isDone: false, type: .stepCount),
             DailyTaskItem(name: "Stand up for 10 minutes", amount: Int(totalStandTime), maxAmount: 10, coin: 10, isDone: false, type: .appleStandTime),
-            DailyTaskItem(name: "Stand up for 30 minutes", amount: Int(totalStandTime), maxAmount: 30, coin: 50, isDone: false, type: .appleStandTime),
+            DailyTaskItem(name: "Stand up for 30 minutes", amount: Int(totalStandTime), maxAmount: 15, coin: 50, isDone: false, type: .appleStandTime),
             DailyTaskItem(name: "Finish All Tasks", amount: 0, maxAmount: 5, coin: 100, isDone: false)
         ]
 
@@ -66,9 +66,9 @@ class DailyTaskModel: ObservableObject {
         updateLastAccessedDate()
     }
 
-    func updateDailyTasksData(totalStepCount: Int, totalStandTime: Int) -> Int {
+    func updateDailyTasksData(totalStepCount: Int, totalStandTime: Int) -> [DailyTaskItem] {
         var updatedTasks: [DailyTaskItem] = []
-        var coinAddition = 0
+        var changedTasks: [DailyTaskItem] = []
 
         for task in dailyTasks {
             var updatedTask = task
@@ -77,16 +77,14 @@ class DailyTaskModel: ObservableObject {
                 updatedTask.amount = totalStepCount
                 if updatedTask.isDone != true { // if the task is not finished before
                     if totalStepCount >= task.maxAmount {
-                        updatedTask.isDone = true
-                        coinAddition += task.coin
+                        changedTasks.append(updatedTask)
                     }
                 }
             } else if task.type == .appleStandTime {
                 updatedTask.amount = totalStandTime
                 if updatedTask.isDone != true { // if the task is not finished before
                     if totalStandTime >= task.maxAmount {
-                        updatedTask.isDone = true
-                        coinAddition += task.coin
+                        changedTasks.append(updatedTask)
                     }
                 }
             }
@@ -98,11 +96,11 @@ class DailyTaskModel: ObservableObject {
         let completedTasks = updatedTasks.filter { $0.isDone }
         updatedTasks[dailyTasks.count - 1].amount = completedTasks.count
         if completedTasks.count >= updatedTasks[dailyTasks.count - 1].maxAmount {
-            updatedTasks[dailyTasks.count - 1].isDone = true
+            changedTasks.append(updatedTasks[dailyTasks.count - 1])
         }
 
         dailyTasks = updatedTasks
-        return coinAddition
+        return changedTasks
     }
 
     var shouldRewardCoins: Bool {

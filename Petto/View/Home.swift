@@ -17,6 +17,7 @@ struct Home: View {
     @EnvironmentObject var dailyTaskController: DailyTaskController
     @EnvironmentObject var statController: StatController
     @EnvironmentObject var timerController: TimerController
+    @EnvironmentObject var popUpModel: PopUpModel
     @AppStorage("coin") var coin: Int?
     @AppStorage("totalCoin") var totalCoin: Int?
 
@@ -109,8 +110,25 @@ struct Home: View {
                         }
                         Spacer()
                     }.padding()
+                    if popUpModel.isExists() {
+                        Color.black.opacity(0.25)
+                            .ignoresSafeArea()
+                            .overlay(
+                                ForEach(popUpModel.popUpItems.indices, id: \.self) { index in
+                                    if popUpModel.popUpItems[index].state != .hidden {
+                                        PopUp(popUp: popUpModel.popUpItems[index])
+                                            .zIndex(Double(popUpModel.popUpItems.count - index)) // Adjust the order of overlays
+                                            .transition(.slide)
+                                            .animation(.easeInOut)
+                                            .id(popUpModel.popUpItems[index].id)
+                                    }
+                                }
+                            )
+                    }
                 }
             }.onAppear {
+                print("Pop up")
+                print(popUpModel.popUpItems)
                 bottomSheet.showSheet = true
                 // let idleFrameAtlas = SKTextureAtlas(named: "IdleFrames")
                 // idleFrameNames = idleFrameAtlas.textureNames.sorted()
@@ -159,6 +177,7 @@ struct Home_Previews: PreviewProvider {
         @StateObject var timerController = TimerController()
         @StateObject var gameKitController = GameKitController()
         @StateObject var fancyToast = FancyToastClass()
+        @StateObject var popUpModel = PopUpModel.shared
 
         Home()
             .environmentObject(gameKitController)
@@ -170,5 +189,6 @@ struct Home_Previews: PreviewProvider {
             .environmentObject(dailyTaskController)
             .environmentObject(statController)
             .environmentObject(timerController)
+            .environmentObject(popUpModel)
     }
 }
