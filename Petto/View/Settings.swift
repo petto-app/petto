@@ -26,7 +26,6 @@ struct Settings: View {
             ZStack {
                 Image("SettingsBg").resizable().ignoresSafeArea(.all)
                     .aspectRatio(contentMode: .fill)
-                    .opacity(0.22)
                 VStack {
                     HStack {
                         Button {
