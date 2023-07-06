@@ -64,4 +64,16 @@ class TimeController: ObservableObject {
         let differenceInSeconds = primeTimeHour * 3600 - (currentHour * 3600 + currentMinutes * 60 + currentSeconds)
         return differenceInSeconds
     }
+
+    func getPrimeTimeSecondsRemaining() -> Int {
+        let startDate = Date()
+        let calendar = Calendar.current
+
+        let currentHour = calendar.component(.hour, from: startDate)
+        let currentMinutes = calendar.component(.minute, from: startDate)
+        let currentSeconds = calendar.component(.second, from: startDate)
+
+        let differenceInSeconds = (currentHour * 3600 + 600) - (currentHour * 3600 + currentMinutes * 60 + currentSeconds)
+        return differenceInSeconds
+    }
 }

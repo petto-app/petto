@@ -26,13 +26,12 @@ struct Settings: View {
             ZStack {
                 Image("SettingsBg").resizable().ignoresSafeArea(.all)
                     .aspectRatio(contentMode: .fill)
-                    .opacity(0.22)
                 VStack {
                     HStack {
                         Button {
                             dismiss()
                         } label: {
-                            Image(systemName: "chevron.left")
+                            Image("Arrow").resizable().frame(width: 22, height: 22)
                         }.buttonStyle(IconButton(width: 30, height: 30)).offset(y: 20)
                         Spacer()
                         PrimeTime().opacity(0)

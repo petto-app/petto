@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Untitled_Artwork 22.png",
+      "filename" : "Arrow.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Untitled_Artwork 22@2x.png",
+      "filename" : "Arrow@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Untitled_Artwork 22@3x.png",
+      "filename" : "Arrow@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

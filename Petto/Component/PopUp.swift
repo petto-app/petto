@@ -59,9 +59,7 @@ struct PopUp: View {
                         }
                         .buttonStyle(MainButton(width: 80))
                     }
-                    
                 }
-                
             }
         }
     }

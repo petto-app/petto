@@ -56,6 +56,7 @@
 		931A943B2A4C24CD00058E90 /* StatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A943A2A4C24CD00058E90 /* StatController.swift */; };
 		931A943D2A4C2FEC00058E90 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A943C2A4C2FEC00058E90 /* TimerModel.swift */; };
 		931A943F2A4C32E100058E90 /* TimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A943E2A4C32E100058E90 /* TimerController.swift */; };
+		932F9D6C2A56A216007795E1 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932F9D6B2A56A216007795E1 /* Checkbox.swift */; };
 		933239B12A4434B700D9B89B /* SwiftUITooltip in Frameworks */ = {isa = PBXBuildFile; productRef = 933239B02A4434B700D9B89B /* SwiftUITooltip */; };
 		933239B32A443F0000D9B89B /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933239B22A443EFF00D9B89B /* Stats.swift */; };
 		933239B52A4453A300D9B89B /* StatBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933239B42A4453A300D9B89B /* StatBar.swift */; };
@@ -136,6 +137,7 @@
 		931A943A2A4C24CD00058E90 /* StatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatController.swift; sourceTree = "<group>"; };
 		931A943C2A4C2FEC00058E90 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		931A943E2A4C32E100058E90 /* TimerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerController.swift; sourceTree = "<group>"; };
+		932F9D6B2A56A216007795E1 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		933239B22A443EFF00D9B89B /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		933239B42A4453A300D9B89B /* StatBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatBar.swift; sourceTree = "<group>"; };
 		93455CC92A4DEB04009A514E /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 				93455CCF2A52D6E0009A514E /* PulseButton.swift */,
 				0558E3FD2A55783500F119F1 /* PopUp.swift */,
 				938763262A55616500052C9C /* ShopTab.swift */,
+				932F9D6B2A56A216007795E1 /* Checkbox.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				933239B32A443F0000D9B89B /* Stats.swift in Sources */,
 				058A64332A51A51000C09712 /* VideoProcessingChain.swift in Sources */,
 				93F344EB2A47225B0089D2A8 /* Settings.swift in Sources */,
+				932F9D6C2A56A216007795E1 /* Checkbox.swift in Sources */,
 				93F344E72A46E42B0089D2A8 /* SettingsContainer.swift in Sources */,
 				058A64362A51A5FF00C09712 /* PerformanceReporter.swift in Sources */,
 				9376A9802A3F5A080037F2FE /* PettoApp.swift in Sources */,

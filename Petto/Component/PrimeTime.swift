@@ -15,11 +15,11 @@ struct CircleShape: Shape {
     }
 
     func path(in rect: CGRect) -> Path {
-        let r = rect.height / 1.4
+        let r = rect.height / 2
         let center = CGPoint(x: rect.midX, y: rect.midY * 1.5)
         var path = Path()
         path.addArc(center: center, radius: r,
-                    startAngle: Angle(degrees: -20), endAngle: Angle(degrees: 200), clockwise: true)
+                    startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 180), clockwise: true)
         path.closeSubpath()
         return path
     }
@@ -37,18 +37,18 @@ struct PrimeTime: View {
             ZStack {
                 CircleShape().foregroundColor(Color("PrimetimeContainer"))
                     .frame(width: 100, height: 100)
-                    .offset(y: 20)
+                    .offset(y: -5)
                     .shadow(radius: 2, y: 3)
                 VStack {
                     Text("Prime Time").font(.system(size: 11)).fontWeight(.bold)
-                    Text("\(String(format: "%02d", timeRemaining / 3600)):\(String(format: "%02d", timeRemaining / 60 % 60)):\(String(format: "%02d", timeRemaining % 60))").font(.headline).fontWeight(.bold)
+                    Text("\(String(format: "%02d", timeRemaining / 60)):\(String(format: "%02d", timeRemaining % 60))").font(.headline).fontWeight(.bold)
                 }.foregroundColor(.black)
             }
         }.onAppear {
-            timeRemaining = timeController.getSecondsRemaining()
+            timeRemaining = timeController.getPrimeTimeSecondsRemaining()
 
             timerController.setTimer(key: timerKey, withInterval: 1) {
-                timeRemaining = timeController.getSecondsRemaining()
+                timeRemaining = timeController.getPrimeTimeSecondsRemaining()
             }
         }
     }
