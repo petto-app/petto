@@ -18,32 +18,36 @@ struct PopUp: View {
         VStack(alignment: .center) {
             HStack(alignment: .center) {
                 ZStack {
-                    Rectangle().frame(width: 300, height: 200)
+                    Image("shiba-1")
+                        .resizable()
+                        .scaledToFit().frame(width: 200)
+                        .padding(.top, -190)
+                        .padding(.leading, -100)
+                    
+                    Rectangle().frame(width: 300, height: 180)
                         .foregroundColor(Color("PrimetimeContainer"))
                         .cornerRadius(10)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color("BlueBorder"), lineWidth: 3)
-                        )
-
+                    
                     VStack {
                         Text("Congratulations!")
-                            .foregroundColor(Color("Coin"))
+                            .foregroundColor(Color("StarCoin"))
                             .fontWeight(.bold)
-                        Text("You got \(popUp.dailyTask.coin) Star Coins")
-                            .foregroundColor(Color("Coin"))
-                            .fontWeight(.bold)
-                            .padding(.bottom, 20)
-                        Button("Claim") {
+                            .padding(.bottom, 1)
+                        Text("You've completed \(popUp.dailyTask.name) and got \(popUp.dailyTask.coin) Star Coins")
+                            .foregroundColor(Color("StarCoin"))
+                            .font(.footnote)
+                            .padding(.bottom, 13)
+                            .padding(.horizontal, 90)
+                            .multilineTextAlignment(.center)
+                        Button("Claim Now") {
                             print("Claimed")
-
                             
                             if let index = popUpModel.popUpItems.firstIndex(where: { $0.dailyTask.name == popUp.dailyTask.name }) {
                                 // Update daily task to Done
                                 if let taskIndex = dailyTaskModel.dailyTasks.lastIndex(where: { $0.name == popUp.dailyTask.name }) {
                                     dailyTaskModel.dailyTasks[taskIndex].isDone = true
                                     
-                                     // Update Finish All Task daily task
+                                    // Update Finish All Task daily task
                                     if dailyTaskModel.dailyTasks[dailyTaskModel.dailyTasks.count - 1].amount! <= 4 {
                                         dailyTaskModel.dailyTasks[dailyTaskModel.dailyTasks.count - 1].amount! += 1
                                     }
@@ -58,7 +62,14 @@ struct PopUp: View {
                             }
                         }
                         .buttonStyle(MainButton(width: 80))
+                        .font(.footnote)
                     }
+                    
+                    Image("Coins")
+                        .resizable()
+                        .scaledToFit().frame(width: 110)
+                            .padding(.top, 210)
+                            .padding(.leading, 240)
                 }
             }
         }
