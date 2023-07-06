@@ -11,35 +11,34 @@ struct DailyTask: View {
     @Binding var dailyTasks: [DailyTaskItem]
 
     var body: some View {
-        VStack {
+        Grid(alignment: .leading, verticalSpacing: 12) {
             ForEach(dailyTasks.indices, id: \.self) { index in
                 let task = dailyTasks[index]
+                GridRow {
+                    Toggle(isOn: .constant(task.isDone)) {}
+                        .toggleStyle(iOSCheckboxToggleStyle())
+                        .disabled(true)
+                        .foregroundColor(task.isDone ? Color("TaskSheet") : .pink)
+                        .background(task.isDone ? .pink : Color("TaskSheet"))
 
-                ZStack {
-                    HStack(spacing: 40) {
-                        Text(task.name)
+                    Text(task.name)
+                        .font(.subheadline)
+
+                    Text("\(task.amount!)/\(task.maxAmount)")
+                        .font(.subheadline).opacity(0.4)
+                    HStack {
+                        StrokeText(text: "\(task.coin)", width: 1, color: Color("CoinBorder"))
                             .font(.subheadline)
-                            .strikethrough(task.isDone, color: .black)
-                        Text("\(task.amount!)/\(task.maxAmount)")
-                            .font(.subheadline)
-                            .strikethrough(task.isDone, color: .black)
-                        HStack {
-                            StrokeText(text: "\(task.coin)", width: 1, color: Color("CoinBorder"))
-                                .font(.subheadline)
-                                .foregroundColor(Color("Coin")).fontWeight(.bold)
-                                .strikethrough(task.isDone, color: .black)
+                            .foregroundColor(Color("Coin")).fontWeight(.bold)
 
-                            Image(systemName: "bitcoinsign.circle.fill").foregroundColor(.yellow)
-                                .strikethrough(task.isDone, color: .black)
-                        }
-                    }
-                    .padding(.bottom, 20)
+                        Image("StarCoin").resizable().frame(width: 20, height: 20)
+                    }.gridColumnAlignment(.trailing)
+                }
 
-                    if index != dailyTasks.indices.last {
-                        Rectangle()
-                            .frame(width: 350, height: 1)
-                            .foregroundColor(Color.black)
-                    }
+                if index != dailyTasks.indices.last {
+                    Rectangle()
+                        .frame(width: 350, height: 1)
+                        .foregroundColor(Color.black)
                 }
             }
         }

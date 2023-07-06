@@ -74,7 +74,7 @@ struct Home: View {
                             }.buttonStyle(IconButton(width: 30, height: 30)).offset(y: 20)
                             Coin(coin: coin ?? 0, totalCoin: totalCoin ?? 0).offset(y: 20)
                             Spacer()
-                            PrimeTime().offset(x: -25, y: 20)
+                            PrimeTime().offset(x: -25, y: 20).opacity(timeController.isPrimeTime() ? 1 : 0)
                         }
                         Stats(fun: $statController.statModel.fun.amount, hygiene: $statController.statModel.hygiene.amount, energy: $statController.statModel.energy.amount).offset(y: -20)
                         HStack {
@@ -132,7 +132,7 @@ struct Home: View {
             .sheet(isPresented: $bottomSheet.showSheet) {
                 ScrollView {
                     VStack {
-                        Text("Daily Tasks").fontWeight(.bold)
+                        Text("Daily Tasks").fontWeight(.bold).padding(.bottom, 20)
 
                         DailyTask(dailyTasks: $dailyTaskController.dailyTaskModel.dailyTasks)
                     }
