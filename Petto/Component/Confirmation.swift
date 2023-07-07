@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Confirmation: View {
     @State var message: String
-    
+
     var body: some View {
         VStack(alignment: .center) {
             HStack(alignment: .center) {
@@ -17,26 +17,25 @@ struct Confirmation: View {
                     Rectangle().frame(width: 285, height: 183)
                         .foregroundColor(Color("PrimetimeContainer"))
                         .cornerRadius(10)
-                    
+
                     VStack {
                         Text(message)
                             .foregroundColor(Color("StarCoin"))
                             .fontWeight(.bold)
                             .padding(.bottom, 45)
-                        
+
                         HStack(spacing: 15) {
                             Button("Cancel") {
                                 //
                             }
                             .buttonStyle(MainButton(width: 80))
                             .font(.footnote)
-                            
+
                             Button("Yes") {
                                 //
                             }
                             .buttonStyle(MainButton(width: 80))
                             .font(.footnote)
-
                         }
                     }
                 }

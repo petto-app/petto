@@ -21,12 +21,12 @@ struct PopUpItem: Codable, Equatable {
 
 class PopUpModel: ObservableObject {
     public static var shared: PopUpModel = .init()
-    
+
     @ObservedObject var dailyTaskModel = DailyTaskModel.shared
-    
+
     @AppStorage("popUpItems")
     var popUpData: Data = .init()
-    
+
     var popUpItems: [PopUpItem] {
         get {
             if let decodedItems = try? JSONDecoder().decode([PopUpItem].self, from: popUpData) {
@@ -40,7 +40,7 @@ class PopUpModel: ObservableObject {
             }
         }
     }
-    
+
     func showDailyTaskPopUps(_ dailyTasks: [DailyTaskItem]) {
         var newPopUpItems: [PopUpItem] = []
 
@@ -53,15 +53,14 @@ class PopUpModel: ObservableObject {
             self.popUpItems = newPopUpItems
         }
     }
-    
+
     func isExists() -> Bool {
         return !popUpItems.isEmpty
     }
-    
+
     func addItem(_ item: PopUpItem) {
         var updatedItems = popUpItems
         updatedItems.append(item)
         popUpItems = updatedItems
     }
 }
-
