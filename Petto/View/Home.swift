@@ -111,7 +111,7 @@ struct Home: View {
                         Spacer()
                     }.padding()
                     if popUpModel.isExists() {
-                        Color.black.opacity(0.25)
+                        Color.black.opacity(0.75)
                             .ignoresSafeArea()
                             .overlay(
                                 ForEach(popUpModel.popUpItems.indices, id: \.self) { index in
