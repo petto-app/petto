@@ -47,12 +47,17 @@ struct PopUp: View {
                                 if let taskIndex = dailyTaskModel.dailyTasks.lastIndex(where: { $0.name == popUp.dailyTask.name }) {
                                     dailyTaskModel.dailyTasks[taskIndex].isDone = true
                                     
-                                    // Update Finish All Task daily task
-                                    if dailyTaskModel.dailyTasks[dailyTaskModel.dailyTasks.count - 1].amount! <= 4 {
-                                        dailyTaskModel.dailyTasks[dailyTaskModel.dailyTasks.count - 1].amount! += 1
+                                    // Update "Finish All Task" daily task
+                                    if dailyTaskModel.dailyTasks[4].amount! < dailyTaskModel.dailyTasks[4].maxAmount {
+                                        dailyTaskModel.dailyTasks[4].amount! += 1
                                     }
-                                    if dailyTaskModel.dailyTasks[dailyTaskModel.dailyTasks.count - 1].amount! == 4 {
-                                        popUpModel.addItem(PopUpItem(dailyTask: dailyTaskModel.dailyTasks[dailyTaskModel.dailyTasks.count - 1], state: .showing(totalCoin: dailyTaskModel.dailyTasks[dailyTaskModel.dailyTasks.count - 1].coin)))
+                                    if dailyTaskModel.dailyTasks[4].amount! == dailyTaskModel.dailyTasks[4].maxAmount {
+                                        if dailyTaskModel.dailyTasks[4].isDone == false {
+                                            popUpModel.addItem(
+                                                PopUpItem(dailyTask: dailyTaskModel.dailyTasks[4], state: .showing(totalCoin: dailyTaskModel.dailyTasks[4].coin))
+                                            )
+                                        }
+                                        
                                     }
                                 }
                                 // Delete PopUp Items

@@ -28,10 +28,22 @@ class DailyTaskModel: ObservableObject {
     var HKModel = HealthKitModel.shared
     var statModel = StatModel.shared
 
-    @Published var lastAccessedDate: Date?
-
-    private let userDefaults = UserDefaults.standard
-    private let calendar = Calendar.current
+    @AppStorage("lastAccessedDate")
+    var lastAccessedDateData: Data = .init()
+    
+    var lastAccessedDate: Date? {
+        get {
+            if let decodedItems = try? JSONDecoder().decode(Date.self, from: lastAccessedDateData) {
+                return decodedItems
+            }
+            return Date()
+        }
+        set {
+            if let encodedItems = try? JSONEncoder().encode(newValue) {
+                lastAccessedDateData = encodedItems
+            }
+        }
+    }
 
     @AppStorage("dailyTasks")
     var dailyTasksData: Data = .init()
@@ -51,19 +63,37 @@ class DailyTaskModel: ObservableObject {
     }
 
     init() {
+        if dailyTasks != [] {
+            let currentDate = Date()
+            let lastAccessed = lastAccessedDate
+            
+            if !isSameDay(currentDate, lastAccessed!) {
+                initNewDailyTasks()
+                lastAccessedDate = Date()
+            }
+        } else {
+            initNewDailyTasks()
+            lastAccessedDate = Date()
+        }
+    }
+    
+    private func isSameDay(_ date1: Date, _ date2: Date) -> Bool {
+        let calendar = Calendar.current
+        return calendar.isDate(date1, inSameDayAs: date2)
+    }
+    
+    private func initNewDailyTasks() {
         let totalStepCount = HKModel.totalStepCount
         let totalStandTime = HKModel.totalStandTime
-
+        
+        // Initialize new daily tasks data
         dailyTasks = [
             DailyTaskItem(name: "Take 1000 steps", amount: Int(totalStepCount), maxAmount: 1000, coin: 10, isDone: false, type: .stepCount),
-            DailyTaskItem(name: "Take 5000 steps", amount: Int(totalStepCount), maxAmount: 1200, coin: 50, isDone: false, type: .stepCount),
+            DailyTaskItem(name: "Take 5000 steps", amount: Int(totalStepCount), maxAmount: 5000, coin: 50, isDone: false, type: .stepCount),
             DailyTaskItem(name: "Stand up for 10 minutes", amount: Int(totalStandTime), maxAmount: 10, coin: 10, isDone: false, type: .appleStandTime),
-            DailyTaskItem(name: "Stand up for 30 minutes", amount: Int(totalStandTime), maxAmount: 15, coin: 50, isDone: false, type: .appleStandTime),
-            DailyTaskItem(name: "Finish All Tasks", amount: 0, maxAmount: 5, coin: 100, isDone: false)
+            DailyTaskItem(name: "Stand up for 30 minutes", amount: Int(totalStandTime), maxAmount: 30, coin: 50, isDone: false, type: .appleStandTime),
+            DailyTaskItem(name: "Finish All Tasks", amount: 0, maxAmount: 4, coin: 100, isDone: false)
         ]
-
-        resetTaskStatusIfNeeded()
-        updateLastAccessedDate()
     }
 
     func updateDailyTasksData(totalStepCount: Int, totalStandTime: Int) -> [DailyTaskItem] {
@@ -92,45 +122,7 @@ class DailyTaskModel: ObservableObject {
             updatedTasks.append(updatedTask)
         }
 
-        // Check total finished task as last daily task
-        let completedTasks = updatedTasks.filter { $0.isDone }
-        updatedTasks[dailyTasks.count - 1].amount = completedTasks.count
-        if completedTasks.count >= updatedTasks[dailyTasks.count - 1].maxAmount {
-            changedTasks.append(updatedTasks[dailyTasks.count - 1])
-        }
-
         dailyTasks = updatedTasks
         return changedTasks
-    }
-
-    var shouldRewardCoins: Bool {
-        guard let lastAccessedDate = lastAccessedDate else {
-            return false // First-time access, no reward yet
-        }
-
-        let currentDate = Date()
-        let components = calendar.dateComponents([.year, .month, .day], from: lastAccessedDate)
-        let lastAccessedDay = calendar.date(from: components)!
-        let currentDay = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: currentDate))!
-
-        return currentDay > lastAccessedDay
-    }
-
-    private func updateLastAccessedDate() {
-        lastAccessedDate = Date()
-        userDefaults.set(lastAccessedDate, forKey: "LastAccessedDate")
-    }
-
-    private func resetTaskStatusIfNeeded() {
-        guard shouldRewardCoins else {
-            return
-        }
-
-        var updatedTasks: [DailyTaskItem] = []
-        for task in dailyTasks {
-            var updatedTask = task
-            updatedTask.isDone = false
-            updatedTasks.append(updatedTask)
-        }
     }
 }
