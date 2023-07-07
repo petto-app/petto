@@ -13,7 +13,7 @@ struct PopUp: View {
     @EnvironmentObject var statController: StatController
     @EnvironmentObject var dailyTaskController: DailyTaskController
     @ObservedObject var dailyTaskModel = DailyTaskModel.shared
-    
+
     var body: some View {
         VStack(alignment: .center) {
             HStack(alignment: .center) {
@@ -23,11 +23,11 @@ struct PopUp: View {
                         .scaledToFit().frame(width: 200)
                         .padding(.top, -190)
                         .padding(.leading, -100)
-                    
+
                     Rectangle().frame(width: 300, height: 180)
                         .foregroundColor(Color("PrimetimeContainer"))
                         .cornerRadius(10)
-                    
+
                     VStack {
                         Text("Congratulations!")
                             .foregroundColor(Color("StarCoin"))
@@ -41,12 +41,12 @@ struct PopUp: View {
                             .multilineTextAlignment(.center)
                         Button("Claim Now") {
                             print("Claimed")
-                            
+
                             if let index = popUpModel.popUpItems.firstIndex(where: { $0.dailyTask.name == popUp.dailyTask.name }) {
                                 // Update daily task to Done
                                 if let taskIndex = dailyTaskModel.dailyTasks.lastIndex(where: { $0.name == popUp.dailyTask.name }) {
                                     dailyTaskModel.dailyTasks[taskIndex].isDone = true
-                                    
+
                                     // Update Finish All Task daily task
                                     if dailyTaskModel.dailyTasks[dailyTaskModel.dailyTasks.count - 1].amount! <= 4 {
                                         dailyTaskModel.dailyTasks[dailyTaskModel.dailyTasks.count - 1].amount! += 1
@@ -68,22 +68,21 @@ struct PopUp: View {
                     Image("Coins")
                         .resizable()
                         .scaledToFit().frame(width: 110)
-                            .padding(.top, 210)
-                            .padding(.leading, 240)
+                        .padding(.top, 210)
+                        .padding(.leading, 240)
                 }
             }
         }
     }
-
 }
 
 struct PopUp_Previews: PreviewProvider {
     static var previews: some View {
         PopUp(popUp: PopUpItem(
             dailyTask:
-                DailyTaskItem(name: "Take 1000 steps", amount: 1200, maxAmount: 1000, coin: 100, isDone: true, type: .stepCount),
+            DailyTaskItem(name: "Take 1000 steps", amount: 1200, maxAmount: 1000, coin: 100, isDone: true, type: .stepCount),
             state: .showing(totalCoin: 100)
-            )
+        )
         )
     }
 }

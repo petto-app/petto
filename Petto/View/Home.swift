@@ -20,6 +20,7 @@ struct Home: View {
     @EnvironmentObject var popUpModel: PopUpModel
     @AppStorage("coin") var coin: Int?
     @AppStorage("totalCoin") var totalCoin: Int?
+    @AppStorage("mute") var mute: Bool = false
 
     func getWp() -> String {
         switch statController.hygiene {
@@ -145,6 +146,12 @@ struct Home: View {
                     statController.updateStats()
                     statController.objectWillChange.send()
                     updateFrames()
+                }
+
+                if mute {
+                    GSAudio.sharedInstance.mute()
+                } else {
+                    GSAudio.sharedInstance.unmute()
                 }
             }
             .sheet(isPresented: $bottomSheet.showSheet) {

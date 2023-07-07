@@ -9,6 +9,8 @@ import SwiftUI
 
 struct Settings: View {
     @Environment(\.dismiss) var dismiss
+    
+    @AppStorage("mute") var mute: Bool = false
     @EnvironmentObject var bottomSheet: BottomSheet
 
     @StateObject var timeController: TimeController = .init()
@@ -36,47 +38,27 @@ struct Settings: View {
                         Spacer()
                         PrimeTime().opacity(0)
                     }
-                    SettingsContainer(intervalSelection: $interval, startSelection: $startHour, finishSelection: $finishHour)
-                        .padding(.bottom).offset(y: -20)
-                    Button {
-                        isGameCenterOpen = true
-                    } label: {
-                        Spacer()
-                        Text("Leaderboard").font(.title2).foregroundColor(.black).fontWeight(.bold)
-                        Spacer()
-                    }.padding(.vertical, 20).background(Color("TaskSheet"))
-                        .cornerRadius(10)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.black, lineWidth: 1)
-                        )
-                    Group {
-                        Button("<Test> Increase Fun") {
-                            statController.increaseFun(amount: 5)
+                    Grid {
+                        GridRow {
+                            SettingsHeaderButton(width: 60, height: 60, title: "Leaderboard", image: "Leaderboard")
                         }
-                        Button("<Test> Decrease Fun") {
-                            statController.decreaseFun(amount: 5)
+                        GridRow {
+                            SettingsHeaderButton(width: 60, height: 60, title: !mute ? "Mute" : "Unmute", image: !mute ? "SoundOff" : "SoundOn") {
+                                if !mute {
+                                    GSAudio.sharedInstance.mute()
+                                } else {
+                                    GSAudio.sharedInstance.unmute()
+                                }
+                                mute = !mute
+                            }
                         }
-                        Button("<Test> Increase Hygiene") {
-                            statController.increaseHygiene(amount: 5)
+                        GridRow {
+                            SettingsHeader(width: 60, height: 60, title: "Working Hour & Interval", image: "Clock", link: HourInterval())
                         }
-                        Button("<Test> Decrease Hygiene") {
-                            statController.decreaseHygiene(amount: 5)
+                        GridRow {
+                            SettingsHeader(width: 60, height: 60, title: "Character", image: "Paw", link: HourInterval())
                         }
-                        Button("<Test> Increase Energy") {
-                            statController.increaseEnergy(amount: 5)
-                        }
-                        Button("<Test> Decrease Energy") {
-                            statController.decreaseEnergy(amount: 5)
-                        }
-                        Button("<Test> Increase Coin") {
-                            statController.increaseCoin(amount: 100)
-                            gameKitController.reportScore(totalCoin: statController.totalCoin)
-                        }
-                        Button("<Test> Decrease Coin") {
-                            statController.decreaseCoin(amount: 100)
-                        }
-                    }
+                    }.frame(width: UIScreen.main.bounds.size.width * 0.8)
                     Spacer()
                 }.padding()
             }

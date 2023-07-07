@@ -47,7 +47,7 @@ struct Shop: View {
                         }.buttonStyle(IconButton(width: 30, height: 30)).offset(y: 20)
                         Coin(coin: coin ?? 0, totalCoin: totalCoin ?? 0).offset(y: 20)
                         Spacer()
-                        PrimeTime(timerKey: "primeTimeTimerShop").offset(x: -25, y: 20)
+                        PrimeTime(timerKey: "primeTimeTimerShop").offset(x: -25, y: 20).opacity(0)
                     }
                     Stats(fun: $statController.statModel.fun.amount, hygiene: $statController.statModel.hygiene.amount, energy: $statController.statModel.energy.amount).offset(y: -20)
                     Spacer()

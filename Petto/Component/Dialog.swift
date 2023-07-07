@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Dialog: View {
     @State var message: String
-    
+
     var body: some View {
         VStack(alignment: .center) {
             HStack(alignment: .center) {
@@ -17,7 +17,7 @@ struct Dialog: View {
                     Rectangle().frame(width: 279, height: 71)
                         .foregroundColor(Color("PrimetimeContainer"))
                         .cornerRadius(10)
-                    
+
                     VStack {
                         Text(message)
                             .foregroundColor(Color("StarCoin"))

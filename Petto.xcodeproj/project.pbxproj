@@ -86,6 +86,8 @@
 		93F344E72A46E42B0089D2A8 /* SettingsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F344E62A46E42B0089D2A8 /* SettingsContainer.swift */; };
 		93F344E92A4708CB0089D2A8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F344E82A4708CB0089D2A8 /* Button.swift */; };
 		93F344EB2A47225B0089D2A8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F344EA2A47225B0089D2A8 /* Settings.swift */; };
+		93F4C4BD2A57F52C00057C4D /* SettingsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F4C4BC2A57F52C00057C4D /* SettingsHeader.swift */; };
+		93F4C4C02A580D1200057C4D /* HourInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F4C4BF2A580D1200057C4D /* HourInterval.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -170,6 +172,8 @@
 		93F344E62A46E42B0089D2A8 /* SettingsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainer.swift; sourceTree = "<group>"; };
 		93F344E82A4708CB0089D2A8 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		93F344EA2A47225B0089D2A8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		93F4C4BC2A57F52C00057C4D /* SettingsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeader.swift; sourceTree = "<group>"; };
+		93F4C4BF2A580D1200057C4D /* HourInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourInterval.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +314,7 @@
 				93BFA6682A42EA53007783E4 /* Home.swift */,
 				05F4A2D12A4742BD00DE56A7 /* DataTestView.swift */,
 				93F344EA2A47225B0089D2A8 /* Settings.swift */,
+				93F4C4BE2A580CBD00057C4D /* Settings */,
 				057354932A482AD700C4D3F2 /* GameCenterView.swift */,
 				93455CC92A4DEB04009A514E /* Shop.swift */,
 				058A64122A5077BC00C09712 /* BMViewController.swift */,
@@ -363,6 +368,7 @@
 				932F9D6B2A56A216007795E1 /* Checkbox.swift */,
 				052BFCD72A56EF8400662B6F /* Dialog.swift */,
 				052BFCD92A56F09400662B6F /* Confirmation.swift */,
+				93F4C4BC2A57F52C00057C4D /* SettingsHeader.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -389,6 +395,14 @@
 				93D6088E2A4616D20058EA80 /* background.mp3 */,
 			);
 			path = Audio;
+			sourceTree = "<group>";
+		};
+		93F4C4BE2A580CBD00057C4D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				93F4C4BF2A580D1200057C4D /* HourInterval.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -523,6 +537,7 @@
 				93EC1E9F2A47F259007B7B07 /* Config.swift in Sources */,
 				93BFA6692A42EA53007783E4 /* Home.swift in Sources */,
 				058A64002A4FF7ED00C09712 /* ExerciseClassifier+PredictAction.swift in Sources */,
+				93F4C4BD2A57F52C00057C4D /* SettingsHeader.swift in Sources */,
 				93BFA6712A42FDDB007783E4 /* StrokeText.swift in Sources */,
 				93455CCC2A5283EB009A514E /* ShopItemComponent.swift in Sources */,
 				93F344E92A4708CB0089D2A8 /* Button.swift in Sources */,
@@ -532,6 +547,7 @@
 				932F9D6C2A56A216007795E1 /* Checkbox.swift in Sources */,
 				93F344E72A46E42B0089D2A8 /* SettingsContainer.swift in Sources */,
 				058A64362A51A5FF00C09712 /* PerformanceReporter.swift in Sources */,
+				93F4C4C02A580D1200057C4D /* HourInterval.swift in Sources */,
 				9376A9802A3F5A080037F2FE /* PettoApp.swift in Sources */,
 				05F4A2CE2A45818B00DE56A7 /* CharacterModel.swift in Sources */,
 				938763272A55616500052C9C /* ShopTab.swift in Sources */,
