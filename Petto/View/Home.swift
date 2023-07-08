@@ -21,7 +21,8 @@ struct Home: View {
     @AppStorage("coin") var coin: Int?
     @AppStorage("totalCoin") var totalCoin: Int?
     @AppStorage("mute") var mute: Bool = false
-
+    @AppStorage("isOnBoarded") var isOnBoarded: Bool?
+    
     func getWp() -> String {
         switch statController.hygiene {
         case 0 ... 20:
@@ -128,8 +129,7 @@ struct Home: View {
                     }
                 }
             }.onAppear {
-                print("Pop up")
-                print(popUpModel.popUpItems)
+                isOnBoarded = true
                 bottomSheet.showSheet = true
                 // let idleFrameAtlas = SKTextureAtlas(named: "IdleFrames")
                 // idleFrameNames = idleFrameAtlas.textureNames.sorted()
@@ -184,7 +184,7 @@ struct Home_Previews: PreviewProvider {
         @StateObject var timerController = TimerController()
         @StateObject var gameKitController = GameKitController()
         @StateObject var fancyToast = FancyToastClass()
-        @StateObject var popUpModel = PopUpModel.shared
+        @StateObject var popUpModel = PopUpModel()
 
         Home()
             .environmentObject(gameKitController)

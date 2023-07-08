@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("isOnBoarded")
+    var isOnBoarded: Bool?
+    
     var body: some View {
-        Home()
+        switch isOnBoarded {
+        case nil:
+            OnBoardingView(redirectTo: Home())
+        case false:
+            OnBoardingView(redirectTo: Home())
+        case .some(_):
+            Home()
+        }
     }
 }
 
