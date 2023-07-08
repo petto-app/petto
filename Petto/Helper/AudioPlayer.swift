@@ -50,13 +50,13 @@ class GSAudio: NSObject, AVAudioPlayerDelegate {
             playSound(soundFileName: soundFileName)
         }
     }
-    
+
     func mute() {
         for player in players {
             player.value.setVolume(0, fadeDuration: 0)
         }
     }
-    
+
     func unmute() {
         for player in players {
             player.value.setVolume(1, fadeDuration: 0)

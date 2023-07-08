@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Settings: View {
     @Environment(\.dismiss) var dismiss
-    
+
     @AppStorage("mute") var mute: Bool = false
     @EnvironmentObject var bottomSheet: BottomSheet
 
@@ -22,6 +22,7 @@ struct Settings: View {
     @EnvironmentObject var fToast: FancyToastClass
     @EnvironmentObject var statController: StatController
     @EnvironmentObject var gameKitController: GameKitController
+    @EnvironmentObject var healthKitController: HealthKitController
 
     var body: some View {
         VStack {
@@ -57,6 +58,13 @@ struct Settings: View {
                         }
                         GridRow {
                             SettingsHeader(width: 60, height: 60, title: "Character", image: "Paw", link: HourInterval())
+                        }
+                        GridRow {
+                            SettingsHeaderButton(width: 60, height: 60, title: "Connect with Health", image: "Health") {
+                                healthKitController.authorizeHealthKit { success in
+                                    print(success)
+                                }
+                            }
                         }
                     }.frame(width: UIScreen.main.bounds.size.width * 0.8)
                     Spacer()
