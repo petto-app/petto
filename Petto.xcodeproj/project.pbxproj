@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05074CC62A5971A400543A53 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05074CC52A5971A400543A53 /* OnBoardingView.swift */; };
 		05088DB42A52D8360016D6D8 /* BodyMovement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05088DB32A52D8360016D6D8 /* BodyMovement.storyboard */; };
 		052BFCD82A56EF8400662B6F /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BFCD72A56EF8400662B6F /* Dialog.swift */; };
 		052BFCDA2A56F09400662B6F /* Confirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BFCD92A56F09400662B6F /* Confirmation.swift */; };
@@ -91,6 +92,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05074CC52A5971A400543A53 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		05088DB32A52D8360016D6D8 /* BodyMovement.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BodyMovement.storyboard; sourceTree = "<group>"; };
 		052BFCD72A56EF8400662B6F /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
 		052BFCD92A56F09400662B6F /* Confirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confirmation.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				058A64142A50784100C09712 /* SummaryViewController.swift */,
 				058A64442A51CF9400C09712 /* SummaryView.swift */,
 				05088DB32A52D8360016D6D8 /* BodyMovement.storyboard */,
+				05074CC52A5971A400543A53 /* OnBoardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				93BFA66F2A42F933007783E4 /* Coin.swift in Sources */,
 				93EC1EA12A483364007B7B07 /* TimeController.swift in Sources */,
 				93EC1E9F2A47F259007B7B07 /* Config.swift in Sources */,
+				05074CC62A5971A400543A53 /* OnBoardingView.swift in Sources */,
 				93BFA6692A42EA53007783E4 /* Home.swift in Sources */,
 				058A64002A4FF7ED00C09712 /* ExerciseClassifier+PredictAction.swift in Sources */,
 				93F4C4BD2A57F52C00057C4D /* SettingsHeader.swift in Sources */,
