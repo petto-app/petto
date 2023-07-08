@@ -10,7 +10,7 @@ import SwiftUI
 struct RoundedCorner: Shape {
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
-    
+
     func path(in rect: CGRect) -> Path {
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         return Path(path.cgPath)
@@ -19,7 +19,7 @@ struct RoundedCorner: Shape {
 
 extension View {
     func roundedCorner(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape(RoundedCorner(radius: radius, corners: corners) )
+        clipShape(RoundedCorner(radius: radius, corners: corners))
     }
 }
 
@@ -32,24 +32,24 @@ struct SettingsHeader<Content: View>: View {
     var link: Content?
 
     var body: some View {
-            NavigationLink(destination: link) {
-                HStack {
-                    Image(image ?? "Clock").resizable().frame(width: 30, height: 30)
-                }.frame(width: CGFloat(width), height: CGFloat(height))
-                    .background(.white)
-                    .foregroundColor(.black)
-                    .clipShape(Capsule())
+        NavigationLink(destination: link) {
+            HStack {
+                Image(image ?? "Clock").resizable().frame(width: 30, height: 30)
+            }.frame(width: CGFloat(width), height: CGFloat(height))
+                .background(.white)
+                .foregroundColor(.black)
+                .clipShape(Capsule())
                 .shadow(radius: 4, y: 3)
                 .offset(x: -2)
-                Spacer()
-                Text(title).foregroundColor(active ? .white : .black)
+            Spacer()
+            Text(title).foregroundColor(active ? .white : .black)
                 .fontWeight(.semibold)
-                Spacer()
-            }.frame(height: CGFloat(height)).background(active ? Color("StarCoin") : .white).roundedCorner(10, corners: [.bottomRight, .topRight])
-                .roundedCorner(100, corners: [.bottomLeft, .topLeft])
-                .shadow(radius: 4, y: 3)
-                .disabled(active)
-                .frame(width: .infinity)
+            Spacer()
+        }.frame(height: CGFloat(height)).background(active ? Color("StarCoin") : .white).roundedCorner(10, corners: [.bottomRight, .topRight])
+            .roundedCorner(100, corners: [.bottomLeft, .topLeft])
+            .shadow(radius: 4, y: 3)
+            .disabled(active)
+            .frame(width: .infinity)
     }
 }
 
@@ -59,32 +59,32 @@ struct SettingsHeaderButton: View {
     let title: String
     let image: String?
     var active: Bool = false
-    
+
     var function: (() -> Void)?
 
     var body: some View {
-            Button {
-                if function != nil {
-                    function!()
-                }
-            } label: {
-                HStack {
-                    Image(image ?? "Clock").resizable().frame(width: 30, height: 30)
-                }.frame(width: CGFloat(width), height: CGFloat(height))
-                    .background(.white)
-                    .foregroundColor(.black)
-                    .clipShape(Capsule())
+        Button {
+            if function != nil {
+                function!()
+            }
+        } label: {
+            HStack {
+                Image(image ?? "Clock").resizable().frame(width: 30, height: 30)
+            }.frame(width: CGFloat(width), height: CGFloat(height))
+                .background(.white)
+                .foregroundColor(.black)
+                .clipShape(Capsule())
                 .shadow(radius: 4, y: 3)
                 .offset(x: -2)
-                Spacer()
-                Text(title).foregroundColor(active ? .white : .black)
-                    .fontWeight(.semibold)
-                Spacer()
-            }.frame(width: .infinity, height: CGFloat(height)).background(active ? Color("StarCoin") : .white).roundedCorner(10, corners: [.bottomRight, .topRight])
-                .roundedCorner(100, corners: [.bottomLeft, .topLeft])
-                .shadow(radius: 4, y: 3)
-                .disabled(active)
-                .frame(width: .infinity)
+            Spacer()
+            Text(title).foregroundColor(active ? .white : .black)
+                .fontWeight(.semibold)
+            Spacer()
+        }.frame(width: .infinity, height: CGFloat(height)).background(active ? Color("StarCoin") : .white).roundedCorner(10, corners: [.bottomRight, .topRight])
+            .roundedCorner(100, corners: [.bottomLeft, .topLeft])
+            .shadow(radius: 4, y: 3)
+            .disabled(active)
+            .frame(width: .infinity)
     }
 }
 

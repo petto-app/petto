@@ -7,8 +7,13 @@
 
 import Foundation
 
+enum CharacterType: String, CaseIterable {
+    case dog
+    case cat
+}
+
 struct Character: Codable {
-    public var name: String
+    public var type: String
     public var image: String
 }
 

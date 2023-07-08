@@ -46,7 +46,7 @@ struct PopUp: View {
                                 // Update daily task to Done
                                 if let taskIndex = dailyTaskModel.dailyTasks.lastIndex(where: { $0.name == popUp.dailyTask.name }) {
                                     dailyTaskModel.dailyTasks[taskIndex].isDone = true
-                                    
+
                                     // Update "Finish All Task" daily task
                                     if dailyTaskModel.dailyTasks[4].amount! < dailyTaskModel.dailyTasks[4].maxAmount {
                                         dailyTaskModel.dailyTasks[4].amount! += 1
@@ -57,7 +57,6 @@ struct PopUp: View {
                                                 PopUpItem(dailyTask: dailyTaskModel.dailyTasks[4], state: .showing(totalCoin: dailyTaskModel.dailyTasks[4].coin))
                                             )
                                         }
-                                        
                                     }
                                 }
                                 // Delete PopUp Items
@@ -69,7 +68,7 @@ struct PopUp: View {
                         .buttonStyle(MainButton(width: 80))
                         .font(.footnote)
                     }
-                    
+
                     Image("Coins")
                         .resizable()
                         .scaledToFit().frame(width: 110)

@@ -30,7 +30,7 @@ class DailyTaskModel: ObservableObject {
 
     @AppStorage("lastAccessedDate")
     var lastAccessedDateData: Data = .init()
-    
+
     var lastAccessedDate: Date? {
         get {
             if let decodedItems = try? JSONDecoder().decode(Date.self, from: lastAccessedDateData) {
@@ -66,7 +66,7 @@ class DailyTaskModel: ObservableObject {
         if dailyTasks != [] {
             let currentDate = Date()
             let lastAccessed = lastAccessedDate
-            
+
             if !isSameDay(currentDate, lastAccessed!) {
                 initNewDailyTasks()
                 lastAccessedDate = Date()
@@ -76,16 +76,16 @@ class DailyTaskModel: ObservableObject {
             lastAccessedDate = Date()
         }
     }
-    
+
     private func isSameDay(_ date1: Date, _ date2: Date) -> Bool {
         let calendar = Calendar.current
         return calendar.isDate(date1, inSameDayAs: date2)
     }
-    
+
     private func initNewDailyTasks() {
         let totalStepCount = HKModel.totalStepCount
         let totalStandTime = HKModel.totalStandTime
-        
+
         // Initialize new daily tasks data
         dailyTasks = [
             DailyTaskItem(name: "Take 1000 steps", amount: Int(totalStepCount), maxAmount: 1000, coin: 10, isDone: false, type: .stepCount),
