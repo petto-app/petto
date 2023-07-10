@@ -22,6 +22,14 @@ struct Home: View {
     @AppStorage("totalCoin") var totalCoin: Int?
     @AppStorage("mute") var mute: Bool = false
     @AppStorage("isOnBoarded") var isOnBoarded: Bool?
+    @AppStorage("character") var character = "dog"
+
+    func getImageName(index: Int) -> String {
+        if character == "dog" {
+            return "shiba-\(index)"
+        }
+        return "cat-\(index)"
+    }
 
     func getWp() -> String {
         switch statController.hygiene {
@@ -37,25 +45,25 @@ struct Home: View {
     func updateFrames() {
         switch (statController.energy, statController.fun) {
         case (0 ... 20, 0 ... 20):
-            idleFrameNames = ["shiba-7"]
+            idleFrameNames = [getImageName(index: 7)]
         case (21 ... 50, 0 ... 20):
-            idleFrameNames = ["shiba-3"]
+            idleFrameNames = [getImageName(index: 3)]
         case (51 ... 100, 0 ... 20):
-            idleFrameNames = ["shiba-3"]
+            idleFrameNames = [getImageName(index: 3)]
         case (0 ... 20, 21 ... 50):
-            idleFrameNames = ["shiba-6"]
+            idleFrameNames = [getImageName(index: 6)]
         case (21 ... 50, 21 ... 50):
-            idleFrameNames = ["shiba-6"]
+            idleFrameNames = [getImageName(index: 6)]
         case (51 ... 100, 21 ... 50):
-            idleFrameNames = ["shiba-2"]
+            idleFrameNames = [getImageName(index: 2)]
         case (0 ... 20, 51 ... 100):
-            idleFrameNames = ["shiba-5"]
+            idleFrameNames = [getImageName(index: 5)]
         case (21 ... 50, 51 ... 100):
-            idleFrameNames = ["shiba-4"]
+            idleFrameNames = [getImageName(index: 4)]
         case (51 ... 100, 51 ... 100):
-            idleFrameNames = ["shiba-1"]
+            idleFrameNames = [getImageName(index: 1)]
         default:
-            idleFrameNames = ["shiba-1"]
+            idleFrameNames = [getImageName(index: 1)]
         }
     }
 

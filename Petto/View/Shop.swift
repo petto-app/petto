@@ -22,6 +22,7 @@ struct Shop: View {
 
     @State var amounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     @State var itemType = ShopItemType.energy
+    @State private var buyConfirmation = false
 
     let columns = [
         GridItem(.flexible()),
@@ -81,26 +82,25 @@ struct Shop: View {
                             if !isTransactionValid() {
                                 return
                             }
-                            for (index, shopItem) in Array(shopViewController.getAll().filter { $0.type == itemType }.enumerated()) {
-                                if shopItem.type == itemType {
-                                    for _ in 0 ..< amounts[index] { shopViewController.buy(shopItem: shopItem)
-                                    }
-                                }
-                            }
-
-                            GSAudio.sharedInstance.playSound(soundFileName: "kaching")
-
-                            func resetAmounts() {
-                                for i in 0 ..< amounts.count {
-                                    amounts[i] = 0
-                                }
-                            }
+                            buyConfirmation = true
                         }
                         .buttonStyle(MainButton(width: 70, height: 10))
                         .padding(.top, 40)
                     }.frame(width: UIScreen.main.bounds.size.width * 0.7).padding(.top, 80)
                     Spacer()
                 }.padding()
+                if buyConfirmation {
+                    Color.black.opacity(0.75)
+                        .ignoresSafeArea()
+                        .overlay(
+                            PopUpComponents(title: "Are you sure?", cancelText: "Cancel") {
+                                buy()
+                                buyConfirmation = false
+                            } cancelHandler: {
+                                buyConfirmation = false
+                            }.zIndex(20)
+                        )
+                }
             }
         }
         .onAppear {
@@ -117,12 +117,31 @@ struct Shop: View {
         .toastView(toast: $fToast.toast)
     }
 
+    func buy() {
+        for (index, shopItem) in Array(shopViewController.getAll().filter { $0.type == itemType }.enumerated()) {
+            if shopItem.type == itemType {
+                for _ in 0 ..< amounts[index] { shopViewController.buy(shopItem: shopItem)
+                }
+            }
+        }
+
+        GSAudio.sharedInstance.playSound(soundFileName: "kaching")
+
+        resetAmounts()
+    }
+
     func isTransactionValid() -> Bool {
         if (amounts.allSatisfy { $0 == 0 }) {
             fToast.toast = FancyToast(type: .error, title: "Error", message: "Please buy at least 1 item", duration: 3)
             return false
         }
         return true
+    }
+
+    func resetAmounts() {
+        for i in 0 ..< amounts.count {
+            amounts[i] = 0
+        }
     }
 }
 
