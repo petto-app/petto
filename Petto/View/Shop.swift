@@ -28,6 +28,21 @@ struct Shop: View {
         GridItem(.flexible())
     ]
 
+    func getPrice() -> Int {
+        return amounts[0] * 5 + amounts[1] * 10 + amounts[2] * 50 + amounts[3] * 100
+    }
+
+    func isPlusDisabled(price: Int) -> Bool {
+        return getPrice() + price > (coin ?? 0)
+    }
+
+    func getProjectedValue(type: ShopItemType) -> Int {
+        if itemType != type {
+            return 0
+        }
+        return getPrice()
+    }
+
     var body: some View {
         VStack {
             ZStack {
@@ -49,28 +64,39 @@ struct Shop: View {
                         Spacer()
                         PrimeTime(timerKey: "primeTimeTimerShop").offset(x: -25, y: 20).opacity(0)
                     }
-                    Stats(fun: $statController.statModel.fun.amount, hygiene: $statController.statModel.hygiene.amount, energy: $statController.statModel.energy.amount).offset(y: -20)
+                    Stats(fun: $statController.statModel.fun.amount, hygiene: $statController.statModel.hygiene.amount, energy: $statController.statModel.energy.amount, funProjection: getProjectedValue(type: .fun), hygieneProjection: getProjectedValue(type: .hygiene), energyProjection: getProjectedValue(type: .energy)).offset(y: -20)
                     Spacer()
                     VStack {
-                        ShopTab(activeType: $itemType)
+                        ShopTab(activeType: $itemType, amounts: $amounts)
                         Group {
                             LazyVGrid(columns: columns) {
                                 ForEach(Array(shopViewController.getAll().filter { $0.type == itemType }.enumerated()), id: \.element) { index, shopItem in
                                     if shopItem.type == itemType {
-                                        ShopItemComponent(price: shopItem.price, image: shopItem.image, amount: $amounts[index])
+                                        ShopItemComponent(price: shopItem.price, image: shopItem.image, amount: $amounts[index], plusDisabled: isPlusDisabled(price: shopItem.price))
                                     }
                                 }
                             }
                         }
                         Button("Buy") {
+                            if !isTransactionValid() {
+                                return
+                            }
                             for (index, shopItem) in Array(shopViewController.getAll().filter { $0.type == itemType }.enumerated()) {
                                 if shopItem.type == itemType {
                                     for _ in 0 ..< amounts[index] { shopViewController.buy(shopItem: shopItem)
                                     }
                                 }
                             }
+
+                            GSAudio.sharedInstance.playSound(soundFileName: "kaching")
+
+                            func resetAmounts() {
+                                for i in 0 ..< amounts.count {
+                                    amounts[i] = 0
+                                }
+                            }
                         }
-                        .buttonStyle(MainButton(width: 80))
+                        .buttonStyle(MainButton(width: 70, height: 10))
                         .padding(.top, 40)
                     }.frame(width: UIScreen.main.bounds.size.width * 0.7).padding(.top, 80)
                     Spacer()
@@ -83,9 +109,20 @@ struct Shop: View {
                 statController.updateStats()
                 statController.objectWillChange.send()
             }
+            GSAudio.sharedInstance.stopAllSounds()
+            print("WOWIIWOWIW")
+            GSAudio.sharedInstance.playSound(soundFileName: "bg-shop", numberOfLoops: -1)
         }
         .navigationBarBackButtonHidden(true)
         .toastView(toast: $fToast.toast)
+    }
+
+    func isTransactionValid() -> Bool {
+        if (amounts.allSatisfy { $0 == 0 }) {
+            fToast.toast = FancyToast(type: .error, title: "Error", message: "Please buy at least 1 item", duration: 3)
+            return false
+        }
+        return true
     }
 }
 

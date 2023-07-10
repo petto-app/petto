@@ -41,7 +41,9 @@ struct Settings: View {
                     }
                     Grid {
                         GridRow {
-                            SettingsHeaderButton(width: 60, height: 60, title: "Leaderboard", image: "Leaderboard")
+                            SettingsHeaderButton(width: 60, height: 60, title: "Leaderboard", image: "Leaderboard") {
+                                isGameCenterOpen = true
+                            }
                         }
                         GridRow {
                             SettingsHeaderButton(width: 60, height: 60, title: !mute ? "Mute" : "Unmute", image: !mute ? "SoundOff" : "SoundOn") {

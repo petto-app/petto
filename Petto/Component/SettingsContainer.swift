@@ -67,15 +67,6 @@ struct SettingsContainer: View {
                     }
                 }
             }
-            Button("Save") {
-                let res = timeController.setPrimeTime(start: Int(startSelection) ?? 9, finish: Int(finishSelection) ?? 17, interval: intervalSelection)
-                if !res {
-                    fToast.toast = FancyToast(type: .error, title: "Error", message: "Invalid input", duration: 3)
-                } else {
-                    fToast.toast = FancyToast(type: .success, title: "Success", message: "Settings saved", duration: 3)
-                }
-            }
-            .buttonStyle(MainButton(width: 80))
         }
         .padding(.horizontal, 7)
         .padding(.bottom, 20)

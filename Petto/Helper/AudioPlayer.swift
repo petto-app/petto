@@ -8,7 +8,7 @@
 import AVFoundation
 import Foundation
 
-class GSAudio: NSObject, AVAudioPlayerDelegate {
+class GSAudio: NSObject, AVAudioPlayerDelegate, ObservableObject {
     static let sharedInstance = GSAudio()
 
     override private init() {}
@@ -36,6 +36,23 @@ class GSAudio: NSObject, AVAudioPlayerDelegate {
             } catch {
                 print(error.localizedDescription)
             }
+        }
+    }
+
+    func stopSound(soundFileName: String, type: String = "mp3") {
+        guard let bundle = Bundle.main.path(forResource: soundFileName, ofType: type) else { return }
+        let soundFileNameURL = URL(fileURLWithPath: bundle)
+
+        if let player = players[soundFileNameURL] { // player for sound has been found
+            if player.isPlaying { // player is not in use, so use that one
+                player.stop()
+            }
+        }
+    }
+
+    func stopAllSounds() {
+        for player in players {
+            player.value.stop()
         }
     }
 

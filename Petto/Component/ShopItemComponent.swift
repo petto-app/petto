@@ -11,6 +11,7 @@ struct ShopItemComponent: View {
     var price: Int
     @State var image: String?
     @Binding var amount: Int
+    var plusDisabled: Bool = false
 
     var body: some View {
         VStack {
@@ -41,13 +42,17 @@ struct ShopItemComponent: View {
                 AmountButton(type: .Minus, enabled: amount > 0) {
                     if amount > 0 {
                         amount -= 1
+                        GSAudio.sharedInstance.playSound(soundFileName: "pop")
                     }
                 }
                 StrokeText(text: "\(amount)", width: 1, color: Color("CoinBorder"))
                     .foregroundColor(Color("Coin")).fontWeight(.bold)
                     .font(.system(size: 14, weight: .bold))
-                AmountButton(type: .Plus, enabled: true) {
-                    amount += 1
+                AmountButton(type: .Plus, enabled: !plusDisabled) {
+                    if !plusDisabled {
+                        amount += 1
+                        GSAudio.sharedInstance.playSound(soundFileName: "pop")
+                    }
                 }
             }
         }

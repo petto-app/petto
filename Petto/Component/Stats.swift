@@ -12,6 +12,10 @@ struct Stats: View {
     @Binding var hygiene: Int?
     @Binding var energy: Int?
 
+    var funProjection: Int = 0
+    var hygieneProjection: Int = 0
+    var energyProjection: Int = 0
+
     var body: some View {
         VStack {
             Grid(horizontalSpacing: 8) {
@@ -42,9 +46,9 @@ struct Stats: View {
                     }.padding(.leading, 5)
                 }
                 GridRow {
-                    StatBar(value: $energy)
-                    StatBar(value: $fun)
-                    StatBar(value: $hygiene)
+                    StatBar(value: $energy, projectedValue: energyProjection)
+                    StatBar(value: $fun, projectedValue: funProjection)
+                    StatBar(value: $hygiene, projectedValue: hygieneProjection)
                 }
             }
         }

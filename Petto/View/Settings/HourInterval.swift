@@ -37,19 +37,16 @@ struct HourInterval: View {
                         PrimeTime().opacity(0)
                     }
                     SettingsContainer(intervalSelection: $interval, startSelection: $startHour, finishSelection: $finishHour)
-                        .padding(.bottom).offset(y: -20)
-                    Button {
-                        isGameCenterOpen = true
-                    } label: {
-                        Spacer()
-                        Text("Leaderboard").font(.title2).foregroundColor(.black).fontWeight(.bold)
-                        Spacer()
-                    }.padding(.vertical, 20).background(Color("TaskSheet"))
-                        .cornerRadius(10)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.black, lineWidth: 1)
-                        )
+                        .padding(.bottom)
+                    Button("Save") {
+                        let res = timeController.setPrimeTime(start: Int(startHour) ?? 9, finish: Int(finishHour) ?? 17, interval: interval)
+                        if !res {
+                            fToast.toast = FancyToast(type: .error, title: "Error", message: "Invalid input", duration: 3)
+                        } else {
+                            fToast.toast = FancyToast(type: .success, title: "Success", message: "Settings saved", duration: 3)
+                        }
+                    }
+                    .buttonStyle(MainButton(width: 80))
                     Group {
                         Button("<Test> Increase Fun") {
                             statController.increaseFun(amount: 5)
