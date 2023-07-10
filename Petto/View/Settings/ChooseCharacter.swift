@@ -1,16 +1,14 @@
 //
-//  Settings.swift
+//  ChooseCharacter.swift
 //  Petto
 //
-//  Created by Aaron Christopher Tanhar on 24/06/23.
+//  Created by Aaron Christopher Tanhar on 10/07/23.
 //
 
 import SwiftUI
 
-struct Settings: View {
+struct ChooseCharacter: View {
     @Environment(\.dismiss) var dismiss
-
-    @AppStorage("mute") var mute: Bool = false
     @EnvironmentObject var bottomSheet: BottomSheet
 
     @StateObject var timeController: TimeController = .init()
@@ -22,7 +20,14 @@ struct Settings: View {
     @EnvironmentObject var fToast: FancyToastClass
     @EnvironmentObject var statController: StatController
     @EnvironmentObject var gameKitController: GameKitController
-    @EnvironmentObject var healthKitController: HealthKitController
+    @AppStorage("character") var character: String?
+
+    @State private var currentIndex = 0
+
+    init() {
+        UIPageControl.appearance().currentPageIndicatorTintColor = .brown
+        UIPageControl.appearance().pageIndicatorTintColor = .gray
+    }
 
     var body: some View {
         VStack {
@@ -39,36 +44,33 @@ struct Settings: View {
                         Spacer()
                         PrimeTime().opacity(0)
                     }
-                    Grid {
-                        GridRow {
-                            SettingsHeaderButton(width: 60, height: 60, title: "Leaderboard", image: "Leaderboard") {
-                                isGameCenterOpen = true
-                            }
+                    SettingsHeaderButton(width: 60, height: 60, title: "Choose Your Character", image: "Paw", active: true) {}
+                    TabView(selection: $currentIndex) {
+                        VStack {
+                            Image("DogCharacter").resizable()
+                                .scaledToFit().frame(width: UIScreen.main.bounds.size.width * 0.7).scaledToFit()
                         }
-                        GridRow {
-                            SettingsHeaderButton(width: 60, height: 60, title: !mute ? "Mute" : "Unmute", image: !mute ? "SoundOff" : "SoundOn") {
-                                if !mute {
-                                    GSAudio.sharedInstance.mute()
-                                } else {
-                                    GSAudio.sharedInstance.unmute()
-                                }
-                                mute = !mute
-                            }
+                        .tag(0)
+                        VStack {
+                            Image("CatCharacter").resizable()
+                                .scaledToFit().frame(width: UIScreen.main.bounds.size.width * 0.5)
                         }
-                        GridRow {
-                            SettingsHeader(width: 60, height: 60, title: "Working Hour & Interval", image: "Clock", link: HourInterval())
-                        }
-                        GridRow {
-                            SettingsHeader(width: 60, height: 60, title: "Character", image: "Paw", link: ChooseCharacter())
-                        }
-                        GridRow {
-                            SettingsHeaderButton(width: 60, height: 60, title: "Connect with Health", image: "Health") {
-                                healthKitController.authorizeHealthKit { success in
-                                    print(success)
-                                }
-                            }
-                        }
-                    }.frame(width: UIScreen.main.bounds.size.width * 0.8)
+                        .tag(1)
+                    }.onChange(of: currentIndex) { value in print("selected tab = \(value)") }
+                        .background(.white)
+                        .tabViewStyle(.page(indexDisplayMode: .always))
+                        .frame(width: UIScreen.main.bounds.size.width * 0.8, height: UIScreen.main.bounds.size.height * 0.5)
+                        .cornerRadius(10)
+                    Button("Save") {
+//                        if currentIndex == 0 {
+//                            character = "dog"
+//                        } else {
+//                            character = "cat"
+//                        }
+
+                        fToast.toast = FancyToast(type: .success, title: "Success", message: "Character saved", duration: 3)
+                    }
+                    .buttonStyle(MainButton(width: 80))
                     Spacer()
                 }.padding()
             }
@@ -88,13 +90,13 @@ struct Settings: View {
     }
 }
 
-struct Settings_Previews: PreviewProvider {
+struct ChooseCharacter_Previews: PreviewProvider {
     static var previews: some View {
         @StateObject var fToast = FancyToastClass()
         @StateObject var statController = StatController()
         @StateObject var gameKitController = GameKitController()
         @StateObject var bottomSheet = BottomSheet()
-        Settings().environmentObject(fToast)
+        ChooseCharacter().environmentObject(fToast)
             .environmentObject(statController)
             .environmentObject(gameKitController)
             .environmentObject(bottomSheet)

@@ -10,11 +10,12 @@ import SwiftUI
 struct MainButton: ButtonStyle {
     var width: CGFloat?
     var height: CGFloat?
+    var buttonColor = Color("ButtonPrimary")
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: width, height: height)
             .padding()
-            .background(Color("ButtonPrimary"))
+            .background(buttonColor)
             .foregroundColor(.white)
             .clipShape(RoundedRectangle(cornerRadius: 8))
             .scaleEffect(configuration.isPressed ? 1.2 : 1)

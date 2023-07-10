@@ -104,7 +104,6 @@ struct OnBoardingView<Content: View>: View {
             }
             .onAppear {
                 isOnBoarded = false
-                print(isOnBoarded)
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

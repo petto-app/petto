@@ -19,7 +19,7 @@ struct Character: Codable {
 
 class CharacterModel {
     @Published var characters: [Character]?
-//    @Published var currentCharacter: Character
+    // @Published var currentCharacter: Character
     // TODO: Using one character only
 
     init(characters: [Character]? = nil) {
