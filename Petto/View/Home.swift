@@ -22,7 +22,7 @@ struct Home: View {
     @AppStorage("totalCoin") var totalCoin: Int?
     @AppStorage("mute") var mute: Bool = false
     @AppStorage("isOnBoarded") var isOnBoarded: Bool?
-    
+
     func getWp() -> String {
         switch statController.hygiene {
         case 0 ... 20:
@@ -133,7 +133,8 @@ struct Home: View {
                 bottomSheet.showSheet = true
                 // let idleFrameAtlas = SKTextureAtlas(named: "IdleFrames")
                 // idleFrameNames = idleFrameAtlas.textureNames.sorted()
-                GSAudio.sharedInstance.playSound(soundFileName: "background", numberOfLoops: -1)
+                GSAudio.sharedInstance.stopAllSounds()
+                GSAudio.sharedInstance.playSound(soundFileName: statController.fun < 20 ? "bg-no-fun" : "bg-full", numberOfLoops: -1)
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
                     if success {
                         print("All set!")

@@ -11,11 +11,12 @@ import SwiftUITooltip
 struct StatBar: View {
     var tooltipConfig = DefaultTooltipConfig()
     @Binding var value: Int?
+    var projectedValue: Int
     @State private var barValue = 0.0
     @State private var showTooltip = false
     @State private var animationFinished = false
 
-    init(value: Binding<Int?>) {
+    init(value: Binding<Int?>, projectedValue: Int = 0) {
         tooltipConfig.enableAnimation = true
         tooltipConfig.animationOffset = 10
         tooltipConfig.animationTime = 1
@@ -24,10 +25,16 @@ struct StatBar: View {
         tooltipConfig.borderColor = .black
 
         _value = value
+        self.projectedValue = projectedValue
     }
 
     func getBarValue() -> Double {
         let result = animationFinished ? (Double(value ?? 0) / 100.0) : barValue
+        return result
+    }
+
+    func getProjectedValue() -> Double {
+        let result = animationFinished ? (getBarValue() + (Double(projectedValue) / 100.0)) : 0.0
         return result
     }
 
@@ -38,6 +45,12 @@ struct StatBar: View {
                     .opacity(0.3)
                     .foregroundColor(.white)
                     .background(.white)
+
+                if projectedValue > 0 {
+                    Rectangle().frame(width: min(CGFloat(getProjectedValue()) * geometry.size.width, geometry.size.width), height: geometry.size.height)
+                        .foregroundColor(Color("BarProjection"))
+                        .animation(.linear, value: UUID())
+                }
 
                 Rectangle().frame(width: min(CGFloat(getBarValue()) * geometry.size.width, geometry.size.width), height: geometry.size.height)
                     .foregroundColor(getBarValue() > 0.5 ? Color("BarHigh") : barValue > 0.2 ? .yellow : Color("BarLow"))

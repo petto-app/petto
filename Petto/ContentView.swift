@@ -10,14 +10,14 @@ import SwiftUI
 struct ContentView: View {
     @AppStorage("isOnBoarded")
     var isOnBoarded: Bool?
-    
+
     var body: some View {
         switch isOnBoarded {
         case nil:
             OnBoardingView(redirectTo: Home())
         case false:
             OnBoardingView(redirectTo: Home())
-        case .some(_):
+        case .some:
             Home()
         }
     }
