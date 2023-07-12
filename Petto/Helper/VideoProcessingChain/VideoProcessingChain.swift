@@ -28,6 +28,10 @@ protocol VideoProcessingChainDelegate: AnyObject {
     func videoProcessingChain(_ chain: VideoProcessingChain,
                               didPredict actionPrediction: ActionPrediction,
                               for frames: Int)
+    
+    func startPredictionTimer()
+    func processPredictionResults()
+    func appendAccumulatedPredictions(_ actionPrediction: ActionPrediction)
 }
 
 /// Builds a chain of Combine publishers / subscribers from the upstream frame
@@ -74,7 +78,7 @@ struct VideoProcessingChain {
     ///
     /// Increase the stride's value to make predictions less frequently.
     /// - Tag: windowStride
-    private let windowStride = 10
+    let windowStride = 10
 
     /// A performance reporter that logs the number of predictions and frames
     /// that pass through the chain.
@@ -108,6 +112,8 @@ extension VideoProcessingChain {
         // Only continue with a valid upstream frame publisher.
         guard upstreamFramePublisher != nil else { return }
 
+        startPredictionTimer()
+        
         // Create the chain of publisher-subscribers that transform the raw video
         // frames from upstreamFramePublisher.
         frameProcessingChain = upstreamFramePublisher
@@ -149,8 +155,8 @@ extension VideoProcessingChain {
 
             // ---- ActionPrediction -- ActionPrediction ----
 
-            // Send the action prediction to the delegate.
-            .sink(receiveValue: sendPrediction)
+            // Accumulate predictions once in a defined interval
+            .sink(receiveValue: processPrediction)
     }
 }
 
@@ -334,5 +340,17 @@ extension VideoProcessingChain {
 
         // Inform the performance reporter to log the prediction in its count.
         performanceReporter?.incrementPrediction()
+    }
+    
+    private func startPredictionTimer() {
+        DispatchQueue.main.async {
+            self.delegate?.startPredictionTimer()
+        }
+    }
+    
+    private func processPrediction(_ actionPrediction: ActionPrediction) {
+        DispatchQueue.main.async {
+            self.delegate?.appendAccumulatedPredictions(actionPrediction)
+        }
     }
 }

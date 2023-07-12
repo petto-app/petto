@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		05074CC62A5971A400543A53 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05074CC52A5971A400543A53 /* OnBoardingView.swift */; };
+		05074CC82A5C056F00543A53 /* ExerciseClassifier3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 05074CC72A5C056F00543A53 /* ExerciseClassifier3.mlmodel */; };
+		05074CCA2A5D3D8500543A53 /* ExerciseClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 05074CC92A5D3D8500543A53 /* ExerciseClassifier.mlmodel */; };
 		05088DB42A52D8360016D6D8 /* BodyMovement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05088DB32A52D8360016D6D8 /* BodyMovement.storyboard */; };
 		052BFCD82A56EF8400662B6F /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BFCD72A56EF8400662B6F /* Dialog.swift */; };
 		052BFCDA2A56F09400662B6F /* Confirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052BFCD92A56F09400662B6F /* Confirmation.swift */; };
@@ -44,7 +46,7 @@
 		05BFB3872A4435B400A026D7 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFB3862A4435B400A026D7 /* ShopViewController.swift */; };
 		05BFB3902A443B3600A026D7 /* ShopItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFB38F2A443B3600A026D7 /* ShopItemModel.swift */; };
 		05BFB3972A445B3900A026D7 /* TimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BFB3962A445B3900A026D7 /* TimeModel.swift */; };
-		05C6E9AF2A540FBD0017FDA4 /* ExerciseClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 05C6E9AE2A540FBD0017FDA4 /* ExerciseClassifier.mlmodel */; };
+		05C6E9AF2A540FBD0017FDA4 /* ExerciseClassifier2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 05C6E9AE2A540FBD0017FDA4 /* ExerciseClassifier2.mlmodel */; };
 		05F4A2C82A45811C00DE56A7 /* StatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4A2C72A45811C00DE56A7 /* StatModel.swift */; };
 		05F4A2CA2A45816B00DE56A7 /* DailyTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4A2C92A45816B00DE56A7 /* DailyTaskModel.swift */; };
 		05F4A2CC2A45817600DE56A7 /* BodyMovementTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4A2CB2A45817600DE56A7 /* BodyMovementTaskModel.swift */; };
@@ -100,6 +102,8 @@
 
 /* Begin PBXFileReference section */
 		05074CC52A5971A400543A53 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		05074CC72A5C056F00543A53 /* ExerciseClassifier3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ExerciseClassifier3.mlmodel; sourceTree = "<group>"; };
+		05074CC92A5D3D8500543A53 /* ExerciseClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ExerciseClassifier.mlmodel; sourceTree = "<group>"; };
 		05088DB32A52D8360016D6D8 /* BodyMovement.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BodyMovement.storyboard; sourceTree = "<group>"; };
 		052BFCD72A56EF8400662B6F /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
 		052BFCD92A56F09400662B6F /* Confirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confirmation.swift; sourceTree = "<group>"; };
@@ -137,7 +141,7 @@
 		05BFB3862A4435B400A026D7 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		05BFB38F2A443B3600A026D7 /* ShopItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItemModel.swift; sourceTree = "<group>"; };
 		05BFB3962A445B3900A026D7 /* TimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeModel.swift; sourceTree = "<group>"; };
-		05C6E9AE2A540FBD0017FDA4 /* ExerciseClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ExerciseClassifier.mlmodel; sourceTree = "<group>"; };
+		05C6E9AE2A540FBD0017FDA4 /* ExerciseClassifier2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ExerciseClassifier2.mlmodel; sourceTree = "<group>"; };
 		05F4A2C72A45811C00DE56A7 /* StatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatModel.swift; sourceTree = "<group>"; };
 		05F4A2C92A45816B00DE56A7 /* DailyTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskModel.swift; sourceTree = "<group>"; };
 		05F4A2CB2A45817600DE56A7 /* BodyMovementTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyMovementTaskModel.swift; sourceTree = "<group>"; };
@@ -210,7 +214,9 @@
 			children = (
 				058A63F92A4FF7ED00C09712 /* ActionPrediction.swift */,
 				058A63F42A4FF6D800C09712 /* ExerciseClassifier1.mlmodel */,
-				05C6E9AE2A540FBD0017FDA4 /* ExerciseClassifier.mlmodel */,
+				05C6E9AE2A540FBD0017FDA4 /* ExerciseClassifier2.mlmodel */,
+				05074CC72A5C056F00543A53 /* ExerciseClassifier3.mlmodel */,
+				05074CC92A5D3D8500543A53 /* ExerciseClassifier.mlmodel */,
 				058A63F62A4FF7ED00C09712 /* ExerciseClassifier+Singleton.swift */,
 				058A63F82A4FF7ED00C09712 /* ExerciseClassifier+Label.swift */,
 				058A63F72A4FF7ED00C09712 /* ExerciseClassifier+LabelCheck.swift */,
@@ -536,6 +542,7 @@
 				0558E3FE2A55783500F119F1 /* PopUp.swift in Sources */,
 				057354982A482F7000C4D3F2 /* GameKitController.swift in Sources */,
 				058A64012A4FF7ED00C09712 /* ExerciseClassifier+FrameRate.swift in Sources */,
+				05074CC82A5C056F00543A53 /* ExerciseClassifier3.mlmodel in Sources */,
 				058A642F2A51A4EF00C09712 /* AVCaptureDevice+FrameRate.swift in Sources */,
 				93BFA66D2A42F56C007783E4 /* IconButton.swift in Sources */,
 				93D6088B2A46142A0058EA80 /* AudioPlayer.swift in Sources */,
@@ -544,7 +551,7 @@
 				931A94202A4B3FF800058E90 /* BottomSheet.swift in Sources */,
 				057354962A482C3700C4D3F2 /* PlayerModel.swift in Sources */,
 				93455CCE2A52A7E1009A514E /* AmountButton.swift in Sources */,
-				05C6E9AF2A540FBD0017FDA4 /* ExerciseClassifier.mlmodel in Sources */,
+				05C6E9AF2A540FBD0017FDA4 /* ExerciseClassifier2.mlmodel in Sources */,
 				9376A9822A3F5A080037F2FE /* ContentView.swift in Sources */,
 				058A64132A5077BC00C09712 /* BMViewController.swift in Sources */,
 				05BFB3902A443B3600A026D7 /* ShopItemModel.swift in Sources */,
@@ -595,6 +602,7 @@
 				058A63FF2A4FF7ED00C09712 /* ActionPrediction.swift in Sources */,
 				93F4C4CF2A5BFE0A00057C4D /* ChooseCharacter.swift in Sources */,
 				93BFA6732A42FFF0007783E4 /* PrimeTime.swift in Sources */,
+				05074CCA2A5D3D8500543A53 /* ExerciseClassifier.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

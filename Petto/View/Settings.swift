@@ -84,6 +84,7 @@ struct Settings: View {
         .toastView(toast: $fToast.toast)
         .sheet(isPresented: $isGameCenterOpen) {
             GameCenterView()
+                .ignoresSafeArea()
         }
     }
 }

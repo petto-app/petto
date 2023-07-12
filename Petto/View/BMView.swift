@@ -14,11 +14,21 @@ protocol BottomSheetDelegate {
 struct BMView: UIViewControllerRepresentable {
     typealias UIViewControllerType = BMViewController
     @EnvironmentObject var bottomSheet: BottomSheet
-
+    @EnvironmentObject var statController: StatController
+    @EnvironmentObject var bodyMovementTaskModel: BodyMovementTaskModel
+    @EnvironmentObject var statModel: StatModel
+    
     func makeUIViewController(context: Context) -> BMViewController {
         let sb = UIStoryboard(name: "BodyMovement", bundle: nil)
         let vc = sb.instantiateViewController(identifier: "BMViewStoryboard") as! BMViewController
         vc.coordinator = context.coordinator
+        
+        if let bodyMovementTask = bodyMovementTaskModel.getRandomTask() {
+            vc.bodyMovementTask = bodyMovementTask
+        }
+        
+        vc.statModel = statModel
+
         return vc
     }
 
@@ -33,7 +43,16 @@ struct BMView: UIViewControllerRepresentable {
 
 struct BMView_Previews: PreviewProvider {
     static var previews: some View {
-        BMView()
+        ZStack{
+            BMView()
+                .ignoresSafeArea()
+            
+            Image("shiba-1")
+                .resizable()
+                .scaledToFit().frame(width: 250)
+                .padding(.top, -190)
+                .padding(.leading, -100)
+        }
     }
 }
 

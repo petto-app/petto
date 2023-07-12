@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum BodyMovementType: Codable {
     case turningHead
@@ -15,18 +16,45 @@ enum BodyMovementType: Codable {
 
 struct BodyMovementTaskItem: Identifiable, Codable {
     public var id = UUID()
-    public var name: String
-    public var coin: Int
-    public var amount: Int // How much the user has to move
-    public var description: String
-    public var image: String
     public var movementType: BodyMovementType?
+    public var amount: Int // How much the user has to move
+    public var coin: Int
+    public var image: String
 }
 
-class BodyMovementTaskModel {
-    @Published var bodyMovementTasks: [BodyMovementTaskItem]?
+class BodyMovementTaskModel: ObservableObject  {
+    public static var shared: BodyMovementTaskModel = .init()
+    
+    @AppStorage("bodyMovementTasks")
+    var bodyMovementTasksData: Data = .init()
 
-    init(bodyMovementTasks: [BodyMovementTaskItem]? = nil) {
-        self.bodyMovementTasks = bodyMovementTasks
+    var bodyMovementTasks: [BodyMovementTaskItem] {
+        get {
+            if let decodedItems = try? JSONDecoder().decode([BodyMovementTaskItem].self, from: bodyMovementTasksData) {
+                return decodedItems
+            }
+            return []
+        }
+        set {
+            if let encodedItems = try? JSONEncoder().encode(newValue) {
+                bodyMovementTasksData = encodedItems
+            }
+        }
+    }
+
+    init() {
+        bodyMovementTasks = [
+            BodyMovementTaskItem(movementType: .turningHead, amount: 3, coin: 100, image: "shiba-1"),
+            BodyMovementTaskItem(movementType: .twistingBody, amount: 3, coin: 100, image: "shiba-1"),
+            BodyMovementTaskItem(movementType: .pullingBody, amount: 3, coin: 100, image: "shiba-1"),
+        ]
+    }
+    
+    func getRandomTask() -> BodyMovementTaskItem? {
+        guard !bodyMovementTasks.isEmpty else {
+            return nil
+        }
+        let randomIndex = Int.random(in: 0..<bodyMovementTasks.count)
+        return bodyMovementTasks[randomIndex]
     }
 }
