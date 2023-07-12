@@ -40,3 +40,10 @@ public class GameCenterCoordinator: NSObject, GKGameCenterControllerDelegate {
         gameCenterViewController.dismiss(animated: true)
     }
 }
+
+struct GameCenterView_Previews: PreviewProvider {
+    static var previews: some View {
+        GameCenterView()
+            .ignoresSafeArea()
+    }
+}

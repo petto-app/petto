@@ -47,13 +47,19 @@ class BMViewController: UIViewController {
     /// Maintains the aggregate time for each action the model predicts.
     /// - Tag: actionFrameCounts
     var actionFrameCounts = [String: Int]()
+    
     public var coordinator: BottomSheetDelegate?
-}
-
-struct BMViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        BMViewController().showView()
-    }
+    
+    var counter: Int = 0
+    var second: Int = 0
+    public var bodyMovementTask: BodyMovementTaskItem?
+    var statModel: StatModel?
+    
+    private var timer: Timer?
+    private var interval: Double = 7.0
+    var currentPrediction: ActionPrediction = .startingPrediction
+    var predictionHistory: [ActionPrediction] = []
+    private var accumulatedPredictions: [ActionPrediction] = []
 }
 
 // MARK: - View Controller Events
@@ -62,6 +68,8 @@ extension BMViewController {
     /// Configures the main view after it loads.
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("Randomed task: \(bodyMovementTask?.movementType)")
 
         // Disable the idle timer to prevent the screen from locking.
         UIApplication.shared.isIdleTimerDisabled = true
@@ -81,6 +89,9 @@ extension BMViewController {
         videoCapture = VideoCapture()
         videoCapture.delegate = self
 
+        counter = 0
+        second = 0
+        
         updateUILabelsWithPrediction(.startingPrediction)
         coordinator?.dismissBottomSheet()
     }
@@ -182,6 +193,9 @@ extension BMViewController: VideoProcessingChainDelegate {
             addFrameCount(frameCount, to: actionPrediction.label)
         }
 
+        // TODO: Updated twice on second or more prediction
+        print("Update label: \(actionPrediction.label)")
+        
         // Present the prediction in the UI.
         updateUILabelsWithPrediction(actionPrediction)
     }
@@ -199,6 +213,44 @@ extension BMViewController: VideoProcessingChainDelegate {
             // Draw the poses onto the frame.
             self.drawPoses(poses, onto: frame)
         }
+    }
+    
+    internal func startPredictionTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
+            self.processPredictionResults()
+            
+            // Reset the accumulated predictions
+            self.accumulatedPredictions.removeAll()
+        }
+    }
+    
+    func appendAccumulatedPredictions(_ actionPrediction: ActionPrediction) {
+        accumulatedPredictions.append(actionPrediction)
+    }
+    
+    // Prediction results will be processed once in the time interval
+    func processPredictionResults() {
+        // Check if there are accumulated predictions
+        guard !accumulatedPredictions.isEmpty else {
+            return
+        }
+        
+        // Save the accumulated predictions to the history
+        predictionHistory.append(contentsOf: accumulatedPredictions)
+
+        // TODO: Show the most accurate prediction to UI
+        
+        // Show the most recent prediction in the UI
+        if let latestPrediction = accumulatedPredictions.last {
+            currentPrediction = latestPrediction
+        }
+        
+        handleMovement(actionPrediction: currentPrediction)
+        
+        // Send the action prediction to UI.
+        videoProcessingChain(videoProcessingChain,
+                             didPredict: currentPrediction,
+                             for: videoProcessingChain.windowStride)
     }
 }
 
@@ -280,5 +332,38 @@ extension BMViewController {
 
         // Update the UI's full-screen image view on the main thread.
         DispatchQueue.main.async { self.imageView.image = frameWithPosesRendering }
+    }
+    
+    // TODO: Count how many times the number of movements
+    func handleMovement(actionPrediction: ActionPrediction) {
+        // Declare the counter as 0
+        // Pas which task that has to be completed to BM View
+        // Check the confidence threshold
+        // If the counter = 0
+            // If threshold = 100
+                // Set counter = 1
+                // Add the coin
+        // else if the counter != 0 (been 100% threshold)
+        // TODO: Is it always directly not 100% when detection replaced?
+            // If threshold != 100
+                // Set counter = 0
+        
+        if counter == 0 {
+            if actionPrediction.confidence == 100.0 {
+                counter = 1
+                // Add coin
+                if let bodyMovementTask = bodyMovementTask {
+                    let coinReward = bodyMovementTask.coin
+                    statModel!.addCoin(amount: coinReward)
+                    print("Coin added!")
+                }
+                // TODO: Show pop up
+            }
+        } else {
+            if actionPrediction.confidence != 100.0 {
+                counter = 0
+            }
+        }
+        print("handle movement with counter value: \(counter)")
     }
 }

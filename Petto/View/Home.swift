@@ -99,7 +99,28 @@ struct Home: View {
                                     .scaledToFit().frame(width: 35, height: 35)
                                 }.buttonStyle(IconButtonRect(width: 50, height: 50))
                                 NavigationLink {
-                                    BMView()
+                                    ZStack{
+                                        BMView()
+                                            .ignoresSafeArea()
+                                            .environmentObject(StatModel.shared)
+                                            .environmentObject(BodyMovementTaskModel.shared)
+                                        
+                                        // TODO: Add animated character frames
+//                                        Image("shiba-1")
+//                                            .resizable()
+//                                            .scaledToFit()
+//                                            .frame(width: 240)
+//                                            .padding()
+//                                            .offset(x: 70, y: 245)
+                                        
+                                        // TODO: Add dialog
+//                                        Image("shiba-1")
+//                                            .resizable()
+//                                            .scaledToFit()
+//                                            .frame(width: 270)
+//                                            .padding()
+//                                            .offset(x: 80, y: 375)
+                                    }
                                 } label: {
                                     Text("BMS")
                                         .font(.caption)

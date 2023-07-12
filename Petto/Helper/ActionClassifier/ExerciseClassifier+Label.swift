@@ -10,6 +10,7 @@ extension ExerciseClassifier {
     enum Label: String, CaseIterable {
         case turningHead = "Turning Head"
         case twistingBody = "Twisting Body"
+        case pullingBody = "Pulling Body"
 
         /// A negative class that represents irrelevant actions.
         case otherAction = "Other Action"
