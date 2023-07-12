@@ -33,35 +33,55 @@ struct PopUp: View {
                             .foregroundColor(Color("StarCoin"))
                             .fontWeight(.bold)
                             .padding(.bottom, 1)
-                        Text("You've completed \(popUp.dailyTask.name) and got \(popUp.dailyTask.coin) Star Coins")
-                            .foregroundColor(Color("StarCoin"))
-                            .font(.footnote)
-                            .padding(.bottom, 13)
-                            .padding(.horizontal, 90)
-                            .multilineTextAlignment(.center)
+                        
+                        if let dailyTask = popUp.dailyTask, popUp.type == .dailyTask {
+                            Text("You've completed \(popUp.dailyTask!.name) and got \(popUp.dailyTask!.coin) Star Coins")
+                                .foregroundColor(Color("StarCoin"))
+                                .font(.footnote)
+                                .padding(.bottom, 13)
+                                .padding(.horizontal, 90)
+                                .multilineTextAlignment(.center)
+                        } else {
+                            Text("You got \(popUp.bodyMovementTask!.coin) Star Coins")
+                                .foregroundColor(Color("StarCoin"))
+                                .font(.footnote)
+                                .padding(.bottom, 13)
+                                .padding(.horizontal, 90)
+                                .multilineTextAlignment(.center)
+                        }
+                        
                         Button("Claim Now") {
-                            print("Claimed")
-
-                            if let index = popUpModel.popUpItems.firstIndex(where: { $0.dailyTask.name == popUp.dailyTask.name }) {
-                                // Update daily task to Done
-                                if let taskIndex = dailyTaskModel.dailyTasks.lastIndex(where: { $0.name == popUp.dailyTask.name }) {
-                                    dailyTaskModel.dailyTasks[taskIndex].isDone = true
-
-                                    // Update "Finish All Task" daily task
-                                    if dailyTaskModel.dailyTasks[4].amount! < dailyTaskModel.dailyTasks[4].maxAmount {
-                                        dailyTaskModel.dailyTasks[4].amount! += 1
-                                    }
-                                    if dailyTaskModel.dailyTasks[4].amount! == dailyTaskModel.dailyTasks[4].maxAmount {
-                                        if dailyTaskModel.dailyTasks[4].isDone == false {
-                                            popUpModel.addItem(
-                                                PopUpItem(dailyTask: dailyTaskModel.dailyTasks[4], state: .showing(totalCoin: dailyTaskModel.dailyTasks[4].coin))
-                                            )
+                            if let index = popUpModel.popUpItems.firstIndex(where: {
+                                ($0.id == popUp.id)
+                            }) {
+                                var taskCoin: Int?
+                                if popUp.type == .dailyTask {
+                                    // Update daily task to Done
+                                    if let taskIndex = dailyTaskModel.dailyTasks.lastIndex(where: { $0.name == popUp.dailyTask!.name }) {
+                                        dailyTaskModel.dailyTasks[taskIndex].isDone = true
+                                        
+                                        // Update "Finish All Task" daily task
+                                        if dailyTaskModel.dailyTasks[4].amount! < dailyTaskModel.dailyTasks[4].maxAmount {
+                                            dailyTaskModel.dailyTasks[4].amount! += 1
                                         }
+                                        if dailyTaskModel.dailyTasks[4].amount! == dailyTaskModel.dailyTasks[4].maxAmount {
+                                            if dailyTaskModel.dailyTasks[4].isDone == false {
+                                                popUpModel.addItem(
+                                                    PopUpItem(type: .dailyTask, dailyTask: dailyTaskModel.dailyTasks[4], state: .showing(totalCoin: dailyTaskModel.dailyTasks[4].coin))
+                                                )
+                                            }
+                                        }
+                                        taskCoin = popUp.dailyTask!.coin
+                                        print("Claimed: \(popUp.dailyTask!.name)")
                                     }
+                                } else {
+                                    taskCoin = popUp.bodyMovementTask!.coin
+                                    print("Claimed: \(popUp.bodyMovementTask!.movementType)")
                                 }
+                                
                                 // Delete PopUp Items
                                 popUpModel.popUpItems[index].state = .hidden
-                                statController.increaseCoin(amount: popUp.dailyTask.coin)
+                                statController.increaseCoin(amount: taskCoin!)
                                 popUpModel.popUpItems.remove(at: index)
                             }
                         }
@@ -80,13 +100,29 @@ struct PopUp: View {
     }
 }
 
-struct PopUp_Previews: PreviewProvider {
+struct PopUpDailyTask_Previews: PreviewProvider {
     static var previews: some View {
-        PopUp(popUp: PopUpItem(
-            dailyTask:
-            DailyTaskItem(name: "Take 1000 steps", amount: 1200, maxAmount: 1000, coin: 100, isDone: true, type: .stepCount),
-            state: .showing(totalCoin: 100)
+        PopUp(popUp:
+            PopUpItem(
+                type: .dailyTask,
+                dailyTask:
+                    DailyTaskItem(name: "Take 1000 steps", amount: 1200, maxAmount: 1000, coin: 100, isDone: true, type: .stepCount),
+                state: .showing(totalCoin: 100)
+            )
         )
+    }
+}
+
+struct PopUpBodyMovement_Previews: PreviewProvider {
+    static var previews: some View {
+        PopUp(popUp:
+            PopUpItem(
+                type: .bodyMovementTask,
+                bodyMovementTask:
+                    BodyMovementTaskItem(movementType: .twistingBody, amount: 3, coin: 100, image: "shiba-1"),
+                state: .showing(totalCoin: 100)
+            )
+                
         )
     }
 }
