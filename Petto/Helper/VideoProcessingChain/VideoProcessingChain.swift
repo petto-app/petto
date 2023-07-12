@@ -49,10 +49,7 @@ struct VideoProcessingChain {
     /// Set this property to begin extracting poses and predicting actions.
     /// - Tag: upstreamFramePublisher
     var upstreamFramePublisher: AnyPublisher<Frame, Never>! {
-        didSet {
-            startPredictionTimer()
-            buildProcessingChain()
-        }
+        didSet { buildProcessingChain() }
     }
 
     /// A cancellation token for the active video-processing chain.

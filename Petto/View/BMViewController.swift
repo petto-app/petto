@@ -193,7 +193,6 @@ extension BMViewController: VideoProcessingChainDelegate {
             addFrameCount(frameCount, to: actionPrediction.label)
         }
 
-        // TODO: Updated twice on second or more prediction
         print("Update label: \(actionPrediction.label)")
         
         // Present the prediction in the UI.
@@ -251,6 +250,9 @@ extension BMViewController: VideoProcessingChainDelegate {
         videoProcessingChain(videoProcessingChain,
                              didPredict: currentPrediction,
                              for: videoProcessingChain.windowStride)
+        
+        // Reset the accumulated predictions
+        self.accumulatedPredictions.removeAll()
     }
 }
 
