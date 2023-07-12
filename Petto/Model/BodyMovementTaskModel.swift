@@ -57,4 +57,17 @@ class BodyMovementTaskModel: ObservableObject  {
         let randomIndex = Int.random(in: 0..<bodyMovementTasks.count)
         return bodyMovementTasks[randomIndex]
     }
+    
+    func getStringType(item: BodyMovementTaskItem) -> String {
+        switch item.movementType {
+            case .pullingBody:
+                return "Pulling Body"
+            case .turningHead:
+                return "Turning Head"
+            case .twistingBody:
+                return "Twisting Body"
+            case .none:
+                return ""
+        }
+    }
 }

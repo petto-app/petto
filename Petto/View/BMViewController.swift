@@ -48,18 +48,18 @@ class BMViewController: UIViewController {
     /// - Tag: actionFrameCounts
     var actionFrameCounts = [String: Int]()
     
-    public var coordinator: BottomSheetDelegate?
-    
-    var counter: Int = 0
-    var second: Int = 0
+    public var coordinator: BMView.Coordinator?
+
     public var bodyMovementTask: BodyMovementTaskItem?
     var statModel: StatModel?
     
-    private var timer: Timer?
-    private var interval: Double = 7.0
-    var currentPrediction: ActionPrediction = .startingPrediction
+    var timer: Timer?
+    var interval: Double = 7.0
     var predictionHistory: [ActionPrediction] = []
-    private var accumulatedPredictions: [ActionPrediction] = []
+    var accumulatedPredictions: [ActionPrediction] = []
+    
+    var movementAmount: Int = 0
+    var lastPrediction: Date = Date()
 }
 
 // MARK: - View Controller Events
@@ -89,8 +89,7 @@ extension BMViewController {
         videoCapture = VideoCapture()
         videoCapture.delegate = self
 
-        counter = 0
-        second = 0
+        movementAmount = 0
         
         updateUILabelsWithPrediction(.startingPrediction)
         coordinator?.dismissBottomSheet()
@@ -193,7 +192,7 @@ extension BMViewController: VideoProcessingChainDelegate {
             addFrameCount(frameCount, to: actionPrediction.label)
         }
 
-        print("Update label: \(actionPrediction.label)")
+        print("Update label to view: \(actionPrediction.label)")
         
         // Present the prediction in the UI.
         updateUILabelsWithPrediction(actionPrediction)
@@ -227,30 +226,43 @@ extension BMViewController: VideoProcessingChainDelegate {
         accumulatedPredictions.append(actionPrediction)
     }
     
-    // Prediction results will be processed once in the time interval
+    // Prediction results will be processed once in the time interval, to get only ONE kind of body movement
     func processPredictionResults() {
         // Check if there are accumulated predictions
         guard !accumulatedPredictions.isEmpty else {
             return
         }
         
-        // Save the accumulated predictions to the history
-        predictionHistory.append(contentsOf: accumulatedPredictions)
+        let mostAccuratePredictions = [ActionPrediction]()
+        
+        print("Accumulated predictions:")
+        print(accumulatedPredictions)
+        
+        // Get one of the prediction with the highest confidence (most accurate prediction)
+        let prediction = Dictionary(
+                            grouping:
+                                accumulatedPredictions
+                                    .sorted { $0.confidence > $1.confidence } // Sort the accumulated predictions in descending order of confidence
+                        ) { $0.label } // Prevent multiple kind of body movement that appear
+                            .values
+                            .compactMap { value in value.first } // Get the first maximum confidence prediction of each kind of body movement
+                            .sorted { $0.confidence > $1.confidence } // Sort again to make sure the maximum confidence
+                            .first
 
-        // TODO: Show the most accurate prediction to UI
+        print("Selected Prediction:")
+        print(prediction!)
         
+        // Save the most accurate prediction to the prediction history
+        predictionHistory.append(prediction!)
+
         // Show the most recent prediction in the UI
-        if let latestPrediction = accumulatedPredictions.last {
-            currentPrediction = latestPrediction
-        }
-        
-        handleMovement(actionPrediction: currentPrediction)
-        
+        handleMovement(actionPrediction: prediction!)
+
         // Send the action prediction to UI.
         videoProcessingChain(videoProcessingChain,
-                             didPredict: currentPrediction,
+                             didPredict: prediction!,
                              for: videoProcessingChain.windowStride)
-        
+
         // Reset the accumulated predictions
         self.accumulatedPredictions.removeAll()
     }
@@ -336,36 +348,32 @@ extension BMViewController {
         DispatchQueue.main.async { self.imageView.image = frameWithPosesRendering }
     }
     
-    // TODO: Count how many times the number of movements
     func handleMovement(actionPrediction: ActionPrediction) {
-        // Declare the counter as 0
-        // Pas which task that has to be completed to BM View
-        // Check the confidence threshold
-        // If the counter = 0
-            // If threshold = 100
-                // Set counter = 1
-                // Add the coin
-        // else if the counter != 0 (been 100% threshold)
-        // TODO: Is it always directly not 100% when detection replaced?
-            // If threshold != 100
-                // Set counter = 0
+        let secondDiff = Calendar.current.dateComponents([.second], from: lastPrediction, to: Date()).second
         
-        if counter == 0 {
-            if actionPrediction.confidence == 100.0 {
-                counter = 1
-                // Add coin
-                if let bodyMovementTask = bodyMovementTask {
-                    let coinReward = bodyMovementTask.coin
-                    statModel!.addCoin(amount: coinReward)
-                    print("Coin added!")
+        // Check if last prediction is equal or more than minimum prediction interval
+        if secondDiff! >= Int(interval) {
+            if let bodyMovementTask = bodyMovementTask {
+                let stringType = coordinator?.getBodyMovementStringType(item: bodyMovementTask)
+                
+                // Check if the detected motion is the same as the requested movement
+                if actionPrediction.label == stringType {
+                    // Add the number of movements
+                    movementAmount += 1
+                    lastPrediction = Date()
+                    
+                    if movementAmount == bodyMovementTask.amount {
+                        coordinator?.addPopUp(bodyMovementTask: bodyMovementTask)
+                        navigationController?.pushViewController(UIHostingController(rootView: Home()), animated: true)
+                    }
+                    
+                    // TODO: Add dialog how much more to go
+                } else {
+                    // TODO: Add dialog coba lagi
+                    print("Coba lagi!")
                 }
-                // TODO: Show pop up
-            }
-        } else {
-            if actionPrediction.confidence != 100.0 {
-                counter = 0
             }
         }
-        print("handle movement with counter value: \(counter)")
+        print("Current movement amount: \(movementAmount)")
     }
 }

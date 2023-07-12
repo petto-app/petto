@@ -11,12 +11,17 @@ protocol BottomSheetDelegate {
     func dismissBottomSheet()
 }
 
+protocol PopUpDelegate {
+    func addPopUp(bodyMovementTask: BodyMovementTaskItem)
+}
+
 struct BMView: UIViewControllerRepresentable {
     typealias UIViewControllerType = BMViewController
     @EnvironmentObject var bottomSheet: BottomSheet
     @EnvironmentObject var statController: StatController
     @EnvironmentObject var bodyMovementTaskModel: BodyMovementTaskModel
     @EnvironmentObject var statModel: StatModel
+    @EnvironmentObject var popUpModel: PopUpModel
     
     func makeUIViewController(context: Context) -> BMViewController {
         let sb = UIStoryboard(name: "BodyMovement", bundle: nil)
@@ -25,6 +30,7 @@ struct BMView: UIViewControllerRepresentable {
         
         if let bodyMovementTask = bodyMovementTaskModel.getRandomTask() {
             vc.bodyMovementTask = bodyMovementTask
+            print("Assigned BM Task: \(bodyMovementTask.movementType)")
         }
         
         vc.statModel = statModel
@@ -57,7 +63,7 @@ struct BMView_Previews: PreviewProvider {
 }
 
 extension BMView {
-    class Coordinator: NSObject, ObservableObject, BottomSheetDelegate {
+    class Coordinator: NSObject, ObservableObject, BottomSheetDelegate, PopUpDelegate {
         var parent: BMView
 
         init(_ parent: BMView) {
@@ -66,6 +72,21 @@ extension BMView {
 
         func dismissBottomSheet() {
             parent.bottomSheet.showSheet = false
+        }
+        
+        func addPopUp(bodyMovementTask: BodyMovementTaskItem) {
+            parent.popUpModel.addItem(
+                PopUpItem(
+                    type: .bodyMovementTask,
+                    bodyMovementTask: bodyMovementTask,
+                    state: .showing(totalCoin: bodyMovementTask.coin)
+                )
+            )
+            print("BM Task pop up added!")
+        }
+        
+        func getBodyMovementStringType(item: BodyMovementTaskItem) -> String {
+            return parent.bodyMovementTaskModel.getStringType(item: item)
         }
     }
 }

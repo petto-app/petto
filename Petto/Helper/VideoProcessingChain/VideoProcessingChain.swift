@@ -86,6 +86,8 @@ struct VideoProcessingChain {
     /// The reporter prints the prediction and frame counts to the console
     /// every second.
     private var performanceReporter = PerformanceReporter()
+    
+    var minimumConfidence: Double = 0.95 // 95%
 
     init() {
         predictionWindowSize = actionClassifier.calculatePredictionWindowSize()
@@ -349,8 +351,13 @@ extension VideoProcessingChain {
     }
     
     private func processPrediction(_ actionPrediction: ActionPrediction) {
-        DispatchQueue.main.async {
-            self.delegate?.appendAccumulatedPredictions(actionPrediction)
+        if let confidence = actionPrediction.confidence {
+            // Processing only for prediction that reach minimum confidence
+            if confidence >= minimumConfidence {
+                DispatchQueue.main.async {
+                    self.delegate?.appendAccumulatedPredictions(actionPrediction)
+                }
+            }
         }
     }
 }

@@ -8,14 +8,25 @@
 import Foundation
 import SwiftUI
 
+enum PopUpItemType: Equatable, Codable {
+    case dailyTask
+    case bodyMovementTask
+}
+
 enum PopUpState: Equatable, Codable {
     case hidden
     case showing(totalCoin: Int)
 }
 
 struct PopUpItem: Codable, Equatable {
+    static func == (lhs: PopUpItem, rhs: PopUpItem) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
     var id = UUID()
-    var dailyTask: DailyTaskItem
+    var type: PopUpItemType
+    var dailyTask: DailyTaskItem?
+    var bodyMovementTask: BodyMovementTaskItem?
     var state: PopUpState
 }
 
@@ -45,7 +56,7 @@ class PopUpModel: ObservableObject {
         var newPopUpItems: [PopUpItem] = []
 
         for task in dailyTasks {
-            let popUpItem = PopUpItem(dailyTask: task, state: .showing(totalCoin: task.coin))
+            let popUpItem = PopUpItem(type: .dailyTask, dailyTask: task, state: .showing(totalCoin: task.coin))
             newPopUpItems.append(popUpItem)
         }
 
