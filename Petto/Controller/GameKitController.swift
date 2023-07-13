@@ -18,9 +18,9 @@ class GameKitController: NSObject, GKLocalPlayerListener, ObservableObject {
     override init() {
         super.init()
 
-        authenticateUser { success in
+        authenticateUser { [self] success in
             if success {
-                self.reportScore(totalCoin: 5)
+                self.reportScore(totalCoin: statModel.totalCoin!)
             }
         }
     }
@@ -43,16 +43,18 @@ class GameKitController: NSObject, GKLocalPlayerListener, ObservableObject {
         }
     }
 
-    func reportScore(totalCoin: Int?) {
+    func reportScore(totalCoin: Int) {
         if playerModel.localPlayer.isAuthenticated {
             GKLeaderboard.submitScore(
-                totalCoin ?? 0,
+                totalCoin,
                 context: 0,
                 player: playerModel.localPlayer,
-                leaderboardIDs: ["LEADERBOARD_ID"]
+                leaderboardIDs: ["com.pettoteam.pettolife.highscore"]
             ) { error in
-                print("Leaderboard Error:", error?.localizedDescription as Any)
+                print("Leaderboard Submit Score Error:")
+                print(error)
             }
+            print("Score submitted: \(totalCoin)")
         }
     }
 }
