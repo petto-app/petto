@@ -70,7 +70,7 @@ struct Home: View {
             idleFrameNames = [getImageName(index: 1)]
         }
     }
-
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -166,6 +166,14 @@ struct Home: View {
                 }
             }.onAppear {
                 isOnBoarded = true
+                
+                // Fetch health data every time Home View opened
+                healthKitController.authorizeHealthKit { success in
+                    if success {
+                        healthKitController.fetchHealthData()
+                    }
+                }
+                
                 bottomSheet.showSheet = true
                 statController.updateStats()
                 statController.objectWillChange.send()

@@ -55,8 +55,6 @@ struct Hygiene: Stat, Codable {
 
 class StatModel: ObservableObject {
     public static var shared: StatModel = .init()
-    
-    @EnvironmentObject var gameKitController: GameKitController
 
     @AppStorage("coin")
     var coin: Int?
@@ -134,7 +132,6 @@ class StatModel: ObservableObject {
         }
         coin! += amount
         totalCoin! += amount
-        gameKitController.reportScore(totalCoin: totalCoin!)
     }
 
     func reduceCoin(amount: Int) {

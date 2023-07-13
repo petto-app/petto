@@ -12,6 +12,7 @@ struct PopUp: View {
     @EnvironmentObject var popUpModel: PopUpModel
     @EnvironmentObject var statController: StatController
     @EnvironmentObject var dailyTaskController: DailyTaskController
+    @EnvironmentObject var gameKitController: GameKitController
     @ObservedObject var dailyTaskModel = DailyTaskModel.shared
 
     var body: some View {
@@ -82,6 +83,7 @@ struct PopUp: View {
                                 // Delete PopUp Items
                                 popUpModel.popUpItems[index].state = .hidden
                                 statController.increaseCoin(amount: taskCoin!)
+                                gameKitController.reportScore(totalCoin: statController.statModel.totalCoin!)
                                 popUpModel.popUpItems.remove(at: index)
                             }
                         }

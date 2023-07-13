@@ -18,14 +18,6 @@ class HealthKitController: ObservableObject {
 
     var hasRequestedHealthData = false
 
-    init() {
-        authorizeHealthKit { [self] success in
-            if success {
-                fetchHealthData()
-            }
-        }
-    }
-
     func authorizeHealthKit(completion: @escaping (Bool) -> Void) {
         if HKHealthStore.isHealthDataAvailable() {
             let infoToRead = Set([
