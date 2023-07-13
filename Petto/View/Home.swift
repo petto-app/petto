@@ -160,6 +160,9 @@ struct Home: View {
             }.onAppear {
                 isOnBoarded = true
                 bottomSheet.showSheet = true
+                statController.updateStats()
+                statController.objectWillChange.send()
+                updateFrames()
                 // let idleFrameAtlas = SKTextureAtlas(named: "IdleFrames")
                 // idleFrameNames = idleFrameAtlas.textureNames.sorted()
                 GSAudio.sharedInstance.stopAllSounds()
