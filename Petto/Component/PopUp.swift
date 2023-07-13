@@ -119,7 +119,7 @@ struct PopUpBodyMovement_Previews: PreviewProvider {
             PopUpItem(
                 type: .bodyMovementTask,
                 bodyMovementTask:
-                    BodyMovementTaskItem(movementType: .twistingBody, amount: 3, coin: 100, image: "shiba-1"),
+                    BodyMovementTaskItem(movementType: .twistingBody, amount: 3, coin: 100, images: ["shiba-1", "shiba-2", "shiba-3"]),
                 state: .showing(totalCoin: 100)
             )
                 
