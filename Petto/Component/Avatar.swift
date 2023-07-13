@@ -10,6 +10,7 @@ import SwiftUI
 struct Avatar: View {
     @Binding var idleFrameNames: [String]
     var scale = 1.0
+    var poopCount = 0
 
     var body: some View {
         TimelineView(.animation) { timeline in
@@ -38,6 +39,13 @@ struct Avatar: View {
                         Image(idleFrameNames[frameIndex]).resizable(),
                         at: CGPoint(x: w / 2, y: h / 1.7)
                     )
+
+                    for i in 0 ..< poopCount {
+                        context.draw(
+                            Image("poop").resizable(),
+                            at: CGPoint(x: w / 12.0 + CGFloat(8 * abs(15 - poopCount) * i), y: h / 1.36)
+                        )
+                    }
                 }
             }
         }

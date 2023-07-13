@@ -10,8 +10,9 @@ import SwiftUI
 struct Settings: View {
     @Environment(\.dismiss) var dismiss
 
-    @AppStorage("mute") var mute: Bool = false
+    @EnvironmentObject var settingsController: SettingsController
     @EnvironmentObject var bottomSheet: BottomSheet
+    @EnvironmentObject var audioController: AudioController
 
     @StateObject var timeController: TimeController = .init()
     @State private var interval = 2
@@ -46,13 +47,14 @@ struct Settings: View {
                             }
                         }
                         GridRow {
-                            SettingsHeaderButton(width: 60, height: 60, title: !mute ? "Mute" : "Unmute", image: !mute ? "SoundOff" : "SoundOn") {
-                                if !mute {
-                                    GSAudio.sharedInstance.mute()
+                            SettingsHeaderButton(width: 60, height: 60, title: !settingsController.getMute() ? "Mute" : "Unmute", image: !settingsController.getMute() ? "SoundOff" : "SoundOn") {
+                                if !settingsController.getMute() {
+                                    audioController.audioPlayer.mute()
                                 } else {
-                                    GSAudio.sharedInstance.unmute()
+                                    audioController.audioPlayer.unmute()
                                 }
-                                mute = !mute
+                                settingsController.toggleMute()
+                                settingsController.objectWillChange.send()
                             }
                         }
                         GridRow {

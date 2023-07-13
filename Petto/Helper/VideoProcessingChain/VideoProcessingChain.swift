@@ -28,7 +28,7 @@ protocol VideoProcessingChainDelegate: AnyObject {
     func videoProcessingChain(_ chain: VideoProcessingChain,
                               didPredict actionPrediction: ActionPrediction,
                               for frames: Int)
-    
+
     func startPredictionTimer()
     func processPredictionResults()
     func appendAccumulatedPredictions(_ actionPrediction: ActionPrediction)
@@ -86,7 +86,7 @@ struct VideoProcessingChain {
     /// The reporter prints the prediction and frame counts to the console
     /// every second.
     private var performanceReporter = PerformanceReporter()
-    
+
     var minimumConfidence: Double = 0.95 // 95%
 
     init() {
@@ -115,7 +115,7 @@ extension VideoProcessingChain {
         guard upstreamFramePublisher != nil else { return }
 
         startPredictionTimer()
-        
+
         // Create the chain of publisher-subscribers that transform the raw video
         // frames from upstreamFramePublisher.
         frameProcessingChain = upstreamFramePublisher
@@ -343,13 +343,13 @@ extension VideoProcessingChain {
         // Inform the performance reporter to log the prediction in its count.
         performanceReporter?.incrementPrediction()
     }
-    
+
     private func startPredictionTimer() {
         DispatchQueue.main.async {
             self.delegate?.startPredictionTimer()
         }
     }
-    
+
     private func processPrediction(_ actionPrediction: ActionPrediction) {
         if let confidence = actionPrediction.confidence {
             // Processing only for prediction that reach minimum confidence

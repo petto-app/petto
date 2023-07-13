@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ShopTab: View {
+    @EnvironmentObject var audioController: AudioController
     @Binding var activeType: ShopItemType
     @Binding var amounts: [Int]
 
@@ -24,6 +25,7 @@ struct ShopTab: View {
                     print("Button pressed!")
                     activeType = .energy
                     resetAmounts()
+                    audioController.audioPlayer.playSound(soundFileName: "pop")
                 }
                 .font(.caption)
                 .buttonStyle(BrownButton(width: 50, height: 6, active: activeType == .energy))
@@ -31,6 +33,7 @@ struct ShopTab: View {
                     print("Button pressed!")
                     activeType = .fun
                     resetAmounts()
+                    audioController.audioPlayer.playSound(soundFileName: "pop")
                 }
                 .font(.caption)
                 .buttonStyle(BrownButton(width: 50, height: 6, active: activeType == .fun))
@@ -38,6 +41,7 @@ struct ShopTab: View {
                     print("Button pressed!")
                     activeType = .hygiene
                     resetAmounts()
+                    audioController.audioPlayer.playSound(soundFileName: "pop")
                 }
                 .font(.caption)
                 .buttonStyle(BrownButton(width: 50, height: 6, active: activeType == .hygiene))

@@ -24,7 +24,7 @@ struct Stats: View {
                         Image("BurgerIcon").resizable().scaledToFill().frame(width: 30, height: 30)
                         Text("Energy").font(.custom(
                             "MotleyForces",
-                            size: 13,
+                            size: 12,
                             relativeTo: .body))
                         Spacer()
                     }
@@ -32,7 +32,7 @@ struct Stats: View {
                         Image("ControllerIcon").resizable().scaledToFill().frame(width: 27, height: 27)
                         Text("Fun").font(.custom(
                             "MotleyForcesRegular",
-                            size: 13,
+                            size: 12,
                             relativeTo: .body))
                         Spacer()
                     }.padding(.leading, 10)
@@ -40,7 +40,7 @@ struct Stats: View {
                         Image("VacuumIcon").resizable().scaledToFill().frame(width: 29, height: 29)
                         Text("Hygiene").font(.custom(
                             "MotleyForcesRegular",
-                            size: 13,
+                            size: 12,
                             relativeTo: .body))
                         Spacer()
                     }.padding(.leading, 5)

@@ -15,6 +15,7 @@ struct StatBar: View {
     @State private var barValue = 0.0
     @State private var showTooltip = false
     @State private var animationFinished = false
+    @EnvironmentObject var audioController: AudioController
 
     init(value: Binding<Int?>, projectedValue: Int = 0) {
         tooltipConfig.enableAnimation = true
@@ -55,13 +56,14 @@ struct StatBar: View {
                 Rectangle().frame(width: min(CGFloat(getBarValue()) * geometry.size.width, geometry.size.width), height: geometry.size.height)
                     .foregroundColor(getBarValue() > 0.5 ? Color("BarHigh") : barValue > 0.2 ? .yellow : Color("BarLow"))
                     .animation(.linear, value: UUID())
-            }.cornerRadius(45.0)
+            }.cornerRadius(25)
                 .overlay(
-                    RoundedRectangle(cornerRadius: 45)
+                    RoundedRectangle(cornerRadius: 25)
                         .stroke(Color.black, lineWidth: 1)
                 )
                 .onTapGesture {
                     showTooltip = !showTooltip
+                    audioController.audioPlayer.playSound(soundFileName: "pop")
                 }
                 .clipped()
                 .shadow(radius: 2, y: 2)

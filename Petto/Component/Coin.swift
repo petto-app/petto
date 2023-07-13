@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftUITooltip
 
 struct Coin: View {
+    @EnvironmentObject var audioController: AudioController
     var tooltipConfig = DefaultTooltipConfig()
     let totalCoin: Int
     let coin: Int
@@ -39,6 +40,7 @@ struct Coin: View {
             }
             .onTapGesture {
                 showTooltip = !showTooltip
+                audioController.audioPlayer.playSound(soundFileName: "pop")
             }
         }
         .padding(5)

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum CharacterType: String, CaseIterable {
     case dog
@@ -14,15 +15,20 @@ enum CharacterType: String, CaseIterable {
 
 struct Character: Codable {
     public var type: String
-    public var image: String
 }
 
-class CharacterModel {
+class CharacterModel: ObservableObject {
+    public static var shared: CharacterModel = .init()
     @Published var characters: [Character]?
-    // @Published var currentCharacter: Character
-    // TODO: Using one character only
+
+    @AppStorage("character")
+    var currentCharacter: String?
 
     init(characters: [Character]? = nil) {
         self.characters = characters
+    }
+
+    func setCharacter(character: String) {
+        currentCharacter = character
     }
 }

@@ -11,24 +11,25 @@ import UserNotifications
 
 struct Home: View {
     @EnvironmentObject var timeController: TimeController
+    @EnvironmentObject var audioController: AudioController
     @EnvironmentObject var healthKitController: HealthKitController
     @EnvironmentObject var bottomSheet: BottomSheet
     @State private var idleFrameNames: [String] = ["shiba-1"]
     @EnvironmentObject var dailyTaskController: DailyTaskController
     @EnvironmentObject var statController: StatController
     @EnvironmentObject var timerController: TimerController
+    @EnvironmentObject var characterController: CharacterController
     @EnvironmentObject var popUpModel: PopUpModel
     @AppStorage("coin") var coin: Int?
     @AppStorage("totalCoin") var totalCoin: Int?
     @AppStorage("mute") var mute: Bool = false
     @AppStorage("isOnBoarded") var isOnBoarded: Bool?
-    @AppStorage("character") var character = "dog"
     
     @State private var dialogMessage: String? = nil
     @State private var bodyMovementImages: [String] = []
 
     func getImageName(index: Int) -> String {
-        if character == "dog" {
+        if characterController.getCharacter() == "dog" {
             return "shiba-\(index)"
         }
         return "cat-\(index)"
@@ -78,7 +79,7 @@ struct Home: View {
                         Image(getWp()).resizable().ignoresSafeArea(.all)
                             .aspectRatio(contentMode: .fill)
                     }
-                    Avatar(idleFrameNames: $idleFrameNames, scale: 1.2)
+                    Avatar(idleFrameNames: $idleFrameNames, scale: 1.2, poopCount: statController.hygiene <= 20 ? ((20 - statController.hygiene) / 5 + 1) : 0)
                     VStack {
                         HStack {
                             NavigationLink {
@@ -126,7 +127,6 @@ struct Home: View {
                                             .padding()
                                             .offset(x: 70, y: 245)
                                         }
-                                        
                                     }
                                 } label: {
                                     Text("BMS")
@@ -172,8 +172,8 @@ struct Home: View {
                 updateFrames()
                 // let idleFrameAtlas = SKTextureAtlas(named: "IdleFrames")
                 // idleFrameNames = idleFrameAtlas.textureNames.sorted()
-                GSAudio.sharedInstance.stopAllSounds()
-                GSAudio.sharedInstance.playSound(soundFileName: statController.fun < 20 ? "bg-no-fun" : "bg-full", numberOfLoops: -1)
+                audioController.audioPlayer.stopAllSounds()
+                audioController.audioPlayer.playSound(soundFileName: statController.fun < 20 ? "bg-no-fun" : "bg-full", numberOfLoops: -1)
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
                     if success {
                         print("All set!")
@@ -189,9 +189,9 @@ struct Home: View {
                 }
 
                 if mute {
-                    GSAudio.sharedInstance.mute()
+                    audioController.audioPlayer.mute()
                 } else {
-                    GSAudio.sharedInstance.unmute()
+                    audioController.audioPlayer.unmute()
                 }
             }
             .sheet(isPresented: $bottomSheet.showSheet) {

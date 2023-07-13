@@ -49,7 +49,7 @@ struct SettingsHeader<Content: View>: View {
             .roundedCorner(100, corners: [.bottomLeft, .topLeft])
             .shadow(radius: 4, y: 3)
             .disabled(active)
-            .frame(width: .infinity)
+            .frame(width: nil)
     }
 }
 
@@ -80,11 +80,11 @@ struct SettingsHeaderButton: View {
             Text(title).foregroundColor(active ? .white : .black)
                 .fontWeight(.semibold)
             Spacer()
-        }.frame(width: .infinity, height: CGFloat(height)).background(active ? Color("StarCoin") : .white).roundedCorner(10, corners: [.bottomRight, .topRight])
+        }.frame(width: nil, height: CGFloat(height)).background(active ? Color("StarCoin") : .white).roundedCorner(10, corners: [.bottomRight, .topRight])
             .roundedCorner(100, corners: [.bottomLeft, .topLeft])
             .shadow(radius: 4, y: 3)
             .disabled(active)
-            .frame(width: .infinity)
+            .frame(width: nil)
     }
 }
 

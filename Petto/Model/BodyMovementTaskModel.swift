@@ -22,7 +22,7 @@ struct BodyMovementTaskItem: Identifiable, Codable {
     public var images: [String]
 }
 
-class BodyMovementTaskModel: ObservableObject  {
+class BodyMovementTaskModel: ObservableObject {
     public static var shared: BodyMovementTaskModel = .init()
     
     @Published var coinPerPrimeTime: Int = 0
@@ -63,25 +63,24 @@ class BodyMovementTaskModel: ObservableObject  {
         
         coinPerPrimeTime = Int(1000/totalPrimeTime)
     }
-    
     func getRandomTask() -> BodyMovementTaskItem? {
         guard !bodyMovementTasks.isEmpty else {
             return nil
         }
-        let randomIndex = Int.random(in: 0..<bodyMovementTasks.count)
+        let randomIndex = Int.random(in: 0 ..< bodyMovementTasks.count)
         return bodyMovementTasks[randomIndex]
     }
-    
+
     func getStringType(item: BodyMovementTaskItem) -> String {
         switch item.movementType {
-            case .pullingBody:
-                return "Pulling Body"
-            case .turningHead:
-                return "Turning Head"
-            case .twistingBody:
-                return "Twisting Body"
-            case .none:
-                return ""
+        case .pullingBody:
+            return "Pulling Body"
+        case .turningHead:
+            return "Turning Head"
+        case .twistingBody:
+            return "Twisting Body"
+        case .none:
+            return ""
         }
     }
     

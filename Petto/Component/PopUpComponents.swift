@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PopUpComponents: View {
+    @EnvironmentObject var audioController: AudioController
     var title = "Congratulations"
     var text = ""
 
@@ -50,16 +51,17 @@ struct PopUpComponents: View {
                             GridRow {
                                 if cancelText != nil {
                                     Button(cancelText!) {
-                                        print("Claimed")
                                         if cancelHandler != nil {
                                             cancelHandler!()
                                         }
+                                        audioController.audioPlayer.playSound(soundFileName: "pop")
                                     }
                                     .buttonStyle(MainButton(width: 80, height: 10, buttonColor: .red))
                                     .font(.footnote)
                                 }
                                 Button(confirmText) {
                                     function()
+                                    audioController.audioPlayer.playSound(soundFileName: "pop")
                                 }
                                 .buttonStyle(MainButton(width: 80, height: 10))
                                 .font(.footnote)

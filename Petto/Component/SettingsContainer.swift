@@ -70,7 +70,7 @@ struct SettingsContainer: View {
         }
         .padding(.horizontal, 7)
         .padding(.bottom, 20)
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: nil)
         .background(.white)
         .cornerRadius(10)
         .overlay(

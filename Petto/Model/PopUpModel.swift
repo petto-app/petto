@@ -22,7 +22,7 @@ struct PopUpItem: Codable, Equatable {
     static func == (lhs: PopUpItem, rhs: PopUpItem) -> Bool {
         return lhs.id == rhs.id
     }
-    
+
     var id = UUID()
     var type: PopUpItemType
     var dailyTask: DailyTaskItem?
