@@ -91,7 +91,7 @@ extension BMViewController {
 
         movementAmount = 0
         
-        updateUILabelsWithPrediction(.startingPrediction)
+//        updateUILabelsWithPrediction(.startingPrediction)
         coordinator?.dismissBottomSheet()
     }
 
@@ -168,7 +168,7 @@ extension BMViewController: VideoCaptureDelegate {
     ///   - framePublisher: A new frame publisher from the video capture.
     func videoCapture(_: VideoCapture,
                       didCreate framePublisher: FramePublisher) {
-        updateUILabelsWithPrediction(.startingPrediction)
+//        updateUILabelsWithPrediction(.startingPrediction)
 
         // Build a new video-processing chain by assigning the new frame publisher.
         videoProcessingChain.upstreamFramePublisher = framePublisher
@@ -195,7 +195,7 @@ extension BMViewController: VideoProcessingChainDelegate {
         print("Update label to view: \(actionPrediction.label)")
         
         // Present the prediction in the UI.
-        updateUILabelsWithPrediction(actionPrediction)
+//        updateUILabelsWithPrediction(actionPrediction)
     }
 
     /// Receives a frame and any poses in that frame.
