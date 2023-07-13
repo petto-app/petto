@@ -47,19 +47,19 @@ class BMViewController: UIViewController {
     /// Maintains the aggregate time for each action the model predicts.
     /// - Tag: actionFrameCounts
     var actionFrameCounts = [String: Int]()
-    
+
     public var coordinator: BMView.Coordinator?
 
     public var bodyMovementTask: BodyMovementTaskItem?
     var statModel: StatModel?
-    
+
     var timer: Timer?
     var interval: Double = 7.0
     var predictionHistory: [ActionPrediction] = []
     var accumulatedPredictions: [ActionPrediction] = []
-    
+
     var movementAmount: Int = 0
-    var lastPrediction: Date = Date()
+    var lastPrediction: Date = .init()
 }
 
 // MARK: - View Controller Events
@@ -68,7 +68,7 @@ extension BMViewController {
     /// Configures the main view after it loads.
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         print("Randomed task: \(bodyMovementTask?.movementType)")
 
         // Disable the idle timer to prevent the screen from locking.
@@ -90,7 +90,7 @@ extension BMViewController {
         videoCapture.delegate = self
 
         movementAmount = 0
-        
+
         updateUILabelsWithPrediction(.startingPrediction)
         coordinator?.dismissBottomSheet()
     }
@@ -193,7 +193,7 @@ extension BMViewController: VideoProcessingChainDelegate {
         }
 
         print("Update label to view: \(actionPrediction.label)")
-        
+
         // Present the prediction in the UI.
         updateUILabelsWithPrediction(actionPrediction)
     }
@@ -212,46 +212,46 @@ extension BMViewController: VideoProcessingChainDelegate {
             self.drawPoses(poses, onto: frame)
         }
     }
-    
+
     internal func startPredictionTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
             self.processPredictionResults()
-            
+
             // Reset the accumulated predictions
             self.accumulatedPredictions.removeAll()
         }
     }
-    
+
     func appendAccumulatedPredictions(_ actionPrediction: ActionPrediction) {
         accumulatedPredictions.append(actionPrediction)
     }
-    
+
     // Prediction results will be processed once in the time interval, to get only ONE kind of body movement
     func processPredictionResults() {
         // Check if there are accumulated predictions
         guard !accumulatedPredictions.isEmpty else {
             return
         }
-        
+
         let mostAccuratePredictions = [ActionPrediction]()
-        
+
         print("Accumulated predictions:")
         print(accumulatedPredictions)
-        
+
         // Get one of the prediction with the highest confidence (most accurate prediction)
         let prediction = Dictionary(
-                            grouping:
-                                accumulatedPredictions
-                                    .sorted { $0.confidence > $1.confidence } // Sort the accumulated predictions in descending order of confidence
-                        ) { $0.label } // Prevent multiple kind of body movement that appear
-                            .values
-                            .compactMap { value in value.first } // Get the first maximum confidence prediction of each kind of body movement
-                            .sorted { $0.confidence > $1.confidence } // Sort again to make sure the maximum confidence
-                            .first
+            grouping:
+            accumulatedPredictions
+                .sorted { $0.confidence > $1.confidence } // Sort the accumulated predictions in descending order of confidence
+        ) { $0.label } // Prevent multiple kind of body movement that appear
+            .values
+            .compactMap { value in value.first } // Get the first maximum confidence prediction of each kind of body movement
+            .sorted { $0.confidence > $1.confidence } // Sort again to make sure the maximum confidence
+            .first
 
         print("Selected Prediction:")
         print(prediction!)
-        
+
         // Save the most accurate prediction to the prediction history
         predictionHistory.append(prediction!)
 
@@ -264,7 +264,7 @@ extension BMViewController: VideoProcessingChainDelegate {
                              for: videoProcessingChain.windowStride)
 
         // Reset the accumulated predictions
-        self.accumulatedPredictions.removeAll()
+        accumulatedPredictions.removeAll()
     }
 }
 
@@ -347,26 +347,26 @@ extension BMViewController {
         // Update the UI's full-screen image view on the main thread.
         DispatchQueue.main.async { self.imageView.image = frameWithPosesRendering }
     }
-    
+
     func handleMovement(actionPrediction: ActionPrediction) {
         let secondDiff = Calendar.current.dateComponents([.second], from: lastPrediction, to: Date()).second
-        
+
         // Check if last prediction is equal or more than minimum prediction interval
         if secondDiff! >= Int(interval) {
             if let bodyMovementTask = bodyMovementTask {
                 let stringType = coordinator?.getBodyMovementStringType(item: bodyMovementTask)
-                
+
                 // Check if the detected motion is the same as the requested movement
                 if actionPrediction.label == stringType {
                     // Add the number of movements
                     movementAmount += 1
                     lastPrediction = Date()
-                    
+
                     if movementAmount == bodyMovementTask.amount {
                         coordinator?.addPopUp(bodyMovementTask: bodyMovementTask)
                         navigationController?.pushViewController(UIHostingController(rootView: Home()), animated: true)
                     }
-                    
+
                     // TODO: Add dialog how much more to go
                 } else {
                     // TODO: Add dialog coba lagi

@@ -14,6 +14,7 @@ struct Shop: View {
     @StateObject var timeController: TimeController = .init()
 
     @EnvironmentObject var fToast: FancyToastClass
+    @EnvironmentObject var audioController: AudioController
     @EnvironmentObject var shopViewController: ShopViewController
     @EnvironmentObject var statController: StatController
     @EnvironmentObject var timerController: TimerController
@@ -55,11 +56,10 @@ struct Shop: View {
                 }
                 VStack {
                     HStack {
-                        Button {
-                            dismiss()
-                            timerController.stopTimer()
+                        NavigationLink {
+                            Settings()
                         } label: {
-                            Image("Arrow").resizable().frame(width: 22, height: 22)
+                            Image("SettingsIcon").resizable().frame(width: 22, height: 22)
                         }.buttonStyle(IconButton(width: 30, height: 30)).offset(y: 20)
                         Coin(coin: coin ?? 0, totalCoin: totalCoin ?? 0).offset(y: 20)
                         Spacer()
@@ -83,12 +83,22 @@ struct Shop: View {
                                 return
                             }
                             buyConfirmation = true
+                            audioController.audioPlayer.playSound(soundFileName: "pop")
                         }
                         .buttonStyle(MainButton(width: 70, height: 10))
                         .padding(.top, 40)
                     }.frame(width: UIScreen.main.bounds.size.width * 0.7).padding(.top, 80)
                     Spacer()
                 }.padding()
+                Button {
+                    timerController.stopTimer()
+                    dismiss()
+                } label: {
+                    Image("Close").resizable(
+                    )
+                    .scaledToFit().frame(width: 25, height: 25)
+                }.buttonStyle(IconButtonRect(width: 40, height: 40))
+                    .position(x: UIScreen.main.bounds.size.width * 0.8, y: UIScreen.main.bounds.size.height * 0.3)
                 if buyConfirmation {
                     Color.black.opacity(0.75)
                         .ignoresSafeArea()
@@ -109,9 +119,8 @@ struct Shop: View {
                 statController.updateStats()
                 statController.objectWillChange.send()
             }
-            GSAudio.sharedInstance.stopAllSounds()
-            print("WOWIIWOWIW")
-            GSAudio.sharedInstance.playSound(soundFileName: "bg-shop", numberOfLoops: -1)
+            audioController.audioPlayer.stopAllSounds()
+            audioController.audioPlayer.playSound(soundFileName: "bg-shop", numberOfLoops: -1)
         }
         .navigationBarBackButtonHidden(true)
         .toastView(toast: $fToast.toast)
@@ -125,7 +134,7 @@ struct Shop: View {
             }
         }
 
-        GSAudio.sharedInstance.playSound(soundFileName: "kaching")
+        audioController.audioPlayer.playSound(soundFileName: "kaching")
 
         resetAmounts()
     }

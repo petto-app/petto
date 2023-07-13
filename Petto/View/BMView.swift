@@ -22,17 +22,17 @@ struct BMView: UIViewControllerRepresentable {
     @EnvironmentObject var bodyMovementTaskModel: BodyMovementTaskModel
     @EnvironmentObject var statModel: StatModel
     @EnvironmentObject var popUpModel: PopUpModel
-    
+
     func makeUIViewController(context: Context) -> BMViewController {
         let sb = UIStoryboard(name: "BodyMovement", bundle: nil)
         let vc = sb.instantiateViewController(identifier: "BMViewStoryboard") as! BMViewController
         vc.coordinator = context.coordinator
-        
+
         if let bodyMovementTask = bodyMovementTaskModel.getRandomTask() {
             vc.bodyMovementTask = bodyMovementTask
             print("Assigned BM Task: \(bodyMovementTask.movementType)")
         }
-        
+
         vc.statModel = statModel
 
         return vc
@@ -49,10 +49,10 @@ struct BMView: UIViewControllerRepresentable {
 
 struct BMView_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack{
+        ZStack {
             BMView()
                 .ignoresSafeArea()
-            
+
             Image("shiba-1")
                 .resizable()
                 .scaledToFit().frame(width: 250)
@@ -73,7 +73,7 @@ extension BMView {
         func dismissBottomSheet() {
             parent.bottomSheet.showSheet = false
         }
-        
+
         func addPopUp(bodyMovementTask: BodyMovementTaskItem) {
             parent.popUpModel.addItem(
                 PopUpItem(
@@ -84,7 +84,7 @@ extension BMView {
             )
             print("BM Task pop up added!")
         }
-        
+
         func getBodyMovementStringType(item: BodyMovementTaskItem) -> String {
             return parent.bodyMovementTaskModel.getStringType(item: item)
         }

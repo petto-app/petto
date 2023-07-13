@@ -9,18 +9,11 @@ import SwiftUI
 
 struct ChooseCharacter: View {
     @Environment(\.dismiss) var dismiss
+
     @EnvironmentObject var bottomSheet: BottomSheet
 
-    @StateObject var timeController: TimeController = .init()
-    @State private var interval = 2
-    @State private var startHour = "09"
-    @State private var finishHour = "17"
-    @State private var isGameCenterOpen = false
-
     @EnvironmentObject var fToast: FancyToastClass
-    @EnvironmentObject var statController: StatController
-    @EnvironmentObject var gameKitController: GameKitController
-    @AppStorage("character") var character: String?
+    @EnvironmentObject var characterController: CharacterController
 
     @State private var currentIndex = 0
 
@@ -48,7 +41,7 @@ struct ChooseCharacter: View {
                     TabView(selection: $currentIndex) {
                         VStack {
                             Image("DogCharacter").resizable()
-                                .scaledToFit().frame(width: UIScreen.main.bounds.size.width * 0.7).scaledToFit()
+                                .scaledToFit().frame(width: UIScreen.main.bounds.size.width * 0.7)
                         }
                         .tag(0)
                         VStack {
@@ -62,11 +55,11 @@ struct ChooseCharacter: View {
                         .frame(width: UIScreen.main.bounds.size.width * 0.8, height: UIScreen.main.bounds.size.height * 0.5)
                         .cornerRadius(10)
                     Button("Save") {
-//                        if currentIndex == 0 {
-//                            character = "dog"
-//                        } else {
-//                            character = "cat"
-//                        }
+                        if currentIndex == 0 {
+                            characterController.setCharacter(character: .dog)
+                        } else {
+                            characterController.setCharacter(character: .cat)
+                        }
 
                         fToast.toast = FancyToast(type: .success, title: "Success", message: "Character saved", duration: 3)
                     }
@@ -77,16 +70,10 @@ struct ChooseCharacter: View {
         }
         .onAppear {
             bottomSheet.showSheet = false
-            let primeTime = timeController.getPrimeTime()
-            startHour = String(format: "%02d", primeTime?.startHour ?? 9)
-            finishHour = String(format: "%02d", primeTime?.finishHour ?? 17)
-            interval = primeTime?.interval ?? 2
+            currentIndex = characterController.getCharacter() == "dog" ? 0 : 1
         }
         .navigationBarBackButtonHidden(true)
         .toastView(toast: $fToast.toast)
-        .sheet(isPresented: $isGameCenterOpen) {
-            GameCenterView()
-        }
     }
 }
 
@@ -96,9 +83,11 @@ struct ChooseCharacter_Previews: PreviewProvider {
         @StateObject var statController = StatController()
         @StateObject var gameKitController = GameKitController()
         @StateObject var bottomSheet = BottomSheet()
+        @StateObject var characterController = CharacterController()
         ChooseCharacter().environmentObject(fToast)
             .environmentObject(statController)
             .environmentObject(gameKitController)
             .environmentObject(bottomSheet)
+            .environmentObject(characterController)
     }
 }

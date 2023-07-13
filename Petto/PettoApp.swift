@@ -18,6 +18,9 @@ struct PettoApp: App {
     @StateObject var statController = StatController()
     @StateObject var timerController = TimerController()
     @StateObject var gameKitController = GameKitController()
+    @StateObject var characterController = CharacterController()
+    @StateObject var settingsController = SettingsController()
+    @StateObject var audioController = AudioController()
     @StateObject var fancyToast = FancyToastClass()
     @StateObject var popUpModel = PopUpModel()
 
@@ -34,6 +37,9 @@ struct PettoApp: App {
                 .environmentObject(statController)
                 .environmentObject(timerController)
                 .environmentObject(popUpModel)
+                .environmentObject(characterController)
+                .environmentObject(settingsController)
+                .environmentObject(audioController)
         }
     }
 }

@@ -33,7 +33,7 @@ struct PopUp: View {
                             .foregroundColor(Color("StarCoin"))
                             .fontWeight(.bold)
                             .padding(.bottom, 1)
-                        
+
                         if let dailyTask = popUp.dailyTask, popUp.type == .dailyTask {
                             Text("You've completed \(popUp.dailyTask!.name) and got \(popUp.dailyTask!.coin) Star Coins")
                                 .foregroundColor(Color("StarCoin"))
@@ -49,17 +49,17 @@ struct PopUp: View {
                                 .padding(.horizontal, 90)
                                 .multilineTextAlignment(.center)
                         }
-                        
+
                         Button("Claim Now") {
                             if let index = popUpModel.popUpItems.firstIndex(where: {
-                                ($0.id == popUp.id)
+                                $0.id == popUp.id
                             }) {
                                 var taskCoin: Int?
                                 if popUp.type == .dailyTask {
                                     // Update daily task to Done
                                     if let taskIndex = dailyTaskModel.dailyTasks.lastIndex(where: { $0.name == popUp.dailyTask!.name }) {
                                         dailyTaskModel.dailyTasks[taskIndex].isDone = true
-                                        
+
                                         // Update "Finish All Task" daily task
                                         if dailyTaskModel.dailyTasks[4].amount! < dailyTaskModel.dailyTasks[4].maxAmount {
                                             dailyTaskModel.dailyTasks[4].amount! += 1
@@ -78,7 +78,7 @@ struct PopUp: View {
                                     taskCoin = popUp.bodyMovementTask!.coin
                                     print("Claimed: \(popUp.bodyMovementTask!.movementType)")
                                 }
-                                
+
                                 // Delete PopUp Items
                                 popUpModel.popUpItems[index].state = .hidden
                                 statController.increaseCoin(amount: taskCoin!)
@@ -106,7 +106,7 @@ struct PopUpDailyTask_Previews: PreviewProvider {
             PopUpItem(
                 type: .dailyTask,
                 dailyTask:
-                    DailyTaskItem(name: "Take 1000 steps", amount: 1200, maxAmount: 1000, coin: 100, isDone: true, type: .stepCount),
+                DailyTaskItem(name: "Take 1000 steps", amount: 1200, maxAmount: 1000, coin: 100, isDone: true, type: .stepCount),
                 state: .showing(totalCoin: 100)
             )
         )
@@ -119,10 +119,9 @@ struct PopUpBodyMovement_Previews: PreviewProvider {
             PopUpItem(
                 type: .bodyMovementTask,
                 bodyMovementTask:
-                    BodyMovementTaskItem(movementType: .twistingBody, amount: 3, coin: 100, image: "shiba-1"),
+                BodyMovementTaskItem(movementType: .twistingBody, amount: 3, coin: 100, image: "shiba-1"),
                 state: .showing(totalCoin: 100)
             )
-                
         )
     }
 }
