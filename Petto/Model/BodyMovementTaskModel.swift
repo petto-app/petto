@@ -19,12 +19,16 @@ struct BodyMovementTaskItem: Identifiable, Codable {
     public var movementType: BodyMovementType?
     public var amount: Int // How much the user has to move
     public var coin: Int
-    public var image: String
+    public var images: [String]
 }
 
 class BodyMovementTaskModel: ObservableObject {
     public static var shared: BodyMovementTaskModel = .init()
-
+    
+    @Published var coinPerPrimeTime: Int = 0
+    
+    @ObservedObject var timeModel = TimeModel()
+    
     @AppStorage("bodyMovementTasks")
     var bodyMovementTasksData: Data = .init()
 
@@ -43,13 +47,22 @@ class BodyMovementTaskModel: ObservableObject {
     }
 
     init() {
+        countCoinPerPrimeTime()
+        
+        // TODO: Insert images for each task
         bodyMovementTasks = [
-            BodyMovementTaskItem(movementType: .turningHead, amount: 3, coin: 100, image: "shiba-1"),
-            BodyMovementTaskItem(movementType: .twistingBody, amount: 3, coin: 100, image: "shiba-1"),
-            BodyMovementTaskItem(movementType: .pullingBody, amount: 3, coin: 100, image: "shiba-1")
+            BodyMovementTaskItem(movementType: .turningHead, amount: 3, coin: coinPerPrimeTime, images: ["shiba-1", "shiba-2", "shiba-3"]),
+            BodyMovementTaskItem(movementType: .twistingBody, amount: 3, coin: coinPerPrimeTime, images: ["shiba-1", "shiba-2", "shiba-3"]),
+            BodyMovementTaskItem(movementType: .pullingBody, amount: 3, coin: coinPerPrimeTime, images: ["shiba-1", "shiba-2", "shiba-3"]),
         ]
     }
-
+    
+    private func countCoinPerPrimeTime() {
+        // Count coin for each prime time based on how much prime time
+        let totalPrimeTime = getPrimeTimeHours(startHour: timeModel.timeConfig?.startHour ?? 9, endHour: timeModel.timeConfig?.finishHour ?? 17, intervalHour: timeModel.timeConfig?.interval ?? 2).count
+        
+        coinPerPrimeTime = Int(1000/totalPrimeTime)
+    }
     func getRandomTask() -> BodyMovementTaskItem? {
         guard !bodyMovementTasks.isEmpty else {
             return nil
@@ -68,6 +81,19 @@ class BodyMovementTaskModel: ObservableObject {
             return "Twisting Body"
         case .none:
             return ""
+        }
+    }
+    
+    func getFirstDialogMessage(item: BodyMovementTaskItem) -> String {
+        switch item.movementType {
+            case .pullingBody:
+                return "Let's pulling your body now!"
+            case .turningHead:
+                return "Let's Turning your head now!"
+            case .twistingBody:
+                return "Let's twisting your body now!"
+            case .none:
+                return ""
         }
     }
 }

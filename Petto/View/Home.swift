@@ -24,6 +24,9 @@ struct Home: View {
     @AppStorage("totalCoin") var totalCoin: Int?
     @AppStorage("mute") var mute: Bool = false
     @AppStorage("isOnBoarded") var isOnBoarded: Bool?
+    
+    @State private var dialogMessage: String? = nil
+    @State private var bodyMovementImages: [String] = []
 
     func getImageName(index: Int) -> String {
         if characterController.getCharacter() == "dog" {
@@ -100,27 +103,30 @@ struct Home: View {
                                     .scaledToFit().frame(width: 35, height: 35)
                                 }.buttonStyle(IconButtonRect(width: 50, height: 50))
                                 NavigationLink {
-                                    ZStack {
-                                        BMView()
+                                    ZStack{
+                                        BMView(dialogMessage: $dialogMessage, bodyMovementImages: $bodyMovementImages)
                                             .ignoresSafeArea()
                                             .environmentObject(StatModel.shared)
                                             .environmentObject(BodyMovementTaskModel.shared)
-
-                                        // TODO: Add animated character frames
+                                        
+                                        if dialogMessage != nil {
+                                            Dialog(message: dialogMessage!)
+                                                .offset(x: 0, y:100)
+                                        }
+                                        
+                                        // TODO: Change the size of animated character frames
 //                                        Image("shiba-1")
 //                                            .resizable()
 //                                            .scaledToFit()
 //                                            .frame(width: 240)
 //                                            .padding()
 //                                            .offset(x: 70, y: 245)
-
-                                        // TODO: Add dialog
-//                                        Image("shiba-1")
-//                                            .resizable()
-//                                            .scaledToFit()
-//                                            .frame(width: 270)
-//                                            .padding()
-//                                            .offset(x: 80, y: 375)
+                                        
+                                        if bodyMovementImages.count > 0 {
+                                            Avatar(idleFrameNames: $bodyMovementImages)
+                                            .padding()
+                                            .offset(x: 70, y: 245)
+                                        }
                                     }
                                 } label: {
                                     Text("BMS")

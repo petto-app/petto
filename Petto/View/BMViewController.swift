@@ -91,7 +91,6 @@ extension BMViewController {
 
         movementAmount = 0
 
-        updateUILabelsWithPrediction(.startingPrediction)
         coordinator?.dismissBottomSheet()
     }
 
@@ -111,6 +110,14 @@ extension BMViewController {
                                      with _: UIViewControllerTransitionCoordinator) {
         // Update the the camera's orientation to match the device's.
         videoCapture.updateDeviceOrientation()
+    }
+    
+    /// Destroy instance when moving to another page
+    override func viewWillDisappear(_ animated : Bool) {
+        super.viewWillDisappear(animated)
+
+        videoProcessingChain = nil
+        videoCapture = nil
     }
 }
 
@@ -168,7 +175,7 @@ extension BMViewController: VideoCaptureDelegate {
     ///   - framePublisher: A new frame publisher from the video capture.
     func videoCapture(_: VideoCapture,
                       didCreate framePublisher: FramePublisher) {
-        updateUILabelsWithPrediction(.startingPrediction)
+//        updateUILabelsWithPrediction(.startingPrediction)
 
         // Build a new video-processing chain by assigning the new frame publisher.
         videoProcessingChain.upstreamFramePublisher = framePublisher
@@ -195,7 +202,7 @@ extension BMViewController: VideoProcessingChainDelegate {
         print("Update label to view: \(actionPrediction.label)")
 
         // Present the prediction in the UI.
-        updateUILabelsWithPrediction(actionPrediction)
+//        updateUILabelsWithPrediction(actionPrediction)
     }
 
     /// Receives a frame and any poses in that frame.
@@ -364,13 +371,14 @@ extension BMViewController {
 
                     if movementAmount == bodyMovementTask.amount {
                         coordinator?.addPopUp(bodyMovementTask: bodyMovementTask)
-                        navigationController?.pushViewController(UIHostingController(rootView: Home()), animated: true)
+                        navigationController?.pushViewController(UIHostingController(rootView: Home().navigationBarBackButtonHidden(true)), animated: true)
                     }
-
-                    // TODO: Add dialog how much more to go
+                    
+                    // Add dialog how much more to go
+                    coordinator?.addDialog(message: "Great! \(bodyMovementTask.amount - movementAmount) to go!")
                 } else {
-                    // TODO: Add dialog coba lagi
-                    print("Coba lagi!")
+                    // Set the dialog message for the wrong move
+                    coordinator?.addDialog(message: "You can do it better!")
                 }
             }
         }

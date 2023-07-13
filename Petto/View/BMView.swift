@@ -22,7 +22,11 @@ struct BMView: UIViewControllerRepresentable {
     @EnvironmentObject var bodyMovementTaskModel: BodyMovementTaskModel
     @EnvironmentObject var statModel: StatModel
     @EnvironmentObject var popUpModel: PopUpModel
-
+    
+    @State private var timer: Timer?
+    @Binding var dialogMessage: String?
+    @Binding var bodyMovementImages: [String]
+    
     func makeUIViewController(context: Context) -> BMViewController {
         let sb = UIStoryboard(name: "BodyMovement", bundle: nil)
         let vc = sb.instantiateViewController(identifier: "BMViewStoryboard") as! BMViewController
@@ -30,6 +34,12 @@ struct BMView: UIViewControllerRepresentable {
 
         if let bodyMovementTask = bodyMovementTaskModel.getRandomTask() {
             vc.bodyMovementTask = bodyMovementTask
+            
+            // Set body movement task images to home view
+            bodyMovementImages = bodyMovementTask.images
+            
+            // Add dialog to tell user what kind of task to do
+            vc.coordinator?.addDialog(message: bodyMovementTaskModel.getFirstDialogMessage(item: bodyMovementTask))
             print("Assigned BM Task: \(bodyMovementTask.movementType)")
         }
 
@@ -48,9 +58,12 @@ struct BMView: UIViewControllerRepresentable {
 }
 
 struct BMView_Previews: PreviewProvider {
+    @State static var dialogMessage: String? = nil
+    @State static var bmImages: [String] = []
+    
     static var previews: some View {
-        ZStack {
-            BMView()
+        ZStack{
+            BMView(dialogMessage: $dialogMessage, bodyMovementImages: $bmImages)
                 .ignoresSafeArea()
 
             Image("shiba-1")
@@ -87,6 +100,19 @@ extension BMView {
 
         func getBodyMovementStringType(item: BodyMovementTaskItem) -> String {
             return parent.bodyMovementTaskModel.getStringType(item: item)
+        }
+        
+        // Set dialog timer and disappear within 5 second
+        func addDialog(message: String) {
+            // Invalidate any existing timer
+            parent.timer?.invalidate()
+            
+            parent.dialogMessage = message
+            
+            parent.timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { [self] _ in
+                parent.dialogMessage = nil // Clear the dialogMessage after 5 seconds
+                parent.timer = nil // Reset the timer
+            }
         }
     }
 }
