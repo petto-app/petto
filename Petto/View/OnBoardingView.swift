@@ -94,6 +94,20 @@ struct OnBoardingView<Content: View>: View {
 
                                         Spacer()
                                     }
+                                } else {
+                                    VStack(alignment:.leading) {
+                                        Button(action: {}) {
+                                            NavigationLink(
+                                                destination: link
+                                                    .navigationBarBackButtonHidden(true)
+                                            ) {
+                                                Text("Skip")
+                                                    .foregroundColor(Color("BlueBorder"))
+                                            }
+                                        }
+                                        .offset(x: 140, y:0)
+                                        .padding(.bottom, 700)
+                                    }
                                 }
                             }
                             .tag(index)
