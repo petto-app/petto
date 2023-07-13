@@ -111,9 +111,9 @@ extension BMViewController {
         // Update the the camera's orientation to match the device's.
         videoCapture.updateDeviceOrientation()
     }
-    
+
     /// Destroy instance when moving to another page
-    override func viewWillDisappear(_ animated : Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         videoProcessingChain = nil
@@ -373,7 +373,7 @@ extension BMViewController {
                         coordinator?.addPopUp(bodyMovementTask: bodyMovementTask)
                         navigationController?.pushViewController(UIHostingController(rootView: Home().navigationBarBackButtonHidden(true)), animated: true)
                     }
-                    
+
                     // Add dialog how much more to go
                     coordinator?.addDialog(message: "Great! \(bodyMovementTask.amount - movementAmount) to go!")
                 } else {

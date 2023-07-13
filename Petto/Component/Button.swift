@@ -38,10 +38,7 @@ struct BrownButton: ButtonStyle {
             .clipShape(RoundedRectangle(cornerRadius: 8))
             .scaleEffect(configuration.isPressed ? 1.2 : 1)
             .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color("StarCoin"), lineWidth: 3)
-            )
+            .shadow(radius: 2, y: 3)
             .fontWeight(.bold)
     }
 }

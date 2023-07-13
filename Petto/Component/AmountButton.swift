@@ -30,10 +30,6 @@ struct AmountButton: View {
             .foregroundColor(.black)
             .clipShape(Capsule())
             .shadow(radius: 2, y: 3)
-            .overlay(
-                Circle()
-                    .stroke(Color.black, lineWidth: 1)
-            )
     }
 }
 

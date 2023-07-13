@@ -95,7 +95,7 @@ struct OnBoardingView<Content: View>: View {
                                         Spacer()
                                     }
                                 } else {
-                                    VStack(alignment:.leading) {
+                                    VStack(alignment: .leading) {
                                         Button(action: {}) {
                                             NavigationLink(
                                                 destination: link
@@ -105,7 +105,7 @@ struct OnBoardingView<Content: View>: View {
                                                     .foregroundColor(Color("BlueBorder"))
                                             }
                                         }
-                                        .offset(x: 140, y:0)
+                                        .offset(x: 140, y: 0)
                                         .padding(.bottom, 700)
                                     }
                                 }

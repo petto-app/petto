@@ -35,10 +35,7 @@ struct ShopItemComponent: View {
             }.frame(width: 110, height: 110)
                 .background(.white)
                 .cornerRadius(8)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.gray, lineWidth: 1)
-                )
+                .shadow(radius: 2, y: 3)
             HStack(spacing: 10) {
                 AmountButton(type: .Minus, enabled: amount > 0) {
                     if amount > 0 {

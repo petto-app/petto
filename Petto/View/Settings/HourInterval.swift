@@ -36,7 +36,7 @@ struct HourInterval: View {
                         Spacer()
                         PrimeTime().opacity(0)
                     }
-                    SettingsHeaderButton(width: 60, height: 60, title: "Working Hour & Interval", image: "Clock", active: true) {}
+                    SettingsHeaderButton(width: 60, height: 60, title: "Working Hour & Interval", image: "Clock", active: true) {}.padding(.bottom)
                     SettingsContainer(intervalSelection: $interval, startSelection: $startHour, finishSelection: $finishHour)
                         .padding(.bottom)
                     Button("Save") {

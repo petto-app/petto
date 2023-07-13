@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SpriteKit
 import SwiftUI
 
 enum BodyMovementType: Codable {
@@ -24,11 +25,14 @@ struct BodyMovementTaskItem: Identifiable, Codable {
 
 class BodyMovementTaskModel: ObservableObject {
     public static var shared: BodyMovementTaskModel = .init()
-    
+
     @Published var coinPerPrimeTime: Int = 0
-    
+
     @ObservedObject var timeModel = TimeModel()
-    
+
+    @AppStorage("character")
+    var currentCharacter: String?
+
     @AppStorage("bodyMovementTasks")
     var bodyMovementTasksData: Data = .init()
 
@@ -48,21 +52,29 @@ class BodyMovementTaskModel: ObservableObject {
 
     init() {
         countCoinPerPrimeTime()
-        
+        var idleFrameAtlas = SKTextureAtlas(named: currentCharacter == "dog" ? "DawgHeadTilt" : "CatHeadTilt")
+        let turningHead = idleFrameAtlas.textureNames.sorted()
+
+        idleFrameAtlas = SKTextureAtlas(named: currentCharacter == "dog" ? "DawgBodyTilt" : "CatBodyTilt")
+        let twistingBody = idleFrameAtlas.textureNames.sorted()
+
+        idleFrameAtlas = SKTextureAtlas(named: currentCharacter == "dog" ? "DawgStretch" : "CatStretch")
+        let pullingBody = idleFrameAtlas.textureNames.sorted()
         // TODO: Insert images for each task
         bodyMovementTasks = [
-            BodyMovementTaskItem(movementType: .turningHead, amount: 3, coin: coinPerPrimeTime, images: ["shiba-1", "shiba-2", "shiba-3"]),
-            BodyMovementTaskItem(movementType: .twistingBody, amount: 3, coin: coinPerPrimeTime, images: ["shiba-1", "shiba-2", "shiba-3"]),
-            BodyMovementTaskItem(movementType: .pullingBody, amount: 3, coin: coinPerPrimeTime, images: ["shiba-1", "shiba-2", "shiba-3"]),
+            BodyMovementTaskItem(movementType: .turningHead, amount: 3, coin: coinPerPrimeTime, images: turningHead),
+            BodyMovementTaskItem(movementType: .twistingBody, amount: 3, coin: coinPerPrimeTime, images: twistingBody),
+            BodyMovementTaskItem(movementType: .pullingBody, amount: 3, coin: coinPerPrimeTime, images: pullingBody)
         ]
     }
-    
+
     private func countCoinPerPrimeTime() {
         // Count coin for each prime time based on how much prime time
         let totalPrimeTime = getPrimeTimeHours(startHour: timeModel.timeConfig?.startHour ?? 9, endHour: timeModel.timeConfig?.finishHour ?? 17, intervalHour: timeModel.timeConfig?.interval ?? 2).count
-        
-        coinPerPrimeTime = Int(1000/totalPrimeTime)
+
+        coinPerPrimeTime = Int(1000 / totalPrimeTime)
     }
+
     func getRandomTask() -> BodyMovementTaskItem? {
         guard !bodyMovementTasks.isEmpty else {
             return nil
@@ -83,17 +95,17 @@ class BodyMovementTaskModel: ObservableObject {
             return ""
         }
     }
-    
+
     func getFirstDialogMessage(item: BodyMovementTaskItem) -> String {
         switch item.movementType {
-            case .pullingBody:
-                return "Let's pulling your body now!"
-            case .turningHead:
-                return "Let's Turning your head now!"
-            case .twistingBody:
-                return "Let's twisting your body now!"
-            case .none:
-                return ""
+        case .pullingBody:
+            return "Let's pulling your body now!"
+        case .turningHead:
+            return "Let's Turning your head now!"
+        case .twistingBody:
+            return "Let's twisting your body now!"
+        case .none:
+            return ""
         }
     }
 }

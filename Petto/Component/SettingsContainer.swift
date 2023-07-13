@@ -68,15 +68,12 @@ struct SettingsContainer: View {
                 }
             }
         }
-        .padding(.horizontal, 7)
+        .padding(.horizontal, 17)
         .padding(.bottom, 20)
+        .shadow(radius: 2, y: 3)
         .frame(maxWidth: nil)
         .background(.white)
         .cornerRadius(10)
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.black, lineWidth: 1)
-        )
         .foregroundColor(.black)
     }
 }

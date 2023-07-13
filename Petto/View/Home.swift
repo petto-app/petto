@@ -24,8 +24,8 @@ struct Home: View {
     @AppStorage("totalCoin") var totalCoin: Int?
     @AppStorage("mute") var mute: Bool = false
     @AppStorage("isOnBoarded") var isOnBoarded: Bool?
-    
-    @State private var dialogMessage: String? = nil
+
+    @State private var dialogMessage: String?
     @State private var bodyMovementImages: [String] = []
 
     func getImageName(index: Int) -> String {
@@ -70,7 +70,7 @@ struct Home: View {
             idleFrameNames = [getImageName(index: 1)]
         }
     }
-    
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -103,17 +103,17 @@ struct Home: View {
                                     .scaledToFit().frame(width: 35, height: 35)
                                 }.buttonStyle(IconButtonRect(width: 50, height: 50))
                                 NavigationLink {
-                                    ZStack{
+                                    ZStack {
                                         BMView(dialogMessage: $dialogMessage, bodyMovementImages: $bodyMovementImages)
                                             .ignoresSafeArea()
                                             .environmentObject(StatModel.shared)
                                             .environmentObject(BodyMovementTaskModel.shared)
-                                        
+
                                         if dialogMessage != nil {
                                             Dialog(message: dialogMessage!)
-                                                .offset(x: 0, y:100)
+                                                .offset(x: 0, y: 100)
                                         }
-                                        
+
                                         // TODO: Change the size of animated character frames
 //                                        Image("shiba-1")
 //                                            .resizable()
@@ -121,11 +121,11 @@ struct Home: View {
 //                                            .frame(width: 240)
 //                                            .padding()
 //                                            .offset(x: 70, y: 245)
-                                        
+
                                         if bodyMovementImages.count > 0 {
                                             Avatar(idleFrameNames: $bodyMovementImages)
-                                            .padding()
-                                            .offset(x: 70, y: 245)
+                                                .padding()
+                                                .offset(x: 70, y: 245)
                                         }
                                     }
                                 } label: {
@@ -166,20 +166,20 @@ struct Home: View {
                 }
             }.onAppear {
                 isOnBoarded = true
-                
+
                 // Fetch health data every time Home View opened
                 healthKitController.authorizeHealthKit { success in
                     if success {
                         healthKitController.fetchHealthData()
                     }
                 }
-                
+
                 bottomSheet.showSheet = true
                 statController.updateStats()
                 statController.objectWillChange.send()
                 updateFrames()
-                // let idleFrameAtlas = SKTextureAtlas(named: "IdleFrames")
-                // idleFrameNames = idleFrameAtlas.textureNames.sorted()
+//                 let idleFrameAtlas = SKTextureAtlas(named: "IdleFrames")
+//                 idleFrameNames = idleFrameAtlas.textureNames.sorted()
                 audioController.audioPlayer.stopAllSounds()
                 audioController.audioPlayer.playSound(soundFileName: statController.fun < 20 ? "bg-no-fun" : "bg-full", numberOfLoops: -1)
                 UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in

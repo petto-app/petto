@@ -7,9 +7,13 @@
 
 import AVFoundation
 import Foundation
+import SwiftUI
 
 class GSAudio: NSObject, AVAudioPlayerDelegate, ObservableObject {
     static let sharedInstance = GSAudio()
+
+    @AppStorage("mute")
+    var muteAudio: Bool = false
 
     override private init() {}
 
@@ -25,6 +29,9 @@ class GSAudio: NSObject, AVAudioPlayerDelegate, ObservableObject {
                 player.numberOfLoops = numberOfLoops
                 player.prepareToPlay()
                 player.play()
+                if muteAudio {
+                    mute()
+                }
             }
         } else { // player has not been found, create a new player with the URL if possible
             do {
@@ -33,6 +40,9 @@ class GSAudio: NSObject, AVAudioPlayerDelegate, ObservableObject {
                 player.numberOfLoops = numberOfLoops
                 player.prepareToPlay()
                 player.play()
+                if muteAudio {
+                    mute()
+                }
             } catch {
                 print(error.localizedDescription)
             }
