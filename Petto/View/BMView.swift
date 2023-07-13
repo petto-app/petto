@@ -23,6 +23,9 @@ struct BMView: UIViewControllerRepresentable {
     @EnvironmentObject var statModel: StatModel
     @EnvironmentObject var popUpModel: PopUpModel
     
+    @State private var timer: Timer?
+    @Binding var dialogMessage: String?
+    
     func makeUIViewController(context: Context) -> BMViewController {
         let sb = UIStoryboard(name: "BodyMovement", bundle: nil)
         let vc = sb.instantiateViewController(identifier: "BMViewStoryboard") as! BMViewController
@@ -48,9 +51,11 @@ struct BMView: UIViewControllerRepresentable {
 }
 
 struct BMView_Previews: PreviewProvider {
+    @State static var dialogMessage: String? = nil
+    
     static var previews: some View {
         ZStack{
-            BMView()
+            BMView(dialogMessage: $dialogMessage)
                 .ignoresSafeArea()
             
             Image("shiba-1")
@@ -87,6 +92,19 @@ extension BMView {
         
         func getBodyMovementStringType(item: BodyMovementTaskItem) -> String {
             return parent.bodyMovementTaskModel.getStringType(item: item)
+        }
+        
+        // Set dialog timer and disappear within 5 second
+        func addDialog(message: String) {
+            // Invalidate any existing timer
+            parent.timer?.invalidate()
+            
+            parent.dialogMessage = message
+            
+            parent.timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { [self] _ in
+                parent.dialogMessage = nil // Clear the dialogMessage after 5 seconds
+                parent.timer = nil // Reset the timer
+            }
         }
     }
 }

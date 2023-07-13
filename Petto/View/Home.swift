@@ -23,6 +23,8 @@ struct Home: View {
     @AppStorage("mute") var mute: Bool = false
     @AppStorage("isOnBoarded") var isOnBoarded: Bool?
     @AppStorage("character") var character = "dog"
+    
+    @State private var dialogMessage: String? = nil
 
     func getImageName(index: Int) -> String {
         if character == "dog" {
@@ -100,26 +102,23 @@ struct Home: View {
                                 }.buttonStyle(IconButtonRect(width: 50, height: 50))
                                 NavigationLink {
                                     ZStack{
-                                        BMView()
+                                        BMView(dialogMessage: $dialogMessage)
                                             .ignoresSafeArea()
                                             .environmentObject(StatModel.shared)
                                             .environmentObject(BodyMovementTaskModel.shared)
                                         
-                                        // TODO: Add animated character frames
-//                                        Image("shiba-1")
-//                                            .resizable()
-//                                            .scaledToFit()
-//                                            .frame(width: 240)
-//                                            .padding()
-//                                            .offset(x: 70, y: 245)
+                                        if dialogMessage != nil {
+                                            Dialog(message: dialogMessage!)
+                                                .offset(x: 0, y:70)
+                                        }
                                         
-                                        // TODO: Add dialog
-//                                        Image("shiba-1")
-//                                            .resizable()
-//                                            .scaledToFit()
-//                                            .frame(width: 270)
-//                                            .padding()
-//                                            .offset(x: 80, y: 375)
+                                        // TODO: Add animated character frames
+                                        Image("shiba-1")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 240)
+                                            .padding()
+                                            .offset(x: 70, y: 245)
                                     }
                                 } label: {
                                     Text("BMS")
