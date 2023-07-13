@@ -90,8 +90,7 @@ extension BMViewController {
         videoCapture.delegate = self
 
         movementAmount = 0
-        
-//        updateUILabelsWithPrediction(.startingPrediction)
+
         coordinator?.dismissBottomSheet()
     }
 
@@ -111,6 +110,14 @@ extension BMViewController {
                                      with _: UIViewControllerTransitionCoordinator) {
         // Update the the camera's orientation to match the device's.
         videoCapture.updateDeviceOrientation()
+    }
+    
+    /// Destroy instance when moving to another page
+    override func viewWillDisappear(_ animated : Bool) {
+        super.viewWillDisappear(animated)
+
+        videoProcessingChain = nil
+        videoCapture = nil
     }
 }
 

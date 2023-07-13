@@ -69,7 +69,6 @@ struct HourInterval: View {
                         }
                         Button("<Test> Increase Coin") {
                             statController.increaseCoin(amount: 100)
-                            gameKitController.reportScore(totalCoin: statController.totalCoin)
                         }
                         Button("<Test> Decrease Coin") {
                             statController.decreaseCoin(amount: 100)
