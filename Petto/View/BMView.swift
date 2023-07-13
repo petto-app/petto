@@ -25,6 +25,7 @@ struct BMView: UIViewControllerRepresentable {
     
     @State private var timer: Timer?
     @Binding var dialogMessage: String?
+    @Binding var bodyMovementImages: [String]
     
     func makeUIViewController(context: Context) -> BMViewController {
         let sb = UIStoryboard(name: "BodyMovement", bundle: nil)
@@ -33,6 +34,12 @@ struct BMView: UIViewControllerRepresentable {
         
         if let bodyMovementTask = bodyMovementTaskModel.getRandomTask() {
             vc.bodyMovementTask = bodyMovementTask
+            
+            // Set body movement task images to home view
+            bodyMovementImages = bodyMovementTask.images
+            
+            // Add dialog to tell user what kind of task to do
+            vc.coordinator?.addDialog(message: bodyMovementTaskModel.getFirstDialogMessage(item: bodyMovementTask))
             print("Assigned BM Task: \(bodyMovementTask.movementType)")
         }
         
@@ -52,10 +59,11 @@ struct BMView: UIViewControllerRepresentable {
 
 struct BMView_Previews: PreviewProvider {
     @State static var dialogMessage: String? = nil
+    @State static var bmImages: [String] = []
     
     static var previews: some View {
         ZStack{
-            BMView(dialogMessage: $dialogMessage)
+            BMView(dialogMessage: $dialogMessage, bodyMovementImages: $bmImages)
                 .ignoresSafeArea()
             
             Image("shiba-1")

@@ -25,6 +25,7 @@ struct Home: View {
     @AppStorage("character") var character = "dog"
     
     @State private var dialogMessage: String? = nil
+    @State private var bodyMovementImages: [String] = []
 
     func getImageName(index: Int) -> String {
         if character == "dog" {
@@ -102,23 +103,30 @@ struct Home: View {
                                 }.buttonStyle(IconButtonRect(width: 50, height: 50))
                                 NavigationLink {
                                     ZStack{
-                                        BMView(dialogMessage: $dialogMessage)
+                                        BMView(dialogMessage: $dialogMessage, bodyMovementImages: $bodyMovementImages)
                                             .ignoresSafeArea()
                                             .environmentObject(StatModel.shared)
                                             .environmentObject(BodyMovementTaskModel.shared)
                                         
                                         if dialogMessage != nil {
                                             Dialog(message: dialogMessage!)
-                                                .offset(x: 0, y:70)
+                                                .offset(x: 0, y:100)
                                         }
                                         
-                                        // TODO: Add animated character frames
-                                        Image("shiba-1")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 240)
+                                        // TODO: Change the size of animated character frames
+//                                        Image("shiba-1")
+//                                            .resizable()
+//                                            .scaledToFit()
+//                                            .frame(width: 240)
+//                                            .padding()
+//                                            .offset(x: 70, y: 245)
+                                        
+                                        if bodyMovementImages.count > 0 {
+                                            Avatar(idleFrameNames: $bodyMovementImages)
                                             .padding()
                                             .offset(x: 70, y: 245)
+                                        }
+                                        
                                     }
                                 } label: {
                                     Text("BMS")
