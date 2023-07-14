@@ -16,6 +16,7 @@ struct HourInterval: View {
     @State private var startHour = "09"
     @State private var finishHour = "17"
     @State private var isGameCenterOpen = false
+    @State private var tapCount = 0
 
     @EnvironmentObject var fToast: FancyToastClass
     @EnvironmentObject var statController: StatController
@@ -47,34 +48,37 @@ struct HourInterval: View {
                         } else {
                             fToast.toast = FancyToast(type: .success, title: "Success", message: "Settings saved", duration: 3)
                         }
+                        tapCount += 1
                     }
                     .buttonStyle(MainButton(width: 80))
-                    Group {
-                        Button("<Test> Increase Fun") {
-                            statController.increaseFun(amount: 5)
-                        }
-                        Button("<Test> Decrease Fun") {
-                            statController.decreaseFun(amount: 5)
-                        }
-                        Button("<Test> Increase Hygiene") {
-                            statController.increaseHygiene(amount: 5)
-                        }
-                        Button("<Test> Decrease Hygiene") {
-                            statController.decreaseHygiene(amount: 5)
-                        }
-                        Button("<Test> Increase Energy") {
-                            statController.increaseEnergy(amount: 5)
-                        }
-                        Button("<Test> Decrease Energy") {
-                            statController.decreaseEnergy(amount: 5)
-                        }
-                        Button("<Test> Increase Coin") {
-                            statController.increaseCoin(amount: 100)
-                            gameKitController.reportScore(totalCoin: statController.statModel.totalCoin!)
-                            audioController.audioPlayer.playSound(soundFileName: "kaching")
-                        }
-                        Button("<Test> Decrease Coin") {
-                            statController.decreaseCoin(amount: 100)
+                    if tapCount >= 5 {
+                        Group {
+                            Button("<Test> Increase Fun") {
+                                statController.increaseFun(amount: 5)
+                            }
+                            Button("<Test> Decrease Fun") {
+                                statController.decreaseFun(amount: 5)
+                            }
+                            Button("<Test> Increase Hygiene") {
+                                statController.increaseHygiene(amount: 5)
+                            }
+                            Button("<Test> Decrease Hygiene") {
+                                statController.decreaseHygiene(amount: 5)
+                            }
+                            Button("<Test> Increase Energy") {
+                                statController.increaseEnergy(amount: 5)
+                            }
+                            Button("<Test> Decrease Energy") {
+                                statController.decreaseEnergy(amount: 5)
+                            }
+                            Button("<Test> Increase Coin") {
+                                statController.increaseCoin(amount: 100)
+                                gameKitController.reportScore(totalCoin: statController.statModel.totalCoin!)
+                                audioController.audioPlayer.playSound(soundFileName: "kaching")
+                            }
+                            Button("<Test> Decrease Coin") {
+                                statController.decreaseCoin(amount: 100)
+                            }
                         }
                     }
                     Spacer()

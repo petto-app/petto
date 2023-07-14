@@ -51,7 +51,12 @@ class BodyMovementTaskModel: ObservableObject {
     }
 
     init() {
+        update()
+    }
+    
+    private func update() {
         countCoinPerPrimeTime()
+
         var idleFrameAtlas = SKTextureAtlas(named: currentCharacter == "dog" ? "DawgHeadTilt" : "CatHeadTilt")
         let turningHead = idleFrameAtlas.textureNames.sorted()
 
@@ -76,6 +81,7 @@ class BodyMovementTaskModel: ObservableObject {
     }
 
     func getRandomTask() -> BodyMovementTaskItem? {
+        update()
         guard !bodyMovementTasks.isEmpty else {
             return nil
         }
