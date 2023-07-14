@@ -99,11 +99,11 @@ class BodyMovementTaskModel: ObservableObject {
     func getFirstDialogMessage(item: BodyMovementTaskItem) -> String {
         switch item.movementType {
         case .pullingBody:
-            return "Let's pulling your body \(item.amount) times now!"
+            return "Let's pull your body \(item.amount) times now!"
         case .turningHead:
-            return "Let's Turning your head \(item.amount) times now!"
+            return "Let's turn your head \(item.amount) times now!"
         case .twistingBody:
-            return "Let's twisting your body \(item.amount) times now!"
+            return "Let's twist your body \(item.amount) times now!"
         case .none:
             return ""
         }
