@@ -63,13 +63,6 @@ struct Settings: View {
                         GridRow {
                             SettingsHeader(width: 60, height: 60, title: "Character", image: "Paw", link: ChooseCharacter())
                         }
-                        GridRow {
-                            SettingsHeaderButton(width: 60, height: 60, title: "Connect with Health", image: "Health") {
-                                healthKitController.authorizeHealthKit { success in
-                                    print(success)
-                                }
-                            }
-                        }
                     }.frame(width: UIScreen.main.bounds.size.width * 0.8)
                     Spacer()
                 }.padding()
