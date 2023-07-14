@@ -26,6 +26,7 @@ struct BMView: UIViewControllerRepresentable {
     @State private var timer: Timer?
     @Binding var dialogMessage: String?
     @Binding var bodyMovementImages: [String]
+    @Binding var firstPrimeTime: Bool
 
     func makeUIViewController(context: Context) -> BMViewController {
         let sb = UIStoryboard(name: "BodyMovement", bundle: nil)
@@ -60,10 +61,11 @@ struct BMView: UIViewControllerRepresentable {
 struct BMView_Previews: PreviewProvider {
     @State static var dialogMessage: String?
     @State static var bmImages: [String] = []
+    @State static var firstPrimeTime: Bool = false
 
     static var previews: some View {
         ZStack {
-            BMView(dialogMessage: $dialogMessage, bodyMovementImages: $bmImages)
+            BMView(dialogMessage: $dialogMessage, bodyMovementImages: $bmImages, firstPrimeTime: $firstPrimeTime)
                 .ignoresSafeArea()
 
             Image("shiba-1")
@@ -109,10 +111,14 @@ extension BMView {
 
             parent.dialogMessage = message
 
-            parent.timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { [self] _ in
+            parent.timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { [self] _ in
                 parent.dialogMessage = nil // Clear the dialogMessage after 5 seconds
                 parent.timer = nil // Reset the timer
             }
+        }
+        
+        func doneFirstPrimeTime(bool: Bool) {
+            parent.firstPrimeTime = bool
         }
     }
 }

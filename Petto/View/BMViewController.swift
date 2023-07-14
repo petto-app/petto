@@ -54,7 +54,7 @@ class BMViewController: UIViewController {
     var statModel: StatModel?
 
     var timer: Timer?
-    var interval: Double = 5.0
+    var interval: Double = 3.0
     var predictionHistory: [ActionPrediction] = []
     var accumulatedPredictions: [ActionPrediction] = []
 
@@ -115,6 +115,7 @@ extension BMViewController {
     /// Destroy instance when moving to another page
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        coordinator?.doneFirstPrimeTime(bool: false)
 
         videoProcessingChain = nil
         videoCapture = nil

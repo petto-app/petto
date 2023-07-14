@@ -19,11 +19,13 @@ struct Home: View {
     @EnvironmentObject var statController: StatController
     @EnvironmentObject var timerController: TimerController
     @EnvironmentObject var characterController: CharacterController
+    @EnvironmentObject var settingsController: SettingsController
     @EnvironmentObject var popUpModel: PopUpModel
     @AppStorage("coin") var coin: Int?
     @AppStorage("totalCoin") var totalCoin: Int?
     @AppStorage("mute") var mute: Bool = false
     @AppStorage("isOnBoarded") var isOnBoarded: Bool?
+    @AppStorage("firstPrimeTime") var firstPrimeTime: Bool = true
 
     @State private var dialogMessage: String?
     @State private var bodyMovementImages: [String] = []
@@ -102,52 +104,35 @@ struct Home: View {
                                     )
                                     .scaledToFit().frame(width: 35, height: 35)
                                 }.buttonStyle(IconButtonRect(width: 50, height: 50))
-                                PulseButton(color: .red) {
-                                    NavigationLink {
-                                        ZStack {
-                                            BMView(dialogMessage: $dialogMessage, bodyMovementImages: $bodyMovementImages)
-                                                .ignoresSafeArea()
-                                                .environmentObject(StatModel.shared)
-                                                .environmentObject(BodyMovementTaskModel.shared)
-                                            
-                                            if dialogMessage != nil {
-                                                Dialog(message: dialogMessage!)
-                                                    .offset(x: 0, y: 90)
-                                            }
-                                            
-                                            // TODO: Change the size of animated character frames
-//                                            Image("shiba-1")
-//                                                .resizable()
-//                                                .scaledToFit()
-//                                                .frame(width: 240)
-//                                                .padding()
-//                                                .offset(x: 70, y: 245)
-                                            
-                                            if bodyMovementImages.count > 0 {
-                                                Avatar(idleFrameNames: $bodyMovementImages)
-                                                    .padding()
-                                                    .offset(x: 70, y: 245)
-                                            }
-                                        }
-                                    } label: {
-                                        PulseButton(color: .red) {
-                                            Image("exclamation").resizable()
-                                                .scaledToFit().frame(width: 40, height: 40)
-                                        }
-                                    }
-                                }
-                                .buttonStyle(IconButtonRect(width: 50, height: 50))
-                                if timeController.isPrimeTime() {
+                                
+                                if timeController.isPrimeTime() || (firstPrimeTime == true) {
                                     PulseButton(color: .red) {
-                                        Button {
-                                            print("Button pressed!")
-                                        } label: { PulseButton(color: .red) {
-                                            Image("exclamation").resizable(
-                                            )
-                                            .scaledToFit().frame(width: 40, height: 40)
+                                        NavigationLink {
+                                            ZStack {
+                                                BMView(dialogMessage: $dialogMessage, bodyMovementImages: $bodyMovementImages, firstPrimeTime: $firstPrimeTime)
+                                                    .ignoresSafeArea()
+                                                    .environmentObject(StatModel.shared)
+                                                    .environmentObject(BodyMovementTaskModel.shared)
+                                                
+                                                if dialogMessage != nil {
+                                                    Dialog(message: dialogMessage!)
+                                                        .offset(x: 0, y: 90)
+                                                }
+                                                
+                                                if bodyMovementImages.count > 0 {
+                                                    Avatar(idleFrameNames: $bodyMovementImages)
+                                                        .padding()
+                                                        .offset(x: 70, y: 245)
+                                                }
+                                            }
+                                        } label: {
+                                            PulseButton(color: .red) {
+                                                Image("exclamation").resizable()
+                                                    .scaledToFit().frame(width: 40, height: 40)
+                                            }
                                         }
-                                        }.buttonStyle(IconButtonRect(width: 50, height: 50))
                                     }
+                                    .buttonStyle(IconButtonRect(width: 50, height: 50))
                                 }
                             }
                         }
