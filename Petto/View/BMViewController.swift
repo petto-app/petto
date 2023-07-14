@@ -54,7 +54,7 @@ class BMViewController: UIViewController {
     var statModel: StatModel?
 
     var timer: Timer?
-    var interval: Double = 7.0
+    var interval: Double = 5.0
     var predictionHistory: [ActionPrediction] = []
     var accumulatedPredictions: [ActionPrediction] = []
 
@@ -345,10 +345,10 @@ extension BMViewController {
             guard let poses = poses else { return }
 
             // Draw all the poses Vision found in the frame.
-            for pose in poses {
+//            for pose in poses {
                 // Draw each pose as a wireframe at the scale of the image.
-                pose.drawWireframeToContext(cgContext, applying: pointTransform)
-            }
+//                pose.drawWireframeToContext(cgContext, applying: pointTransform)
+//            }
         }
 
         // Update the UI's full-screen image view on the main thread.
@@ -371,7 +371,7 @@ extension BMViewController {
 
                     if movementAmount == bodyMovementTask.amount {
                         coordinator?.addPopUp(bodyMovementTask: bodyMovementTask)
-                        navigationController?.pushViewController(UIHostingController(rootView: Home().navigationBarBackButtonHidden(true)), animated: true)
+                        navigationController?.popViewController(animated: true)
                     }
 
                     // Add dialog how much more to go

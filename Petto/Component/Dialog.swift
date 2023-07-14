@@ -23,7 +23,9 @@ struct Dialog: View {
                             .foregroundColor(Color("StarCoin"))
                             .fontWeight(.bold)
                             .padding(.bottom, 1)
+                            .multilineTextAlignment(.center)
                     }
+                    .padding(.horizontal, 70)
                 }
             }
         }

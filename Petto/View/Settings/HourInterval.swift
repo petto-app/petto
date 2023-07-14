@@ -20,6 +20,7 @@ struct HourInterval: View {
     @EnvironmentObject var fToast: FancyToastClass
     @EnvironmentObject var statController: StatController
     @EnvironmentObject var gameKitController: GameKitController
+    @EnvironmentObject var audioController: AudioController
 
     var body: some View {
         VStack {
@@ -70,6 +71,7 @@ struct HourInterval: View {
                         Button("<Test> Increase Coin") {
                             statController.increaseCoin(amount: 100)
                             gameKitController.reportScore(totalCoin: statController.statModel.totalCoin!)
+                            audioController.audioPlayer.playSound(soundFileName: "kaching")
                         }
                         Button("<Test> Decrease Coin") {
                             statController.decreaseCoin(amount: 100)

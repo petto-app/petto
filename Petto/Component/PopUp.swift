@@ -13,6 +13,7 @@ struct PopUp: View {
     @EnvironmentObject var statController: StatController
     @EnvironmentObject var dailyTaskController: DailyTaskController
     @EnvironmentObject var gameKitController: GameKitController
+    @EnvironmentObject var audioController: AudioController
     @ObservedObject var dailyTaskModel = DailyTaskModel.shared
 
     var body: some View {
@@ -84,6 +85,7 @@ struct PopUp: View {
                                 popUpModel.popUpItems[index].state = .hidden
                                 statController.increaseCoin(amount: taskCoin!)
                                 gameKitController.reportScore(totalCoin: statController.statModel.totalCoin!)
+                                audioController.audioPlayer.playSound(soundFileName: "kaching")
                                 popUpModel.popUpItems.remove(at: index)
                             }
                         }

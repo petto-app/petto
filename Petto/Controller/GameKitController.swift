@@ -49,7 +49,7 @@ class GameKitController: NSObject, GKLocalPlayerListener, ObservableObject {
                 totalCoin,
                 context: 0,
                 player: playerModel.localPlayer,
-                leaderboardIDs: ["com.pettoteam.pettolife.highscore"]
+                leaderboardIDs: [LEADERBOARD_ID]
             ) { error in
                 print("Leaderboard Submit Score Error:")
                 print(error)

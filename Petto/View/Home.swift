@@ -102,36 +102,41 @@ struct Home: View {
                                     )
                                     .scaledToFit().frame(width: 35, height: 35)
                                 }.buttonStyle(IconButtonRect(width: 50, height: 50))
-                                NavigationLink {
-                                    ZStack {
-                                        BMView(dialogMessage: $dialogMessage, bodyMovementImages: $bodyMovementImages)
-                                            .ignoresSafeArea()
-                                            .environmentObject(StatModel.shared)
-                                            .environmentObject(BodyMovementTaskModel.shared)
-
-                                        if dialogMessage != nil {
-                                            Dialog(message: dialogMessage!)
-                                                .offset(x: 0, y: 100)
+                                PulseButton(color: .red) {
+                                    NavigationLink {
+                                        ZStack {
+                                            BMView(dialogMessage: $dialogMessage, bodyMovementImages: $bodyMovementImages)
+                                                .ignoresSafeArea()
+                                                .environmentObject(StatModel.shared)
+                                                .environmentObject(BodyMovementTaskModel.shared)
+                                            
+                                            if dialogMessage != nil {
+                                                Dialog(message: dialogMessage!)
+                                                    .offset(x: 0, y: 90)
+                                            }
+                                            
+                                            // TODO: Change the size of animated character frames
+//                                            Image("shiba-1")
+//                                                .resizable()
+//                                                .scaledToFit()
+//                                                .frame(width: 240)
+//                                                .padding()
+//                                                .offset(x: 70, y: 245)
+                                            
+                                            if bodyMovementImages.count > 0 {
+                                                Avatar(idleFrameNames: $bodyMovementImages)
+                                                    .padding()
+                                                    .offset(x: 70, y: 245)
+                                            }
                                         }
-
-                                        // TODO: Change the size of animated character frames
-//                                        Image("shiba-1")
-//                                            .resizable()
-//                                            .scaledToFit()
-//                                            .frame(width: 240)
-//                                            .padding()
-//                                            .offset(x: 70, y: 245)
-
-                                        if bodyMovementImages.count > 0 {
-                                            Avatar(idleFrameNames: $bodyMovementImages)
-                                                .padding()
-                                                .offset(x: 70, y: 245)
+                                    } label: {
+                                        PulseButton(color: .red) {
+                                            Image("exclamation").resizable()
+                                                .scaledToFit().frame(width: 40, height: 40)
                                         }
                                     }
-                                } label: {
-                                    Text("BMS")
-                                        .font(.caption)
-                                }.buttonStyle(IconButtonRect(width: 50, height: 50))
+                                }
+                                .buttonStyle(IconButtonRect(width: 50, height: 50))
                                 if timeController.isPrimeTime() {
                                     PulseButton(color: .red) {
                                         Button {
