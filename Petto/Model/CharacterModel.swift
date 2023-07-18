@@ -22,7 +22,7 @@ class CharacterModel: ObservableObject {
     @Published var characters: [Character]?
 
     @AppStorage("character")
-    var currentCharacter: String?
+    var currentCharacter: String = "dog"
 
     init(characters: [Character]? = nil) {
         self.characters = characters

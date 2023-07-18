@@ -31,7 +31,7 @@ class BodyMovementTaskModel: ObservableObject {
     @ObservedObject var timeModel = TimeModel()
 
     @AppStorage("character")
-    var currentCharacter: String?
+    var currentCharacter: String = "dog"
 
     @AppStorage("bodyMovementTasks")
     var bodyMovementTasksData: Data = .init()
@@ -53,7 +53,7 @@ class BodyMovementTaskModel: ObservableObject {
     init() {
         update()
     }
-    
+
     private func update() {
         countCoinPerPrimeTime()
 

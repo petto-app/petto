@@ -104,7 +104,7 @@ struct Home: View {
                                     )
                                     .scaledToFit().frame(width: 35, height: 35)
                                 }.buttonStyle(IconButtonRect(width: 50, height: 50))
-                                
+
                                 if timeController.isPrimeTime() || (firstPrimeTime == true) {
                                     PulseButton(color: .red) {
                                         NavigationLink {
@@ -113,12 +113,12 @@ struct Home: View {
                                                     .ignoresSafeArea()
                                                     .environmentObject(StatModel.shared)
                                                     .environmentObject(BodyMovementTaskModel.shared)
-                                                
+
                                                 if dialogMessage != nil {
                                                     Dialog(message: dialogMessage!)
                                                         .offset(x: 0, y: 90)
                                                 }
-                                                
+
                                                 if bodyMovementImages.count > 0 {
                                                     Avatar(idleFrameNames: $bodyMovementImages)
                                                         .padding()
@@ -135,6 +135,7 @@ struct Home: View {
                                     .buttonStyle(IconButtonRect(width: 50, height: 50))
                                 }
                             }
+                            .frame(maxWidth: 50)
                         }
                         Spacer()
                     }.padding()

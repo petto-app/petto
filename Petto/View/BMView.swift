@@ -116,7 +116,7 @@ extension BMView {
                 parent.timer = nil // Reset the timer
             }
         }
-        
+
         func doneFirstPrimeTime(bool: Bool) {
             parent.firstPrimeTime = bool
         }
