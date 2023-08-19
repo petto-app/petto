@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct PopUp: View {
     @State var popUp: PopUpItem
+    @Environment(\.requestReview) var requestReview
     @EnvironmentObject var popUpModel: PopUpModel
     @EnvironmentObject var statController: StatController
     @EnvironmentObject var dailyTaskController: DailyTaskController
@@ -86,6 +88,9 @@ struct PopUp: View {
                                 statController.increaseCoin(amount: taskCoin!)
                                 gameKitController.reportScore(totalCoin: statController.statModel.totalCoin!)
                                 audioController.audioPlayer.playSound(soundFileName: "kaching")
+                                if popUp.type == .bodyMovementTask && popUpModel.popUpItems.count == 1 {
+                                    requestReview()
+                                }
                                 popUpModel.popUpItems.remove(at: index)
                             }
                         }

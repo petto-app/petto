@@ -753,6 +753,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Petto/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow this app to access the camera to detect body movement.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Allow this app to share your Health data.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Allow this app to write data provided from your activity.";
@@ -794,6 +795,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Petto/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow this app to access the camera to detect body movement.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Allow this app to share your Health data.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Allow this app to write data provided from your activity.";
