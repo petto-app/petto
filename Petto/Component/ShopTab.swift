@@ -18,6 +18,9 @@ struct ShopTab: View {
         }
     }
 
+    let width = UIScreen.main.bounds.size.width * 0.15
+    let height = UIScreen.main.bounds.size.height * 0.005
+
     var body: some View {
         Grid {
             GridRow {
@@ -28,7 +31,7 @@ struct ShopTab: View {
                     audioController.audioPlayer.playSound(soundFileName: "pop")
                 }
                 .font(.caption)
-                .buttonStyle(BrownButton(width: 50, height: 6, active: activeType == .energy))
+                .buttonStyle(BrownButton(width: width, height: height, active: activeType == .energy))
                 Button("Fun") {
                     print("Button pressed!")
                     activeType = .fun
@@ -36,7 +39,7 @@ struct ShopTab: View {
                     audioController.audioPlayer.playSound(soundFileName: "pop")
                 }
                 .font(.caption)
-                .buttonStyle(BrownButton(width: 50, height: 6, active: activeType == .fun))
+                .buttonStyle(BrownButton(width: width, height: height, active: activeType == .fun))
                 Button("Hygiene") {
                     print("Button pressed!")
                     activeType = .hygiene
@@ -44,7 +47,7 @@ struct ShopTab: View {
                     audioController.audioPlayer.playSound(soundFileName: "pop")
                 }
                 .font(.caption)
-                .buttonStyle(BrownButton(width: 50, height: 6, active: activeType == .hygiene))
+                .buttonStyle(BrownButton(width: width, height: height, active: activeType == .hygiene))
             }
         }
     }

@@ -45,6 +45,8 @@ struct Shop: View {
         return getPrice()
     }
 
+    let shopTopPadding = UIScreen.main.bounds.size.height * 0.001
+
     var body: some View {
         VStack {
             ZStack {
@@ -86,8 +88,8 @@ struct Shop: View {
                             audioController.audioPlayer.playSound(soundFileName: "pop")
                         }
                         .buttonStyle(MainButton(width: 70, height: 10))
-                        .padding(.top, 40)
-                    }.frame(width: UIScreen.main.bounds.size.width * 0.7).padding(.top, 80)
+                        .padding(.top, 10)
+                    }.frame(width: UIScreen.main.bounds.size.width * 0.7).padding(.top, shopTopPadding)
                     Spacer()
                 }.padding()
                 Button {
@@ -98,7 +100,7 @@ struct Shop: View {
                     )
                     .scaledToFit().frame(width: 25, height: 25)
                 }.buttonStyle(IconButtonRect(width: 40, height: 40))
-                    .position(x: UIScreen.main.bounds.size.width * 0.8, y: UIScreen.main.bounds.size.height * 0.3)
+                    .position(x: UIScreen.main.bounds.size.width * 0.8, y: UIScreen.main.bounds.size.height * 0.35)
                 if buyConfirmation {
                     Color.black.opacity(0.75)
                         .ignoresSafeArea()

@@ -14,6 +14,9 @@ struct ShopItemComponent: View {
     var plusDisabled: Bool = false
     @EnvironmentObject var audioController: AudioController
 
+    let width = UIScreen.main.bounds.size.width * 0.27
+    let height = UIScreen.main.bounds.size.width * 0.27
+
     var body: some View {
         VStack {
             ZStack {
@@ -32,7 +35,7 @@ struct ShopItemComponent: View {
                         }
                     }
                 }.padding(5)
-            }.frame(width: 110, height: 110)
+            }.frame(width: width, height: height)
                 .background(.white)
                 .cornerRadius(8)
                 .shadow(radius: 2, y: 3)
