@@ -1,0 +1,23 @@
+name: iOS starter workflow
+
+on:
+  push:
+    branches: [ "development" ]
+  pull_request:
+    branches: [ "development" ]
+
+jobs:
+  build:
+    name: Build and Test default scheme using any available iPhone simulator
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        include:
+          - xcode: "14.3"
+            ios: "16.5"
+    steps:
+    - uses: actions/checkout@v1
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_14.3.app && /usr/bin/xcodebuild -version
+    - name: Run build
+      run: xcodebuild clean build -scheme Petto -project Petto.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 14' | xcpretty && exit ${PIPESTATUS[0]}
