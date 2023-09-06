@@ -19,7 +19,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: Install Dependencies
       run: |
-        cd GitHubActions
+        cd Petto
         pod install --repo-update
       shell: bash
 
