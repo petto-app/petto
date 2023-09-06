@@ -25,4 +25,4 @@ jobs:
     - name: Build
       run: |
         cd Petto
-        xcodebuild build -workspace GitHubActions.xcworkspace -scheme Petto -project Petto.xcodeproj clean build -sdk iphoneos CODE_SIGNING_ALLOWED=No
+        xcodebuild build -scheme Petto -project Petto.xcodeproj clean build -sdk iphoneos CODE_SIGNING_ALLOWED=No
