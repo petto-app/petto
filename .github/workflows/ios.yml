@@ -13,8 +13,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - xcode: "14.3"
-            ios: "16.5"
+          - xcode: "14.1"
+            ios: "16.1"
     steps:
     - uses: actions/checkout@v3
     - name: Xcode Setup
@@ -24,4 +24,4 @@ jobs:
 
     - name: Build
       run: |
-        xcodebuild build -scheme Petto -project Petto.xcodeproj clean build -sdk iphoneos -destination "platform=iOS Simulator,OS=16.5,name=iPhone 14 Pro Max" CODE_SIGNING_ALLOWED=No
+        xcodebuild build -scheme Petto -project Petto.xcodeproj clean build -sdk iphoneos -destination "platform=iOS Simulator,OS=16.1,name=iPhone 14 Pro" CODE_SIGNING_ALLOWED=No
