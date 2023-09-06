@@ -40,7 +40,7 @@ struct ShopItemComponent: View {
                 .cornerRadius(8)
                 .shadow(radius: 2, y: 3)
             HStack(spacing: 10) {
-                AmountButton(type: .Minus, enabled: amount > 0) {
+                AmountButton(type: .minus, enabled: amount > 0) {
                     if amount > 0 {
                         amount -= 1
                         audioController.audioPlayer.playSound(soundFileName: "pop")
@@ -49,7 +49,7 @@ struct ShopItemComponent: View {
                 StrokeText(text: "\(amount)", width: 1, color: Color("CoinBorder"))
                     .foregroundColor(Color("Coin")).fontWeight(.bold)
                     .font(.system(size: 14, weight: .bold))
-                AmountButton(type: .Plus, enabled: !plusDisabled) {
+                AmountButton(type: .plus, enabled: !plusDisabled) {
                     if !plusDisabled {
                         amount += 1
                         audioController.audioPlayer.playSound(soundFileName: "pop")

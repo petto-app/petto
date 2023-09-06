@@ -15,10 +15,10 @@ struct CircleShape: Shape {
     }
 
     func path(in rect: CGRect) -> Path {
-        let r = rect.height / 2
+        let radius = rect.height / 2
         let center = CGPoint(x: rect.midX, y: rect.midY * 1.5)
         var path = Path()
-        path.addArc(center: center, radius: r,
+        path.addArc(center: center, radius: radius,
                     startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 180), clockwise: true)
         path.closeSubpath()
         return path

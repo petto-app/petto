@@ -41,8 +41,8 @@ func isPrimeTime(hours: [Int]) -> Bool {
     let currentHour = calendar.component(.hour, from: date)
     let currentMinutes = calendar.component(.minute, from: date)
 
-    for h in hours {
-        if currentHour == h && currentMinutes <= 10 {
+    for hour in hours {
+        if currentHour == hour && currentMinutes <= 10 {
             return true
         }
     }

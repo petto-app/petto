@@ -8,8 +8,8 @@
 import SwiftUI
 
 enum AmountButtonType {
-    case Plus
-    case Minus
+    case plus
+    case minus
 }
 
 struct AmountButton: View {
@@ -22,7 +22,7 @@ struct AmountButton: View {
         Button {
             onPress()
         } label: {
-            StrokeText(text: type == .Plus ? "+" : "-", width: 1, color: Color("CoinBorder"))
+            StrokeText(text: type == .plus ? "+" : "-", width: 1, color: Color("CoinBorder"))
                 .foregroundColor(enabled ? .white : Color("StarCoin")).fontWeight(.bold)
                 .font(.system(size: 14, weight: .bold))
         }.frame(width: 25, height: 25)
@@ -36,12 +36,12 @@ struct AmountButton: View {
 struct AmountButton_Previews: PreviewProvider {
     static var previews: some View {
         HStack {
-            AmountButton(type: .Plus, enabled: true) { print("Yo") }
+            AmountButton(type: .plus, enabled: true) { print("Yo") }
             StrokeText(text: "\(5)", width: 1, color: Color("CoinBorder"))
                 .foregroundColor(Color("Coin")).fontWeight(.bold)
                 .font(.system(size: 14, weight: .bold))
 
-            AmountButton(type: .Minus, enabled: false) { print("Yo") }
+            AmountButton(type: .minus, enabled: false) { print("Yo") }
         }
     }
 }

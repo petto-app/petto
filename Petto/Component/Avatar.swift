@@ -24,8 +24,8 @@ struct Avatar: View {
 //                    let imageHeight = image.size.height
 //                    let imageWidthScaled = imageWidth * scale
 //                    let imageHeightScaled = imageHeight * scale
-                    let w = size.width
-                    let h = size.height
+                    let width = size.width
+                    let height = size.height
 
 //                    let translateX = abs(imageWidth / 2 - imageWidthScaled / 2)
 //                    let translateY = abs(imageHeight / 2 - imageHeightScaled / 2)
@@ -37,13 +37,13 @@ struct Avatar: View {
                     // Draw Images
                     context.draw(
                         Image(idleFrameNames[frameIndex]).resizable(),
-                        at: CGPoint(x: w / 2, y: h / 1.7)
+                        at: CGPoint(x: width / 2, y: height / 1.7)
                     )
 
-                    for i in 0 ..< poopCount {
+                    for index in 0 ..< poopCount {
                         context.draw(
                             Image("poop").resizable(),
-                            at: CGPoint(x: w / 12.0 + CGFloat(8 * abs(15 - poopCount) * i), y: h / 1.36)
+                            at: CGPoint(x: width / 12.0 + CGFloat(8 * abs(15 - poopCount) * index), y: height / 1.36)
                         )
                     }
                 }

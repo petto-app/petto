@@ -67,7 +67,15 @@ struct Shop: View {
                         Spacer()
                         PrimeTime(timerKey: "primeTimeTimerShop").offset(x: -25, y: 20).opacity(0)
                     }
-                    Stats(fun: $statController.statModel.fun.amount, hygiene: $statController.statModel.hygiene.amount, energy: $statController.statModel.energy.amount, funProjection: getProjectedValue(type: .fun), hygieneProjection: getProjectedValue(type: .hygiene), energyProjection: getProjectedValue(type: .energy)).offset(y: -20)
+                    Stats(
+                        fun: $statController.statModel.fun.amount,
+                        hygiene: $statController.statModel.hygiene.amount,
+                        energy: $statController.statModel.energy.amount,
+                        funProjection: getProjectedValue(type: .fun),
+                        hygieneProjection: getProjectedValue(type: .hygiene),
+                        energyProjection: getProjectedValue(type: .energy)
+                    )
+                    .offset(y: -20)
                     Spacer()
                     VStack {
                         ShopTab(activeType: $itemType, amounts: $amounts)
@@ -150,8 +158,8 @@ struct Shop: View {
     }
 
     func resetAmounts() {
-        for i in 0 ..< amounts.count {
-            amounts[i] = 0
+        for index in 0 ..< amounts.count {
+            amounts[index] = 0
         }
     }
 }
