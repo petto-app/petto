@@ -16,8 +16,19 @@ jobs:
           - xcode: "14.3"
             ios: "16.5"
     steps:
-    - uses: actions/checkout@v1
-    - name: Select Xcode
-      run: sudo xcode-select -switch /Applications/Xcode_14.3.app && /usr/bin/xcodebuild -version
-    - name: Run build
-      run: xcodebuild clean build -scheme Petto -project Petto.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 14' | xcpretty && exit ${PIPESTATUS[0]}
+    - uses: actions/checkout@v3
+    - name: Install Dependencies
+      run: |
+        cd GitHubActions
+        pod install --repo-update
+      shell: bash
+
+    - name: Xcode Setup
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '14.1'
+
+    - name: Build
+      run: |
+        cd Petto
+        xcodebuild build -workspace GitHubActions.xcworkspace -scheme Petto -project Petto.xcodeproj clean build -sdk iphoneos CODE_SIGNING_ALLOWED=No
