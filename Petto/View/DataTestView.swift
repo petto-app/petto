@@ -58,3 +58,16 @@ struct DataTestView: View {
         }
     }
 }
+
+struct DataTestView_Previews: PreviewProvider {
+    static var previews: some View {
+        @StateObject var shopViewController = ShopViewController()
+        @StateObject var shopItemModel = ShopItemModel()
+        @StateObject var timerModel = TimerModel()
+
+        DataTestView()
+            .environmentObject(shopViewController)
+            .environmentObject(shopItemModel)
+            .environmentObject(timerModel)
+    }
+}
