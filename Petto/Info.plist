@@ -6,5 +6,12 @@
 	<array>
 		<string>Fonts/MotleyForcesRegular.ttf</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string>LaunchScreenImage</string>
+		<key>UIColorName</key>
+		<string>LaunchScreenColor</string>
+	</dict>
 </dict>
 </plist>
