@@ -10,9 +10,10 @@ import SwiftUI
 
 class TimeController: ObservableObject {
     @ObservedObject var timeModel = TimeModel()
+    @ObservedObject var settingsModel = SettingsModel.shared
 
     func setPrimeTime(start: Int = 9, finish: Int = 17, interval: Int = 2) -> Bool {
-        let (result, _) = scheduleLocal(startHour: start, endHour: finish, intervalHour: interval)
+        let (result, _) = scheduleLocal(startHour: start, endHour: finish, intervalHour: interval, enableNotification: settingsModel.getEnableNotification())
         if result {
             timeModel.timeConfig = TimeConfig(startHour: start, finishHour: finish, interval: interval)
         }

@@ -58,6 +58,7 @@ struct SettingsHeaderButton: View {
     let height: Int
     let title: String
     let image: String?
+    var sf: Bool = false
     var active: Bool = false
 
     var function: (() -> Void)?
@@ -69,7 +70,11 @@ struct SettingsHeaderButton: View {
             }
         } label: {
             HStack {
-                Image(image ?? "Clock").resizable().frame(width: 30, height: 30)
+                if sf {
+                    Image(systemName: image ?? "bell.fill").resizable().foregroundColor(Color("SettingsIconColor")).frame(width: 30, height: 30)
+                } else {
+                    Image(image ?? "Clock").resizable().frame(width: 30, height: 30)
+                }
             }.frame(width: CGFloat(width), height: CGFloat(height))
                 .background(.white)
                 .foregroundColor(.black)

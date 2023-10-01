@@ -50,7 +50,7 @@ func isPrimeTime(hours: [Int]) -> Bool {
     return false
 }
 
-func scheduleLocal(startHour: Int, endHour: Int, intervalHour: Int) -> (Bool, Int) {
+func scheduleLocal(startHour: Int, endHour: Int, intervalHour: Int, enableNotification: Bool = true) -> (Bool, Int) {
     if abs(startHour - endHour) < 4 || startHour > 23 || startHour < 0 || endHour > 23 || endHour < 0 {
         return (false, -1)
     }
@@ -61,6 +61,10 @@ func scheduleLocal(startHour: Int, endHour: Int, intervalHour: Int) -> (Bool, In
 
     let center = UNUserNotificationCenter.current()
     center.removeAllPendingNotificationRequests()
+
+    if !enableNotification {
+        return (true, 0)
+    }
 
     let content = UNMutableNotificationContent()
     content.title = "It's Prime Time!"

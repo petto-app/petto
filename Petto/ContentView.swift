@@ -13,9 +13,7 @@ struct ContentView: View {
 
     var body: some View {
         switch isOnBoarded {
-        case nil:
-            OnBoardingView(redirectTo: Home())
-        case false:
+        case nil, false:
             OnBoardingView(redirectTo: Home())
         case .some:
             Home()

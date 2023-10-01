@@ -22,4 +22,16 @@ class SettingsController: ObservableObject {
     func toggleMute() {
         setMute(mute: !getMute())
     }
+
+    func getEnableNotification() -> Bool {
+        return settingsModel.getEnableNotification()
+    }
+
+    func setEnableNotification(enableNotification: Bool) {
+        settingsModel.setEnableNotification(enableNotification: enableNotification)
+    }
+
+    func toggleEnableNotification() {
+        setEnableNotification(enableNotification: !getEnableNotification())
+    }
 }
