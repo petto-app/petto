@@ -1,6 +1,7 @@
 name: iOS starter workflow
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "development" ]
   pull_request:
@@ -20,12 +21,12 @@ jobs:
     - name: Xcode Setup
       uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: '14.3'
+        xcode-version: '15.0'
 
     # - name: Select Xcode
     #   run: sudo xcode-select -switch /Applications/Xcode_14.3.app
     - name: Build & Test
-      run: xcodebuild clean build -scheme Petto -project Petto.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.4'
+      run: xcodebuild clean build -scheme Petto -project Petto.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0'
 
     # - name: Build
     #   run: |
