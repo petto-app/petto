@@ -13,8 +13,8 @@ struct ShopTab: View {
     @Binding var amounts: [Int]
 
     func resetAmounts() {
-        for i in 0 ..< amounts.count {
-            amounts[i] = 0
+        for index in 0 ..< amounts.count {
+            amounts[index] = 0
         }
     }
 

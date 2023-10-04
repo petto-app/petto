@@ -75,7 +75,11 @@ class BodyMovementTaskModel: ObservableObject {
 
     private func countCoinPerPrimeTime() {
         // Count coin for each prime time based on how much prime time
-        let totalPrimeTime = getPrimeTimeHours(startHour: timeModel.timeConfig?.startHour ?? 9, endHour: timeModel.timeConfig?.finishHour ?? 17, intervalHour: timeModel.timeConfig?.interval ?? 2).count
+        let totalPrimeTime = getPrimeTimeHours(
+            startHour: timeModel.timeConfig?.startHour ?? 9,
+            endHour: timeModel.timeConfig?.finishHour ?? 17,
+            intervalHour: timeModel.timeConfig?.interval ?? 2
+        ).count
 
         coinPerPrimeTime = Int(1000 / totalPrimeTime)
     }

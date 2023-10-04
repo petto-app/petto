@@ -16,7 +16,7 @@ struct DailyTask: View {
                 let task = dailyTasks[index]
                 GridRow {
                     Toggle(isOn: .constant(task.isDone)) {}
-                        .toggleStyle(iOSCheckboxToggleStyle())
+                        .toggleStyle(IOSCheckboxToggleStyle())
                         .disabled(true)
                         .foregroundColor(task.isDone ? Color("TaskSheet") : .pink)
                         .background(task.isDone ? .pink : Color("TaskSheet"))

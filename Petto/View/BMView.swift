@@ -30,7 +30,7 @@ struct BMView: UIViewControllerRepresentable {
 
     func makeUIViewController(context: Context) -> BMViewController {
         let sb = UIStoryboard(name: "BodyMovement", bundle: nil)
-        let vc = sb.instantiateViewController(identifier: "BMViewStoryboard") as! BMViewController
+        let vc = sb.instantiateViewController(identifier: "BMViewStoryboard") as BMViewController
         vc.coordinator = context.coordinator
 
         if let bodyMovementTask = bodyMovementTaskModel.getRandomTask() {

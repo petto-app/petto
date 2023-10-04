@@ -27,13 +27,20 @@ struct PulseButton<Content: View>: View {
 
     var children: () -> Content
 
-    init(color: Color = Color.blue, systemImageName: String = "plus.circle.fill", buttonWidth: CGFloat = 48, numberOfOuterCircles: Int = 2, animationDuration: Double = 0.5, children: @escaping () -> Content = { Image(systemName: "plus")
+    init(
+        color: Color = Color.blue,
+        systemImageName: String = "plus.circle.fill",
+        buttonWidth: CGFloat = 48,
+        numberOfOuterCircles: Int = 2,
+        animationDuration: Double = 0.5,
+        children: @escaping () -> Content = { Image(systemName: "plus")
             .resizable()
             .scaledToFit()
             .background(Circle().fill(Color.white))
             .frame(width: 48, height: 48, alignment: .center)
             .accentColor(.red)
-    }) {
+        }
+    ) {
         self.color = color
         self.systemImageName = systemImageName
         self.buttonWidth = buttonWidth

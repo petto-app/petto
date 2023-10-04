@@ -14,6 +14,7 @@ struct OnBoardingItem: Hashable {
 }
 
 struct OnBoardingView<Content: View>: View {
+    @EnvironmentObject var timeController: TimeController
     @State private var currentIndex = 0
     var onBoards: [OnBoardingItem]
     var link: Content?
@@ -75,7 +76,9 @@ struct OnBoardingView<Content: View>: View {
                                         Spacer()
                                         Spacer()
 
-                                        Button(action: {}) {
+                                        Button(action: {
+                                            _ = timeController.setPrimeTime()
+                                        }) {
                                             NavigationLink(
                                                 destination: link
                                                     .navigationBarBackButtonHidden(true)
@@ -96,7 +99,9 @@ struct OnBoardingView<Content: View>: View {
                                     }
                                 } else {
                                     VStack(alignment: .leading) {
-                                        Button(action: {}) {
+                                        Button(action: {
+                                            _ = timeController.setPrimeTime()
+                                        }) {
                                             NavigationLink(
                                                 destination: link
                                                     .navigationBarBackButtonHidden(true)

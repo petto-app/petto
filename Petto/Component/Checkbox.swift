@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct iOSCheckboxToggleStyle: ToggleStyle {
+struct IOSCheckboxToggleStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
         // 1
         Button(action: {

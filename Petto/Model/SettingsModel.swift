@@ -26,4 +26,15 @@ class SettingsModel: ObservableObject {
     func getMute() -> Bool {
         return mute
     }
+
+    @AppStorage("enableNotification")
+    var enableNotification: Bool = true
+
+    func setEnableNotification(enableNotification: Bool) {
+        self.enableNotification = enableNotification
+    }
+
+    func getEnableNotification() -> Bool {
+        return enableNotification
+    }
 }

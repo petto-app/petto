@@ -10,9 +10,10 @@ import SwiftUI
 
 class TimeController: ObservableObject {
     @ObservedObject var timeModel = TimeModel()
+    @ObservedObject var settingsModel = SettingsModel.shared
 
     func setPrimeTime(start: Int = 9, finish: Int = 17, interval: Int = 2) -> Bool {
-        let (result, _) = scheduleLocal(startHour: start, endHour: finish, intervalHour: interval)
+        let (result, _) = scheduleLocal(startHour: start, endHour: finish, intervalHour: interval, enableNotification: settingsModel.getEnableNotification())
         if result {
             timeModel.timeConfig = TimeConfig(startHour: start, finishHour: finish, interval: interval)
         }
@@ -20,7 +21,12 @@ class TimeController: ObservableObject {
     }
 
     func isPrimeTime() -> Bool {
-        return Petto.isPrimeTime(hours: getPrimeTimeHours(startHour: timeModel.timeConfig?.startHour ?? 0, endHour: timeModel.timeConfig?.finishHour ?? 0, intervalHour: timeModel.timeConfig?.interval ?? 0))
+        return Petto.isPrimeTime(
+            hours: getPrimeTimeHours(
+                startHour: timeModel.timeConfig?.startHour ?? 0,
+                endHour: timeModel.timeConfig?.finishHour ?? 0,
+                intervalHour: timeModel.timeConfig?.interval ?? 0
+            ))
     }
 
     func getPrimeTime() -> TimeConfig? {
@@ -38,20 +44,20 @@ class TimeController: ObservableObject {
 
         var isNextDay = primeTimeHours.allSatisfy { $0 < currentHour }
 
-        for i in 0 ..< primeTimeHours.count {
-            if i > 0 && primeTimeHours[i - 1] > primeTimeHours[i] {
+        for index in 0 ..< primeTimeHours.count {
+            if index > 0 && primeTimeHours[index - 1] > primeTimeHours[index] {
                 isNextDay = true
             }
             if isNextDay {
-                primeTimeHours[i] += 24
+                primeTimeHours[index] += 24
             }
         }
 
         var primeTimeHour = currentHour
         var flag = false
-        for h in primeTimeHours {
-            if h > primeTimeHour {
-                primeTimeHour = h
+        for hour in primeTimeHours {
+            if hour > primeTimeHour {
+                primeTimeHour = hour
                 flag = true
                 break
             }
