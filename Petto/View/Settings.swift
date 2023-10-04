@@ -58,7 +58,12 @@ struct Settings: View {
                             }
                         }
                         GridRow {
-                            SettingsHeaderButton(width: 60, height: 60, title: settingsController.getEnableNotification() ? "Disable Notification" : "Enable Notification", image: settingsController.getEnableNotification() ? "bell.slash.fill" : "bell.fill", sf: true) {
+                            SettingsHeaderButton(
+                                width: 60,
+                                height: 60,
+                                title: settingsController.getEnableNotification() ? "Disable Notification" : "Enable Notification", image: settingsController.getEnableNotification() ? "bell.slash.fill" : "bell.fill",
+                                sf: true
+                            ) {
                                 settingsController.toggleEnableNotification()
                                 _ = timeController.setPrimeTime()
                                 settingsController.objectWillChange.send()
