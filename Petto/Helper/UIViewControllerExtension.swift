@@ -1,5 +1,5 @@
 //
-//  UIViewControllerExtenstion.swift
+//  UIViewControllerExtension.swift
 //  Petto
 //
 //  Created by Carissa Farry Hilmi Az Zahra on 02/07/23.

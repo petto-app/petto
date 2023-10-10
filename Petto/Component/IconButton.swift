@@ -1,5 +1,5 @@
 //
-//  SettingsButton.swift
+//  IconButton.swift
 //  Petto
 //
 //  Created by Aaron Christopher Tanhar on 21/06/23.

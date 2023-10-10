@@ -1,5 +1,5 @@
 //
-//  GameCenter.swift
+//  GameCenterView.swift
 //  Petto
 //
 //  Created by Carissa Farry Hilmi Az Zahra on 25/06/23.

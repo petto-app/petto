@@ -61,7 +61,11 @@ struct Settings: View {
                             SettingsHeaderButton(
                                 width: 60,
                                 height: 60,
-                                title: settingsController.getEnableNotification() ? "Disable Notification" : "Enable Notification", image: settingsController.getEnableNotification() ? "bell.slash.fill" : "bell.fill",
+                                title: settingsController.getEnableNotification() ?
+                                    "Disable Notification"
+                                    : "Enable Notification", image: settingsController.getEnableNotification() ?
+                                    "bell.slash.fill" :
+                                    "bell.fill",
                                 sf: true
                             ) {
                                 settingsController.toggleEnableNotification()

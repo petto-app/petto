@@ -1,5 +1,5 @@
 //
-//  TotalCoin.swift
+//  Coin.swift
 //  Petto
 //
 //  Created by Aaron Christopher Tanhar on 21/06/23.

@@ -1,5 +1,5 @@
 //
-//  ShopItem.swift
+//  ShopItemComponent.swift
 //  Petto
 //
 //  Created by Aaron Christopher Tanhar on 03/07/23.

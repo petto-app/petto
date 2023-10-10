@@ -1,5 +1,5 @@
 //
-//  BMController.swift
+//  BMViewController.swift
 //  Petto
 //
 //  Created by Carissa Farry Hilmi Az Zahra on 01/07/23.
@@ -221,7 +221,7 @@ extension BMViewController: VideoProcessingChainDelegate {
         }
     }
 
-    internal func startPredictionTimer() {
+    func startPredictionTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in
             self.processPredictionResults()
 

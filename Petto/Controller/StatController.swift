@@ -1,5 +1,5 @@
 //
-//  TimeController.swift
+//  StatController.swift
 //  Petto
 //
 //  Created by Aaron Christopher Tanhar on 25/06/23.

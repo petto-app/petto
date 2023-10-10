@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  FancyToastView.swift
 //
 //
 //  Created by Aaron Christopher Tanhar on 18/04/23.
